@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ILoginState} from 'models/reducers/login';
 import ThemeController from '../components/ThemeController';
 import Home from 'screens/Home';
+import Explore from './../screens/Explore';
 import Settings from 'screens/Settings';
 import Favorites from 'screens/Favorites';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -17,11 +18,11 @@ interface IState {
 const TabNavigator = () => {
   return (
     <Tab.Navigator >
-      <Tab.Screen name="Home" component={Home} options={{
+      <Tab.Screen name="Explore" component={Explore} options={{
         headerShown:false,
-          tabBarLabel: 'Home',
+          tabBarLabel: 'Explore',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
+            <MaterialCommunityIcons name="search" color={color} size={size} />
           ),
         }}/>
       <Tab.Screen name="Favorites" component={Favorites} 

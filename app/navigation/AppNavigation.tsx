@@ -14,7 +14,7 @@ interface IState {
 const AppNavigation = () => {
   return (
     <AppDrawer.Navigator drawerContent={() => <Drawer />}>
-    <AppDrawer.Screen name="GSOFT" component={TabNavigator}   options={{ drawerLabel: 'Home' }} />
+    <AppDrawer.Screen name="Explore" component={TabNavigator}   options={{ drawerLabel: 'Explore' }} />
     </AppDrawer.Navigator>
   );
 };
