@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jij-hk-cML">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="SplashIcon" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hea-8P-blc">
+                                <rect key="frame" x="54" y="200" width="269" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="90" id="0pW-Kf-qYk"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="91" id="1lO-kG-X5t"/>
+                                    <constraint firstAttribute="width" secondItem="hea-8P-blc" secondAttribute="height" multiplier="71:70" id="2P2-dH-SEI"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="5HV-IM-Aen"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="5mP-kc-HPo"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="70" id="GQ0-vu-l96"/>
+                                    <constraint firstAttribute="width" constant="70" id="Hw7-tE-GDA"/>
+                                    <constraint firstAttribute="width" secondItem="hea-8P-blc" secondAttribute="height" multiplier="236:233" id="PZS-wf-rNE"/>
+                                    <constraint firstAttribute="width" secondItem="hea-8P-blc" secondAttribute="height" multiplier="71:70" id="Qpe-BN-0fp"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="V7Z-JY-lmS"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="cwX-Zr-BpG"/>
+                                    <constraint firstAttribute="height" constant="70" id="fNI-jY-me0"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="90" id="lCq-3f-0Fo"/>
+                                    <constraint firstAttribute="width" secondItem="hea-8P-blc" secondAttribute="height" multiplier="71:70" id="oKD-oz-C40"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="trJ-TU-MIZ"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="90" id="zCZ-Fl-hs6"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wZ9-Kw-cXE"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hea-8P-blc" firstAttribute="centerX" secondItem="jij-hk-cML" secondAttribute="centerX" id="Jem-ms-BuC"/>
+                            <constraint firstItem="hea-8P-blc" firstAttribute="centerX" secondItem="jij-hk-cML" secondAttribute="centerX" id="bG2-P8-pug"/>
+                            <constraint firstItem="hea-8P-blc" firstAttribute="centerX" secondItem="jij-hk-cML" secondAttribute="centerX" id="boE-CP-hcH"/>
+                            <constraint firstItem="hea-8P-blc" firstAttribute="centerY" secondItem="jij-hk-cML" secondAttribute="centerY" id="mSP-ZD-pOi"/>
+                            <constraint firstItem="hea-8P-blc" firstAttribute="centerY" secondItem="jij-hk-cML" secondAttribute="centerY" id="xQl-Ia-d97"/>
+                            <constraint firstItem="hea-8P-blc" firstAttribute="centerY" secondItem="jij-hk-cML" secondAttribute="centerY" id="zZP-f5-ups"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="SplashIcon" width="30" height="30"/>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
