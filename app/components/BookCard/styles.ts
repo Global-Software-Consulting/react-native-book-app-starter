@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     flex: 1,
  paddingVertical:45,
  paddingHorizontal:30,
+ backgroundColor:'white',
   },
   nameStyle: {
     fontSize: hp('3%'),
@@ -56,12 +57,27 @@ bookTrending: {
 
   bookGeneral: {
     height:hp('20%'), width:wp('30%'),
-
     borderRadius:4
     },
+
 bookView: {
   backgroundColor: 'transparent',
   paddingRight:20
+},
+
+heartIconTrending:
+{
+  position: 'absolute',
+  marginVertical:hp('21%'),
+  marginHorizontal:hp('1%')
+},
+
+heartIconGeneral:
+{
+  position: 'absolute',
+  marginVertical:hp('16%'),
+  marginHorizontal:hp('1%')
 }
+
 });
 export default styles;
