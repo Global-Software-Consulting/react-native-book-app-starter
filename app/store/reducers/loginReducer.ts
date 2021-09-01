@@ -9,6 +9,7 @@ import {
   ILoginRequestState,
   ILoginResponseState,
 } from 'models/actions/login';
+
 const initialState: ILoginState = {
   isLoggedIn: false,
   id: 0,

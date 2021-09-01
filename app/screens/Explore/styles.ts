@@ -1,24 +1,33 @@
 import { StyleSheet } from 'react-native';
 import { color } from 'react-native-reanimated';
+import {useTheme} from 'react-native-paper';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
+export const useStyles = () => {
+
+const theme = useTheme();
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
  paddingVertical:45,
  paddingHorizontal:30,
+ backgroundColor: theme.colors.background
   },
   nameStyle: {
     fontSize: hp('3%'),
     fontWeight: 'bold',
     fontFamily: 'Avenir-Medium',
-    alignItems:'center'
+    alignItems:'center',
+    color: theme.colors.text
   
   },
   tagLineStyle: {
     fontSize: hp('2%'),
     fontFamily: 'Avenir-Medium',
-    alignItems:'center'
+    alignItems:'center',
+    color: theme.colors.text
+
   
   },
   listCaptionStyle: {
@@ -26,22 +35,33 @@ const styles = StyleSheet.create({
     fontSize: hp('2%'),
     fontFamily: 'Avenir-Medium',
     alignItems:'center',
-    fontWeight:'bold'
+    fontWeight:'bold',
+    color: theme.colors.text
   },
+
   button: {
     backgroundColor: '#61e3a5',
     padding: 10,
     borderRadius: 10,
     margin: 10,
   },
+
   horizontalRuler: {
     borderBottomColor: '#DCDCDC',
     borderBottomWidth: 1,
     marginTop: 30,
+    color: theme.colors.primary
+
   },
 flatList: {
   flexGrow: 1,
   marginTop:10,
+  justifyContent:'center'
+},
+flatListLast: {
+  flexGrow: 1,
+  marginTop:10,
+  marginBottom:60,
   justifyContent:'center'
 },
 
@@ -65,4 +85,6 @@ bookView: {
   paddingRight:20
 }
 });
-export default styles;
+return styles;
+}
+

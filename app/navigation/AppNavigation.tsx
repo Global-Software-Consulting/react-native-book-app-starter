@@ -16,7 +16,6 @@ const AppNavigation = () => {
   return (
     <AppDrawer.Navigator drawerContent={() => <Drawer />}>
     <AppDrawer.Screen name="Explore" component={TabNavigator}   options={{ drawerLabel: 'Explore' }} />
-    <AppDrawer.Screen name="Home" component={Home}  options={{ drawerLabel: 'Home' }} />
     </AppDrawer.Navigator>
   );
 };

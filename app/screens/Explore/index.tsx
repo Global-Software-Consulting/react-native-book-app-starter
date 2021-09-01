@@ -3,7 +3,7 @@ import {View,TouchableOpacity,TouchableHighlight, Image, ScrollView,FlatList, Al
 import {Text, List} from 'react-native-paper';
 //importing card component
 import BookCard from './../../components/BookCard/BookCard';
-import styles from './styles';
+import {useStyles} from './styles';
 import {useTranslation} from 'react-i18next';
 import i18n from "../../components/Languages/i18n";
 
@@ -18,6 +18,9 @@ const Explore: React.FC = () => {
   const selectedForYouArray:string[] = ['https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'];
   const newReleasesArray:string[] = ['https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'];
   const trendingArray:string[] = ['https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'];
+
+//theme handling
+const styles = useStyles();
 
   //handling back hardware button
   useEffect(() => {
@@ -86,7 +89,7 @@ const Explore: React.FC = () => {
       <Text style={styles.listCaptionStyle}>Selected for you</Text>
       <FlatList horizontal
        data={selectedForYouArray}
-       contentContainerStyle={styles.flatList}
+       contentContainerStyle={styles.flatListLast}
        renderItem={({ item, index }) => (
        <TouchableHighlight
         key={item}
