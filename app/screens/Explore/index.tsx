@@ -50,18 +50,54 @@ const Explore: React.FC = () => {
       <View style={styles.horizontalRuler} /> 
 
       <Text style={styles.listCaptionStyle}>Trending</Text>
-      <BookCard data={trendingArray} navigateTo='Home' styleSelect='Custom' />
-      
+      <FlatList horizontal
+       data={trendingArray}
+       contentContainerStyle={styles.flatList}
+       renderItem={({ item, index }) => (
+       <TouchableHighlight
+        key={item}
+        underlayColor='grey'
+        onPress={()=>{}}  >
+          <BookCard url={item} isFavorite={true} styleSelect='Custom' />
+      </TouchableHighlight>
+      )}
+  showsHorizontalScrollIndicator={false}    
+/>
+
       <View style={styles.horizontalRuler} /> 
 
       <Text style={styles.listCaptionStyle}>New Releases</Text>
-      <BookCard data={newReleasesArray} navigateTo='Home' styleSelect='General' />
+      <FlatList horizontal
+       data={newReleasesArray}
+       contentContainerStyle={styles.flatList}
+       renderItem={({ item, index }) => (
+       <TouchableHighlight
+        key={item}
+        underlayColor='grey'
+        onPress={()=>{}}  >
+          <BookCard url={item} isFavorite={false} styleSelect='General' />
+      </TouchableHighlight>
+      )}
+      showsHorizontalScrollIndicator={false}    
+    />
 
       <View style={styles.horizontalRuler} /> 
 
       <Text style={styles.listCaptionStyle}>Selected for you</Text>
-      <BookCard data={selectedForYouArray} navigateTo='Home'  styleSelect='General' />
-
+      <FlatList horizontal
+       data={selectedForYouArray}
+       contentContainerStyle={styles.flatList}
+       renderItem={({ item, index }) => (
+       <TouchableHighlight
+        key={item}
+        underlayColor='grey'
+        onPress={()=>{}}  >
+          <BookCard url={item} isFavorite={false} styleSelect='General' />
+      </TouchableHighlight>
+      )}
+      showsHorizontalScrollIndicator={false}    
+    />
+    
     </ScrollView>
   );
 };

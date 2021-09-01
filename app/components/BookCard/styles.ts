@@ -62,7 +62,7 @@ bookTrending: {
 
 bookView: {
   backgroundColor: 'transparent',
-  paddingRight:20
+  margin:5
 },
 
 heartIconTrending:

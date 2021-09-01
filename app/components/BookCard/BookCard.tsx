@@ -4,40 +4,26 @@ import FastImage from 'react-native-fast-image'
 import NavigationService from './../../navigation/NavigationService';
 //verctor icons
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+//importing style
 import styles from './styles';
+//for responsive screen
 import { heightPercentageToDP } from 'react-native-responsive-screen';
 
 interface Props {
-    data?: [string];
-    navigateTo?: string;
+    url?: string;
     styleSelect: 'General' | 'Custom';
     isFavorite: boolean;
     }
-    const BookCard: React.FC<Props> = ({data,navigateTo, styleSelect, isFavorite}) => 
+    const BookCard: React.FC<Props> = ({url, styleSelect, isFavorite}) => 
     {
     return (
-<FlatList
-      horizontal
-      data={data}
-      renderItem={({ item, index, separators }) => (
-        <TouchableHighlight
-        key={item}
-        underlayColor='rgba(73,182,77,1,0.9)'
-        onPress={() => {NavigationService.navigate(navigateTo)}} >
           <View style={styles.bookView}>
-          <FastImage source={{uri:item,
+          <FastImage source={{uri:url,
           priority: FastImage.priority.normal,
           }}
           style={styleSelect=='General' ? styles.bookGeneral : styles.bookTrending} />
           <Icon name="heart" size={25} style={styleSelect=='General' ? styles.heartIconGeneral : styles.heartIconTrending} color={isFavorite ? 'red' : 'white'} />
           </View>
-        </TouchableHighlight>
-      )}
-      showsHorizontalScrollIndicator={false} 
-      style={styles.flatList} />
-      
-)
-};
+    )};
 
 export default BookCard;

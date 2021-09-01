@@ -40,8 +40,9 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
 flatList: {
-  flexGrow: 0,
-  marginTop:10
+  flexGrow: 1,
+  marginTop:10,
+  justifyContent:'center'
 },
 
 books: {
