@@ -1,4 +1,4 @@
-package com.dempapp;
+package com.bookapp.rn;
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 import org.devio.rn.splashscreen.SplashScreen; // here
@@ -11,7 +11,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "dempApp";
+    return "BookAppRN";
   }
   @Override
 protected void onCreate(Bundle savedInstanceState) {

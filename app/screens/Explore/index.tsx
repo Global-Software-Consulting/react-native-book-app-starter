@@ -1,29 +1,46 @@
 import React, {useState, useEffect} from 'react';
 import {View,TouchableOpacity,TouchableHighlight, Image, ScrollView,FlatList, Alert, BackHandler} from 'react-native';
 import {Text, List} from 'react-native-paper';
+import { useDispatch, useSelector} from 'react-redux';
+import fetchBookSaga from './../../store/sagas/fetchBookSaga';
+import * as fetchActions from './../../store/actions/appActions';
 //importing card component
 import BookCard from './../../components/BookCard/BookCard';
 import {useStyles} from './styles';
 import {useTranslation} from 'react-i18next';
 import i18n from "../../components/Languages/i18n";
-
+import fetchBookAsync from './../../store/sagas/fetchBookSaga';
+import { State } from 'react-native-gesture-handler';
+const base_url = "https://ebook-application.herokuapp.com/v1/"
 const initI18n = i18n;
 const Explore: React.FC = () => {
   const {t, i18n} = useTranslation();
+
+  //fetching book images from the store
+const books = useSelector((state) => state.bookFetchReducer.detail.result);
+const isLoading = useSelector((state) => state.bookFetchReducer.isFetching);
+
+console.log('books are', isLoading);
 
   //state for display name
   const [name, setName] = useState('Jorge')
 
   //images for Flatlists(Hardcoded)
-  const selectedForYouArray:string[] = ['https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'];
-  const newReleasesArray:string[] = ['https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'];
-  const trendingArray:string[] = ['https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'];
+  const sampleArr:any[] = ['a'];
+
 
 //theme handling
 const styles = useStyles();
+const dispatch = useDispatch();
+
+const fetchBookDetails = async() => {
+  dispatch(fetchActions.IFetchBooksRequest());
+}
 
   //handling back hardware button
   useEffect(() => {
+    //api call
+    fetchBookDetails()
     const backAction = () => {
       Alert.alert("Book App", "Are you sure you want to exit?", [
         {
@@ -54,14 +71,14 @@ const styles = useStyles();
 
       <Text style={styles.listCaptionStyle}>Trending</Text>
       <FlatList horizontal
-       data={trendingArray}
+       data={books?.filter((item) => { return item.averageRating > 3 })}
        contentContainerStyle={styles.flatList}
        renderItem={({ item, index }) => (
        <TouchableHighlight
         key={item}
         underlayColor='grey'
         onPress={()=>{}}  >
-          <BookCard url={item} isFavorite={true} styleSelect='Custom' />
+          <BookCard url={base_url + item.coverPicture} isFavorite={true} styleSelect='Custom' bookTitle={item.title} refreshing={isLoading} />
       </TouchableHighlight>
       )}
   showsHorizontalScrollIndicator={false}    
@@ -71,14 +88,14 @@ const styles = useStyles();
 
       <Text style={styles.listCaptionStyle}>New Releases</Text>
       <FlatList horizontal
-       data={newReleasesArray}
+       data={books?.filter((item) => { return item.averageRating < 3 })}
        contentContainerStyle={styles.flatList}
        renderItem={({ item, index }) => (
        <TouchableHighlight
         key={item}
         underlayColor='grey'
         onPress={()=>{}}  >
-          <BookCard url={item} isFavorite={false} styleSelect='General' />
+          <BookCard url={base_url + item.coverPicture} isFavorite={false} styleSelect='General' bookTitle={item.title} refreshing={isLoading} />
       </TouchableHighlight>
       )}
       showsHorizontalScrollIndicator={false}    
@@ -88,14 +105,14 @@ const styles = useStyles();
 
       <Text style={styles.listCaptionStyle}>Selected for you</Text>
       <FlatList horizontal
-       data={selectedForYouArray}
+       data={books?.filter((item) => {return item.averageRating == 0})}
        contentContainerStyle={styles.flatListLast}
        renderItem={({ item, index }) => (
        <TouchableHighlight
         key={item}
         underlayColor='grey'
         onPress={()=>{}}  >
-          <BookCard url={item} isFavorite={false} styleSelect='General' />
+          <BookCard url={base_url + item.coverPicture} isFavorite={false} styleSelect='General'  bookTitle={item.title} refreshing={isLoading}/>
       </TouchableHighlight>
       )}
       showsHorizontalScrollIndicator={false}    

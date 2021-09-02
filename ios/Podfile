@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'dempApp' do
+target 'BookAppRN' do
   config = use_native_modules!
 
   use_react_native!(
@@ -15,7 +15,7 @@ target 'dempApp' do
 
   pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
-  target 'dempAppTests' do
+  target 'BookAppRNTests' do
     inherit! :complete
     # Pods for testing
   end

@@ -132,7 +132,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.dempapp"
+        applicationId "com.bookapp.rn"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

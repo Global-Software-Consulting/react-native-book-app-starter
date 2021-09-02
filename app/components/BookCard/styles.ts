@@ -71,7 +71,10 @@ heartIconTrending:
   marginVertical:hp('21%'),
   marginHorizontal:hp('1%')
 },
-
+textTitle:
+{
+  maxWidth: wp('30%')
+},
 heartIconGeneral:
 {
   position: 'absolute',

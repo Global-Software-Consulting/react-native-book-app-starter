@@ -1,18 +1,25 @@
-import { put } from 'redux-saga/effects';
-// import { delay } from 'redux-saga';
+import { put, call } from "redux-saga/effects";
+import { Alert } from "react-native";
+import fetchBooks from "../../services/fetchBooks";
+import * as appActions from "../actions/appActions";
 
-import { Alert } from 'react-native';
-// import loginUser from 'services/loginUser';
-import * as appActions from 'app/store/actions/appActions';
 
-export default function* loginAsync() {
-    yield put(appActions.enableLoader());
-    fetch('https://ebook-application.herokuapp.com/v1/books').then((res)=>{
-        if (res != null) {
-        yield put(appActions.fetchBooks(res))
-        }
-        else {
-        Alert.alert("Book App","List cannot be fetched")
-        }
-    })
+
+// Our worker Saga that logins the user
+export default function* fetchBookAsync() {
+  //start loading
+yield put(appActions.IFetchBooksLoading());
+  //calling api
+  let response = yield call(fetchBooks);
+ 
+  if (response && response.status == 'success') {
+    yield put(appActions.IFetchBooksResponse(response))
+    //ends loading
+    yield put(appActions.IFetchBooksLoadingStop());
+  } 
+  else if(response.status != 'success')
+  {
+    yield put(appActions.IFetchBooksLoadingStop());
+    Alert.alert('Book App', 'Error fetching book list');
+  }
 }

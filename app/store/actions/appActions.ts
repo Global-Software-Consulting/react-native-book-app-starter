@@ -2,39 +2,33 @@
  * Reducer actions related with login
  */
 import * as types from './types';
+import { IFetchBooks } from './../../models/api/fetchBooks';
 
-export interface IBookResponse {
-  isFetching:boolean;
-  detail: [];
-};
-
-export function fetchBooks() {
+export function IFetchBooksRequest() {
   return {
-    type: types.FETCH_BOOKLIST,
+    type: types.FETCH_BOOKLIST_REQUEST,
+
   };
 }
 
-export function onFetchResponse(response: IBookResponse) {
+export function IFetchBooksResponse(response: IFetchBooks) {
   return {
-    type: types.LOGIN_RESPONSE,
-    response,
+    type: types.FETCH_BOOKLIST_RESPONSE,
+    response
   };
 }
 
-export function enableLoader() {
+export function IFetchBooksLoading() {
   return {
-    type: types.LOGIN_ENABLE_LOADER,
+    type: types.FETCH_LOADING,
   };
 }
 
-export function disableLoader() {
+export function IFetchBooksLoadingStop() {
   return {
-    type: types.LOGIN_DISABLE_LOADER,
+    type: types.FETCH_STOPLOADING,
   };
 }
 
-export function logOut() {
-  return {
-    type: types.LOG_OUT,
-  };
-}
+
+
