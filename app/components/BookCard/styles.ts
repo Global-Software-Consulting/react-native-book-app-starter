@@ -59,10 +59,24 @@ bookTrending: {
     height:hp('20%'), width:wp('30%'),
     borderRadius:4
     },
+    bookTrendingShimmer: {
+      height:hp('25%'), width:wp('37%'),
+      borderRadius:4,
+      backgroundColor: '#E7E5E7'
+      
+      },
+    
+    bookGeneralShimmer: {
+        height:hp('20%'), width:wp('30%'),
+        borderRadius:4,
+        backgroundColor: '#E7E5E7'
+        },
 
 bookView: {
   backgroundColor: 'transparent',
-  margin:5
+  margin:5,
+  alignItems:'center'
+  
 },
 
 heartIconTrending:
@@ -74,6 +88,13 @@ heartIconTrending:
 textTitle:
 {
   maxWidth: wp('30%')
+},
+textTitleShimmer:
+{
+  width: wp('30%'),
+  backgroundColor: '#E7E5E7',
+  marginTop:2
+
 },
 heartIconGeneral:
 {

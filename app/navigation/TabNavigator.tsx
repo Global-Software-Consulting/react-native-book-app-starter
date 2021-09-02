@@ -23,7 +23,7 @@ const TabNavigator = () => {
         headerShown:false,
           tabBarLabel: 'Explore',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="search" color={color} size={size} />
+            <MaterialCommunityIcons name="feature-search-outline" color={color} size={size} />
           ),
         }}/>
       <Tab.Screen name="Favorite" component={Favorite} 

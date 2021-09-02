@@ -13,7 +13,7 @@ yield put(appActions.IFetchBooksLoading());
   let response = yield call(fetchBooks);
  
   if (response && response.status == 'success') {
-    yield put(appActions.IFetchBooksResponse(response))
+    yield put(appActions.IFetchBooksResponse(response.result))
     //ends loading
     yield put(appActions.IFetchBooksLoadingStop());
   } 

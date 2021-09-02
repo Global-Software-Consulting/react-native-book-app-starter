@@ -1,6 +1,8 @@
 import React from 'react';
 import {View,TouchableOpacity,TouchableHighlight, Image, ScrollView,FlatList, Alert, BackHandler} from 'react-native';
 import {Text} from 'react-native-paper';
+//for loading screen
+import Shimmer from 'react-native-shimmer';
 //image with placeholder
 import FastImage from 'react-native-fast-image';
 import NavigationService from './../../navigation/NavigationService';
@@ -19,22 +21,14 @@ interface Props {
     refreshing?: boolean
     authorName?:string;
     }
-    const BookCard: React.FC<Props> = ({url, styleSelect, isFavorite, bookTitle, refreshing, authorName}) => 
+    const BookCardShimmer: React.FC<Props> = ({url, styleSelect, isFavorite, bookTitle, refreshing, authorName}) => 
     {
     return (
-      
-
           <View style={styles.bookView}>
-          <FastImage source={{uri:url,
-          priority: FastImage.priority.normal,
-          }}
-          style={styleSelect=='General' ? styles.bookGeneral : styles.bookTrending} />
-          {isFavorite==null ? <View></View> : <Icon name="heart" size={25} style={styleSelect=='General' ? styles.heartIconGeneral : styles.heartIconTrending} color={isFavorite ? 'red' : 'white'} /> }
-          <Text style={styles.textTitle}>{bookTitle}</Text> 
-          <Text style={styles.textTitle}>{authorName}</Text> 
-          
+          <View style={styleSelect=='General' ? styles.bookGeneralShimmer : styles.bookTrendingShimmer} />
+          <Text style={styles.textTitleShimmer}></Text> 
+          <Text style={styles.textTitleShimmer}></Text> 
           </View>
-
     )};
 
-export default BookCard;
+export default BookCardShimmer;

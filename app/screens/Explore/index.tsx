@@ -1,23 +1,24 @@
 import React, {useState, useEffect} from 'react';
-import {View,TouchableOpacity,TouchableHighlight, Image, ScrollView,FlatList, Alert, BackHandler} from 'react-native';
+import {View,TouchableOpacity,TouchableHighlight, Image, ScrollView,FlatList, Alert, BackHandler,RefreshControl} from 'react-native';
 import {Text, List} from 'react-native-paper';
 import { useDispatch, useSelector} from 'react-redux';
 import fetchBookSaga from './../../store/sagas/fetchBookSaga';
 import * as fetchActions from './../../store/actions/appActions';
 //importing card component
-import BookCard from './../../components/BookCard/BookCard';
 import {useStyles} from './styles';
 import {useTranslation} from 'react-i18next';
 import i18n from "../../components/Languages/i18n";
 import fetchBookAsync from './../../store/sagas/fetchBookSaga';
 import { State } from 'react-native-gesture-handler';
-const base_url = "https://ebook-application.herokuapp.com/v1/"
+import ExploreShimmer from './components/ExploreShimmer';
+import ExploreComponent from './components/ExploreComponent';
+const base_url = "https://ebook-application.herokuapp.com/v1/";
 const initI18n = i18n;
 const Explore: React.FC = () => {
   const {t, i18n} = useTranslation();
 
   //fetching book images from the store
-const books = useSelector((state) => state.bookFetchReducer.detail.result);
+const books = useSelector((state) => state.bookFetchReducer.detail);
 const isLoading = useSelector((state) => state.bookFetchReducer.isFetching);
 
 console.log('books are', isLoading);
@@ -63,60 +64,13 @@ const fetchBookDetails = async() => {
 
   return (
     
-    <ScrollView style={styles.container}>
-      <Text style={styles.nameStyle}>Hi {name} </Text>
-      <Text style={styles.tagLineStyle}>Let's find something new </Text>
-
-      <View style={styles.horizontalRuler} /> 
-
-      <Text style={styles.listCaptionStyle}>Trending</Text>
-      <FlatList horizontal
-       data={books?.filter((item) => { return item.averageRating > 3 })}
-       contentContainerStyle={styles.flatList}
-       renderItem={({ item, index }) => (
-       <TouchableHighlight
-        key={item}
-        underlayColor='grey'
-        onPress={()=>{}}  >
-          <BookCard url={base_url + item.coverPicture} isFavorite={true} styleSelect='Custom' bookTitle={item.title} refreshing={isLoading} />
-      </TouchableHighlight>
-      )}
-  showsHorizontalScrollIndicator={false}    
-/>
-
-      <View style={styles.horizontalRuler} /> 
-
-      <Text style={styles.listCaptionStyle}>New Releases</Text>
-      <FlatList horizontal
-       data={books?.filter((item) => { return item.averageRating < 3 })}
-       contentContainerStyle={styles.flatList}
-       renderItem={({ item, index }) => (
-       <TouchableHighlight
-        key={item}
-        underlayColor='grey'
-        onPress={()=>{}}  >
-          <BookCard url={base_url + item.coverPicture} isFavorite={false} styleSelect='General' bookTitle={item.title} refreshing={isLoading} />
-      </TouchableHighlight>
-      )}
-      showsHorizontalScrollIndicator={false}    
-    />
-
-      <View style={styles.horizontalRuler} /> 
-
-      <Text style={styles.listCaptionStyle}>Selected for you</Text>
-      <FlatList horizontal
-       data={books?.filter((item) => {return item.averageRating == 0})}
-       contentContainerStyle={styles.flatListLast}
-       renderItem={({ item, index }) => (
-       <TouchableHighlight
-        key={item}
-        underlayColor='grey'
-        onPress={()=>{}}  >
-          <BookCard url={base_url + item.coverPicture} isFavorite={false} styleSelect='General'  bookTitle={item.title} refreshing={isLoading}/>
-      </TouchableHighlight>
-      )}
-      showsHorizontalScrollIndicator={false}    
-    />
+    <ScrollView style={styles.container}  refreshControl={
+      <RefreshControl
+        refreshing={isLoading}
+        onRefresh={fetchBookDetails}
+      />
+    } >
+     {isLoading ?  <ExploreShimmer /> : <ExploreComponent name='Jorge' base_url={base_url} books={books} />}
     
     </ScrollView>
   );

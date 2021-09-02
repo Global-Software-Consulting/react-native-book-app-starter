@@ -5,7 +5,7 @@ import { IBookResponse,IBookRequest,IFetchBooksLoading,IFetchBooksLoadingStop } 
 
 
 const initialState: IBookState = {
-isFetching: false,
+isFetching: true,
 detail: []
 };
 

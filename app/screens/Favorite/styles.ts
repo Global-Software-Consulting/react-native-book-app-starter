@@ -1,6 +1,11 @@
 import { StyleSheet } from 'react-native';
 import { color } from 'react-native-reanimated';
+import {useTheme} from 'react-native-paper';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
+export const useStyles = () => {
+
+const theme = useTheme();
 
 const styles = StyleSheet.create({
   container: {
@@ -41,7 +46,8 @@ const styles = StyleSheet.create({
   },
 flatList: {
   flexGrow: 0,
-  marginTop:10
+  marginTop:10,
+  flexDirection: 'column',
 },
 
 books: {
@@ -64,4 +70,5 @@ bookView: {
   paddingRight:20
 }
 });
-export default styles;
+return styles;
+}

@@ -22,13 +22,22 @@ const styles = StyleSheet.create({
     color: theme.colors.text
   
   },
+  nameStyleShimmer: {
+    width:wp('25%'),
+    height:hp('6%'),
+    backgroundColor: '#E7E5E7',
+    marginBottom:2
+  },
   tagLineStyle: {
     fontSize: hp('2%'),
     fontFamily: 'Avenir-Medium',
     alignItems:'center',
     color: theme.colors.text
-
-  
+  },
+  tagLineStyleShimmer: {
+    width:wp('40%'),
+    height:hp('4%'),
+    backgroundColor: '#E7E5E7',
   },
   listCaptionStyle: {
     marginTop: 15,
@@ -38,7 +47,11 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     color: theme.colors.text
   },
-
+listCaptionStyleShimmer: {
+  width:wp('20%'),
+    height:hp('3%'),
+    backgroundColor: '#E7E5E7',
+},
   button: {
     backgroundColor: '#61e3a5',
     padding: 10,
