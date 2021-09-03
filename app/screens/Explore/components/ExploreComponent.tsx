@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {View,TouchableHighlight,FlatList, Alert, BackHandler} from 'react-native';
 import {Text} from 'react-native-paper';
+import { useRoute } from '@react-navigation/native';
+
+import NavigationService from './../../../navigation/NavigationService';
 //importing card component
 import BookCard from './../../../components/BookCard/BookCard';
 import {useStyles} from '../styles';
@@ -31,7 +34,7 @@ const styles = useStyles();
        <TouchableHighlight
         key={item}
         underlayColor='grey'
-        onPress={()=>{}}  >
+        onPress={()=>{ NavigationService.navigate('BookDetail',item)}}  >
           <BookCard url={'https://edit.org/images/cat/book-covers-big-2019101610.jpg'} isFavorite={true} styleSelect='Custom' bookTitle={item.title} />
       </TouchableHighlight>
       )}
@@ -48,7 +51,7 @@ const styles = useStyles();
        <TouchableHighlight
         key={item}
         underlayColor='grey'
-        onPress={()=>{}}  >
+        onPress={()=>{ NavigationService.navigate('BookDetail',item)}}  >
           <BookCard url={'https://edit.org/images/cat/book-covers-big-2019101610.jpg'} isFavorite={false} styleSelect='General' bookTitle={item.title}  />
       </TouchableHighlight>
       )}
@@ -65,7 +68,7 @@ const styles = useStyles();
        <TouchableHighlight
         key={item}
         underlayColor='grey'
-        onPress={()=>{}}  >
+        onPress={()=>{ NavigationService.navigate('BookDetail',{item})}}  >
           <BookCard url={'https://edit.org/images/cat/book-covers-big-2019101610.jpg'} isFavorite={false} styleSelect='General'  bookTitle={item.title} />
       </TouchableHighlight>
       )}

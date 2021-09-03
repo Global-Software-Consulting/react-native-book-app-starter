@@ -25,9 +25,9 @@ interface Props {
     {
     return (
           <View style={styles.bookView}>
-          <View style={styleSelect=='General' ? styles.bookGeneralShimmer : styles.bookTrendingShimmer} />
-          <Text style={styles.textTitleShimmer}></Text> 
-          <Text style={styles.textTitleShimmer}></Text> 
+          <View style={styleSelect=='General' ? styles.bookGeneralShimmer : styleSelect=='Custom' ? styles.bookTrendingShimmer : styleSelect=='Large' ? styles.bookTrendingExtraLargeShimmer : styles.bookTrendingExtraLargeShimmer} />
+          <Text style={styleSelect=='General' || styleSelect=='Custom' || styleSelect =='Large' ? styles.textTitleShimmer : styles.textTitleShimmer}></Text> 
+          <Text style={styleSelect=='General' || styleSelect=='Custom' || styleSelect =='Large' ? styles.textTitleShimmer : styles.textTitleShimmer}></Text> 
           </View>
     )};
 

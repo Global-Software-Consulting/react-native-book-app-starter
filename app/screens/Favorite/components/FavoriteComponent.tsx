@@ -20,14 +20,14 @@ const styles = useStyles();
       <Text style={styles.nameStyle}>My Favorites</Text>
       <FlatList 
       numColumns={2}
+      contentContainerStyle={styles.flatList}
        data={[0,0,0,0,0,0]}
-       contentContainerStyle={styles.flatList}
        renderItem={({ item, index }) => (
        <TouchableHighlight
         key={item}
         underlayColor='grey'
         onPress={()=>{}}  >
-          <BookCard url={'https://edit.org/images/cat/book-covers-big-2019101610.jpg'} styleSelect='Custom' bookTitle={'Dummy Book'} authorName={'Hannad Ahmad'} />
+          <BookCard url={'https://edit.org/images/cat/book-covers-big-2019101610.jpg'} styleSelect='Large' bookTitle={'Dummy Book'} authorName={'Hannad Ahmad'} />
       </TouchableHighlight>
       )}
   showsHorizontalScrollIndicator={false}    

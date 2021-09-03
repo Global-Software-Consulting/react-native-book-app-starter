@@ -48,7 +48,7 @@ const styles = useStyles();
   return (
     
     <ScrollView style={styles.container}>
-      <View style={{flex:1, flexDirection:'row', flexWrap:'wrap'}}>
+      <View style={{flex:1, flexDirection:'row', flexWrap:'wrap',justifyContent:'space-around',alignItems:'stretch'}}>
         <FavoriteComponent base_url={base_url} />
 
       </View>

@@ -14,7 +14,7 @@ import { heightPercentageToDP } from 'react-native-responsive-screen';
 interface Props {
     url?: string;
     bookTitle?:string;
-    styleSelect: 'General' | 'Custom';
+    styleSelect: 'General' | 'Custom' | 'Large' | 'ExtraLarge';
     isFavorite?: boolean;
     refreshing?: boolean
     authorName?:string;
@@ -28,11 +28,10 @@ interface Props {
           <FastImage source={{uri:url,
           priority: FastImage.priority.normal,
           }}
-          style={styleSelect=='General' ? styles.bookGeneral : styles.bookTrending} />
+          style={styleSelect=='General' ? styles.bookGeneral : styleSelect=='Custom' ? styles.bookTrending : styleSelect=='Large' ? styles.bookLarge : styles.bookExtraLarge} />
           {isFavorite==null ? <View></View> : <Icon name="heart" size={25} style={styleSelect=='General' ? styles.heartIconGeneral : styles.heartIconTrending} color={isFavorite ? 'red' : 'white'} /> }
-          <Text style={styles.textTitle}>{bookTitle}</Text> 
-          <Text style={styles.textTitle}>{authorName}</Text> 
-          
+          <Text style={styleSelect=='General' || styleSelect=='Custom' || styleSelect =='Large' ? styles.textTitle : styles.textTitleEnlarged }>{bookTitle}</Text> 
+          <Text style={styleSelect=='General' || styleSelect=='Custom' || styleSelect =='Large' ? styles.authorTitle : styles.authorTitleEnlarged }>{authorName}</Text> 
           </View>
 
     )};

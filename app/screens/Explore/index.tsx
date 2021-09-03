@@ -34,7 +34,7 @@ console.log('books are', isLoading);
 const styles = useStyles();
 const dispatch = useDispatch();
 
-const fetchBookDetails = async() => {
+const fetchBookDetails = async({}) => {
   dispatch(fetchActions.IFetchBooksRequest());
 }
 

@@ -1,3 +1,4 @@
+import reducers from 'app/store/reducers';
 import { StyleSheet } from 'react-native';
 import { color } from 'react-native-reanimated';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -59,13 +60,49 @@ bookTrending: {
     height:hp('20%'), width:wp('30%'),
     borderRadius:4
     },
+
+    bookLarge: {
+height:hp('30%'), width:wp('40%'),
+    borderRadius:4,
+    margin:10
+    },
+
+    bookExtraLarge: {
+      height:hp('40%'), width:wp('65%'),
+          borderRadius:4,
+          margin:10,
+          alignSelf: 'center'
+          
+          },
+
     bookTrendingShimmer: {
       height:hp('25%'), width:wp('37%'),
       borderRadius:4,
       backgroundColor: '#E7E5E7'
       
       },
+      bookTrendingExtraLargeShimmer: {
+        height:hp('45%'), width:wp('60%'),
+        borderRadius:4,
+        backgroundColor: '#E7E5E7',
+        alignSelf:'center'
+        },
     
+      textTitleEnlarged: {
+        fontSize:30,
+        maxWidth: wp('60%'),
+        fontWeight:'500',
+        alignSelf:'center'
+      },
+      authorTitleEnlarged:
+{
+  maxWidth: wp('55%'),
+  color:'red',
+fontWeight:'300',
+alignSelf:'center',
+fontSize:20
+},
+
     bookGeneralShimmer: {
         height:hp('20%'), width:wp('30%'),
         borderRadius:4,
@@ -74,8 +111,7 @@ bookTrending: {
 
 bookView: {
   backgroundColor: 'transparent',
-  margin:5,
-  alignItems:'center'
+  margin:5  
   
 },
 
@@ -87,13 +123,24 @@ heartIconTrending:
 },
 textTitle:
 {
-  maxWidth: wp('30%')
+  maxWidth: wp('30%'),
+  fontWeight:'bold',
+  alignSelf:'center'
+
+},
+authorTitle:
+{
+  maxWidth: wp('30%'),
+fontWeight:'200',
+alignSelf:'center'
 },
 textTitleShimmer:
 {
   width: wp('30%'),
   backgroundColor: '#E7E5E7',
-  marginTop:2
+  marginTop:2,
+  alignSelf:'center'
+
 
 },
 heartIconGeneral:
