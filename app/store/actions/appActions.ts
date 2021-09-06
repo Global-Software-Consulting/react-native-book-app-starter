@@ -30,5 +30,12 @@ export function IFetchBooksLoadingStop() {
   };
 }
 
+export function ISetFavorite(response: string[]) {
+  return {
+    type: types.SET_FAVORITE,
+    response
+
+  };
+}
 
 

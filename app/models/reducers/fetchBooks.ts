@@ -1,4 +1,5 @@
 export interface IBookState {
   isFetching: boolean;
-  detail:string[]
+  detail:string[];
+  favorite:string[];
 }

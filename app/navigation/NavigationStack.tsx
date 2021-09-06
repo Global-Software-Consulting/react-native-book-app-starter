@@ -38,7 +38,7 @@ const App: React.FC<IProps> = (props: IProps) => {
           <Stack.Screen
             name="Home"
             component={AppNavigation}
-            // options={homeOptions}
+            
             options={{headerShown: false}} 
           />
         ) : (

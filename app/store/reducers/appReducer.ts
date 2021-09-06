@@ -1,12 +1,13 @@
 import createReducer from 'lib/createReducer';
 import * as types from 'store/actions/types';
 import { IBookState } from 'app/models/reducers/fetchBooks';
-import { IBookResponse,IBookRequest,IFetchBooksLoading,IFetchBooksLoadingStop } from './../../models/actions/fetchBooks'
+import { IBookResponse,IBookRequest,IFetchBooksLoading,IFetchBooksLoadingStop,ISetFavorite } from './../../models/actions/fetchBooks'
 
 
 const initialState: IBookState = {
 isFetching: true,
-detail: []
+detail: [],
+favorite: []
 };
 
 export const bookFetchReducer = createReducer(initialState, {
@@ -32,6 +33,12 @@ export const bookFetchReducer = createReducer(initialState, {
       return {
         ...state,
         isFetching: false,
+      };
+    },
+    [types.SET_FAVORITE](state: IBookState, action: ISetFavorite) {
+      return {
+        ...state,
+        favorite : action.response,
       };
     },
 });

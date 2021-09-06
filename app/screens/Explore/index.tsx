@@ -20,8 +20,9 @@ const Explore: React.FC = () => {
   //fetching book images from the store
 const books = useSelector((state) => state.bookFetchReducer.detail);
 const isLoading = useSelector((state) => state.bookFetchReducer.isFetching);
+const favoriteBooks = useSelector((state) => state.bookFetchReducer.favorite);
 
-console.log('books are', isLoading);
+console.log('books are', favoriteBooks);
 
   //state for display name
   const [name, setName] = useState('Jorge')

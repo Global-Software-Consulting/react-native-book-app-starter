@@ -1,32 +1,27 @@
 import React, {useState, useEffect} from 'react';
 import {View, Alert, BackHandler,ScrollView} from 'react-native';
 import {Text, List} from 'react-native-paper';
-
+import NavigationService from './../../navigation/NavigationService';
 import { useRoute } from '@react-navigation/native';
-
-//importing card component
 import {useStyles} from './styles';
 import {useTranslation} from 'react-i18next';
 import i18n from "../../components/Languages/i18n";
 //importing components
 import BookDetailComponent from './components/BookDetailComponent';
 import BookDetailShimmer from './components/BookDetailShimmer';
-import NavigationService from './../../navigation/NavigationService';
 const base_url = "https://ebook-application.herokuapp.com/v1/";
 
 const initI18n = i18n;
 const BookDetail: React.FC = (props) => {
-//theme handling
-const styles = useStyles();
-  //for translation
-  const {t, i18n} = useTranslation();
 
-//getting routed params
-const bookData  = props.route.params;
+const styles = useStyles(); //theme handling
+
+const {t, i18n} = useTranslation();  //for translation
+
+const bookData  = props.route.params; //getting routed params
+
 console.log('here is the data', bookData.bookCategories);
-  //state for display name
-  const [isLoading, setIsLoading] = useState(false)
-
+  const [isLoading, setIsLoading] = useState(false)   //state for display name
 
   //handling back hardware button
   useEffect(() => {

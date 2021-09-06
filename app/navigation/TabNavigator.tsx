@@ -37,7 +37,7 @@ const TabNavigator = () => {
       <Tab.Screen name="Settings" component={Settings} 
       options={{
         tabBarLabel: 'Settings',
-        headerShown:false,
+        
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name="tune" color={color} size={size} />
         ),

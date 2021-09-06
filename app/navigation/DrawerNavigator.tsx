@@ -5,6 +5,7 @@ import {ILoginState} from 'models/reducers/login';
 import Home from 'screens/Home';
 import Favorites from 'screens/Favorites';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import {isDark} from 'native-base/lib/typescript/theme/tools';
 
 const Drawer = createDrawerNavigator();
 const AppStack = createNativeStackNavigator();
@@ -14,25 +15,31 @@ interface IState {
 }
 const DrawerNavigator = () => {
   const dimensions = useWindowDimensions();
-    const homeOptions = {
-        title: 'Home',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-          fontSize:20,
-          color:"black"
-        }
-      };
+  const homeOptions = {
+    title: 'Home',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      fontSize: 20,
+      color: 'black',
+    },
+  };
   return (
-    <Drawer.Navigator defaultStatus="open" screenOptions={{
-      
-      drawerType: dimensions.width >= 768 ? 'permanent' : 'front',
-    }}
-  >
-    
-    <Drawer.Screen name="Home" component={Home} options={{ drawerLabel: 'Home page Option' }}/>
-    <Drawer.Screen name="Favorites" component={Favorites} options={{ drawerLabel: 'Fav page Option' }}/>
-  </Drawer.Navigator>
-
+    <Drawer.Navigator
+      defaultStatus="open"
+      screenOptions={{
+        drawerType: dimensions.width >= 768 ? 'permanent' : 'front',
+      }}>
+      <Drawer.Screen
+        name="Home"
+        component={Home}
+        options={{drawerLabel: 'Home page Option'}}
+      />
+      <Drawer.Screen
+        name="Favorites"
+        component={Favorites}
+        options={{drawerLabel: 'Fav page Option'}}
+      />
+    </Drawer.Navigator>
   );
 };
 export default DrawerNavigator;

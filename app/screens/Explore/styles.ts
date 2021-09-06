@@ -10,7 +10,7 @@ const theme = useTheme();
 const styles = StyleSheet.create({
   container: {
     flex: 1,
- paddingVertical:45,
+ paddingVertical:20,
  paddingHorizontal:30,
  backgroundColor: theme.colors.background
   },
@@ -62,7 +62,7 @@ listCaptionStyleShimmer: {
   horizontalRuler: {
     borderBottomColor: '#DCDCDC',
     borderBottomWidth: 1,
-    marginTop: 30,
+    marginTop: 3,
     color: theme.colors.primary
 
   },
@@ -74,7 +74,7 @@ flatList: {
 flatListLast: {
   flexGrow: 1,
   marginTop:10,
-  marginBottom:60,
+  marginBottom:hp('3%'),
   justifyContent:'center'
 },
 

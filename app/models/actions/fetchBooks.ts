@@ -11,3 +11,7 @@ interface IResponse {
     type: String;
   };
 
+export interface ISetFavorite {
+  type:string;
+  response: IBookResponse;
+}

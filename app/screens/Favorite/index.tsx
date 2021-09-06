@@ -5,9 +5,12 @@ import {Text, List} from 'react-native-paper';
 import {useStyles} from './styles';
 import {useTranslation} from 'react-i18next';
 import i18n from "../../components/Languages/i18n";
+import { useSelector } from 'react-redux';
 //importing components
 import FavoriteComponent from './components/FavoriteComponent';
 import FavoriteShimmer from './components/FavoriteShimmer';
+import { useFocusEffect } from '@react-navigation/native';
+
 const base_url = "https://ebook-application.herokuapp.com/v1/";
 
 const initI18n = i18n;
@@ -15,13 +18,15 @@ const Favorite: React.FC = () => {
 //theme handling
 const styles = useStyles();
 
+const favoriteBooks = useSelector((state) => state.bookFetchReducer.favorite);
+//const [favoriteBookss, setFavoriteBookss] = useState(favoriteBooks);
+
+
   const {t, i18n} = useTranslation();
 
   //state for display name
   const [isLoading, setIsLoading] = useState('false')
 
-  //images for Flatlists(Hardcoded)
-  const favorites:string[] = ['https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80','https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'];
 
   //handling back hardware button
   useEffect(() => {
@@ -47,9 +52,9 @@ const styles = useStyles();
 
   return (
     
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} nestedScrollEnabled>
       <View style={{flex:1, flexDirection:'row', flexWrap:'wrap',justifyContent:'space-around',alignItems:'stretch'}}>
-        <FavoriteComponent base_url={base_url} />
+        <FavoriteComponent base_url={base_url} books={favoriteBooks} />
 
       </View>
       

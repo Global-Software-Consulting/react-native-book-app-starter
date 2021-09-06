@@ -18,14 +18,24 @@ interface IState {
 const AppNavigation = () => {
   return (
     <AppDrawer.Navigator drawerContent={() => <Drawer />}>
-    <AppDrawer.Screen name="Explore" component={TabNavigator}   options={{ drawerLabel: 'Explore' }} />
-    <AppDrawer.Screen name="BookDetail" component={BookDetail}   options={{ drawerLabel: 'Book Detail', headerRight: () => (
-            <Button
-              onPress={() => NavigationService.goBack()}
-              color='white'
-              style={{backgroundColor:'#6666ff', marginHorizontal:5, marginBottom: 5}}
-            >Back</Button>   )}} />
-
+      <AppDrawer.Screen
+        name="Explore"
+        component={TabNavigator}
+        options={{drawerLabel: 'Explore'}}
+      />
+      <AppDrawer.Screen
+        name="BookDetail"
+        component={BookDetail}
+        options={{
+          drawerLabel: 'Book Detail',
+          drawerLabelStyle: {alignSelf: 'center'},
+          headerLeft: () => (
+            <Button onPress={() => NavigationService.goBack()} color="black">
+              Back
+            </Button>
+          ),
+        }}
+      />
     </AppDrawer.Navigator>
   );
 };
