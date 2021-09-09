@@ -5,14 +5,24 @@ import {
   FlatList,
   Alert,
   BackHandler,
+  TouchableOpacity,
+  TextInput,
 } from 'react-native';
 import {Text} from 'react-native-paper';
+import SearchIcon from '@mui/icons-material/Search';
+import {useDispatch} from 'react-redux';
 import {useRoute} from '@react-navigation/native';
+import * as fetchActions from './../../../store/actions/appActions';
 import {useSelector} from 'react-redux';
 import NavigationService from './../../../navigation/NavigationService';
 //importing card component
 import BookCard from './../../../components/BookCard/BookCard';
 import {useStyles} from '../styles';
+import {
+  heightPercentageToDP,
+  widthPercentageToDP,
+} from 'react-native-responsive-screen';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface Props {
   books?: [];
@@ -25,9 +35,29 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
   const styles = useStyles();
   const favoriteBooks = useSelector(state => state.bookFetchReducer.favorite);
   const newFavorites: string[] = favoriteBooks;
+  const dispatch = useDispatch();
 
+  const [searchText, setSearchText] = useState('');
   return (
     <View>
+      {/* Searchbar */}
+      <View style={styles.searchView}>
+        <TextInput
+          underlineColorAndroid="transparent"
+          placeholder="Search Here"
+          onChangeText={text => setSearchText(text)}
+          style={styles.searchViewChildren}
+          onEndEditing={() =>
+            dispatch(fetchActions.IFetchBooksRequest(searchText))
+          }
+        />
+        <Icon
+          name="find-in-page"
+          size={30}
+          style={styles.searchViewChildren}
+          onPress={() => dispatch(fetchActions.IFetchBooksRequest(searchText))}
+        />
+      </View>
       <Text style={styles.nameStyle}>Hi {name} </Text>
       <Text style={styles.tagLineStyle}>Let's find something new </Text>
 
@@ -49,7 +79,9 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
                 NavigationService.navigate('BookDetail', item);
             }}>
             <BookCard
-              url={'https://edit.org/images/cat/book-covers-big-2019101610.jpg'}
+              url={
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
+              }
               isFavorite={
                 newFavorites.indexOf(item.title) !== -1 ? true : false
               }
@@ -80,7 +112,9 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
               NavigationService.navigate('BookDetail', item);
             }}>
             <BookCard
-              url={'https://edit.org/images/cat/book-covers-big-2019101610.jpg'}
+              url={
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
+              }
               styleSelect="General"
               bookTitle={item.title}
               book={item}
@@ -108,7 +142,9 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
               NavigationService.navigate('BookDetail', item);
             }}>
             <BookCard
-              url={'https://edit.org/images/cat/book-covers-big-2019101610.jpg'}
+              url={
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
+              }
               isFavorite={
                 newFavorites.indexOf(item.title) !== -1 ? true : false
               }

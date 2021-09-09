@@ -17,7 +17,7 @@ const ThemeController: React.FC = () => {
   const dispatch = useDispatch();
   const onToggleTheme = () => dispatch(themeActions.setIsDarkTheme(!isDark));
   const iconName = isDark ? 'weather-night' : 'white-balance-sunny';
-  const iconColor = isDark ? 'gray' : 'black';
+  const iconColor = isDark ? 'black' : 'blue';
 
   return (
     <View style={styles.container}>

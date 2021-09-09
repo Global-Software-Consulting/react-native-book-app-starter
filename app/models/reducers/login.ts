@@ -3,4 +3,5 @@ export interface ILoginState {
   id: number;
   username: string;
   password: string;
+userData: [];
 }

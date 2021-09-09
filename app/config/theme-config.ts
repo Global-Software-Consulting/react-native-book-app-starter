@@ -8,6 +8,7 @@ export const PaperThemeDefault = {
   colors: {
     ...PaperDefaultTheme.colors,
     primary: '#3498db',
+    iconColor: 'blue',
   },
 };
 
@@ -16,6 +17,8 @@ export const PaperThemeDark = {
   colors: {
     ...PaperDarkTheme.colors,
     primary: '#3498db',
+    iconColor: 'white',
+
   },
 };
 

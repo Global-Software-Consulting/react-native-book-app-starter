@@ -77,7 +77,19 @@ flatListLast: {
   marginBottom:hp('3%'),
   justifyContent:'center'
 },
-
+searchView:
+{
+  marginBottom: 20,
+  flexDirection: 'row',
+  borderColor: 'grey',
+  borderWidth: 1,
+  borderRadius: 30,
+  justifyContent: 'space-between',
+  alignItems: 'center',
+},
+searchViewChildren: {
+  margin: 2
+},
 books: {
 height:hp('2%'), width:wp('1%'),
 borderRadius:4

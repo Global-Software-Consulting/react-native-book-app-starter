@@ -3,12 +3,13 @@ interface IResponse {
   }
   
   export interface IBookResponse {
-    type: String;
+    type: string;
     response: IResponse;
   }
 
   export interface IBookRequest {
-    type: String;
+    type: string;
+    keyword: String;
   };
 
 export interface ISetFavorite {

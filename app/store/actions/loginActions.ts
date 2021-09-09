@@ -4,12 +4,19 @@
 import * as types from './types';
 import { ILoginResponse } from 'models/api/login';
 
-export function requestLogin(username: string, password: string) {
+export function requestLogin(email: string, password: string) {
   return {
     type: types.LOGIN_REQUEST,
-    username,
+    email,
     password,
   };
+}
+
+export function setLoggedIn()
+{
+  return {
+    type: types.SET_LOGGED_IN,
+  };  
 }
 
 export function loginFailed() {
@@ -18,10 +25,10 @@ export function loginFailed() {
   };
 }
 
-export function onLoginResponse(response: ILoginResponse) {
+export function LoginResponse(payload: ILoginResponse) {
   return {
     type: types.LOGIN_RESPONSE,
-    response,
+    payload,
   };
 }
 
@@ -41,4 +48,18 @@ export function logOut() {
   return {
     type: types.LOG_OUT,
   };
+}
+
+export function userDetailsRequest(token: any) {
+  return {
+    type: types.USER_DETAILS_REQUEST,
+    token,
+  }
+}
+
+export function userDetailsResponse(payload: ILoginResponse) {
+  return {
+    type: types.USER_DETAILS_RESPONSE,
+   payload
+  }
 }

@@ -16,7 +16,7 @@
     "android:staging-release": "ENVFILE=.env.staging  react-native run-android --variant=release"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.15.5",
+    "@react-native-async-storage/async-storage": "^1.15.7",
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/drawer": "^6.1.4",
     "@react-navigation/native": "^6.0.2",
@@ -32,6 +32,7 @@
     "react-native-code-push": "^7.0.2",
     "react-native-fast-image": "^8.3.7",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-keyboard-aware-scroll-view": "^0.9.4",
     "react-native-localization": "^2.1.7",
     "react-native-localize": "^2.1.1",
     "react-native-paper": "^4.9.2",

@@ -2,9 +2,10 @@
  */
 const ApiConfig = {
   BASE_URL: 'https://ebook-application.herokuapp.com/v1',
-  LOGIN: 'api/login',
-  BOOKSLIST:'/books'
-
+  LOGIN: '/users/login',
+  BOOKSLIST:'/books/search?filter[title][iLike]=',
+  FAVBOOKLIST: '/favorites',
+  USERDETAILS: '/users/me'
 };
 
 export default ApiConfig;

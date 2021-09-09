@@ -36,44 +36,80 @@ interface Props {
       const isFocused = useIsFocused();
        const [isFavorite,setIsFavorite] =useState(false);
 
-         useEffect(() => {
-          let isAdded =newFavorites?.findIndex((data)=>{
-          return data.id == id
-        }) 
-        
-        
-        setIsFavorite(isAdded==-1?false:true)
-        },[id,isFocused])
+       const updateFavoriteList = () => {
+         var index = newFavorites?.findIndex(o => {
+           return o?.title === bookTitle;
+         });
+         if (index !== -1) {
+           console.log('Deletion');
+           newFavorites.splice(index, 1);
+           dispatch(actions.ISetFavorite(newFavorites));
+           setIsFavorite(false);
+         } else {
+           console.log('Creation');
+           newFavorites.push(book);
+           dispatch(actions.ISetFavorite(newFavorites));
+           setIsFavorite(true);
+         }
+       };
 
-        const dispatch = useDispatch();
-        return (
-          <View style={styles.bookView}>
-          <FastImage source={{uri:url,
-          priority: FastImage.priority.normal,
-          }}
-          style={styleSelect=='General' ? styles.bookGeneral : styleSelect=='Custom' ? styles.bookTrending : styleSelect=='Large' ? styles.bookLarge : styles.bookExtraLarge} />
-          {!hideIcon && <Icon name="heart" size={25} style={styleSelect=='General' ? styles.heartIconGeneral : styles.heartIconTrending} color={ (isFavorite) ? 'red' : 'white'} onPress={()=>
-          { var index = newFavorites?.findIndex((o) => {
-            return o?.title === bookTitle;
-            });
-            if (index !==-1) {
-              console.log('Deletion');
-              newFavorites.splice(index,1);
-            dispatch(actions.ISetFavorite(newFavorites));
-            setIsFavorite(false);
-          }
-          else
-          {
-            console.log('Creation');
-            newFavorites.push(book);
-            dispatch(actions.ISetFavorite(newFavorites));
-            setIsFavorite(true);
-          }
-        }} /> }
-          <Text style={styleSelect=='General' || styleSelect=='Custom' || styleSelect =='Large' ? styles.textTitle : styles.textTitleEnlarged }>{bookTitle}</Text> 
-          <Text style={styleSelect=='General' || styleSelect=='Custom' || styleSelect =='Large' ? styles.authorTitle : styles.authorTitleEnlarged }>{authorName}</Text> 
-          </View>
+       useEffect(() => {
+         let isAdded = newFavorites?.findIndex(data => {
+           return data.id == id;
+         });
 
-    )};
+         setIsFavorite(isAdded == -1 ? false : true);
+       }, [id, isFocused]);
+
+       const dispatch = useDispatch();
+       return (
+         <View style={styles.bookView}>
+           <FastImage
+             source={{uri: url, priority: FastImage.priority.normal}}
+             style={
+               styleSelect == 'General'
+                 ? styles.bookGeneral
+                 : styleSelect == 'Custom'
+                 ? styles.bookTrending
+                 : styleSelect == 'Large'
+                 ? styles.bookLarge
+                 : styles.bookExtraLarge
+             }
+           />
+           {!hideIcon && (
+             <Icon
+               name="heart"
+               size={25}
+               style={
+                 styleSelect == 'General'
+                   ? styles.heartIconGeneral
+                   : styles.heartIconTrending
+               }
+               color={isFavorite ? 'red' : 'white'}
+               onPress={updateFavoriteList}
+             />
+           )}
+           <Text
+             style={
+               styleSelect == 'General' ||
+               styleSelect == 'Custom' ||
+               styleSelect == 'Large'
+                 ? styles.textTitle
+                 : styles.textTitleEnlarged
+             }>
+             {bookTitle}
+           </Text>
+           <Text
+             style={
+               styleSelect == 'General' ||
+               styleSelect == 'Custom' ||
+               styleSelect == 'Large'
+                 ? styles.authorTitle
+                 : styles.authorTitleEnlarged
+             }>
+             {authorName}
+           </Text>
+         </View>
+       );};
 
 export default BookCard;

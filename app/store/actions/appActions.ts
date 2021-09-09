@@ -4,10 +4,10 @@
 import * as types from './types';
 import { IFetchBooks } from './../../models/api/fetchBooks';
 
-export function IFetchBooksRequest() {
+export function IFetchBooksRequest(keyword:string) {
   return {
     type: types.FETCH_BOOKLIST_REQUEST,
-
+    keyword
   };
 }
 

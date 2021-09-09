@@ -1,11 +1,12 @@
 export interface ILoginRequestState {
   type: String;
+  token: string;
   username: string;
   password: string;
 }
 
 interface IResponse {
-  id: number;
+  data: [];
 }
 
 export interface ILoginResponseState {

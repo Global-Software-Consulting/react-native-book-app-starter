@@ -35,9 +35,9 @@ console.log('books are', favoriteBooks);
 const styles = useStyles();
 const dispatch = useDispatch();
 
-const fetchBookDetails = async({}) => {
-  dispatch(fetchActions.IFetchBooksRequest());
-}
+const fetchBookDetails = async () => {
+  dispatch(fetchActions.IFetchBooksRequest('a'));
+};
 
   //handling back hardware button
   useEffect(() => {

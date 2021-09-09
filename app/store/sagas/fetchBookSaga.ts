@@ -5,13 +5,15 @@ import * as appActions from "../actions/appActions";
 
 
 
-// Our worker Saga that logins the user
-export default function* fetchBookAsync() {
+export default function* fetchBookAsync(action:string) {
+console.log('entered saga')
   //start loading
 yield put(appActions.IFetchBooksLoading());
   //calling api
-  let response = yield call(fetchBooks);
- 
+  console.log('input is', action.keyword)
+
+  let response = yield call(fetchBooks, action.keyword);
+  console.log('responses are',response)
   if (response && response.status == 'success') {
     yield put(appActions.IFetchBooksResponse(response.result))
     //ends loading
@@ -20,6 +22,6 @@ yield put(appActions.IFetchBooksLoading());
   else if(response.status != 'success')
   {
     yield put(appActions.IFetchBooksLoadingStop());
-    Alert.alert('Book App', 'Error fetching book list');
+
   }
 }
