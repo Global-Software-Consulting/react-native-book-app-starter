@@ -66,6 +66,13 @@ height:hp('30%'), width:wp('40%'),
     borderRadius:4,
     margin:10
     },
+    bookLargeShimmer: {
+      height:hp('30%'), width:wp('40%'),
+          borderRadius:4,
+          margin:10,
+          backgroundColor: '#E7E5E7'
+
+          },
 
     bookExtraLarge: {
       height:hp('40%'), width:wp('65%'),

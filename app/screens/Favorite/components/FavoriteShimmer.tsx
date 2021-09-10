@@ -10,29 +10,29 @@ interface Props {
  base_url?:string;
 }
 
-const FavoriteShimmer: React.FC<Props> = ({books, base_url}) => 
-    {
-//theme handling
-const styles = useStyles();
+const FavoriteShimmer: React.FC<Props> = ({books, base_url}) => {
+  //theme handling
+  const styles = useStyles();
 
   return (
-<View>
+    <View>
       <Text style={styles.nameStyle}>My Favorites</Text>
-      <FlatList 
-      numColumns={2}
-       data={[0,0,0,0,0,0,0,0,0,0,0,0,0]}
-       contentContainerStyle={styles.flatList}
-       renderItem={({ item, index }) => (
-       <TouchableHighlight
-        key={item}
-        underlayColor='grey'
-        onPress={()=>{}}  >
-          <BookCardShimmer styleSelect='Custom' />
-      </TouchableHighlight>
-      )}
-  showsHorizontalScrollIndicator={false}    
-/>
-</View>
-    )};
+      <FlatList
+        numColumns={2}
+        data={[0, 0, 0, 0, 0, 0, 0, 0, 0]}
+        contentContainerStyle={styles.flatList}
+        renderItem={({item, index}) => (
+          <TouchableHighlight
+            key={item}
+            underlayColor="grey"
+            onPress={() => {}}>
+            <BookCardShimmer styleSelect="Large" />
+          </TouchableHighlight>
+        )}
+        showsHorizontalScrollIndicator={false}
+      />
+    </View>
+  );
+};
 
 export default FavoriteShimmer;
