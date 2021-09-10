@@ -37,12 +37,7 @@ export const bookFetchReducer = createReducer(initialState, {
         isFetching: false,
       };
     },
-    [types.SET_FAVORITE](state: IBookState, action: ISetFavorite) {
-      return {
-        ...state,
-        favorite : action.response,
-      };
-    },
+    
     [types.FETCH_FAVORITE_BOOKLIST_REQUEST](state: IBookState, action: IBookRequest) {
       return {
         ...state,
