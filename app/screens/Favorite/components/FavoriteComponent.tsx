@@ -58,8 +58,8 @@ const FavoriteComponent: React.FC<Props> = ({books, base_url}) => {
                   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
                 }
                 styleSelect="Large"
-                title={item.book.title}
-                bookTitle={item.book.title}
+                title={item?.book?.title}
+                bookTitle={item?.book?.title}
                 hideIcon={true}
               />
             </TouchableHighlight>

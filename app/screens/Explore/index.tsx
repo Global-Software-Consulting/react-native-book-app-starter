@@ -22,6 +22,7 @@ import i18n from '../../components/Languages/i18n';
 import fetchBookAsync from './../../store/sagas/fetchBookSaga';
 import {State} from 'react-native-gesture-handler';
 import ExploreShimmer from './components/ExploreShimmer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import ExploreComponent from './components/ExploreComponent';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 const initI18n = i18n;
@@ -48,15 +49,30 @@ const Explore: React.FC = () => {
     dispatch(fetchActions.IFetchBooksRequest('a'));
   };
 
+  //fetching favorite books
+  const getFavoriteBooks = async () => {
+    try {
+      const value = await AsyncStorage.getItem('token');
+      if (value !== null) {
+        dispatch(fetchActions.IFetchFavoriteBooksRequest(value));
+      } else {
+        Alert.alert('Book App', 'Please login again');
+      }
+    } catch (e) {}
+  };
+
   //handling back hardware button
   useEffect(() => {
-    if (books.status == 'fail') {
-      setErrorExists(true);
-    } else {
-      setErrorExists(false);
-    }
-    //api call
-    fetchBookDetails();
+    getFavoriteBooks().then(() => {
+      if (books.status == 'fail') {
+        setErrorExists(true);
+      } else {
+        setErrorExists(false);
+      }
+      //api call
+      fetchBookDetails();
+    });
+
     const backAction = () => {
       Alert.alert('Book App', 'Are you sure you want to exit?', [
         {

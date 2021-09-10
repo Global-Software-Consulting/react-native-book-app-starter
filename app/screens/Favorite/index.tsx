@@ -35,7 +35,7 @@ const Favorite: React.FC = () => {
   const dispatch = useDispatch();
 
   //fetching favorite books
-  const getData = async () => {
+  const getFavoriteBooks = async () => {
     try {
       const value = await AsyncStorage.getItem('token');
       if (value !== null) {
@@ -48,7 +48,8 @@ const Favorite: React.FC = () => {
 
   //handling back hardware button
   useEffect(() => {
-    getData();
+    console.log('it is called');
+    getFavoriteBooks();
     const backAction = () => {
       Alert.alert('Book App', 'Are you sure you want to exit?', [
         {
@@ -74,7 +75,7 @@ const Favorite: React.FC = () => {
       style={styles.container}
       nestedScrollEnabled
       refreshControl={
-        <RefreshControl refreshing={isLoading} onRefresh={getData} />
+        <RefreshControl refreshing={isLoading} onRefresh={getFavoriteBooks} />
       }>
       {isLoading ? (
         <FavoriteShimmer />

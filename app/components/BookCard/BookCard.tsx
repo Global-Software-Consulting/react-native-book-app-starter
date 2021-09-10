@@ -36,18 +36,6 @@ interface Props {
       const isFocused = useIsFocused();
        const [isFavorite,setIsFavorite] =useState(false);
 
-       const updateFavoriteList = () => {
-         var index = newFavorites?.findIndex(o => {
-           return o?.title === bookTitle;
-         });
-         if (index !== -1) {
-           newFavorites.splice(index, 1);
-           setIsFavorite(false);
-         } else {
-           newFavorites.push(book);
-           setIsFavorite(true);
-         }
-       };
 
        useEffect(() => {
          let isAdded = newFavorites?.findIndex(data => {
@@ -82,7 +70,7 @@ interface Props {
                    : styles.heartIconTrending
                }
                color={isFavorite ? 'red' : 'white'}
-               onPress={updateFavoriteList}
+               onPress={() => {}}
              />
            )}
            <Text
