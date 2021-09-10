@@ -5,7 +5,8 @@ const ApiConfig = {
   LOGIN: '/users/login',
   BOOKSLIST:'/books/search?filter[title][iLike]=',
   FAVBOOKLIST: '/favorites',
-  USERDETAILS: '/users/me'
+  USERDETAILS: '/users/me',
+  BOOKDETAIL: '/books/'
 };
 
 export default ApiConfig;

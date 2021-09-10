@@ -12,7 +12,3 @@ interface IResponse {
     keyword: String;
   };
 
-export interface ISetFavorite {
-  type:string;
-  response: IBookResponse;
-}

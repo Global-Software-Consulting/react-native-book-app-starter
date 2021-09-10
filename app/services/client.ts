@@ -15,7 +15,7 @@ export default async function api(
   path: string,
   params: any,
   method: string,
-  calllType: 'byParams' | 'byBody' | 'byHeader'
+  calllType: 'byParams' | 'byBody' | 'byHeader',
 ) {
   let options;
   if (calllType=='byBody')
@@ -47,7 +47,6 @@ export default async function api(
 const intoToken = params.token;
 const parsedData = JSON.parse(intoToken);
 const token = parsedData.token;
-
     options = {
       headers: {
         'Content-Type': 'application/json',
@@ -58,12 +57,11 @@ const token = parsedData.token;
       body: null  
   }
 }
-console.log('token is ', params)
+
   let fetch_result = await fetch(path, options )
     .then((response) => response.json())
     .then((responseJson) => {
       if (responseJson.token)  { 
-  console.log("success", responseJson.token);
         storeData(responseJson)
         return responseJson;
       }

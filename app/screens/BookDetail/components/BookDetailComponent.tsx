@@ -14,7 +14,6 @@ interface Props {
 const BookDetailComponent: React.FC<Props> = ({books, base_url}) => {
   //theme handling
   const styles = useStyles();
-console.log('books fetched are', books);
 var author = 'Dummy author';
 var genre = 'Dummy Genre';
 var pages = books?.numberOfPages;

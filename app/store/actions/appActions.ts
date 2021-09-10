@@ -38,4 +38,31 @@ export function ISetFavorite(response: string[]) {
   };
 }
 
+  export function IFetchFavoriteBooksRequest(token:string) {
+    return {
+      type: types.FETCH_FAVORITE_BOOKLIST_REQUEST,
+      token
+    };
+  }
+  
+  export function IFetchFavoriteBooksResponse(payload: IFetchBooks) {
+    return {
+      type: types.FETCH_FAVORITE_BOOKLIST_RESPONSE,
+      payload
+    };
+  }
+
+  export function IFetchBookDetailRequest(params:any) {
+    return {
+      type: types.FETCH_FAVORITE_BOOKDETAIL_REQUEST,
+      params
+    };
+  }
+  
+  export function IFetchBookDetailResponse(response: IFetchBooks) {
+    return {
+      type: types.FETCH_FAVORITE_BOOKDETAIL_RESPONSE,
+      response
+    };
+  }
 

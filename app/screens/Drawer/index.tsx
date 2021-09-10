@@ -15,8 +15,12 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ThemeController from '../../components/ThemeController';
 import {useDispatch, useSelector} from 'react-redux';
+import {TabActions} from '@react-navigation/native';
+
 import * as loginActions from 'store/actions/loginActions';
 import styles from './styles';
+import {useNavigation} from '@react-navigation/core';
+
 import {useTranslation} from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -31,10 +35,15 @@ const Drawer: React.FC = props => {
   const name = userData?.firstName + ' ' + userData?.lastName;
   const {t, i18n} = useTranslation();
   const dispatch = useDispatch();
+  const navigation = useNavigation();
+  const jumpToExplore = TabActions.jumpTo('Explore');
+  const jumpToFavorite = TabActions.jumpTo('Favorite');
+  const jumpToUserDetail = TabActions.jumpTo('UserDetail');
   const onLogout = () => {
     AsyncStorage.removeItem('token');
     dispatch(loginActions.logOut());
   };
+
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.drawerContent}>
@@ -70,15 +79,19 @@ const Drawer: React.FC = props => {
               size={size}
             />
           )}
-          label="Profile"
-          onPress={() => {}}
+          label="Explore"
+          onPress={() => {
+            navigation.dispatch(TabActions.jumpTo('Explore'));
+          }}
         />
         <DrawerItem
           icon={({color, size}) => (
             <MaterialCommunityIcons name="tune" color={color} size={size} />
           )}
-          label="Preferences"
-          onPress={() => {}}
+          label="Favorite"
+          onPress={() => {
+            navigation.dispatch(jumpToFavorite);
+          }}
         />
         <DrawerItem
           icon={({color, size}) => (
@@ -88,8 +101,10 @@ const Drawer: React.FC = props => {
               size={size}
             />
           )}
-          label="Bookmarks"
-          onPress={() => {}}
+          label="UserDetails"
+          onPress={() => {
+            navigation.dispatch(jumpToUserDetail);
+          }}
         />
 
         <View style={styles.preference}>

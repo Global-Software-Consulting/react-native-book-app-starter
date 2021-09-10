@@ -145,7 +145,7 @@ const Login: React.FC = () => {
           }}
         />
         <Icon
-          name="find-in-page"
+          name="remove-red-eye"
           size={30}
           style={{margin: 6}}
           onPress={() => setSecure(!secure)}
@@ -187,7 +187,7 @@ const Login: React.FC = () => {
             width: widthPercentageToDP('60%'),
             marginTop: 5,
           }}>
-          Log In
+          <Text style={{color: 'white'}}>Log in</Text>
         </Button>
         {showActivityIndicator && (
           <ActivityIndicator color="white" style={{margin: 5}} />

@@ -41,14 +41,10 @@ interface Props {
            return o?.title === bookTitle;
          });
          if (index !== -1) {
-           console.log('Deletion');
            newFavorites.splice(index, 1);
-           dispatch(actions.ISetFavorite(newFavorites));
            setIsFavorite(false);
          } else {
-           console.log('Creation');
            newFavorites.push(book);
-           dispatch(actions.ISetFavorite(newFavorites));
            setIsFavorite(true);
          }
        };

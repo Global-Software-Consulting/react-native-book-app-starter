@@ -12,6 +12,7 @@ import {Text} from 'react-native-paper';
 import SearchIcon from '@mui/icons-material/Search';
 import {useDispatch} from 'react-redux';
 import {useRoute} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as fetchActions from './../../../store/actions/appActions';
 import {useSelector} from 'react-redux';
 import NavigationService from './../../../navigation/NavigationService';
@@ -36,8 +37,8 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
   const favoriteBooks = useSelector(state => state.bookFetchReducer.favorite);
   const newFavorites: string[] = favoriteBooks;
   const dispatch = useDispatch();
-
   const [searchText, setSearchText] = useState('');
+
   return (
     <View>
       {/* Searchbar */}
@@ -66,8 +67,8 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
       <Text style={styles.listCaptionStyle}>Trending</Text>
       <FlatList
         horizontal
-        data={books?.filter(item => {
-          return item.averageRating > 3;
+        data={books.filter(item => {
+          return item?.averageRating > 3;
         })}
         contentContainerStyle={styles.flatList}
         renderItem={({item, index}) => (
@@ -75,8 +76,7 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
             key={item}
             underlayColor="grey"
             onPress={() => {
-              BackHandler.removeEventListener('hardwareBackPress'),
-                NavigationService.navigate('BookDetail', item);
+              NavigationService.navigate('BookDetail', item.id);
             }}>
             <BookCard
               url={
@@ -86,9 +86,9 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
                 newFavorites.indexOf(item.title) !== -1 ? true : false
               }
               styleSelect="Custom"
-              bookTitle={item.title}
+              bookTitle={item?.title}
               book={item}
-              id={item.id}
+              id={item?.id}
             />
           </TouchableHighlight>
         )}
@@ -100,8 +100,8 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
       <Text style={styles.listCaptionStyle}>New Releases</Text>
       <FlatList
         horizontal
-        data={books?.filter(item => {
-          return item.averageRating <= 3 && item.averageRating > 0;
+        data={books.filter(item => {
+          return item?.averageRating <= 3 && item?.averageRating > 0;
         })}
         contentContainerStyle={styles.flatList}
         renderItem={({item, index}) => (
@@ -109,16 +109,16 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
             key={item}
             underlayColor="grey"
             onPress={() => {
-              NavigationService.navigate('BookDetail', item);
+              NavigationService.navigate('BookDetail', item.id);
             }}>
             <BookCard
               url={
                 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
               }
               styleSelect="General"
-              bookTitle={item.title}
+              bookTitle={item?.title}
               book={item}
-              id={item.id}
+              id={item?.id}
             />
           </TouchableHighlight>
         )}
@@ -130,8 +130,8 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
       <Text style={styles.listCaptionStyle}>Selected for you</Text>
       <FlatList
         horizontal
-        data={books?.filter(item => {
-          return item.averageRating == 0;
+        data={books.filter(item => {
+          return item?.averageRating == 0;
         })}
         contentContainerStyle={styles.flatListLast}
         renderItem={({item, index}) => (
@@ -139,19 +139,19 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
             key={item}
             underlayColor="grey"
             onPress={() => {
-              NavigationService.navigate('BookDetail', item);
+              NavigationService.navigate('BookDetail', item.id);
             }}>
             <BookCard
               url={
                 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
               }
               isFavorite={
-                newFavorites.indexOf(item.title) !== -1 ? true : false
+                newFavorites.indexOf(item?.title) !== -1 ? true : false
               }
               styleSelect="General"
-              bookTitle={item.title}
+              bookTitle={item?.title}
               book={item}
-              id={item.id}
+              id={item?.id}
             />
           </TouchableHighlight>
         )}

@@ -20,12 +20,11 @@ interface IState {
 }
 const AppNavigation = () => {
   const isDark = useSelector((state: IState) => state.themeReducer.isDark);
-  console.log('isdark value', isDark);
 
   return (
     <AppDrawer.Navigator drawerContent={() => <Drawer />}>
       <AppDrawer.Screen
-        name="Explore"
+        name="Tab"
         component={TabNavigator}
         options={{
           drawerLabel: 'Explore',
