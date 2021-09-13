@@ -24,7 +24,7 @@ import {useNavigation} from '@react-navigation/core';
 import {useTranslation} from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import i18n from '../../components/Languages/i18n';
+import i18n from '../../config/Languages/index';
 const initI18n = i18n;
 interface IProps {
   props: IProps;
@@ -79,7 +79,7 @@ const Drawer: React.FC = props => {
               size={size}
             />
           )}
-          label="Explore"
+          label={t('Explore')}
           onPress={() => {
             navigation.dispatch(TabActions.jumpTo('Explore'));
           }}
@@ -88,7 +88,7 @@ const Drawer: React.FC = props => {
           icon={({color, size}) => (
             <MaterialCommunityIcons name="tune" color={color} size={size} />
           )}
-          label="Favorite"
+          label={t('Favorite')}
           onPress={() => {
             navigation.dispatch(jumpToFavorite);
           }}
@@ -101,7 +101,7 @@ const Drawer: React.FC = props => {
               size={size}
             />
           )}
-          label="UserDetails"
+          label={t('User Details')}
           onPress={() => {
             navigation.dispatch(jumpToUserDetail);
           }}
@@ -163,7 +163,7 @@ const Drawer: React.FC = props => {
 
         <TouchableOpacity style={styles.row}>
           <Button icon="logout" onPress={onLogout}>
-            Logout
+            {t('Logout')}
           </Button>
         </TouchableOpacity>
       </View>

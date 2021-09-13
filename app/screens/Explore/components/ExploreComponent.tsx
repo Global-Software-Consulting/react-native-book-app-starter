@@ -24,16 +24,20 @@ import {
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import i18n from './../../../config/Languages/index';
+import {useTranslation} from 'react-i18next';
 interface Props {
   books?: [];
   name?: string;
   base_url?: string;
 }
+const initI18n = i18n;
 
 const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
   //theme handling
   const styles = useStyles();
+  const {t, i18n} = useTranslation();
+
   const favoriteBooks = useSelector(state => state.bookFetchReducer.favorite);
   const newFavorites: string[] = favoriteBooks;
   const dispatch = useDispatch();
@@ -59,12 +63,14 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
           onPress={() => dispatch(fetchActions.IFetchBooksRequest(searchText))}
         />
       </View>
-      <Text style={styles.nameStyle}>Hi {name} </Text>
-      <Text style={styles.tagLineStyle}>Let's find something new </Text>
+      <Text style={styles.nameStyle}>
+        {t('Hi')} {name}{' '}
+      </Text>
+      <Text style={styles.tagLineStyle}>{t('Lets find something new')}</Text>
 
       <View style={styles.horizontalRuler} />
 
-      <Text style={styles.listCaptionStyle}>Trending</Text>
+      <Text style={styles.listCaptionStyle}>{t('Trending')}</Text>
       <FlatList
         horizontal
         data={books.filter(item => {
@@ -97,7 +103,7 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
 
       <View style={styles.horizontalRuler} />
 
-      <Text style={styles.listCaptionStyle}>New Releases</Text>
+      <Text style={styles.listCaptionStyle}>{t('New Releases')}</Text>
       <FlatList
         horizontal
         data={books.filter(item => {
@@ -127,7 +133,7 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
 
       <View style={styles.horizontalRuler} />
 
-      <Text style={styles.listCaptionStyle}>Selected for you</Text>
+      <Text style={styles.listCaptionStyle}>{t('Selected for you')}</Text>
       <FlatList
         horizontal
         data={books.filter(item => {

@@ -6,7 +6,7 @@ import { useRoute } from '@react-navigation/native';
 import {useStyles} from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useTranslation} from 'react-i18next';
-import i18n from '../../components/Languages/i18n';
+import i18n from '../../config/Languages/index';
 import {useSelector} from 'react-redux';
 import * as appActions from './../../store/actions/appActions';
 //importing components

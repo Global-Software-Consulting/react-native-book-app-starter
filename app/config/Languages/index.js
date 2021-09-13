@@ -32,12 +32,7 @@ i18n.use(initReactI18next).init({
         'Last Name': 'Last Name',
         'Email': 'Email',
         'Gender': 'Gender',
-
-        'Genre':'Genre',
-        'Launched':'Launched',
-        'pages':'pages',
-        "Synopse":'Synopse',
-
+        
       },
     },
     es: {
@@ -67,11 +62,6 @@ i18n.use(initReactI18next).init({
         'Last Name': 'Achternaam',
         'Email': 'Email',
         'Gender': 'Geslacht',
-
-        'Genre':'Género',
-        'Launched':'Lanzado',
-        'pages':'paginas',
-        "Synopse":'Sinopsis',
       },
     },
     de: {
@@ -100,12 +90,6 @@ i18n.use(initReactI18next).init({
         'Last Name': 'Apellido',
         'Email': 'Correo electrÃ³nico',
         'Gender': 'GÃ©nero',
-
-
-        'Genre':'Genre',
-        'Launched':'gelanceerd',
-        'pages':'Pagina',
-        "Synopse":'Korte inhoud',
       },
     },
   },

@@ -8,7 +8,8 @@ import Explore from './../screens/Explore/index';
 import UserDetail from './../screens/UserDetail/index';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
+import i18n from './../../../components/Languages/i18n';
+import {useTranslation} from 'react-i18next';
 const Tab = createBottomTabNavigator();
 const AppStack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
@@ -16,7 +17,10 @@ const Stack = createNativeStackNavigator();
 interface IState {
   loginReducer: ILoginState;
 }
+
 const TabNavigator = () => {
+  const initI18n = i18n;
+  const {t, i18n} = useTranslation();
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -24,7 +28,7 @@ const TabNavigator = () => {
         component={Explore}
         options={{
           headerShown: false,
-          tabBarLabel: 'Explore',
+          tabBarLabel: t('Explore'),
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons
               name="feature-search-outline"
@@ -38,7 +42,7 @@ const TabNavigator = () => {
         name="Favorite"
         component={Favorite}
         options={{
-          tabBarLabel: 'Favorite',
+          tabBarLabel: t('Favorite'),
           headerShown: false,
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="heart" color={color} size={size} />
@@ -49,7 +53,7 @@ const TabNavigator = () => {
         name="UserDetail"
         component={UserDetail}
         options={{
-          tabBarLabel: 'UserDetail',
+          tabBarLabel: t('User Details'),
 
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="tune" color={color} size={size} />

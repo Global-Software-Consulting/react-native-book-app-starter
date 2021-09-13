@@ -22,10 +22,13 @@ import {
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
 
+import i18n from './../../../config/Languages/index';
+import {useTranslation} from 'react-i18next';
 interface Props {
   books?: [];
   base_url?: string;
 }
+const initI18n = i18n;
 
 const FavoriteComponent: React.FC<Props> = ({books, base_url}) => {
   //theme handling
@@ -33,6 +36,7 @@ const FavoriteComponent: React.FC<Props> = ({books, base_url}) => {
 
   const [favoriteBooks, setFavoriteBooks] = useState(books);
   const isFocused = useIsFocused();
+  const {t, i18n} = useTranslation();
 
   useEffect(() => {
     if (isFocused) setFavoriteBooks(books);
@@ -41,7 +45,7 @@ const FavoriteComponent: React.FC<Props> = ({books, base_url}) => {
   const FavoriteBooks = () => {
     return (
       <View>
-        <Text style={styles.nameStyle}>My Favorites</Text>
+        <Text style={styles.nameStyle}>{t('My Favorites')}</Text>
         <FlatList
           numColumns={2}
           contentContainerStyle={styles.flatList}

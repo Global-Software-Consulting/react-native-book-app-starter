@@ -20,7 +20,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NavigationService from 'navigation/NavigationService';
 import {useTranslation} from 'react-i18next';
-import i18n from '../../components/Languages/i18n';
+import i18n from '../../config/Languages/index';
 import {
   heightPercentageToDP,
   widthPercentageToDP,
