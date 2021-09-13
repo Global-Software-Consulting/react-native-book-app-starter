@@ -5,14 +5,18 @@ import BookDetail from './../screens/BookDetail/index';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector} from 'react-redux';
 import TabNavigator from './TabNavigator';
+import {useNavigation} from '@react-navigation/core';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import NavigationService from './NavigationService';
+import {useTheme} from 'react-native-paper';
 const AppDrawer = createDrawerNavigator();
 interface IState {
   loginReducer: ILoginState;
 }
 const AppNavigation = () => {
   const isDark = useSelector((state: IState) => state.themeReducer.isDark);
+  const navigation = useNavigation();
+  const theme = useTheme();
 
   return (
     <AppDrawer.Navigator drawerContent={() => <Drawer />}>
@@ -36,13 +40,13 @@ const AppNavigation = () => {
           headerLeft: () => (
             <Icon
               name="arrow-back-ios"
-              onPress={() => NavigationService.goBack()}
+              onPress={() => navigation.goBack()}
               color="black"
               size={18}
               style={{marginLeft: 20}}
             />
           ),
-          headerStyle: {backgroundColor: '#D3D3D3'},
+          headerStyle: {backgroundColor: theme.colors.background},
           headerTintColor: 'black',
         }}
       />

@@ -6,6 +6,7 @@ import React, {useEffect} from 'react';
 import {ActivityIndicator} from 'react-native';
 import CodePush from 'react-native-code-push';
 import {Provider as PaperProvider} from 'react-native-paper';
+import {MenuProvider} from 'react-native-popup-menu';
 import SplashScreen from 'react-native-splash-screen';
 import {Provider, useSelector} from 'react-redux';
 import {PersistGate} from 'redux-persist/es/integration/react';
@@ -21,7 +22,6 @@ interface IState {
 }
 
 const RootNavigation: React.FC = () => {
- 
   const isDark = useSelector((state: IState) => state.themeReducer.isDark);
   return (
     <PaperProvider theme={isDark ? darkTheme : defaultTheme}>
@@ -31,13 +31,15 @@ const RootNavigation: React.FC = () => {
 };
 
 const EntryPoint: React.FC = () => {
-   useEffect(() => {
-     SplashScreen.hide();
-   }, []);
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <Provider store={store}>
       <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
-        <RootNavigation />
+        <MenuProvider>
+          <RootNavigation />
+        </MenuProvider>
       </PersistGate>
     </Provider>
   );

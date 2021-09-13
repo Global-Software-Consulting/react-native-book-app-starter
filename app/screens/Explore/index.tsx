@@ -1,5 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {ScrollView, Alert, BackHandler, RefreshControl} from 'react-native';
+import {
+  ScrollView,
+  Alert,
+  BackHandler,
+  RefreshControl,
+  View,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import * as appActions from 'store/actions/appActions';
 //importing card component
@@ -80,17 +86,13 @@ const Explore: React.FC = () => {
   }, []);
 
   return (
-    <ScrollView
-      style={styles.container}
-      refreshControl={
-        <RefreshControl refreshing={isLoading} onRefresh={fetchBookDetails} />
-      }>
+    <View>
       {isLoading ? (
         <ExploreShimmer />
       ) : (
         <ExploreComponent name="Jorge" base_url={base_url} books={books} />
       )}
-    </ScrollView>
+    </View>
   );
 };
 

@@ -14,6 +14,8 @@ const styles = StyleSheet.create({
  paddingHorizontal:30,
  backgroundColor: theme.colors.background
   },
+  mainViewSetting:
+  {height: hp('80%')},
   name: {
     fontSize: hp('3%'),
     fontWeight: 'bold',
@@ -100,6 +102,7 @@ searchViewShimmer:
 },
 searchViewChildren: {
   margin: 2,
+  marginLeft:5,
   color:theme.colors.text
 },
 books: {

@@ -1,14 +1,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Alert, BackHandler, ScrollView} from 'react-native';
+import {Alert, BackHandler, ScrollView, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import i18n from '../../config/Languages/index';
 import NavigationService from 'navigation/NavigationService';
 import * as appActions from 'store/actions/appActions';
 //importing components
-import BookDetailComponent from './screen/Shimmer';
-import BookDetailShimmer from './screen/BookDetailShimmer';
+import Container from './screen/Container';
+import Shimmer from './screen/Shimmer';
 import {useStyles} from './styles';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 
@@ -56,13 +56,13 @@ const BookDetail: React.FC = props => {
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
+    <View>
       {isLoading ? (
-        <BookDetailShimmer />
+        <Shimmer />
       ) : (
-        <BookDetailComponent base_url={base_url} books={bookData} />
+        <Container base_url={base_url} books={bookData} />
       )}
-    </ScrollView>
+    </View>
   );
 };
 

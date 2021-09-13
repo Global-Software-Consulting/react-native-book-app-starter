@@ -75,9 +75,9 @@ height:hp('30%'), width:wp('40%'),
           },
 
     bookExtraLarge: {
-      height:hp('40%'), width:wp('65%'),
+      height:hp('50%'), width:wp('65%'),
           borderRadius:4,
-          margin:10,
+          margin:5,
           alignSelf: 'center'
           
           },

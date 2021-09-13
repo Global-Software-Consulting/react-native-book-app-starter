@@ -6,6 +6,7 @@ const images = {
   },
   app: {
     logo: require('../assets/logo.png'),
+    profilePicture: require('../assets/profilePicture.jpg')
   }
 };
 

@@ -52,6 +52,7 @@ const BookCard: React.FC<Props> = ({
     <View style={styles.bookView}>
       <FastImage
         source={{uri: url, priority: FastImage.priority.normal}}
+        resizeMode="contain"
         style={
           styleSelect == 'General'
             ? styles.bookGeneral

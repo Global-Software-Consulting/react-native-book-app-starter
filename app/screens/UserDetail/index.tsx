@@ -1,17 +1,95 @@
-import React from 'react';
-import {View} from 'react-native';
+import images from 'config/images';
+import React, {useState} from 'react';
+import {Button, Image, TextInput, View} from 'react-native';
 import {Text} from 'react-native-paper';
-import {useDispatch} from 'react-redux';
+import {
+  Menu,
+  MenuOption,
+  MenuOptions,
+  MenuTrigger,
+} from 'react-native-popup-menu';
+import {useDispatch, useSelector} from 'react-redux';
+import {useStyles} from 'screens/UserDetail/styles';
 import * as loginActions from 'store/actions/loginActions';
-import styles from './styles';
-
 const UserDetail: React.FC = () => {
   const dispatch = useDispatch();
   const onLogout = () => dispatch(loginActions.logOut());
+  const userDetails = useSelector(state => state.loginReducer.userData.result);
+  //defining states
+  const [isEditing, setIsEditing] = useState(false);
+  const [firstName, setFirstName] = useState(userDetails.firstName);
+  const [lastName, setLastName] = useState(userDetails.lastName);
+  const [email, setEmail] = useState(userDetails.email);
 
+  const styles = useStyles();
+  console.log('usero', userDetails);
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Settings Screen</Text>
+      <Menu>
+        <MenuTrigger>
+          <Image
+            source={images.app.profilePicture}
+            style={styles.displayPicture}
+          />
+        </MenuTrigger>
+        <MenuOptions>
+          <MenuOption onSelect={() => {}} text="Change" />
+          <MenuOption onSelect={() => {}}>
+            <Text style={{color: 'red'}}>Delete</Text>
+          </MenuOption>
+        </MenuOptions>
+      </Menu>
+      <Text style={styles.mainHeading}>Profile Details</Text>
+      {!isEditing ? (
+        <View>
+          <View style={styles.infoView}>
+            <Text style={styles.subHeading}>First Name:</Text>
+            <Text> {userDetails.firstName}</Text>
+          </View>
+
+          <View style={styles.infoView}>
+            <Text style={styles.subHeading}>Last Name:</Text>
+            <Text> {userDetails.lastName}</Text>
+          </View>
+
+          <View style={styles.infoView}>
+            <Text style={styles.subHeading}>Email</Text>
+            <Text> {userDetails.email}</Text>
+          </View>
+        </View>
+      ) : (
+        <View>
+          <View style={styles.infoView}>
+            <Text style={styles.subHeading}>First Name </Text>
+            <TextInput
+              value={firstName}
+              onChangeText={text => setFirstName(text)}
+            />
+          </View>
+
+          <View style={styles.infoView}>
+            <Text style={styles.subHeading}>Last Name </Text>
+            <TextInput
+              value={lastName}
+              onChangeText={text => setLastName(text)}
+            />
+          </View>
+
+          <View style={styles.infoView}>
+            <Text style={styles.subHeading}>Email </Text>
+            <TextInput value={email} onChangeText={text => setEmail(text)} />
+          </View>
+        </View>
+      )}
+
+      <View style={styles.editView}>
+        <Button
+          onPress={() => {
+            setIsEditing(!isEditing);
+          }}
+          title={!isEditing ? 'Edit' : 'Update'}
+          style={styles.editButton}></Button>
+      </View>
     </View>
   );
 };
