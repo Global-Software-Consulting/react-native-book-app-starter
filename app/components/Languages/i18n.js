@@ -26,7 +26,7 @@ i18n.use(initReactI18next).init({
         'Selected for you':'Selected for you',
         'New Releases':'New Releases',
 
-        'My Favorites':'Mijn favorieten',
+        'My Favorites':'My Favorites',
 
         'First Name': 'First Name',
         'Last Name': 'Last Name',

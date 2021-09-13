@@ -10,13 +10,12 @@ interface Props {
   base_url?: string;
 }
 
-const FavoriteShimmer: React.FC<Props> = ({books, base_url}) => {
+const Shimmer: React.FC<Props> = ({books, base_url}) => {
   //theme handling
   const styles = useStyles();
 
   return (
     <View>
-      <Text style={styles.name}>My Favorites</Text>
       <FlatList
         numColumns={2}
         data={[0, 0, 0, 0, 0, 0, 0, 0, 0]}
@@ -35,4 +34,4 @@ const FavoriteShimmer: React.FC<Props> = ({books, base_url}) => {
   );
 };
 
-export default FavoriteShimmer;
+export default Shimmer;

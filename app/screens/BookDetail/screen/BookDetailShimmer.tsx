@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 //importing card component
-import BookCardShimmer from './../../../components/BookCard/BookCardShimmer';
+import BookCardShimmer from '../../../components/BookCard/BookCardShimmer';
 import {useStyles} from '../styles';
 import {View} from 'react-native';
 

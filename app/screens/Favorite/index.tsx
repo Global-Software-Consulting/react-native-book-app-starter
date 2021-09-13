@@ -12,8 +12,8 @@ import {useTranslation} from 'react-i18next';
 import i18n from 'components/Languages/i18n';
 import {useSelector, useDispatch} from 'react-redux';
 //importing components
-import FavoriteComponent from './screen/Container';
-import FavoriteShimmer from './screen/Shimmer';
+import Shimmer from './screen/Shimmer';
+import Container from './screen/Container';
 import * as appActions from 'store/actions/appActions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
@@ -68,14 +68,9 @@ const Favorite: React.FC = () => {
   }, []);
 
   return (
-    <ScrollView
-      style={styles.container}
-      nestedScrollEnabled
-      refreshControl={
-        <RefreshControl refreshing={isLoading} onRefresh={getFavoriteBooks} />
-      }>
+    <View>
       {isLoading ? (
-        <FavoriteShimmer />
+        <Shimmer />
       ) : (
         <View
           style={{
@@ -85,10 +80,10 @@ const Favorite: React.FC = () => {
             justifyContent: 'space-around',
             alignItems: 'stretch',
           }}>
-          <FavoriteComponent base_url={base_url} books={favoriteBooks} />
+          <Container base_url={base_url} books={favoriteBooks} />
         </View>
       )}
-    </ScrollView>
+    </View>
   );
 };
 

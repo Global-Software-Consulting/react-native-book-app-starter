@@ -1,16 +1,28 @@
 //to update the favorites list
 import {useIsFocused} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
-import {FlatList, Image, TouchableHighlight, View} from 'react-native';
+import {
+  Alert,
+  FlatList,
+  Image,
+  RefreshControl,
+  SafeAreaView,
+  ScrollView,
+  TouchableHighlight,
+  View,
+} from 'react-native';
 import {Text} from 'react-native-paper';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import {useStyles} from '../styles';
+import {heightPercentageToDP} from 'react-native-responsive-screen';
 //importing card component
 import BookCard from 'components/BookCard/BookCard';
+import * as appActions from 'store/actions/appActions';
 import images from 'config/images';
 import i18n from 'config/Languages/index';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface Props {
   books?: [];
@@ -18,22 +30,34 @@ interface Props {
 }
 const initI18n = i18n;
 
-const FavoriteComponent: React.FC<Props> = ({books, base_url}) => {
+const Container: React.FC<Props> = ({books, base_url}) => {
   //theme handling
   const styles = useStyles();
-
-  const [favoriteBooks, setFavoriteBooks] = useState(books);
+  const dispatch = useDispatch();
   const isFocused = useIsFocused();
   const {t, i18n} = useTranslation();
   const navigation = useNavigation();
+  const isLoading = useSelector(state => state.appReducer.isFetching);
+  const favoriteBooks = useSelector(state => state.appReducer.favorite);
   useEffect(() => {
-    if (isFocused) setFavoriteBooks(books);
-  }, [isFocused, books]);
+    getFavoriteBooks;
+  }, []);
+
+  //fetching favorite books
+  const getFavoriteBooks = async () => {
+    try {
+      const value = await AsyncStorage.getItem('token');
+      if (value !== null) {
+        dispatch(appActions.IFetchFavoriteBooksRequest(value));
+      } else {
+        Alert.alert('Book App', 'Please login again');
+      }
+    } catch (e) {}
+  };
 
   const FavoriteBooks = () => {
     return (
       <View>
-        <Text style={styles.name}>{t('My Favorites')}</Text>
         <FlatList
           numColumns={2}
           contentContainerStyle={styles.flatList}
@@ -63,17 +87,27 @@ const FavoriteComponent: React.FC<Props> = ({books, base_url}) => {
   };
 
   return (
-    <SafeAreaView>
-      {favoriteBooks != '' ? (
-        <FavoriteBooks />
-      ) : (
-        <View style={styles.favoriteView}>
-          <Image source={images.books.noBookFound} style={styles.imageError} />
-          <Text style={styles.bookmark}>No bookmarks available</Text>
-        </View>
-      )}
-    </SafeAreaView>
+    <View style={{height: heightPercentageToDP('100%')}}>
+      <ScrollView
+        style={styles.container}
+        nestedScrollEnabled
+        refreshControl={
+          <RefreshControl refreshing={isLoading} onRefresh={getFavoriteBooks} />
+        }>
+        {favoriteBooks != [] ? (
+          <FavoriteBooks />
+        ) : (
+          <View style={styles.favoriteView}>
+            <Image
+              source={images.books.noBookFound}
+              style={styles.imageError}
+            />
+            <Text style={styles.bookmark}>No bookmarks available</Text>
+          </View>
+        )}
+      </ScrollView>
+    </View>
   );
 };
 
-export default FavoriteComponent;
+export default Container;

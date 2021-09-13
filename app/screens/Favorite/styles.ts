@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { color } from 'react-native-reanimated';
 import {useTheme} from 'react-native-paper';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp, heightPercentageToDP} from 'react-native-responsive-screen';
 
 export const useStyles = () => {
 
@@ -9,9 +9,11 @@ const theme = useTheme();
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
- paddingVertical:45,
- paddingHorizontal:10,
+    
+    flexGrow:1,
+ paddingVertical:0,
+ paddingHorizontal:0,
+ height:100
   },
   favoriteView:
   {
