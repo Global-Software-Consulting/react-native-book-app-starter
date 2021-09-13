@@ -16,7 +16,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import ThemeController from '../../components/ThemeController';
 import {useDispatch, useSelector} from 'react-redux';
 import {TabActions} from '@react-navigation/native';
-
 import * as loginActions from 'store/actions/loginActions';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/core';

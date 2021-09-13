@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Text} from 'react-native-paper';
 import {ILoginState} from 'models/reducers/login';
 import ThemeController from '../components/ThemeController';
 import Home from 'screens/Home';
@@ -10,6 +11,14 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import i18n from './../../../components/Languages/i18n';
 import {useTranslation} from 'react-i18next';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {heightPercentageToDP} from 'react-native-responsive-screen';
+import {TouchableHighlight} from 'react-native-gesture-handler';
+import {DrawerActions} from '@react-navigation/native';
+import {useStyles} from './header';
+import {useNavigation} from '@react-navigation/core';
+import {useTheme} from 'react-native-paper';
+import {themeTools} from 'native-base';
 const Tab = createBottomTabNavigator();
 const AppStack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
@@ -21,13 +30,30 @@ interface IState {
 const TabNavigator = () => {
   const initI18n = i18n;
   const {t, i18n} = useTranslation();
+  const navigation = useNavigation();
+  const theme = useTheme();
+  const styles = useStyles();
+
   return (
     <Tab.Navigator>
       <Tab.Screen
         name="Explore"
         component={Explore}
         options={{
-          headerShown: false,
+          headerStyle: {
+            backgroundColor: theme.colors.background,
+          },
+          headerLeft: () => (
+            <TouchableHighlight
+              underlayColor="transparent"
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
+              <Icon
+                name="menu"
+                size={heightPercentageToDP('4%')}
+                style={styles.Icon}
+              />
+            </TouchableHighlight>
+          ),
           tabBarLabel: t('Explore'),
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons
@@ -42,8 +68,21 @@ const TabNavigator = () => {
         name="Favorite"
         component={Favorite}
         options={{
+          headerStyle: {
+            backgroundColor: theme.colors.background,
+          },
+          headerLeft: () => (
+            <TouchableHighlight
+              underlayColor="transparent"
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
+              <Icon
+                name="menu"
+                size={heightPercentageToDP('4%')}
+                style={styles.Icon}
+              />
+            </TouchableHighlight>
+          ),
           tabBarLabel: t('Favorite'),
-          headerShown: false,
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="heart" color={color} size={size} />
           ),
@@ -53,8 +92,21 @@ const TabNavigator = () => {
         name="UserDetail"
         component={UserDetail}
         options={{
+          headerStyle: {
+            backgroundColor: theme.colors.background,
+          },
+          headerLeft: () => (
+            <TouchableHighlight
+              underlayColor="transparent"
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
+              <Icon
+                name="menu"
+                size={heightPercentageToDP('4%')}
+                style={styles.Icon}
+              />
+            </TouchableHighlight>
+          ),
           tabBarLabel: t('User Details'),
-
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="tune" color={color} size={size} />
           ),

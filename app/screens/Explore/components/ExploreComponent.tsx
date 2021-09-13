@@ -25,6 +25,7 @@ import {
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import i18n from './../../../config/Languages/index';
+import {useTheme} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 interface Props {
   books?: [];
@@ -37,7 +38,7 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
   //theme handling
   const styles = useStyles();
   const {t, i18n} = useTranslation();
-
+  const theme = useTheme();
   const favoriteBooks = useSelector(state => state.bookFetchReducer.favorite);
   const newFavorites: string[] = favoriteBooks;
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
         <TextInput
           underlineColorAndroid="transparent"
           placeholder="Search Here"
+          placeholderTextColor={theme.colors.text}
           onChangeText={text => setSearchText(text)}
           style={styles.searchViewChildren}
           onEndEditing={() =>

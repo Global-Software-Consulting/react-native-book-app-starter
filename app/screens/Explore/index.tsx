@@ -97,7 +97,7 @@ const Explore: React.FC = () => {
     <ScrollView
       style={styles.container}
       refreshControl={
-        <RefreshControl refreshing={isLoading} onRefresh={fetchBookDetails} />
+        <RefreshControl refreshing={isLoading} onRefresh={getFavoriteBooks} />
       }>
       {isLoading ? (
         <ExploreShimmer />

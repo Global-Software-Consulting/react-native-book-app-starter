@@ -9,7 +9,7 @@ import {
       ...PaperDarkTheme.colors,
       primary: 'white',
       accent: 'gray',
-      background:'gray',
+      background:'black',
     },
   };
   

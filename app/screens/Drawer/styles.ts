@@ -1,3 +1,4 @@
+import { theme } from 'native-base';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -6,6 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+   
   labelStyle: {
     fontSize: 12,
     marginBottom:12

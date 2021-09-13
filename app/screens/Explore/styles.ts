@@ -99,7 +99,8 @@ searchViewShimmer:
   
 },
 searchViewChildren: {
-  margin: 2
+  margin: 2,
+  color:theme.colors.text
 },
 books: {
 height:hp('2%'), width:wp('1%'),

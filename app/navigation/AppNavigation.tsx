@@ -28,6 +28,8 @@ const AppNavigation = () => {
         component={TabNavigator}
         options={{
           drawerLabel: 'Explore',
+          headerShown: false,
+
           headerStyle: {backgroundColor: isDark ? '#D3D3D3' : 'white'},
           headerTintColor: 'black',
         }}
