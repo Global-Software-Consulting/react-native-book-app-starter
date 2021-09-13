@@ -34,14 +34,18 @@ const Drawer: React.FC = props => {
   const {t, i18n} = useTranslation();
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const jumpToExplore = TabActions.jumpTo('Explore');
-  const jumpToFavorite = TabActions.jumpTo('Favorite');
-  const jumpToUserDetail = TabActions.jumpTo('UserDetail');
+  const Explore = TabActions.jumpTo('Explore');
+  const Favorite = TabActions.jumpTo('Favorite');
+  const Detail = TabActions.jumpTo('UserDetail');
   const theme = useTheme();
   const styles = useStyles();
   const onLogout = () => {
     AsyncStorage.removeItem('token');
     dispatch(loginActions.logOut());
+  };
+
+  const jumpToTab = screen => {
+    navigation.dispatch(TabActions.jumpTo(screen));
   };
 
   return (
@@ -81,7 +85,7 @@ const Drawer: React.FC = props => {
           )}
           label={t('Explore')}
           onPress={() => {
-            navigation.dispatch(TabActions.jumpTo('Explore'));
+            jumpToTab(Explore);
           }}
         />
         <DrawerItem
@@ -90,7 +94,7 @@ const Drawer: React.FC = props => {
           )}
           label={t('Favorite')}
           onPress={() => {
-            navigation.dispatch(jumpToFavorite);
+            jumpToTab(Favorite);
           }}
         />
         <DrawerItem
@@ -103,7 +107,7 @@ const Drawer: React.FC = props => {
           )}
           label={t('User Details')}
           onPress={() => {
-            navigation.dispatch(jumpToUserDetail);
+            jumpToTab(Detail);
           }}
         />
 

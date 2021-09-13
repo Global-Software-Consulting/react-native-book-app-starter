@@ -11,10 +11,10 @@ export function IFetchBooksRequest(keyword:string) {
   };
 }
 
-export function IFetchBooksResponse(response: IFetchBooks) {
+export function IFetchBooksResponse(payload: IFetchBooks) {
   return {
     type: types.FETCH_BOOKLIST_RESPONSE,
-    response
+    payload
   };
 }
 

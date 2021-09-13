@@ -4,11 +4,11 @@ import {useTranslation} from 'react-i18next';
 import {Alert, BackHandler, ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import i18n from '../../config/Languages/index';
-import NavigationService from './../../navigation/NavigationService';
-import * as appActions from './../../store/actions/appActions';
+import NavigationService from 'navigation/NavigationService';
+import * as appActions from 'store/actions/appActions';
 //importing components
-import BookDetailComponent from './components/BookDetailComponent';
-import BookDetailShimmer from './components/BookDetailShimmer';
+import BookDetailComponent from './screen/Shimmer';
+import BookDetailShimmer from './screen/BookDetailShimmer';
 import {useStyles} from './styles';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 

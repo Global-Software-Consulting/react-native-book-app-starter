@@ -7,10 +7,10 @@ import {Text} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useStyles} from '../styles';
 //importing card component
-import BookCard from './../../../components/BookCard/BookCard';
-import images from './../../../config/images';
-import i18n from './../../../config/Languages/index';
-import NavigationService from './../../../navigation/NavigationService';
+import BookCard from 'components/BookCard/BookCard';
+import images from 'config/images';
+import i18n from 'config/Languages/index';
+import {useNavigation} from '@react-navigation/native';
 
 interface Props {
   books?: [];
@@ -25,7 +25,7 @@ const FavoriteComponent: React.FC<Props> = ({books, base_url}) => {
   const [favoriteBooks, setFavoriteBooks] = useState(books);
   const isFocused = useIsFocused();
   const {t, i18n} = useTranslation();
-
+  const navigation = useNavigation();
   useEffect(() => {
     if (isFocused) setFavoriteBooks(books);
   }, [isFocused, books]);
@@ -33,7 +33,7 @@ const FavoriteComponent: React.FC<Props> = ({books, base_url}) => {
   const FavoriteBooks = () => {
     return (
       <View>
-        <Text style={styles.nameStyle}>{t('My Favorites')}</Text>
+        <Text style={styles.name}>{t('My Favorites')}</Text>
         <FlatList
           numColumns={2}
           contentContainerStyle={styles.flatList}
@@ -43,7 +43,7 @@ const FavoriteComponent: React.FC<Props> = ({books, base_url}) => {
               key={item}
               underlayColor="grey"
               onPress={() => {
-                NavigationService.navigate('BookDetail', item);
+                navigation.navigate('BookDetail', item);
               }}>
               <BookCard
                 url={
@@ -69,7 +69,7 @@ const FavoriteComponent: React.FC<Props> = ({books, base_url}) => {
       ) : (
         <View style={styles.favoriteView}>
           <Image source={images.books.noBookFound} style={styles.imageError} />
-          <Text style={styles.bookmarkStyle}>No bookmarks available</Text>
+          <Text style={styles.bookmark}>No bookmarks available</Text>
         </View>
       )}
     </SafeAreaView>

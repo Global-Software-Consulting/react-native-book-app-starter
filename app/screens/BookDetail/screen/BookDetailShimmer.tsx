@@ -2,10 +2,6 @@ import React, {useState} from 'react';
 //importing card component
 import BookCardShimmer from './../../../components/BookCard/BookCardShimmer';
 import {useStyles} from '../styles';
-import {
-  heightPercentageToDP,
-  widthPercentageToDP,
-} from 'react-native-responsive-screen';
 import {View} from 'react-native';
 
 interface Props {

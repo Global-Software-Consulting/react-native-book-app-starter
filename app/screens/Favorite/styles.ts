@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { color } from 'react-native-reanimated';
 import {useTheme} from 'react-native-paper';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp, heightPercentageToDP, widthPercentageToDP} from 'react-native-responsive-screen';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export const useStyles = () => {
 
@@ -17,29 +17,29 @@ const styles = StyleSheet.create({
   {
     flex: 1
   },
-  bookmarkStyle:
+  bookmark:
   {
     margin: 2
   },
   imageError:
   {
-    height: heightPercentageToDP('50%'),
-    width: widthPercentageToDP('50%'),
+    height: hp('50%'),
+    width: wp('50%'),
   },
-  nameStyle: {
+  name: {
     fontSize: hp('3%'),
     fontWeight: 'bold',
     fontFamily: 'Avenir-Medium',
     alignItems:'center'
   
   },
-  tagLineStyle: {
+  tagLine: {
     fontSize: hp('2%'),
     fontFamily: 'Avenir-Medium',
     alignItems:'center'
   
   },
-  listCaptionStyle: {
+  listCaption: {
     marginTop: 15,
     fontSize: hp('2%'),
     fontFamily: 'Avenir-Medium',

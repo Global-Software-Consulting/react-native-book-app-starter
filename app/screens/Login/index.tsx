@@ -20,10 +20,10 @@ import {
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import i18n from '../../config/Languages/index';
-import images from './../../config/images';
-import AddAnnotation from './../../services/loginUser';
-import * as loginActions from './../../store/actions/loginActions';
+import i18n from 'config/Languages/index';
+import images from 'config/images';
+import AddAnnotation from 'services/loginUser';
+import * as loginActions from 'store/actions/loginActions';
 import styles from './styles';
 const initI18n = i18n;
 interface IState {

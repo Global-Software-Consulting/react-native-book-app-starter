@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  labelStyle: {
+  label: {
     fontSize: 12,
     marginBottom:12
   },

@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {ScrollView, Alert, BackHandler, RefreshControl} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import * as appActions from './../../store/actions/appActions';
+import * as appActions from 'store/actions/appActions';
 //importing card component
 import {useStyles} from './styles';
 import {useTranslation} from 'react-i18next';
-import i18n from '../../components/Languages/i18n';
-import ExploreShimmer from './components/ExploreShimmer';
+import i18n from 'components/Languages/i18n';
+import ExploreShimmer from './screen/Shimmer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import ExploreComponent from './components/ExploreComponent';
+import ExploreComponent from './screen/Container';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 const initI18n = i18n;
 const Explore: React.FC = () => {

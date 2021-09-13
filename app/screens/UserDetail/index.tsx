@@ -11,7 +11,7 @@ const UserDetail: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.labelStyle}>Settings Screen</Text>
+      <Text style={styles.label}>Settings Screen</Text>
     </View>
   );
 };

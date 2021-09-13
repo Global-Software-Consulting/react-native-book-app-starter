@@ -2,7 +2,7 @@ import React from 'react';
 import {FlatList, TouchableHighlight, View} from 'react-native';
 import {useStyles} from '../styles';
 //importing card component
-import BookCardShimmer from './../../../components/BookCard/BookCardShimmer';
+import BookCardShimmer from 'components/BookCard/BookCardShimmer';
 
 const ExploreShimmer: React.FC<Props> = ({}) => {
   const styles = useStyles();
@@ -10,12 +10,12 @@ const ExploreShimmer: React.FC<Props> = ({}) => {
   return (
     <View>
       <View style={styles.searchViewShimmer}></View>
-      <View style={styles.nameStyleShimmer}></View>
-      <View style={styles.tagLineStyleShimmer}></View>
+      <View style={styles.nameShimmer}></View>
+      <View style={styles.tagLineShimmer}></View>
 
       <View style={styles.horizontalRuler} />
 
-      <View style={styles.listCaptionStyleShimmer}></View>
+      <View style={styles.listCaptionShimmer}></View>
       <FlatList
         horizontal
         data={[0, 0, 0]}
@@ -33,7 +33,7 @@ const ExploreShimmer: React.FC<Props> = ({}) => {
 
       <View style={styles.horizontalRuler} />
 
-      <View style={styles.listCaptionStyleShimmer}></View>
+      <View style={styles.listCaptionShimmer}></View>
       <FlatList
         horizontal
         data={[0, 0, 0]}
@@ -51,7 +51,7 @@ const ExploreShimmer: React.FC<Props> = ({}) => {
 
       <View style={styles.horizontalRuler} />
 
-      <View style={styles.listCaptionStyleShimmer}></View>
+      <View style={styles.listCaptionShimmer}></View>
       <FlatList
         horizontal
         data={[0, 0, 0]}

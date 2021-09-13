@@ -3,7 +3,7 @@ import {FlatList, TouchableHighlight, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useStyles} from '../styles';
 //importing card component
-import BookCardShimmer from './../../../components/BookCard/BookCardShimmer';
+import BookCardShimmer from 'components/BookCard/BookCardShimmer';
 
 interface Props {
   books?: [];
@@ -16,7 +16,7 @@ const FavoriteShimmer: React.FC<Props> = ({books, base_url}) => {
 
   return (
     <View>
-      <Text style={styles.nameStyle}>My Favorites</Text>
+      <Text style={styles.name}>My Favorites</Text>
       <FlatList
         numColumns={2}
         data={[0, 0, 0, 0, 0, 0, 0, 0, 0]}

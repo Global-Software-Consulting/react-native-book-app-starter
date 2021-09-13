@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import { heightPercentageToDP as hp, widthPercentageToDP, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { heightPercentageToDP, heightPercentageToDP as hp, widthPercentageToDP, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 export const useStyles = () => {
 
@@ -89,20 +89,20 @@ pagesSubView:
       marginTop: 20,
       justifyContent: 'space-evenly',
     },
-  nameStyle: {
+  name: {
     fontSize: hp('3%'),
     fontWeight: 'bold',
     fontFamily: 'Avenir-Medium',
     alignItems:'center'
   
   },
-  tagLineStyle: {
+  tagLine: {
     fontSize: hp('2%'),
     fontFamily: 'Avenir-Medium',
     alignItems:'center'
   
   },
-  listCaptionStyle: {
+  listCaption: {
     marginTop: 15,
     fontSize: hp('2%'),
     fontFamily: 'Avenir-Medium',

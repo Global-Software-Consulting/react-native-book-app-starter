@@ -9,12 +9,12 @@ import {
 //importing card component
 import {useStyles} from './styles';
 import {useTranslation} from 'react-i18next';
-import i18n from '../../components/Languages/i18n';
+import i18n from 'components/Languages/i18n';
 import {useSelector, useDispatch} from 'react-redux';
 //importing components
-import FavoriteComponent from './components/FavoriteComponent';
-import FavoriteShimmer from './components/FavoriteShimmer';
-import * as appActions from './../../store/actions/appActions';
+import FavoriteComponent from './screen/Container';
+import FavoriteShimmer from './screen/Shimmer';
+import * as appActions from 'store/actions/appActions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 

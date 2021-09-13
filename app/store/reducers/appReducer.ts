@@ -20,7 +20,7 @@ export const appReducer = createReducer(initialState, {
     [types.FETCH_BOOKLIST_RESPONSE](state: IBookState, action: IBookResponse) {
       return {
         ...state,
-        detail : action.response,
+        detail : action.payload,
        
       };
     },

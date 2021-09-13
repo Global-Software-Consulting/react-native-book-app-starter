@@ -4,7 +4,7 @@ interface IResponse {
   
   export interface IBookResponse {
     type: string;
-    response: IResponse;
+    payload: IResponse;
   }
 
   export interface IBookRequest {

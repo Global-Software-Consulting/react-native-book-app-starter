@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
-import AppStyles from "../../config/styles";
+import AppStyles from "config/styles";
 
 
 const styles = StyleSheet.create({
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     color:AppStyles.colors.COLOR_BLACK,
     marginTop: 12,
   },
-  labelStyle: {
+  label: {
     fontSize: 12,
   },
 });

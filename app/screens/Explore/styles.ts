@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
  paddingHorizontal:30,
  backgroundColor: theme.colors.background
   },
-  nameStyle: {
+  name: {
     fontSize: hp('3%'),
     fontWeight: 'bold',
     fontFamily: 'Avenir-Medium',
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     color: theme.colors.text
   
   },
-  nameStyleShimmer: {
+  nameShimmer: {
     width:wp('25%'),
     height:hp('6%'),
     backgroundColor: '#E7E5E7',
@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
     alignItems:'center',
     color: theme.colors.text
   },
-  tagLineStyleShimmer: {
+  tagLineShimmer: {
     width:wp('40%'),
     height:hp('4%'),
     backgroundColor: '#E7E5E7',
   },
-  listCaptionStyle: {
+  listCaption: {
     marginTop: 15,
     fontSize: hp('2%'),
     fontFamily: 'Avenir-Medium',
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     color: theme.colors.text
   },
-listCaptionStyleShimmer: {
+listCaptionShimmer: {
   width:wp('20%'),
     height:hp('3%'),
     backgroundColor: '#E7E5E7',

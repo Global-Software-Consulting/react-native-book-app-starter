@@ -10,20 +10,20 @@ const styles = StyleSheet.create({
  paddingHorizontal:30,
  backgroundColor:'white',
   },
-  nameStyle: {
+  name: {
     fontSize: hp('3%'),
     fontWeight: 'bold',
     fontFamily: 'Avenir-Medium',
     alignItems:'center'
   
   },
-  tagLineStyle: {
+  tagLine: {
     fontSize: hp('2%'),
     fontFamily: 'Avenir-Medium',
     alignItems:'center'
   
   },
-  listCaptionStyle: {
+  listCaption: {
     marginTop: 15,
     fontSize: hp('2%'),
     fontFamily: 'Avenir-Medium',

@@ -4,12 +4,13 @@ import {FlatList, TextInput, TouchableHighlight, View} from 'react-native';
 import {Text, useTheme} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import {useStyles} from '../styles';
+import {useStyles} from 'screens/Explore/styles';
 //importing card component
-import BookCard from './../../../components/BookCard/BookCard';
-import i18n from './../../../config/Languages/index';
-import NavigationService from './../../../navigation/NavigationService';
-import * as appActions from './../../../store/actions/appActions';
+import BookCard from 'components/BookCard/BookCard';
+import i18n from 'config/Languages/index';
+import * as appActions from 'store/actions/appActions';
+import {useNavigation} from '@react-navigation/native';
+
 interface Props {
   books?: [];
   name?: string;
@@ -26,6 +27,11 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
   const newFavorites: string[] = favoriteBooks;
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState('');
+  const navigation = useNavigation();
+
+  const searchBook = (bookName: string) => {
+    dispatch(appActions.IFetchBooksRequest(bookName));
+  };
 
   return (
     <View>
@@ -37,21 +43,19 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
           placeholderTextColor={theme.colors.text}
           onChangeText={text => setSearchText(text)}
           style={styles.searchViewChildren}
-          onEndEditing={() =>
-            dispatch(appActions.IFetchBooksRequest(searchText))
-          }
+          onEndEditing={() => searchBook(searchText)}
         />
         <Icon
           name="find-in-page"
           size={30}
           style={styles.searchViewChildren}
-          onPress={() => dispatch(appActions.IFetchBooksRequest(searchText))}
+          onPress={() => searchBook(searchText)}
         />
       </View>
-      <Text style={styles.nameStyle}>
+      <Text style={styles.name}>
         {t('Hi')} {name}{' '}
       </Text>
-      <Text style={styles.tagLineStyle}>{t('Lets find something new')}</Text>
+      <Text style={styles.tagLine}>{t('Lets find something new')}</Text>
 
       <View style={styles.horizontalRuler} />
 
@@ -67,7 +71,7 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
             key={item}
             underlayColor="grey"
             onPress={() => {
-              NavigationService.navigate('BookDetail', item.id);
+              navigation.navigate('BookDetail', item.id);
             }}>
             <BookCard
               url={
@@ -100,7 +104,7 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
             key={item}
             underlayColor="grey"
             onPress={() => {
-              NavigationService.navigate('BookDetail', item.id);
+              navigation.navigate('BookDetail', item.id);
             }}>
             <BookCard
               url={
@@ -130,7 +134,7 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
             key={item}
             underlayColor="grey"
             onPress={() => {
-              NavigationService.navigate('BookDetail', item.id);
+              navigation.navigate('BookDetail', item.id);
             }}>
             <BookCard
               url={
