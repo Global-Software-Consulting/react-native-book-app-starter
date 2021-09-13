@@ -12,6 +12,8 @@ import {
   RadioButton,
   Checkbox,
 } from 'react-native-paper';
+import {useTheme} from 'react-native-paper';
+import {useStyles} from './styles';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ThemeController from '../../components/ThemeController';
 import {useDispatch, useSelector} from 'react-redux';
@@ -38,6 +40,8 @@ const Drawer: React.FC = props => {
   const jumpToExplore = TabActions.jumpTo('Explore');
   const jumpToFavorite = TabActions.jumpTo('Favorite');
   const jumpToUserDetail = TabActions.jumpTo('UserDetail');
+  const theme = useTheme();
+  const styles = useStyles();
   const onLogout = () => {
     AsyncStorage.removeItem('token');
     dispatch(loginActions.logOut());
@@ -124,7 +128,7 @@ const Drawer: React.FC = props => {
               onPress={() => {
                 setChecked('first'), i18n.changeLanguage('en');
               }}
-              color="gray"
+              color="red"
             />
             <Text style={styles.chekboxtext}>English</Text>
           </TouchableOpacity>
@@ -139,7 +143,7 @@ const Drawer: React.FC = props => {
               onPress={() => {
                 setChecked('second'), i18n.changeLanguage('es');
               }}
-              color="gray"
+              color="red"
             />
             <Text style={styles.chekboxtext}>Spanish</Text>
           </TouchableOpacity>
@@ -154,7 +158,7 @@ const Drawer: React.FC = props => {
               onPress={() => {
                 setChecked('third'), i18n.changeLanguage('de');
               }}
-              color="gray"
+              color="red"
             />
             <Text style={styles.chekboxtext}>German</Text>
           </TouchableOpacity>

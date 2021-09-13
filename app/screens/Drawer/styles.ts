@@ -1,6 +1,11 @@
-import { theme } from 'native-base';
 import { StyleSheet } from 'react-native';
+import { color } from 'react-native-reanimated';
+import {useTheme} from 'react-native-paper';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
+export const useStyles = () => {
+
+const theme = useTheme();
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -72,12 +77,13 @@ const styles = StyleSheet.create({
     flexDirection:'row'
   },
   listbutton: {
-    backgroundColor: 'silver',
+    backgroundColor: useTheme().colors.background,
     padding: 5,
     borderRadius: 10,
     margin: 2,
     flexDirection:'row'
   },
 });
+return styles;
+}
 
-export default styles;
