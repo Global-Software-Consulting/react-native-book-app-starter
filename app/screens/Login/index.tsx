@@ -1,35 +1,30 @@
-import React, {useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {ILoginState} from 'models/reducers/login';
+import NavigationService from 'navigation/NavigationService';
+import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {
-  View,
-  Text,
   ActivityIndicator,
   Alert,
-  KeyboardAvoidingView,
   Image,
+  Text,
   TextInput,
+  View,
 } from 'react-native';
-import images from './../../config/images';
-import {Button} from 'react-native-paper';
-import {useDispatch, useSelector} from 'react-redux';
-import * as loginActions from './../../store/actions/loginActions';
+import {TouchableHighlight} from 'react-native-gesture-handler';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import styles from './styles';
-import {ILoginState} from 'models/reducers/login';
-import AddAnnotation, * as loginReq from './../../services/loginUser';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import NavigationService from 'navigation/NavigationService';
-import {useTranslation} from 'react-i18next';
-import i18n from '../../config/Languages/index';
+import {Button} from 'react-native-paper';
 import {
   heightPercentageToDP,
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
-import {
-  TouchableOpacity,
-  TouchableHighlight,
-} from 'react-native-gesture-handler';
-import {add} from 'react-native-reanimated';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {useDispatch, useSelector} from 'react-redux';
+import i18n from '../../config/Languages/index';
+import images from './../../config/images';
+import AddAnnotation from './../../services/loginUser';
+import * as loginActions from './../../store/actions/loginActions';
+import styles from './styles';
 const initI18n = i18n;
 interface IState {
   loginReducer: ILoginState;
@@ -69,32 +64,9 @@ const Login: React.FC = () => {
 
   return (
     <KeyboardAwareScrollView style={{backgroundColor: 'white'}}>
-      <Image
-        source={images.app.logo}
-        style={{
-          alignSelf: 'center',
-          marginTop: 20,
-          width: widthPercentageToDP('40%'),
-          height: heightPercentageToDP('30%'),
-        }}
-      />
-      <Text
-        style={{
-          fontSize: 30,
-          fontWeight: '500',
-          alignSelf: 'center',
-          justifyContent: 'center',
-          marginTop: 20,
-        }}>
-        Log In Now
-      </Text>
-      <Text
-        style={{
-          fontSize: 15,
-          fontWeight: '300',
-          color: 'grey',
-          alignSelf: 'center',
-        }}>
+      <Image source={images.app.logo} style={styles.logo} />
+      <Text style={styles.heading}>Log In Now</Text>
+      <Text style={styles.guidingline}>
         Please login to continue using our app
       </Text>
 
@@ -103,101 +75,45 @@ const Login: React.FC = () => {
         placeholder="Email"
         placeholderTextColor="black"
         onChangeText={keyword => setEmail(keyword)}
-        style={{
-          width: widthPercentageToDP('80%'),
-          height: heightPercentageToDP('5%'),
-          padding: 5,
-          alignSelf: 'center',
-          borderWidth: 1,
-          borderRadius: 20,
-          marginTop: 10,
-          backgroundColor: 'white',
-        }}
+        style={styles.emailText}
       />
 
-      <View
-        style={{
-          marginBottom: 20,
-          flexDirection: 'row',
-          borderColor: 'black',
-          borderWidth: 1,
-          borderRadius: 30,
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          width: widthPercentageToDP('80%'),
-          height: heightPercentageToDP('5%'),
-          marginTop: 5,
-          alignSelf: 'center',
-        }}>
+      <View style={styles.passwordView}>
         <TextInput
           autoCorrect={false}
           placeholder="Password"
           onChangeText={keyword => setPassword(keyword)}
           placeholderTextColor="black"
           secureTextEntry={secure}
-          style={{
-            padding: 5,
-            alignSelf: 'center',
-            borderRadius: 20,
-            margin: 5,
-            backgroundColor: 'white',
-            width: widthPercentageToDP('60%'),
-          }}
+          style={styles.passwordText}
         />
         <Icon
           name="remove-red-eye"
           size={30}
-          style={{margin: 6}}
+          style={styles.iconEye}
           onPress={() => setSecure(!secure)}
         />
       </View>
 
-      <TouchableHighlight
-        style={{
-          justifyContent: 'center',
-          alignContent: 'center',
-          flex: 1,
-          alignItems: 'center',
-        }}>
-        <Text
-          style={{
-            alignSelf: 'flex-end',
-            marginRight: 20,
-            color: 'black',
-            justifyContent: 'center',
-          }}>
-          Forgot Password
-        </Text>
+      <TouchableHighlight style={styles.touchableHighlight}>
+        <Text style={styles.forgotPasswordText}>Forgot Password</Text>
       </TouchableHighlight>
 
-      <View
-        style={{
-          backgroundColor: '#491484',
-          alignContent: 'center',
-          alignSelf: 'center',
-          justifyContent: 'space-between',
-          flexDirection: 'row',
-          marginTop: 15,
-        }}>
+      <View style={styles.loginView}>
         <Button
           onPress={performLoginOperation}
           disabled={showActivityIndicator}
-          style={{
-            height: heightPercentageToDP('5 %'),
-            width: widthPercentageToDP('60%'),
-            marginTop: 5,
-          }}>
-          <Text style={{color: 'white'}}>Log in</Text>
+          style={styles.loginButton}>
+          <Text style={styles.loginText}>Log in</Text>
         </Button>
         {showActivityIndicator && (
-          <ActivityIndicator color="white" style={{margin: 5}} />
+          <ActivityIndicator color="white" style={styles.activityIndicator} />
         )}
       </View>
 
-      <View
-        style={{flexDirection: 'row', justifyContent: 'center', marginTop: 5}}>
+      <View style={styles.textMessage}>
         <Text>Do not have an account? </Text>
-        <Text style={{color: '#db7093'}}>Sign up</Text>
+        <Text style={styles.signupText}>Sign up</Text>
       </View>
     </KeyboardAwareScrollView>
   );

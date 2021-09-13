@@ -1,13 +1,13 @@
 /**
  *  Redux saga class init
  */
-import { takeEvery, all } from 'redux-saga/effects';
+import { all, takeEvery } from 'redux-saga/effects';
 import * as types from '../actions/types';
+import bookDetailSaga from './bookDetailSaga';
+import favoriteBookSaga from './favoriteBookSaga';
+import fetchBookSaga from './fetchBookSaga';
 import loginSaga from './loginSaga';
 import userDetails from './userDetails';
-import fetchBookSaga from './fetchBookSaga';
-import favoriteBookSaga from './favoriteBookSaga'
-import bookDetailSaga from './bookDetailSaga'
 export default function* watch() {
   yield all([takeEvery(types.LOGIN_REQUEST, loginSaga),
     takeEvery(types.FETCH_BOOKLIST_REQUEST, fetchBookSaga),

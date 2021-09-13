@@ -1,17 +1,16 @@
+import {IThemeState} from 'models/reducers/theme';
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {Switch} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import {Switch} from 'react-native-paper';
 import * as themeActions from 'store/actions/themeActions';
-import {IThemeState} from 'models/reducers/theme';
 
 interface IState {
   themeReducer: IThemeState;
 }
 
 const ThemeController: React.FC = () => {
-  
   const isDark = useSelector((state: IState) => state.themeReducer.isDark);
 
   const dispatch = useDispatch();
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    marginBottom:5,
+    marginBottom: 5,
   },
   icon: {marginLeft: 4},
 });

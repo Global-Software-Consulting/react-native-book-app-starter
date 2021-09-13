@@ -4,10 +4,9 @@
  * un - username
  * pwd - password
  */
-import { put } from 'redux-saga/effects';
 // import { delay } from 'redux-saga';
-
 import { Alert } from 'react-native';
+import { put } from 'redux-saga/effects';
 // import loginUser from 'services/loginUser';
 import * as loginActions from 'store/actions/loginActions';
 

@@ -1,32 +1,15 @@
-import React, {useState, useEffect} from 'react';
-import {
-  View,
-  TouchableHighlight,
-  FlatList,
-  Alert,
-  BackHandler,
-  TouchableOpacity,
-  TextInput,
-} from 'react-native';
-import {Text} from 'react-native-paper';
-import SearchIcon from '@mui/icons-material/Search';
-import {useDispatch} from 'react-redux';
-import {useRoute} from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as fetchActions from './../../../store/actions/appActions';
-import {useSelector} from 'react-redux';
-import NavigationService from './../../../navigation/NavigationService';
+import React, {useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {FlatList, TextInput, TouchableHighlight, View} from 'react-native';
+import {Text, useTheme} from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {useDispatch, useSelector} from 'react-redux';
+import {useStyles} from '../styles';
 //importing card component
 import BookCard from './../../../components/BookCard/BookCard';
-import {useStyles} from '../styles';
-import {
-  heightPercentageToDP,
-  widthPercentageToDP,
-} from 'react-native-responsive-screen';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import i18n from './../../../config/Languages/index';
-import {useTheme} from 'react-native-paper';
-import {useTranslation} from 'react-i18next';
+import NavigationService from './../../../navigation/NavigationService';
+import * as appActions from './../../../store/actions/appActions';
 interface Props {
   books?: [];
   name?: string;
@@ -39,7 +22,7 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
   const styles = useStyles();
   const {t, i18n} = useTranslation();
   const theme = useTheme();
-  const favoriteBooks = useSelector(state => state.bookFetchReducer.favorite);
+  const favoriteBooks = useSelector(state => state.appReducer.favorite);
   const newFavorites: string[] = favoriteBooks;
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState('');
@@ -50,19 +33,19 @@ const ExploreComponent: React.FC<Props> = ({books, name, base_url}) => {
       <View style={styles.searchView}>
         <TextInput
           underlineColorAndroid="transparent"
-          placeholder="Search Here"
+          placeholder={t('Search Here')}
           placeholderTextColor={theme.colors.text}
           onChangeText={text => setSearchText(text)}
           style={styles.searchViewChildren}
           onEndEditing={() =>
-            dispatch(fetchActions.IFetchBooksRequest(searchText))
+            dispatch(appActions.IFetchBooksRequest(searchText))
           }
         />
         <Icon
           name="find-in-page"
           size={30}
           style={styles.searchViewChildren}
-          onPress={() => dispatch(fetchActions.IFetchBooksRequest(searchText))}
+          onPress={() => dispatch(appActions.IFetchBooksRequest(searchText))}
         />
       </View>
       <Text style={styles.nameStyle}>

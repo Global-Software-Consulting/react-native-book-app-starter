@@ -1,4 +1,4 @@
-import { put, call } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 import fetchUserDetails from "../../services/fetchUserDetails";
 import * as authActions from "../actions/loginActions";
 

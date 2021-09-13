@@ -1,20 +1,13 @@
 import * as React from 'react';
-import { Button } from 'react-native-paper';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ILoginState} from 'models/reducers/login';
-import ThemeController from '../components/ThemeController';
 import Drawer from 'screens/Drawer';
 import BookDetail from './../screens/BookDetail/index';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector} from 'react-redux';
-import Home from './../screens/Home/index';
 import TabNavigator from './TabNavigator';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import NavigationService from './NavigationService';
-import {color} from 'react-native-reanimated';
 const AppDrawer = createDrawerNavigator();
-const AppStack = createNativeStackNavigator();
-const Stack = createNativeStackNavigator();
 interface IState {
   loginReducer: ILoginState;
 }

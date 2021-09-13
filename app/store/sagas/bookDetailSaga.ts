@@ -1,11 +1,10 @@
-import { put, call } from "redux-saga/effects";
-import { Alert } from "react-native";
+import { call, put } from "redux-saga/effects";
 import fetchBookDetail from "../../services/fetchBookDetail";
 import * as appActions from "../actions/appActions";
 
 
 
-export default function* fetchFavoriteBookAsync(action:any) {
+export default function* fetchBookDetailSaga(action:any) {
   //start loading
 yield put(appActions.IFetchBooksLoading());
   //calling api

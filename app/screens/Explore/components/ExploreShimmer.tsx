@@ -1,16 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import {View,TouchableOpacity,TouchableHighlight,FlatList, Alert, BackHandler} from 'react-native';
-import {Text} from 'react-native-paper';
-
+import React from 'react';
+import {FlatList, TouchableHighlight, View} from 'react-native';
+import {useStyles} from '../styles';
 //importing card component
 import BookCardShimmer from './../../../components/BookCard/BookCardShimmer';
-import {useStyles} from '../styles';
 
-import i18n from "../../components/Languages/i18n";
-
-const ExploreShimmer: React.FC<Props> = ({}) => 
-    {
-      const styles = useStyles();
+const ExploreShimmer: React.FC<Props> = ({}) => {
+  const styles = useStyles();
 
   return (
     <View>
@@ -73,6 +68,6 @@ const ExploreShimmer: React.FC<Props> = ({}) =>
       />
     </View>
   );
-    };
+};
 
 export default ExploreShimmer;

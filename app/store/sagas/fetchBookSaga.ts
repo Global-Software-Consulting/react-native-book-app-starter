@@ -1,5 +1,4 @@
-import { put, call } from "redux-saga/effects";
-import { Alert } from "react-native";
+import { call, put } from "redux-saga/effects";
 import fetchBooks from "../../services/fetchBooks";
 import * as appActions from "../actions/appActions";
 
@@ -12,7 +11,7 @@ yield put(appActions.IFetchBooksLoading());
 
   let response = yield call(fetchBooks, action.keyword);
   if (response && response.status == 'success') {
-    yield put(appActions.IFetchFavoriteBooksResponse(response.result))
+    yield put(appActions.IFetchBooksResponse(response.result))
     //ends loading
     yield put(appActions.IFetchBooksLoadingStop());
   } 

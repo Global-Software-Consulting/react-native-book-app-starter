@@ -1,29 +1,17 @@
-import React, {useState, useEffect} from 'react';
-import {
-  View,
-  TouchableHighlight,
-  FlatList,
-  Alert,
-  BackHandler,
-  Image,
-} from 'react-native';
-import {Text} from 'react-native-paper';
-//importing card component
-import BookCard from './../../../components/BookCard/BookCard';
-import {useStyles} from '../styles';
-import images from './../../../config/images';
-import {useSelector} from 'react-redux';
 //to update the favorites list
 import {useIsFocused} from '@react-navigation/native';
-import NavigationService from './../../../navigation/NavigationService';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {
-  heightPercentageToDP,
-  widthPercentageToDP,
-} from 'react-native-responsive-screen';
-
-import i18n from './../../../config/Languages/index';
+import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import {FlatList, Image, TouchableHighlight, View} from 'react-native';
+import {Text} from 'react-native-paper';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {useStyles} from '../styles';
+//importing card component
+import BookCard from './../../../components/BookCard/BookCard';
+import images from './../../../config/images';
+import i18n from './../../../config/Languages/index';
+import NavigationService from './../../../navigation/NavigationService';
+
 interface Props {
   books?: [];
   base_url?: string;
@@ -79,20 +67,13 @@ const FavoriteComponent: React.FC<Props> = ({books, base_url}) => {
       {favoriteBooks != '' ? (
         <FavoriteBooks />
       ) : (
-        <View style={{flex: 1}}>
-          <Image
-            source={images.books.noBookFound}
-            style={{
-              height: heightPercentageToDP('50%'),
-              width: widthPercentageToDP('50%'),
-            }}
-          />
-          <Text style={{margin: 2}}>No bookmarks available</Text>
+        <View style={styles.favoriteView}>
+          <Image source={images.books.noBookFound} style={styles.imageError} />
+          <Text style={styles.bookmarkStyle}>No bookmarks available</Text>
         </View>
       )}
     </SafeAreaView>
   );
 };
-
 
 export default FavoriteComponent;

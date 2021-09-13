@@ -1,26 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  TouchableOpacity,
-  TouchableHighlight,
-  Image,
-  ScrollView,
-  FlatList,
-  Alert,
-  BackHandler,
-  RefreshControl,
-  SafeAreaView,
-} from 'react-native';
-import {Text, List} from 'react-native-paper';
+import {ScrollView, Alert, BackHandler, RefreshControl} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import fetchBookSaga from './../../store/sagas/fetchBookSaga';
-import * as fetchActions from './../../store/actions/appActions';
+import * as appActions from './../../store/actions/appActions';
 //importing card component
 import {useStyles} from './styles';
 import {useTranslation} from 'react-i18next';
 import i18n from '../../components/Languages/i18n';
-import fetchBookAsync from './../../store/sagas/fetchBookSaga';
-import {State} from 'react-native-gesture-handler';
 import ExploreShimmer from './components/ExploreShimmer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ExploreComponent from './components/ExploreComponent';
@@ -30,9 +15,9 @@ const Explore: React.FC = () => {
   const {t, i18n} = useTranslation();
 
   //fetching book images from the store
-  const books = useSelector(state => state.bookFetchReducer.detail);
-  const isLoading = useSelector(state => state.bookFetchReducer.isFetching);
-  const favoriteBooks = useSelector(state => state.bookFetchReducer.favorite);
+  const books = useSelector(state => state.appReducer.detail);
+  const isLoading = useSelector(state => state.appReducer.isFetching);
+  const favoriteBooks = useSelector(state => state.appReducer.favorite);
   const [errorExists, setErrorExists] = useState(false);
 
   //state for display name
@@ -46,7 +31,7 @@ const Explore: React.FC = () => {
   const dispatch = useDispatch();
 
   const fetchBookDetails = async () => {
-    dispatch(fetchActions.IFetchBooksRequest('a'));
+    dispatch(appActions.IFetchBooksRequest('a'));
   };
 
   //fetching favorite books
@@ -54,7 +39,7 @@ const Explore: React.FC = () => {
     try {
       const value = await AsyncStorage.getItem('token');
       if (value !== null) {
-        dispatch(fetchActions.IFetchFavoriteBooksRequest(value));
+        dispatch(appActions.IFetchFavoriteBooksRequest(value));
       } else {
         Alert.alert('Book App', 'Please login again');
       }
@@ -64,13 +49,14 @@ const Explore: React.FC = () => {
   //handling back hardware button
   useEffect(() => {
     getFavoriteBooks().then(() => {
+      fetchBookDetails();
+
       if (books.status == 'fail') {
         setErrorExists(true);
       } else {
         setErrorExists(false);
       }
       //api call
-      fetchBookDetails();
     });
 
     const backAction = () => {
@@ -97,7 +83,7 @@ const Explore: React.FC = () => {
     <ScrollView
       style={styles.container}
       refreshControl={
-        <RefreshControl refreshing={isLoading} onRefresh={getFavoriteBooks} />
+        <RefreshControl refreshing={isLoading} onRefresh={fetchBookDetails} />
       }>
       {isLoading ? (
         <ExploreShimmer />

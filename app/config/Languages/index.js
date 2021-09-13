@@ -1,6 +1,6 @@
 import i18n from 'i18next';
-import {initReactI18next} from 'react-i18next';
-import {getLocales} from 'react-native-localize';
+import { initReactI18next } from 'react-i18next';
+import { getLocales } from 'react-native-localize';
 i18n.use(initReactI18next).init({
   lng: getLocales()[0].languageCode,
   fallbackLng: 'en',
@@ -32,6 +32,7 @@ i18n.use(initReactI18next).init({
         'Last Name': 'Last Name',
         'Email': 'Email',
         'Gender': 'Gender',
+        'Size': 'Size'
         
       },
     },
@@ -62,6 +63,8 @@ i18n.use(initReactI18next).init({
         'Last Name': 'Achternaam',
         'Email': 'Email',
         'Gender': 'Geslacht',
+        'Size': 'Talla'
+
       },
     },
     de: {
@@ -90,6 +93,8 @@ i18n.use(initReactI18next).init({
         'Last Name': 'Apellido',
         'Email': 'Correo electrÃ³nico',
         'Gender': 'GÃ©nero',
+        'Size': 'maat'
+
       },
     },
   },

@@ -7,7 +7,6 @@ import {useSelector, useDispatch} from 'react-redux';
 import AuthNavigation from './AuthNavigation';
 import {navigationRef} from './NavigationService';
 import {IThemeState} from './models/reducers/theme';
-import ThemeController from '../components/ThemeController';
 import {StatusBar, View} from 'react-native';
 import {ILoginState} from 'models/reducers/login';
 import AppNavigation from './AppNavigation';

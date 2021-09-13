@@ -1,15 +1,11 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Text} from 'react-native-paper';
 import {ILoginState} from 'models/reducers/login';
-import ThemeController from '../components/ThemeController';
-import Home from 'screens/Home';
 import Favorite from './../screens/Favorite/index';
 import Explore from './../screens/Explore/index';
 import UserDetail from './../screens/UserDetail/index';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import i18n from './../../../components/Languages/i18n';
 import {useTranslation} from 'react-i18next';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {heightPercentageToDP} from 'react-native-responsive-screen';
@@ -18,10 +14,8 @@ import {DrawerActions} from '@react-navigation/native';
 import {useStyles} from './header';
 import {useNavigation} from '@react-navigation/core';
 import {useTheme} from 'react-native-paper';
-import {themeTools} from 'native-base';
 const Tab = createBottomTabNavigator();
-const AppStack = createNativeStackNavigator();
-const Stack = createNativeStackNavigator();
+
 
 interface IState {
   loginReducer: ILoginState;

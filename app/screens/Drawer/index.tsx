@@ -1,31 +1,28 @@
-import React, {useEffect, useState} from 'react';
-import {View, TouchableOpacity, Alert} from 'react-native';
-import {DrawerItem, DrawerContentScrollView} from '@react-navigation/drawer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/core';
+import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
+import {TabActions} from '@react-navigation/native';
+import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {TouchableOpacity, View} from 'react-native';
 import {
   Avatar,
-  Title,
   Button,
   Caption,
-  Paragraph,
-  Text,
   List,
+  Paragraph,
   RadioButton,
-  Checkbox,
+  Text,
+  Title,
+  useTheme,
 } from 'react-native-paper';
-import {useTheme} from 'react-native-paper';
-import {useStyles} from './styles';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import ThemeController from '../../components/ThemeController';
 import {useDispatch, useSelector} from 'react-redux';
-import {TabActions} from '@react-navigation/native';
 import * as loginActions from 'store/actions/loginActions';
-import styles from './styles';
-import {useNavigation} from '@react-navigation/core';
-
-import {useTranslation} from 'react-i18next';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import ThemeController from '../../components/ThemeController';
 import i18n from '../../config/Languages/index';
+import {useStyles} from './styles';
+
 const initI18n = i18n;
 interface IProps {
   props: IProps;

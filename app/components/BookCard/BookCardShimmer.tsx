@@ -1,34 +1,13 @@
 import React from 'react';
-import {View,TouchableOpacity,TouchableHighlight, Image, ScrollView,FlatList, Alert, BackHandler} from 'react-native';
+import {View} from 'react-native';
 import {Text} from 'react-native-paper';
-//for loading screen
-import Shimmer from 'react-native-shimmer';
-//image with placeholder
-import FastImage from 'react-native-fast-image';
-import NavigationService from './../../navigation/NavigationService';
-//verctor icons
-import Icon from 'react-native-vector-icons/FontAwesome';
 //importing style
 import styles from './styles';
-//for responsive screen
-import { heightPercentageToDP } from 'react-native-responsive-screen';
 
 interface Props {
-  url?: string;
-  bookTitle?: string;
   styleSelect: 'General' | 'Custom' | 'Large';
-  isFavorite?: boolean;
-  refreshing?: boolean;
-  authorName?: string;
 }
-const BookCardShimmer: React.FC<Props> = ({
-  url,
-  styleSelect,
-  isFavorite,
-  bookTitle,
-  refreshing,
-  authorName,
-}) => {
+const BookCardShimmer: React.FC<Props> = ({styleSelect}) => {
   return (
     <View style={styles.bookView}>
       <View

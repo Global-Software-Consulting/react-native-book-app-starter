@@ -3,8 +3,8 @@
  * Avoid data persist
  */
 import createReducer from 'lib/createReducer';
-import * as types from 'store/actions/types';
 import { ILoading } from 'models/reducers/loading';
+import * as types from 'store/actions/types';
 
 const initialState: ILoading = {
   isLoginLoading: false,

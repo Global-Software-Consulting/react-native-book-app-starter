@@ -1,17 +1,15 @@
-import React, {useState, useEffect} from 'react';
-import {View, Alert, BackHandler,ScrollView} from 'react-native';
-import {Text, List} from 'react-native-paper';
-import NavigationService from './../../navigation/NavigationService';
-import { useRoute } from '@react-navigation/native';
-import {useStyles} from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import {Alert, BackHandler, ScrollView} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import i18n from '../../config/Languages/index';
-import {useSelector} from 'react-redux';
+import NavigationService from './../../navigation/NavigationService';
 import * as appActions from './../../store/actions/appActions';
 //importing components
 import BookDetailComponent from './components/BookDetailComponent';
 import BookDetailShimmer from './components/BookDetailShimmer';
+import {useStyles} from './styles';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 
 const initI18n = i18n;
@@ -20,11 +18,14 @@ const BookDetail: React.FC = props => {
 
   const {t, i18n} = useTranslation(); //for translation
 
+  const dispatch = useDispatch();
   const bookId = props.route.params; //getting routed params
 
-  const bookData = useSelector(state => state.bookFetchReducer.bookDetail);
+  const bookData = useSelector(state => state.appReducer.bookDetail);
 
-  const getTokenAndNavigate = async (id: any) => {
+  console.log('book detail is ', bookData);
+
+  const getTokenAndGetBookDetail = async () => {
     try {
       const value = await AsyncStorage.getItem('token');
       if (value !== null) {
@@ -41,6 +42,7 @@ const BookDetail: React.FC = props => {
 
   //handling back hardware button
   useEffect(() => {
+    getTokenAndGetBookDetail();
     const backAction = () => {
       NavigationService.goBack();
     };

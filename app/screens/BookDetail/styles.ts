@@ -1,18 +1,94 @@
 import { StyleSheet } from 'react-native';
-import { color } from 'react-native-reanimated';
-import {useTheme} from 'react-native-paper';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { useTheme } from 'react-native-paper';
+import { heightPercentageToDP as hp, widthPercentageToDP, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 export const useStyles = () => {
 
 const theme = useTheme();
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
  paddingVertical:45,
  paddingHorizontal:10,
   },
+  subView:
+  {
+    flexDirection: 'column'
+  },
+  genreText:
+  {
+    fontWeight: '300', fontSize: 15
+  },
+  launchedSubView:
+  {
+    flexDirection: 'column'
+},
+launchedText:
+{
+  fontWeight: '300', fontSize: 15
+},
+dynamicLaunchedText:
+{
+  fontWeight: 'bold',
+  fontSize: 15,
+  maxWidth: widthPercentageToDP('25%'),
+},
+dynamicSize:
+{
+  fontWeight: 'bold',
+  fontSize: 15,
+  maxWidth: widthPercentageToDP('25%'),
+},
+synopseView:
+{
+  flexDirection: 'column', margin: 30
+},
+subShimmerView:
+{
+  margin: 20,
+  height: heightPercentageToDP('20'),
+  width: widthPercentageToDP('80'),
+  alignSelf: 'center',
+  backgroundColor: '#E7E5E7',
+},
+mainShimmerView:
+{
+  margin: 20,
+  height: heightPercentageToDP('20'),
+  width: widthPercentageToDP('80'),
+  alignSelf: 'center',
+  backgroundColor: '#E7E5E7',
+},
+dynamicSynopse:
+{
+  fontWeight: '400', fontSize: 15, marginBottom: 30
+},
+synopseText:
+{
+  fontWeight: '300', fontSize: 15, marginBottom: 10
+},
+
+sizeText:
+{
+  fontWeight: '300', fontSize: 15
+},
+pagesSubView:
+{
+  flexDirection: 'column'
+},
+  dynamicGenreText:
+  {
+      fontWeight: 'bold',
+      fontSize: 15,
+      maxWidth: widthPercentageToDP('25%'),
+    
+  },
+  mainView:
+    {
+      flexDirection: 'row',
+      marginTop: 20,
+      justifyContent: 'space-evenly',
+    },
   nameStyle: {
     fontSize: hp('3%'),
     fontWeight: 'bold',

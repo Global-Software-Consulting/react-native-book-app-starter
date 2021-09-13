@@ -2,17 +2,17 @@
  * React Native .
  * Everything starts from the Entry-point
  */
-import React,{useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {ActivityIndicator} from 'react-native';
-import {Provider, useSelector} from 'react-redux';
-import {PersistGate} from 'redux-persist/es/integration/react';
+import CodePush from 'react-native-code-push';
 import {Provider as PaperProvider} from 'react-native-paper';
 import SplashScreen from 'react-native-splash-screen';
-import {defaultTheme, darkTheme,} from './config/theme';
+import {Provider, useSelector} from 'react-redux';
+import {PersistGate} from 'redux-persist/es/integration/react';
+import {darkTheme, defaultTheme} from './config/theme';
+import {IThemeState} from './models/reducers/theme';
 import Navigator from './navigation';
 import configureStore from './store';
-import {IThemeState} from './models/reducers/theme';
-import CodePush from 'react-native-code-push';
 
 const {persistor, store} = configureStore();
 

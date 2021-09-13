@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { color } from 'react-native-reanimated';
 import {useTheme} from 'react-native-paper';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp, heightPercentageToDP, widthPercentageToDP} from 'react-native-responsive-screen';
 
 export const useStyles = () => {
 
@@ -12,6 +12,19 @@ const styles = StyleSheet.create({
     flex: 1,
  paddingVertical:45,
  paddingHorizontal:10,
+  },
+  favoriteView:
+  {
+    flex: 1
+  },
+  bookmarkStyle:
+  {
+    margin: 2
+  },
+  imageError:
+  {
+    height: heightPercentageToDP('50%'),
+    width: widthPercentageToDP('50%'),
   },
   nameStyle: {
     fontSize: hp('3%'),

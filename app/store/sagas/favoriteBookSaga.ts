@@ -1,5 +1,4 @@
-import { put, call } from "redux-saga/effects";
-import { Alert } from "react-native";
+import { call, put } from "redux-saga/effects";
 import fetchFavoriteBooks from "../../services/fetchFavoriteBooks";
 import * as appActions from "../actions/appActions";
 

@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {View,TouchableHighlight,FlatList, Alert, BackHandler} from 'react-native';
-import {Text} from 'react-native-paper';
-//importing card component
-import BookCard from './../../../components/BookCard/BookCard';
-import {useStyles} from '../styles'
-import { widthPercentageToDP } from 'react-native-responsive-screen';
-import i18n from './../../../config/Languages/index';
+import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import {StyleSheet, View} from 'react-native';
+import {Text} from 'react-native-paper';
+import {widthPercentageToDP} from 'react-native-responsive-screen';
+import {useStyles} from '../styles';
+import BookCard from './../../../components/BookCard/BookCard';
+import i18n from './../../../config/Languages';
 
+//importing card component
 interface Props {
   books?: [];
   base_url?: string;
@@ -42,58 +42,31 @@ const BookDetailComponent: React.FC<Props> = ({books, base_url}) => {
 
       <View style={styles.horizontalRuler} />
 
-      <View
-        style={{
-          flexDirection: 'row',
-          marginTop: 20,
-          justifyContent: 'space-evenly',
-        }}>
-        <View style={{flexDirection: 'column'}}>
-          <Text style={{fontWeight: '300', fontSize: 15}}>{t('Genre')}</Text>
-          <Text
-            style={{
-              fontWeight: 'bold',
-              fontSize: 15,
-              maxWidth: widthPercentageToDP('25%'),
-            }}>
-            {genre}
+      <View style={styles.mainView}>
+        <View style={styles.subView}>
+          <Text style={styles.genreText}>{t('Genre')}</Text>
+          <Text style={styles.dynamicGenreText}>{genre}</Text>
+        </View>
+
+        <View style={styles.launchedSubView}>
+          <Text style={styles.launchedText}> {t('Launched')}</Text>
+          <Text style={styles.dynamicLaunchedtext}>
+            {/* {launched.substring(0, 10)} */}
           </Text>
         </View>
 
-        <View style={{flexDirection: 'column'}}>
-          <Text style={{fontWeight: '300', fontSize: 15}}>
-            {' '}
-            {t('Launched')}
-          </Text>
-          <Text
-            style={{
-              fontWeight: 'bold',
-              fontSize: 15,
-              maxWidth: widthPercentageToDP('25%'),
-            }}>
-            {launched.substring(0, 10)}
-          </Text>
-        </View>
-
-        <View style={{flexDirection: 'column'}}>
-          <Text style={{fontWeight: '300', fontSize: 15}}>{t('Size')}</Text>
-          <Text
-            style={{
-              fontWeight: 'bold',
-              fontSize: 15,
-              maxWidth: widthPercentageToDP('25%'),
-            }}>
+        <View style={styles.pagesSubView}>
+          <Text style={styles.sizeText}>{t('Size')}</Text>
+          <Text style={styles.dynamicSize}>
             {pages} {t(' pages')}
           </Text>
         </View>
       </View>
 
-      <View style={{flexDirection: 'column', margin: 30}}>
-        <Text style={{fontWeight: '300', fontSize: 15, marginBottom: 10}}>
-          {t('Synopse')}
-        </Text>
+      <View style={styles.synopseView}>
+        <Text style={styles.synopseText}>{t('Synopse')}</Text>
         <Text
-          style={{fontWeight: '400', fontSize: 15, marginBottom: 30}}
+          style={styles.dynamicSynopse}
           onPress={toggleNumberOfLines}
           numberOfLines={textShown ? undefined : 2}>
           {books.shortSummary}

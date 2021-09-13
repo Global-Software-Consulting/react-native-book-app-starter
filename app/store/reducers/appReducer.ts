@@ -1,8 +1,7 @@
+import { IBookState } from 'app/models/reducers/fetchBooks';
 import createReducer from 'lib/createReducer';
 import * as types from 'store/actions/types';
-import { IBookState } from 'app/models/reducers/fetchBooks';
-import { IBookResponse,IBookRequest,IFetchBooksLoading,IFetchBooksLoadingStop } from './../../models/actions/fetchBooks'
-import BookDetail from 'app/screens/BookDetail';
+import { IBookRequest, IBookResponse, IFetchBooksLoading, IFetchBooksLoadingStop } from './../../models/actions/fetchBooks';
 
 
 const initialState: IBookState = {
@@ -12,7 +11,7 @@ favorite: [],
 bookDetail:[]
 };
 
-export const bookFetchReducer = createReducer(initialState, {
+export const appReducer = createReducer(initialState, {
     [types.FETCH_BOOKLIST_REQUEST](state: IBookState, action: IBookRequest) {
       return {
         ...state,

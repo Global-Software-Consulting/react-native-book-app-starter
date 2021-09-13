@@ -1,5 +1,5 @@
+import ApiConfig from './../config/api-config';
 import Api from './client';
-import ApiConfig from './../config/api-config'
 
 export default function AddAnnotation(data:string) {
   return Api(

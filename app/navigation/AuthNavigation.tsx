@@ -3,8 +3,6 @@ import * as React from 'react';
 import {useSelector} from 'react-redux';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ILoginState} from 'models/reducers/login';
-import ThemeController from '../components/ThemeController';
-
 const AuthStack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
 import Login from 'screens/Login';

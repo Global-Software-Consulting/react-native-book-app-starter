@@ -1,11 +1,11 @@
-import { createStore, compose, applyMiddleware } from 'redux';
-import { persistStore, persistCombineReducers } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { applyMiddleware, compose, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
+import { persistCombineReducers, persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
-
 import rootReducers from 'store/reducers'; // where reducers is a object of reducers
 import sagas from 'store/sagas';
+
 
 const config = {
   key: 'root',

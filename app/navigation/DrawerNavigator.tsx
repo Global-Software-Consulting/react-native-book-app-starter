@@ -4,14 +4,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ILoginState} from 'models/reducers/login';
 import Home from 'screens/Home';
 import Favorites from 'screens/Favorites';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import {isDark} from 'native-base/lib/typescript/theme/tools';
-import {Button} from 'react-native-paper';
-
-
+import {createDrawerNavigator} from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
-const AppStack = createNativeStackNavigator();
-const Stack = createNativeStackNavigator();
 interface IState {
   loginReducer: ILoginState;
 }

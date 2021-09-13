@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   Alert,
@@ -6,7 +6,6 @@ import {
   ScrollView,
   RefreshControl,
 } from 'react-native';
-import {Text, List} from 'react-native-paper';
 //importing card component
 import {useStyles} from './styles';
 import {useTranslation} from 'react-i18next';
@@ -15,9 +14,7 @@ import {useSelector, useDispatch} from 'react-redux';
 //importing components
 import FavoriteComponent from './components/FavoriteComponent';
 import FavoriteShimmer from './components/FavoriteShimmer';
-import {useFocusEffect} from '@react-navigation/native';
 import * as appActions from './../../store/actions/appActions';
-import {getDrawerStatusFromState} from '@react-navigation/drawer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 
@@ -26,8 +23,8 @@ const Favorite: React.FC = () => {
   //theme handling
   const styles = useStyles();
 
-  const favoriteBooks = useSelector(state => state.bookFetchReducer.favorite);
-  const isLoading = useSelector(state => state.bookFetchReducer.isFetching);
+  const favoriteBooks = useSelector(state => state.appReducer.favorite);
+  const isLoading = useSelector(state => state.appReducer.isFetching);
   //const [favoriteBookss, setFavoriteBookss] = useState(favoriteBooks);
 
   const {t, i18n} = useTranslation();
