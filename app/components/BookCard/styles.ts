@@ -128,6 +128,12 @@ heartIconTrending:
   marginVertical:hp('21%'),
   marginHorizontal:hp('1%')
 },
+heartIconLarge:
+{
+  position: 'absolute',
+  marginVertical:hp('26%'),
+  marginHorizontal:hp('2%')
+},
 textTitle:
 {
   maxWidth: wp('30%'),

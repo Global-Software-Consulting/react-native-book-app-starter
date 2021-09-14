@@ -58,4 +58,19 @@ export function IFetchBooksLoadingStop() {
       payload
     };
   }
+    export function IAddToFavoritesRequest(params:number) {
+      return {
+        type: types.ADD_TO_FAVORITE_REQUEST,
+        params
+      };
+    }
+    
+    export function IRemoveFromFavoritesRequest(params:number) {
+      return {
+        type: types.REMOVE_FROM_FAVORITE_REQUEST,
+        params
+      };
+    }
+   
+  
 

@@ -50,11 +50,12 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
 
   const fetchBookDetails = async () => {
     dispatch(appActions.IFetchBooksRequest('a'));
+    getFavoriteBooks();
   };
 
   //fetching favorite books
   const getFavoriteBooks = async () => {
-    dispatch(appActions.IFetchFavoriteBooksRequest('Sample'));
+    dispatch(appActions.IFetchFavoriteBooksRequest());
   };
 
   return (

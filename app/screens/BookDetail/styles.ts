@@ -27,6 +27,10 @@ launchedText:
 {
   fontWeight: '300', fontSize: 15
 },
+main: {
+  height: heightPercentageToDP('80%'),
+  backgroundColor:theme.colors.background
+},
 dynamicLaunchedText:
 {
   fontWeight: 'bold',

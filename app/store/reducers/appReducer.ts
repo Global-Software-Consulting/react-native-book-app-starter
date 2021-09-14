@@ -62,5 +62,19 @@ export const appReducer = createReducer(initialState, {
       };
     },
 
+    [types.ADD_TO_FAVORITE_REQUEST](state: IBookState, action: IBookRequest) {
+      return {
+        ...state,
+      };
+    },
+
+    [types.REMOVE_FROM_FAVORITE_REQUEST](state: IBookState, action: IBookRequest) {
+      return {
+        ...state,
+      };
+    },
+   
+  
+
 });
 

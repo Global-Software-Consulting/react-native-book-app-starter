@@ -16,9 +16,10 @@ yield put(appActions.IFetchBooksLoading());
     yield put(appActions.IFetchBooksLoadingStop());
   } 
   else if(response.status != 'success')
-
+  yield put(appActions.IFetchBooksResponse(response))
 
   {
 
   }
+  
 }

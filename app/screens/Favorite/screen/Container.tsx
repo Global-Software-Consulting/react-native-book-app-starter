@@ -12,6 +12,12 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
+import {
+  Menu,
+  MenuOption,
+  MenuOptions,
+  MenuTrigger,
+} from 'react-native-popup-menu';
 import {Text} from 'react-native-paper';
 import {useStyles} from '../styles';
 import {heightPercentageToDP} from 'react-native-responsive-screen';
@@ -39,6 +45,7 @@ const Container: React.FC<Props> = ({books, base_url}) => {
   const navigation = useNavigation();
   const isLoading = useSelector(state => state.appReducer.isFetching);
   const favoriteBooks = useSelector(state => state.appReducer.favorite);
+
   useEffect(() => {
     getFavoriteBooks;
   }, []);
@@ -75,8 +82,10 @@ const Container: React.FC<Props> = ({books, base_url}) => {
                 }
                 styleSelect="Large"
                 title={item?.book?.title}
+                id={item?.book.id}
                 bookTitle={item?.book?.title}
-                hideIcon={true}
+                book={favoriteBooks}
+                hideIcon={false}
               />
             </TouchableHighlight>
           )}

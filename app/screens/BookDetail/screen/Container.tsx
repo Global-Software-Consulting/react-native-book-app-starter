@@ -31,7 +31,7 @@ const Container: React.FC<Props> = ({books, base_url}) => {
   };
 
   return (
-    <View style={{height: heightPercentageToDP('80%')}}>
+    <View style={styles.main}>
       <ScrollView>
         <BookCard
           styleSelect="ExtraLarge"
@@ -51,8 +51,8 @@ const Container: React.FC<Props> = ({books, base_url}) => {
 
           <View style={styles.launchedSubView}>
             <Text style={styles.launchedText}> {t('Launched')}</Text>
-            <Text style={styles.dynamicLaunchedtext}>
-              {/* {launched.substring(0, 10)} */}
+            <Text style={styles.dynamicLaunchedText}>
+              {launched.substring(0, 10)}
             </Text>
           </View>
 

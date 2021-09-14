@@ -23,6 +23,7 @@ const UserDetail: React.FC = () => {
   const [firstName, setFirstName] = useState(userDetails.firstName);
   const [lastName, setLastName] = useState(userDetails.lastName);
   const [email, setEmail] = useState(userDetails.email);
+
   const {t, i18n} = useTranslation();
   const styles = useStyles();
   console.log('usero', userDetails);

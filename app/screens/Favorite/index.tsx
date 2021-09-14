@@ -16,13 +16,14 @@ import Shimmer from './screen/Shimmer';
 import Container from './screen/Container';
 import * as appActions from 'store/actions/appActions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useIsFocused} from '@react-navigation/core';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 
 const initI18n = i18n;
 const Favorite: React.FC = () => {
   //theme handling
   const styles = useStyles();
-
+  const isFocused = useIsFocused();
   const favoriteBooks = useSelector(state => state.appReducer.favorite);
   const isLoading = useSelector(state => state.appReducer.isFetching);
   //const [favoriteBookss, setFavoriteBookss] = useState(favoriteBooks);
@@ -43,10 +44,14 @@ const Favorite: React.FC = () => {
     } catch (e) {}
   };
 
-  //handling back hardware button
   useEffect(() => {
     console.log('it is called');
     getFavoriteBooks();
+  }, [isFocused]);
+
+  //handling back hardware button
+  useEffect(() => {
+    console.log('it is called');
     const backAction = () => {
       Alert.alert('Book App', 'Are you sure you want to exit?', [
         {
