@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
+import { color } from 'react-native-reanimated';
 import { heightPercentageToDP, heightPercentageToDP as hp, widthPercentageToDP, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 export const useStyles = () => {
@@ -40,16 +41,21 @@ const styles = StyleSheet.create({
   },
   inputField:
   {
-    width:wp('50%')
+    width:wp('50%'),
+    height: hp('5%'),
+    color:theme.colors.text
+    
   },
   infoView:
   {
-    marginTop:10,
+    marginTop:5,
     flexDirection:'row',
     borderWidth:1,
     borderColor:theme.colors.text,
     borderRadius:20,
-    padding:10,
+  alignContent:'center',
+  alignItems:'center',
+  paddingLeft:5,
     width: wp('80%')
   },
   editView:

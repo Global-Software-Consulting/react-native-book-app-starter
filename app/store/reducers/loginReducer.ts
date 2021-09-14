@@ -16,7 +16,8 @@ const initialState: ILoginState = {
   username: '',
   password: '',
   userData: [],
-  token:''
+  token:'',
+  signUpResponse:''
 };
 
 export const loginReducer = createReducer(initialState, {
@@ -33,7 +34,7 @@ export const loginReducer = createReducer(initialState, {
   [types.LOGIN_RESPONSE](state: ILoginState, action: ILoginResponseState) {
     return {
       ...state,
-      userData: ILoginResponseState
+      token: action.response
     };
   },
   [types.LOGIN_FAILED](state: ILoginState) {
@@ -69,6 +70,13 @@ export const loginReducer = createReducer(initialState, {
     return {
       ...state,
       userData: action.payload
+    };
+  },
+
+  [types.SIGN_UP_RESPONSE](state: ILoginState, action: ILoginResponseState) {
+    return {
+      ...state,
+      signUpResponse: action.payload
     };
   },
 });

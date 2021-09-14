@@ -17,10 +17,10 @@ const initI18n = i18n;
 const Container: React.FC<Props> = ({books, base_url}) => {
   //theme handling
   const styles = useStyles();
-  var author = 'Dummy author';
+  var author = books[0].bookAuthors[0].author.name;
   var genre = 'Dummy Genre';
-  var pages = books?.numberOfPages;
-  var launched = books?.createdAt;
+  var pages = books[0].numberOfPages;
+  var launched = books[0].createdAt;
   const {t, i18n} = useTranslation();
 
   const [textShown, setTextShown] = useState(false); //To show ur remaining Text
@@ -29,13 +29,13 @@ const Container: React.FC<Props> = ({books, base_url}) => {
     //To toggle the show text or hide it
     setTextShown(!textShown);
   };
-
+  console.log('Book detailo', books);
   return (
     <View style={styles.main}>
       <ScrollView>
         <BookCard
           styleSelect="ExtraLarge"
-          bookTitle={books.title}
+          bookTitle={books[0].title}
           authorName={author}
           hideIcon={true}
           url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU"
@@ -70,7 +70,7 @@ const Container: React.FC<Props> = ({books, base_url}) => {
             style={styles.dynamicSynopse}
             onPress={toggleNumberOfLines}
             numberOfLines={textShown ? undefined : 2}>
-            {books.shortSummary}
+            {books[0].shortSummary}
           </Text>
         </View>
       </ScrollView>

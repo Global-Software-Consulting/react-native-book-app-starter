@@ -15,15 +15,15 @@ const base_url = 'https://ebook-application.herokuapp.com/v1/';
 const initI18n = i18n;
 const BookDetail: React.FC = props => {
   const styles = useStyles(); //theme handling
+let token = '';
+const {t, i18n} = useTranslation(); //for translation
 
-  const {t, i18n} = useTranslation(); //for translation
+const dispatch = useDispatch();
+const bookId = props.route.params; //getting routed params
 
-  const dispatch = useDispatch();
-  const bookId = props.route.params; //getting routed params
+const bookData = useSelector(state => state.appReducer.bookDetail);
 
-  const bookData = useSelector(state => state.appReducer.bookDetail);
-
-  console.log('book detail is ', bookId);
+console.log('book detail is la ', bookId);
 
   const getDetail = async () => {
     dispatch(appActions.IFetchBookDetailRequest(bookId));

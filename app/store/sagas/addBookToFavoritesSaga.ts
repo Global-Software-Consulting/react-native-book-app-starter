@@ -11,18 +11,13 @@ export default function* addBooktoFavorite(action:string) {
 // yield put(appActions.IFetchBooksLoading());
   //calling api
   console.log('paramo', action)
-  let response = yield call(addBookToFavoite,action.params);
+  let response = yield call(addBookToFavoite, action.token, action.id);
 console.log('response detailo', response);
 
   if (response && response.status == 'success') {
 
     yield put(appActions.IFetchBooksLoadingStop())
-    let favBooks = yield call(fetchFavoriteBooks,action.params);
-
-    if (response && response.status == 'Success') {
-      yield put(appActions.IFetchFavoriteBooksResponse(favBooks.result))
-    }
-
+    
   } 
   else if(response.status != 'success')
   // yield put(appActions.IFetchBooksLoadingStop());

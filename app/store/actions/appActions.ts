@@ -45,10 +45,10 @@ export function IFetchBooksLoadingStop() {
     };
   }
 
-  export function IFetchBookDetailRequest(params:number) {
+  export function IFetchBookDetailRequest(id:number) {
     return {
       type: types.FETCH_FAVORITE_BOOKDETAIL_REQUEST,
-      params
+      id,
     };
   }
   
@@ -65,10 +65,11 @@ export function IFetchBooksLoadingStop() {
       };
     }
     
-    export function IRemoveFromFavoritesRequest(params:number) {
+    export function IRemoveFromFavoritesRequest(token:string,id:number) {
       return {
         type: types.REMOVE_FROM_FAVORITE_REQUEST,
-        params
+        id,
+      token
       };
     }
    

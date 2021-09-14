@@ -12,6 +12,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 //to update heart icon
 import {useIsFocused} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import addBooktoFavorite from 'store/sagas/addBookToFavoritesSaga';
 import * as appActions from 'store/actions/appActions';
 import addBookToFavoite from 'services/addBookToFavoite';
@@ -57,10 +58,25 @@ const BookCard: React.FC<Props> = ({
     // dispatch(appActions.IFetchFavoriteBooksRequest(token));
   };
 
-  const apiAddFavorite = () => {
+  const getToken = async () => {
+    try {
+      const value = await AsyncStorage.getItem('token');
+      if (value !== null) {
+        console.log('value is ', value);
+        return value;
+      } else {
+        return '';
+      }
+    } catch (e) {
+      return '';
+    }
+  };
+  const apiAddFavorite = async () => {
+    const token = await getToken();
+
     if (isFavorite) {
       setIsFavorite(false);
-      removeBookFromFavoite(id).then(response => {
+      removeBookFromFavoite(token, id).then(response => {
         console.log('removefromfavorites', response);
 
         if (response && response.status == 'success') {
@@ -73,7 +89,7 @@ const BookCard: React.FC<Props> = ({
     } else {
       setIsFavorite(true);
 
-      addBookToFavoite(id)
+      addBookToFavoite(token, id)
         .then(response => {
           console.log('addBookToFavoite', response);
 

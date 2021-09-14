@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/core';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {TabActions} from '@react-navigation/native';
+import * as themeActions from 'store/actions/themeActions';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {TouchableOpacity, View} from 'react-native';
@@ -22,6 +23,7 @@ import * as loginActions from 'store/actions/loginActions';
 import ThemeController from '../../components/ThemeController';
 import i18n from '../../config/Languages/index';
 import {useStyles} from './styles';
+import UserDetail from 'screens/UserDetail';
 
 const initI18n = i18n;
 interface IProps {
@@ -42,10 +44,7 @@ const Drawer: React.FC = props => {
   const onLogout = () => {
     AsyncStorage.removeItem('token');
     dispatch(loginActions.logOut());
-  };
-
-  const jumpToTab = screen => {
-    navigation.dispatch(TabActions.jumpTo(screen));
+    dispatch(themeActions.setIsDarkTheme(false));
   };
 
   return (
@@ -84,18 +83,14 @@ const Drawer: React.FC = props => {
             />
           )}
           label={t('Explore')}
-          onPress={() => {
-            jumpToTab(Explore);
-          }}
+          onPress={() => navigation.dispatch(Explore)}
         />
         <DrawerItem
           icon={({color, size}) => (
             <MaterialCommunityIcons name="tune" color={color} size={size} />
           )}
           label={t('Favorite')}
-          onPress={() => {
-            jumpToTab(Favorite);
-          }}
+          onPress={() => navigation.dispatch(Favorite)}
         />
         <DrawerItem
           icon={({color, size}) => (
@@ -106,9 +101,7 @@ const Drawer: React.FC = props => {
             />
           )}
           label={t('User Details')}
-          onPress={() => {
-            jumpToTab(Detail);
-          }}
+          onPress={() => navigation.dispatch(Detail)}
         />
 
         <View style={styles.preference}>

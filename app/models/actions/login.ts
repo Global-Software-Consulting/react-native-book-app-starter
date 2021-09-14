@@ -3,6 +3,7 @@ export interface ILoginRequestState {
   token: string;
   username: string;
   password: string;
+  signupResponse:string;
 }
 
 interface IResponse {

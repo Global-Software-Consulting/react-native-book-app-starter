@@ -1,6 +1,6 @@
 import images from 'config/images';
 import React, {useState} from 'react';
-import {Button, Image, TextInput, View} from 'react-native';
+import {Button, Image, TextInput, View, ScrollView, Alert} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import {Text} from 'react-native-paper';
 import {
@@ -13,6 +13,10 @@ import {useDispatch, useSelector} from 'react-redux';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {useStyles} from 'screens/Signup/styles';
 import * as loginActions from 'store/actions/loginActions';
+import {
+  widthPercentageToDP,
+  heightPercentageToDP,
+} from 'react-native-responsive-screen';
 const Signup: React.FC = () => {
   const dispatch = useDispatch();
   //defining states
@@ -21,21 +25,58 @@ const Signup: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [open, setOpen] = useState(false);
+  const signupResponse = useSelector(state => {
+    state.loginReducer.signUpResponse;
+  });
   const [value, setValue] = useState(null);
+  const signUpStatus = useSelector(state => state.loginReducer.signUpResponse);
   const [gender, setGender] = useState([
-    {label: 'Male', value: 'Male'},
-    {label: 'Female', value: 'Female'},
+    {label: 'Male', value: 'male'},
+    {label: 'Female', value: 'female'},
   ]);
   const {
     control,
     handleSubmit,
     formState: {errors},
   } = useForm();
-  const onSubmit = data => console.log(data);
+
+  const storeData = async value => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem('token', jsonValue);
+    } catch (e) {
+      // saving error
+    }
+  };
+
+  const performSignUp = async data => {
+    dispatch(loginActions.ISignupRequest(data));
+    if (signUpStatus.status == 'success') {
+      await storeData(signUpStatus.token);
+      dispatch(loginActions.setLoggedIn());
+    } else {
+      Alert.alert('Book App', 'Registration failed');
+    }
+  };
+
+  const onSubmit = data => {
+    performSignUp(data);
+  };
 
   const styles = useStyles();
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={{alignItems: 'center'}}>
+      <Image
+        source={images.app.logo}
+        style={{
+          alignSelf: 'center',
+          marginTop: 20,
+          width: widthPercentageToDP('40%'),
+          height: heightPercentageToDP('30%'),
+        }}
+      />
       <Text style={styles.mainHeading}>Fill in the sign up form</Text>
       <View>
         <Text style={styles.subHeading}>First Name </Text>
@@ -52,8 +93,8 @@ const Signup: React.FC = () => {
                 autoCapitalize="none"
                 autoCorrect={false}
                 style={styles.inputField}
-                value={firstName}
-                onChangeText={text => setFirstName(text)}
+                value={value}
+                onChangeText={text => onChange(text)}
               />
             )}
             name="firstName"
@@ -75,8 +116,8 @@ const Signup: React.FC = () => {
                 autoCapitalize="none"
                 autoCorrect={false}
                 style={styles.inputField}
-                value={lastName}
-                onChangeText={text => setLastName(text)}
+                value={value}
+                onChangeText={text => onChange(text)}
               />
             )}
             name="lastName"
@@ -98,14 +139,38 @@ const Signup: React.FC = () => {
                 autoCapitalize="none"
                 autoCorrect={false}
                 style={styles.inputField}
-                value={email}
-                onChangeText={text => setEmail(text)}
+                value={value}
+                onChangeText={text => onChange(text)}
               />
             )}
             name="email"
             defaultValue=""
           />
           {errors.email && <Text>Email is required.</Text>}
+        </View>
+
+        <Text style={styles.subHeading}>Password</Text>
+        <View style={styles.infoView}>
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({field: {onChange, onBlur, value}}) => (
+              <TextInput
+                placeholder="Enter password"
+                secureTextEntry={true}
+                autoCapitalize="none"
+                autoCorrect={false}
+                style={styles.inputField}
+                value={value}
+                onChangeText={text => onChange(text)}
+              />
+            )}
+            name="password"
+            defaultValue=""
+          />
+          {errors.lastName && <Text>Last name is required.</Text>}
         </View>
       </View>
 
@@ -121,13 +186,16 @@ const Signup: React.FC = () => {
             value={value}
             items={gender}
             setOpen={setOpen}
-            setValue={setValue}
-            setItems={setGender}
+            setValue={onChange}
+            setItems={value => console.log(value)}
             style={styles.dropDown}
             dropDownContainerStyle={styles.dropDown}
+            onChangeValue={value => {
+              console.log('2', value);
+            }}
           />
         )}
-        name="value"
+        name="gender"
         defaultValue=""
       />
       {errors.value && <Text>Please provide gender</Text>}
@@ -138,7 +206,7 @@ const Signup: React.FC = () => {
           title="Sign up"
           style={styles.editButton}></Button>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

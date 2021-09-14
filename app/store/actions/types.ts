@@ -15,6 +15,10 @@ export const SET_LOGGED_IN = 'SET_LOGGED_IN';
 export const USER_DETAILS_REQUEST = 'USER_DETAILS_REQUEST';
 export const USER_DETAILS_RESPONSE = 'USER_DETAILS_RESPONSE';
 export const SET_TOKEN = 'SET_TOKEN';
+export const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST ';
+export const SIGN_UP_RESPONSE = 'SIGN_UP_RESPONSE';
+
+
 
 
 // explore

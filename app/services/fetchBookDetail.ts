@@ -3,8 +3,7 @@ import Api from './client';
 
 export default function AddAnnotation(id:number) {
   return Api(
-    ApiConfig.BASE_URL + ApiConfig.BOOKDETAIL + id,
-null,
-    'GET', 'byHeader'
-  );
+    ApiConfig.BASE_URL + ApiConfig.BOOKDETAIL,
+id,
+    'GET', 'byParams'  );
 }

@@ -70,3 +70,17 @@ export function userDetailsResponse(payload: ILoginResponse) {
    payload
   }
 }
+
+export function ISignupRequest(params:object) {
+  return {
+    type: types.SIGN_UP_REQUEST,
+    params
+  };
+}
+
+export function ISignupResponse(payload: ILoginResponse) {
+  return {
+    type: types.SIGN_UP_RESPONSE,
+    payload
+  };
+}

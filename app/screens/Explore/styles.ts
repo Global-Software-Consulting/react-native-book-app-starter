@@ -10,18 +10,19 @@ const theme = useTheme();
 const styles = StyleSheet.create({
   container: {
     flex: 1,
- paddingVertical:20,
+ paddingVertical:10,
  paddingHorizontal:30,
- backgroundColor: theme.colors.background
+ backgroundColor: theme.colors.background,
+ marginBottom:hp('10%')
   },
   mainViewSetting:
-  {height: hp('80%')},
+  {height: hp('100%')},
   name: {
     fontSize: hp('3%'),
     fontWeight: 'bold',
     fontFamily: 'Avenir-Medium',
     alignItems:'center',
-    color: theme.colors.text
+    color: theme.colors.text,
   
   },
   nameShimmer: {

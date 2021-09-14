@@ -5,4 +5,5 @@ export interface ILoginState {
   password: string;
 userData: [];
 token:any;
+signUpResponse:any;
 }

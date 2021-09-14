@@ -10,14 +10,14 @@ const styles = StyleSheet.create({
   container:
   {
     flex:1,
-    backgroundColor: theme.colors.background,
-    alignItems:'center',
+    backgroundColor: 'white',
   },
   dropDown: {
 width:wp('80%'),
 alignSelf:'center',
 borderRadius:20,
-marginTop:10
+marginTop:10,
+
   },
   displayPicture:
   {
@@ -49,7 +49,8 @@ marginTop:10
   },
   inputField:
   {
-    width:wp('50%')
+    width:wp('50%'),
+    color:'black'
   },
   infoView:
   {
@@ -57,7 +58,8 @@ marginTop:10
     borderWidth:1,
     borderColor:theme.colors.text,
     borderRadius:20,
-    padding:10,
+   alignItems:'center',
+   justifyContent:'center',
     width: wp('80%')
   },
   editView:
@@ -72,7 +74,8 @@ marginTop:10
         alignItems:'center',
         textAlign:'center',
         color:theme.colors.text,
-        padding:10
+        padding:10,
+        marginBottom:30
         
       
       },

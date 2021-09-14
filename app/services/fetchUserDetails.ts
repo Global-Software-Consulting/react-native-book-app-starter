@@ -4,7 +4,7 @@ import { StringMap } from 'i18next';
 
 export default function AddAnnotation(token:any) {
   return Api(
-    ApiConfig.BASE_URL + ApiConfig.USERDETAILS ,
+    ApiConfig.BASE_URL + ApiConfig.USERDETAILS,
 token,
     'GET', 'byHeader'
   );

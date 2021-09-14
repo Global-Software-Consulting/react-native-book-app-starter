@@ -1,26 +1,35 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useNavigation} from '@react-navigation/core';
-import images from 'config/images';
-import i18n from 'config/Languages/index';
-import {ILoginState} from 'models/reducers/login';
-import React, {useState} from 'react';
-import {useTranslation} from 'react-i18next';
+import React, {useEffect, useState} from 'react';
 import {
+  View,
+  Text,
   ActivityIndicator,
   Alert,
+  KeyboardAvoidingView,
   Image,
-  Text,
   TextInput,
-  View,
 } from 'react-native';
-import {TouchableHighlight} from 'react-native-gesture-handler';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import images from './../../config/images';
 import {Button} from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import AddAnnotation from 'services/loginUser';
-import * as loginActions from 'store/actions/loginActions';
+import * as loginActions from './../../store/actions/loginActions';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
+import {ILoginState} from 'models/reducers/login';
+import AddAnnotation, * as loginReq from './../../services/loginUser';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/core';
+import {useTranslation} from 'react-i18next';
+import i18n from '../../components/Languages/i18n';
+import {
+  heightPercentageToDP,
+  widthPercentageToDP,
+} from 'react-native-responsive-screen';
+import {
+  TouchableOpacity,
+  TouchableHighlight,
+} from 'react-native-gesture-handler';
+import {add} from 'react-native-reanimated';
 const initI18n = i18n;
 interface IState {
   loginReducer: ILoginState;
@@ -30,21 +39,19 @@ const Login: React.FC = () => {
   const {t, i18n} = useTranslation();
   const id = useSelector((state: IState) => state.loginReducer.id);
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
+  const onForgot = () => NavigationService.navigate('ForgotPassword');
   const [email, setEmail] = useState('fsdf');
   const [password, setPassword] = useState('fds');
   const [secure, setSecure] = useState(true);
-  const navigation = useNavigation();
   const [showActivityIndicator, setShowActivityIndicator] = useState(false);
   const getData = async () => {
     try {
       const value = await AsyncStorage.getItem('token');
       if (value !== null) {
-        const parsedValue = JSON.parse(value);
-        const token = parsedValue.token;
         dispatch(loginActions.userDetailsRequest(value));
         dispatch(loginActions.setLoggedIn());
-        dispatch(loginActions.setToken(token));
       } else {
         Alert.alert('Book App', 'Please check your email and password');
       }
@@ -63,9 +70,32 @@ const Login: React.FC = () => {
 
   return (
     <KeyboardAwareScrollView style={{backgroundColor: 'white'}}>
-      <Image source={images.app.logo} style={styles.logo} />
-      <Text style={styles.heading}>Log In Now</Text>
-      <Text style={styles.guidingline}>
+      <Image
+        source={images.app.logo}
+        style={{
+          alignSelf: 'center',
+          marginTop: 20,
+          width: widthPercentageToDP('40%'),
+          height: heightPercentageToDP('30%'),
+        }}
+      />
+      <Text
+        style={{
+          fontSize: 30,
+          fontWeight: '500',
+          alignSelf: 'center',
+          justifyContent: 'center',
+          marginTop: 20,
+        }}>
+        Log In Now
+      </Text>
+      <Text
+        style={{
+          fontSize: 15,
+          fontWeight: '300',
+          color: 'grey',
+          alignSelf: 'center',
+        }}>
         Please login to continue using our app
       </Text>
 
@@ -74,49 +104,102 @@ const Login: React.FC = () => {
         placeholder="Email"
         placeholderTextColor="black"
         onChangeText={keyword => setEmail(keyword)}
-        style={styles.emailText}
+        style={{
+          width: widthPercentageToDP('80%'),
+          height: heightPercentageToDP('5%'),
+          padding: 5,
+          alignSelf: 'center',
+          borderWidth: 1,
+          borderRadius: 20,
+          marginTop: 10,
+          backgroundColor: 'white',
+        }}
       />
 
-      <View style={styles.passwordView}>
+      <View
+        style={{
+          marginBottom: 20,
+          flexDirection: 'row',
+          borderColor: 'black',
+          borderWidth: 1,
+          borderRadius: 30,
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          width: widthPercentageToDP('80%'),
+          height: heightPercentageToDP('5%'),
+          marginTop: 5,
+          alignSelf: 'center',
+        }}>
         <TextInput
           autoCorrect={false}
           placeholder="Password"
           onChangeText={keyword => setPassword(keyword)}
           placeholderTextColor="black"
           secureTextEntry={secure}
-          style={styles.passwordText}
+          style={{
+            padding: 5,
+            alignSelf: 'center',
+            borderRadius: 20,
+            margin: 5,
+            backgroundColor: 'white',
+            width: widthPercentageToDP('60%'),
+          }}
         />
         <Icon
           name="remove-red-eye"
           size={30}
-          style={styles.iconEye}
+          style={{margin: 6}}
           onPress={() => setSecure(!secure)}
         />
       </View>
 
       <TouchableHighlight
-        style={styles.touchableHighlight}
-        onPress={() => navigation.navigate('ForgotPassword')}
-        underlayColor="transparent">
-        <Text style={styles.forgotPasswordText}>Forgot Password</Text>
+        style={{
+          justifyContent: 'center',
+          alignContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Text
+          style={{
+            alignSelf: 'flex-end',
+            marginRight: 20,
+            color: 'black',
+            justifyContent: 'center',
+          }}
+          onPress={() => navigation.navigate('ForgotPassword')}>
+          Forgot Password
+        </Text>
       </TouchableHighlight>
 
-      <View style={styles.loginView}>
+      <View
+        style={{
+          backgroundColor: '#491484',
+          alignContent: 'center',
+          alignSelf: 'center',
+          justifyContent: 'space-between',
+          flexDirection: 'row',
+          marginTop: 15,
+        }}>
         <Button
           onPress={performLoginOperation}
           disabled={showActivityIndicator}
-          style={styles.loginButton}>
-          <Text style={styles.loginText}>Log in</Text>
+          style={{
+            height: heightPercentageToDP('5 %'),
+            width: widthPercentageToDP('60%'),
+            marginTop: 5,
+          }}>
+          <Text style={{color: 'white'}}>Log in</Text>
         </Button>
         {showActivityIndicator && (
-          <ActivityIndicator color="white" style={styles.activityIndicator} />
+          <ActivityIndicator color="white" style={{margin: 5}} />
         )}
       </View>
 
-      <View style={styles.textMessage}>
+      <View
+        style={{flexDirection: 'row', justifyContent: 'center', marginTop: 5}}>
         <Text>Do not have an account? </Text>
         <Text
-          style={styles.signupText}
+          style={{color: '#db7093'}}
           onPress={() => navigation.navigate('Signup')}>
           Sign up
         </Text>

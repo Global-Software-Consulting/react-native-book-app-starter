@@ -1,5 +1,5 @@
 import images from 'config/images';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Image, TextInput, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {
@@ -13,6 +13,8 @@ import {useStyles} from 'screens/UserDetail/styles';
 import i18n from 'components/Languages/i18n';
 import {useTranslation} from 'react-i18next';
 import * as loginActions from 'store/actions/loginActions';
+import {useIsFocused} from '@react-navigation/core';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const initI18n = i18n;
 const UserDetail: React.FC = () => {
   const dispatch = useDispatch();
@@ -23,10 +25,30 @@ const UserDetail: React.FC = () => {
   const [firstName, setFirstName] = useState(userDetails.firstName);
   const [lastName, setLastName] = useState(userDetails.lastName);
   const [email, setEmail] = useState(userDetails.email);
-
+  const IsFocused = useIsFocused();
   const {t, i18n} = useTranslation();
   const styles = useStyles();
   console.log('usero', userDetails);
+
+  const getToken = async () => {
+    try {
+      const value = await AsyncStorage.getItem('token');
+      if (value !== null) {
+        return value;
+      } else {
+      }
+    } catch (e) {}
+  };
+
+  const updateDetails = async () => {
+    const token = await getToken();
+    dispatch(loginActions.userDetailsRequest(token));
+  };
+
+  useEffect(() => {
+    updateDetails();
+  }, [IsFocused]);
+
   return (
     <View style={styles.container}>
       <Menu>

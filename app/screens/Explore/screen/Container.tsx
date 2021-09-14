@@ -52,10 +52,23 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
     dispatch(appActions.IFetchBooksRequest('a'));
     getFavoriteBooks();
   };
-
+  const getToken = async () => {
+    try {
+      const value = await AsyncStorage.getItem('token');
+      if (value !== null) {
+        console.log('value is ', value);
+        return value;
+      } else {
+        return '';
+      }
+    } catch (e) {
+      return '';
+    }
+  };
   //fetching favorite books
   const getFavoriteBooks = async () => {
-    dispatch(appActions.IFetchFavoriteBooksRequest());
+    const token = await getToken();
+    dispatch(appActions.IFetchFavoriteBooksRequest(token));
   };
 
   return (

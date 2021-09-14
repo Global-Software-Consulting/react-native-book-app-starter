@@ -15,6 +15,7 @@ import i18n from 'components/Languages/i18n';
 import ExploreShimmer from './screen/Shimmer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ExploreComponent from './screen/Container';
+import * as loginAction from 'store/actions/loginActions';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 const initI18n = i18n;
 const Explore: React.FC = () => {
@@ -41,17 +42,26 @@ const Explore: React.FC = () => {
   const fetchBookDetails = async () => {
     dispatch(appActions.IFetchBooksRequest('a'));
   };
-
-  //fetching favorite books
-  const getFavoriteBooks = async () => {
-    dispatch(appActions.IFetchFavoriteBooksRequest(token));
+  const getTokenAndFetchBooks = async () => {
+    try {
+      const value = await AsyncStorage.getItem('token');
+      if (value !== null) {
+        console.log('value is ', value);
+        dispatch(appActions.IFetchFavoriteBooksRequest(value));
+      } else {
+        return '';
+      }
+    } catch (e) {
+      return '';
+    }
   };
+  //dispatch(loginAction.logOut());
+  //fetching favorite books
 
   //handling back hardware button
   useEffect(() => {
-    getFavoriteBooks().then(() => {
-      fetchBookDetails();
-
+    fetchBookDetails().then(() => {
+      getTokenAndFetchBooks();
       if (books.status == 'fail') {
         setErrorExists(true);
       } else {
