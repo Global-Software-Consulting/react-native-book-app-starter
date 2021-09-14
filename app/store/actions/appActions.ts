@@ -45,17 +45,17 @@ export function IFetchBooksLoadingStop() {
     };
   }
 
-  export function IFetchBookDetailRequest(params:any) {
+  export function IFetchBookDetailRequest(params:number) {
     return {
       type: types.FETCH_FAVORITE_BOOKDETAIL_REQUEST,
       params
     };
   }
   
-  export function IFetchBookDetailResponse(response: IFetchBooks) {
+  export function IFetchBookDetailResponse(payload: IFetchBooks) {
     return {
       type: types.FETCH_FAVORITE_BOOKDETAIL_RESPONSE,
-      response
+      payload
     };
   }
 

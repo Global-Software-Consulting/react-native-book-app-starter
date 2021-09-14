@@ -1,6 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/core';
+import images from 'config/images';
+import i18n from 'config/Languages/index';
 import {ILoginState} from 'models/reducers/login';
-import NavigationService from 'navigation/NavigationService';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
@@ -14,14 +16,8 @@ import {
 import {TouchableHighlight} from 'react-native-gesture-handler';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Button} from 'react-native-paper';
-import {
-  heightPercentageToDP,
-  widthPercentageToDP,
-} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import i18n from 'config/Languages/index';
-import images from 'config/images';
 import AddAnnotation from 'services/loginUser';
 import * as loginActions from 'store/actions/loginActions';
 import styles from './styles';
@@ -35,17 +31,20 @@ const Login: React.FC = () => {
   const id = useSelector((state: IState) => state.loginReducer.id);
   const dispatch = useDispatch();
   const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
-  const onForgot = () => NavigationService.navigate('ForgotPassword');
   const [email, setEmail] = useState('fsdf');
   const [password, setPassword] = useState('fds');
   const [secure, setSecure] = useState(true);
+  const navigation = useNavigation();
   const [showActivityIndicator, setShowActivityIndicator] = useState(false);
   const getData = async () => {
     try {
       const value = await AsyncStorage.getItem('token');
       if (value !== null) {
+        const parsedValue = JSON.parse(value);
+        const token = parsedValue.token;
         dispatch(loginActions.userDetailsRequest(value));
         dispatch(loginActions.setLoggedIn());
+        dispatch(loginActions.setToken(token));
       } else {
         Alert.alert('Book App', 'Please check your email and password');
       }
@@ -95,7 +94,10 @@ const Login: React.FC = () => {
         />
       </View>
 
-      <TouchableHighlight style={styles.touchableHighlight}>
+      <TouchableHighlight
+        style={styles.touchableHighlight}
+        onPress={() => navigation.navigate('ForgotPassword')}
+        underlayColor="transparent">
         <Text style={styles.forgotPasswordText}>Forgot Password</Text>
       </TouchableHighlight>
 
@@ -113,7 +115,11 @@ const Login: React.FC = () => {
 
       <View style={styles.textMessage}>
         <Text>Do not have an account? </Text>
-        <Text style={styles.signupText}>Sign up</Text>
+        <Text
+          style={styles.signupText}
+          onPress={() => navigation.navigate('Signup')}>
+          Sign up
+        </Text>
       </View>
     </KeyboardAwareScrollView>
   );

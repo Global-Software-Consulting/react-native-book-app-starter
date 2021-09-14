@@ -16,6 +16,7 @@ const initialState: ILoginState = {
   username: '',
   password: '',
   userData: [],
+  token:''
 };
 
 export const loginReducer = createReducer(initialState, {
@@ -39,6 +40,12 @@ export const loginReducer = createReducer(initialState, {
     return {
       ...state,
       isLoggedIn: false,
+    };
+  },
+  [types.SET_TOKEN](state: ILoginState, action: ILoginRequestState) {
+    return {
+      ...state,
+      token: action.payload
     };
   },
   [types.LOG_OUT](state: ILoginState) {

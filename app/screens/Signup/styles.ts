@@ -1,3 +1,4 @@
+import { Center } from 'native-base';
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { heightPercentageToDP, heightPercentageToDP as hp, widthPercentageToDP, widthPercentageToDP as wp } from 'react-native-responsive-screen';
@@ -9,10 +10,14 @@ const styles = StyleSheet.create({
   container:
   {
     flex:1,
-
     backgroundColor: theme.colors.background,
     alignItems:'center',
-    justifyContent:'center'
+  },
+  dropDown: {
+width:wp('80%'),
+alignSelf:'center',
+borderRadius:20,
+marginTop:10
   },
   displayPicture:
   {
@@ -33,7 +38,9 @@ const styles = StyleSheet.create({
   {
   fontWeight:'bold',
   color:theme.colors.text,
-  fontSize:25
+  fontSize:25,
+  marginTop:20,
+  marginBottom:20
   },
   subHeading:
   {
@@ -46,8 +53,7 @@ const styles = StyleSheet.create({
   },
   infoView:
   {
-    marginTop:10,
-    flexDirection:'row',
+    marginBottom:10    ,
     borderWidth:1,
     borderColor:theme.colors.text,
     borderRadius:20,

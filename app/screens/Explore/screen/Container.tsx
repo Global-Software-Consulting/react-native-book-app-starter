@@ -41,6 +41,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
 
   const isLoading = useSelector(state => state.appReducer.isFetching);
   const favoriteBooks = useSelector(state => state.appReducer.favorite);
+  const token = useSelector(state => state.loginReducer.token);
   const newFavorites: string[] = favoriteBooks;
 
   const searchBook = (bookName: string) => {
@@ -53,14 +54,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
 
   //fetching favorite books
   const getFavoriteBooks = async () => {
-    try {
-      const value = await AsyncStorage.getItem('token');
-      if (value !== null) {
-        dispatch(appActions.IFetchFavoriteBooksRequest(value));
-      } else {
-        Alert.alert('Book App', 'Please login again');
-      }
-    } catch (e) {}
+    dispatch(appActions.IFetchFavoriteBooksRequest('Sample'));
   };
 
   return (

@@ -32,7 +32,9 @@ i18n.use(initReactI18next).init({
         'Last Name': 'Last Name',
         'Email': 'Email',
         'Gender': 'Gender',
-        'Size': 'Size'
+        'Size': 'Size',
+        'Profile Details': 'Profile Details',
+        'Update':'Update'
         
       },
     },
@@ -63,7 +65,10 @@ i18n.use(initReactI18next).init({
         'Last Name': 'Achternaam',
         'Email': 'Email',
         'Gender': 'Geslacht',
-        'Size': 'Talla'
+        'Size': 'Talla',
+        'Profile Details': 'Detalles del perfil',
+        'Update':'actualizar',
+        'Edit':'Editar'
 
       },
     },
@@ -93,8 +98,10 @@ i18n.use(initReactI18next).init({
         'Last Name': 'Apellido',
         'Email': 'Correo electrÃ³nico',
         'Gender': 'GÃ©nero',
-        'Size': 'maat'
-
+        'Size': 'maat',
+        'Profile Details': 'profiel details',
+        'Update':'actualizar',
+        'Edit':'Bewerking'
       },
     },
   },

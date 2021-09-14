@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         flexDirection: 'row',
         marginTop: 15,
+        height:heightPercentageToDP('5%')
       },
   heading:
   {

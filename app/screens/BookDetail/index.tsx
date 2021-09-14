@@ -23,26 +23,17 @@ const BookDetail: React.FC = props => {
 
   const bookData = useSelector(state => state.appReducer.bookDetail);
 
-  console.log('book detail is ', bookData);
+  console.log('book detail is ', bookId);
 
-  const getTokenAndGetBookDetail = async () => {
-    try {
-      const value = await AsyncStorage.getItem('token');
-      if (value !== null) {
-        dispatch(
-          appActions.IFetchBookDetailRequest({id: bookId, token: value}),
-        );
-      } else {
-        Alert.alert('Book App', 'Please login again');
-      }
-    } catch (e) {}
+  const getDetail = async () => {
+    dispatch(appActions.IFetchBookDetailRequest(bookId));
   };
 
   const [isLoading, setIsLoading] = useState(false); //state for display name
 
   //handling back hardware button
   useEffect(() => {
-    getTokenAndGetBookDetail();
+    getDetail();
     const backAction = () => {
       NavigationService.goBack();
     };

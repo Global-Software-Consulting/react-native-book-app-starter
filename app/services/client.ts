@@ -1,6 +1,7 @@
 
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useSelector } from 'react-redux';
 
 const storeData = async (value) => {
   try {
@@ -11,12 +12,28 @@ const storeData = async (value) => {
   }
 }
 
+const getToken = async() => {
+  try {
+    const value = await AsyncStorage.getItem('token');
+    if (value !== null){
+      return value;
+    }
+  } catch (error) {
+    // Error retrieving data
+  }
+}
+
 export default async function api(
   path: string,
   params: any,
   method: string,
   calllType: 'byParams' | 'byBody' | 'byHeader',
 ) {
+  let authToken = await getToken();
+  let parsedValue = JSON.parse(authToken)
+  const token = parsedValue.token
+  console.log('takan',token)
+
   let options;
   if (calllType=='byBody')
   {
@@ -44,15 +61,13 @@ export default async function api(
   }
   else if(calllType=='byHeader')
   {
-const intoToken = params.token;
-const parsedData = JSON.parse(intoToken);
-const token = parsedData.token;
+
     options = {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
         'Authorization': 'Bearer ' + token
-      },
+            },
       method: method,
       body: null  
   }

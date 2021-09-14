@@ -57,6 +57,13 @@ export function userDetailsRequest(token: any) {
   }
 }
 
+export function setToken(payload: any) {
+  return {
+    type: types.SET_TOKEN,
+    payload,
+  }
+}
+
 export function userDetailsResponse(payload: ILoginResponse) {
   return {
     type: types.USER_DETAILS_RESPONSE,

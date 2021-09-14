@@ -23,6 +23,8 @@ const Explore: React.FC = () => {
   //fetching book images from the store
   const books = useSelector(state => state.appReducer.detail);
   const isLoading = useSelector(state => state.appReducer.isFetching);
+  const token = useSelector(state => state.loginReducer.token);
+
   const favoriteBooks = useSelector(state => state.appReducer.favorite);
   const [errorExists, setErrorExists] = useState(false);
 
@@ -42,14 +44,7 @@ const Explore: React.FC = () => {
 
   //fetching favorite books
   const getFavoriteBooks = async () => {
-    try {
-      const value = await AsyncStorage.getItem('token');
-      if (value !== null) {
-        dispatch(appActions.IFetchFavoriteBooksRequest(value));
-      } else {
-        Alert.alert('Book App', 'Please login again');
-      }
-    } catch (e) {}
+    dispatch(appActions.IFetchFavoriteBooksRequest(token));
   };
 
   //handling back hardware button

@@ -6,44 +6,59 @@ import {ILoginState} from 'models/reducers/login';
 const AuthStack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
 import Login from 'screens/Login';
+import Signup from 'screens/Signup/index';
 import ForgotPassword from 'screens/ForgotPassword';
 interface IState {
   loginReducer: ILoginState;
 }
 const AuthNavigator = () => {
- const isLoggedIn = useSelector(state => state.loginReducer.isLoggedIn);
+  const isLoggedIn = useSelector(state => state.loginReducer.isLoggedIn);
 
- return (
-   <AuthStack.Navigator>
-     <Stack.Screen
-       name="Login"
-       component={Login}
-       options={{
-         headerTitleStyle: {
-           fontWeight: 'bold',
-           fontSize: 20,
-           color: 'black',
-         },
-         // When logging out, a pop animation feels intuitive
-         // You can remove this if you want the default 'push' animation
-         animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-       }}
-     />
-     <Stack.Screen
-       name="ForgotPassword"
-       component={ForgotPassword}
-       options={{
-         headerTitleStyle: {
-           fontWeight: 'bold',
-           fontSize: 20,
-           color: 'black',
-         },
-         // When logging out, a pop animation feels intuitive
-         // You can remove this if you want the default 'push' animation
-         animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-       }}
-     />
-   </AuthStack.Navigator>
- );
+  return (
+    <AuthStack.Navigator>
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 20,
+            color: 'black',
+          },
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+        }}
+      />
+      <Stack.Screen
+        name="Signup"
+        component={Signup}
+        options={{
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 20,
+            color: 'black',
+          },
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+        }}
+      />
+      <Stack.Screen
+        name="ForgotPassword"
+        component={ForgotPassword}
+        options={{
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 20,
+            color: 'black',
+          },
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+        }}
+      />
+    </AuthStack.Navigator>
+  );
 };
 export default AuthNavigator;

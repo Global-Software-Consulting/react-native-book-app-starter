@@ -6,8 +6,9 @@ import * as appActions from "../actions/appActions";
 export default function* fetchFavoriteBookAsync(action:string) {
   //start loading
 yield put(appActions.IFetchBooksLoading());
+console.log('acio', action.token)
   //calling api
-  let response = yield call(fetchFavoriteBooks, action);
+  let response = yield call(fetchFavoriteBooks, action.token);
 console.log('Response favorite', response);
 
   if (response && response.status == 'Success') {

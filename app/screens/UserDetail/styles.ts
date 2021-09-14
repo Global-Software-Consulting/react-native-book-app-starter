@@ -38,22 +38,34 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     color:theme.colors.text
   },
+  inputField:
+  {
+    width:wp('50%')
+  },
   infoView:
   {
     marginTop:10,
-    flexDirection:'row'
+    flexDirection:'row',
+    borderWidth:1,
+    borderColor:theme.colors.text,
+    borderRadius:20,
+    padding:10,
+    width: wp('80%')
   },
   editView:
       {
-        backgroundColor: '#491484',
+        backgroundColor: '#E6E6FA',
         alignContent: 'center',
         alignSelf: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        marginTop: 15,
+        marginTop: 20,
         borderRadius:20,
         alignItems:'center',
         textAlign:'center',
+        color:theme.colors.text,
+        padding:10
+        
       
       },
 editButton:

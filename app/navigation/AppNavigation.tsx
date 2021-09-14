@@ -41,13 +41,13 @@ const AppNavigation = () => {
             <Icon
               name="arrow-back-ios"
               onPress={() => navigation.goBack()}
-              color="black"
+              color={theme.colors.text}
               size={18}
               style={{marginLeft: 20}}
             />
           ),
           headerStyle: {backgroundColor: theme.colors.background},
-          headerTintColor: 'black',
+          headerTintColor: theme.colors.text,
         }}
       />
     </AppDrawer.Navigator>
