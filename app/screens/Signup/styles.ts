@@ -62,7 +62,7 @@ marginTop:10,
    alignItems:'center',
    justifyContent:'center',
     width: wp('80%'),
-    height: 40
+    height: 50
   },
   editView:
       {

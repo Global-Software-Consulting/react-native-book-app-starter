@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
     borderColor:theme.colors.text,
     borderRadius:20,
     padding:10,
-    width: wp('80%')
+    width: wp('80%'),
+    height:50
   },
   editView:
       {

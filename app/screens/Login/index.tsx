@@ -100,7 +100,7 @@ const Login: React.FC = () => {
         onChangeText={keyword => setEmail(keyword)}
         style={{
           width: widthPercentageToDP('80%'),
-          height: heightPercentageToDP('5%'),
+          height: 50,
           padding: 5,
           alignSelf: 'center',
           borderWidth: 1,
@@ -120,7 +120,7 @@ const Login: React.FC = () => {
           justifyContent: 'space-between',
           alignItems: 'center',
           width: widthPercentageToDP('80%'),
-          height: heightPercentageToDP('5%'),
+          height: 50,
           marginTop: 5,
           alignSelf: 'center',
         }}>
@@ -178,7 +178,7 @@ const Login: React.FC = () => {
           onPress={performLoginOperation}
           disabled={showActivityIndicator}
           style={{
-            height: heightPercentageToDP('5 %'),
+            height: 40,
             width: widthPercentageToDP('60%'),
             marginTop: 5,
           }}>
