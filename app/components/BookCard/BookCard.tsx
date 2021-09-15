@@ -44,7 +44,6 @@ const BookCard: React.FC<Props> = ({
 
   const isFocused = useIsFocused();
   const [isFavorite, setIsFavorite] = useState(false);
-  console.log('favoritao', newFavorites);
   useEffect(() => {
     let isAdded = newFavorites?.findIndex(data => {
       if (data.bookId == id) setIsFavorite(true);
@@ -62,7 +61,6 @@ const BookCard: React.FC<Props> = ({
     try {
       const value = await AsyncStorage.getItem('token');
       if (value !== null) {
-        console.log('value is ', value);
         return value;
       } else {
         return '';
@@ -77,13 +75,9 @@ const BookCard: React.FC<Props> = ({
     if (isFavorite) {
       setIsFavorite(false);
       removeBookFromFavoite(id).then(response => {
-        console.log('removefromfavorites', response);
-
         if (response && response.status == 'success') {
         } else {
           setIsFavorite(true);
-
-          console.log('Error', response);
         }
       });
     } else {
@@ -91,13 +85,9 @@ const BookCard: React.FC<Props> = ({
 
       addBookToFavoite(id)
         .then(response => {
-          console.log('addBookToFavoite', response);
-
           if (response && response.status == 'success') {
           } else {
             setIsFavorite(false);
-
-            console.log('Error', response);
 
             // dispatch(enableSnackbar("Some Thing While Posting Comment"))
           }
@@ -105,8 +95,6 @@ const BookCard: React.FC<Props> = ({
         })
         .catch(() => {
           setIsFavorite(false);
-
-          console.log('Catch');
         });
     }
   };

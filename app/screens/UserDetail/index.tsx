@@ -1,7 +1,10 @@
 import images from 'config/images';
 import React, {useEffect, useState} from 'react';
-import {Button, Image, TextInput, View} from 'react-native';
+import {ActivityIndicator, Button, Image, TextInput, View} from 'react-native';
 import {Text} from 'react-native-paper';
+import NetInfo from '@react-native-community/netinfo';
+import Toast from 'react-native-simple-toast';
+import NetworkUtils from 'utils/networkUtils';
 import {
   Menu,
   MenuOption,
@@ -20,14 +23,51 @@ const UserDetail: React.FC = () => {
   const dispatch = useDispatch();
   const onLogout = () => dispatch(loginActions.logOut());
   const userData = useSelector(state => state.loginReducer.userData);
+  const isLoading = useSelector(state => state.loadingReducer.isLoginLoading);
   //defining states
   const [isEditing, setIsEditing] = useState(false);
   const [firstName, setFirstName] = useState(userData?.firstName);
   const [lastName, setLastName] = useState(userData?.lastName);
+  const [message, setMessage] = useState('');
   const [email, setEmail] = useState(userData?.email);
   const IsFocused = useIsFocused();
   const {t, i18n} = useTranslation();
   const styles = useStyles();
+  const updateResponse = useSelector(
+    state => state.loginReducer.updateProfileResponse,
+  );
+  const detail = useSelector(state => state.loginReducer.userData);
+  const update = async () => {
+    let isConnected = await NetworkUtils.isNetworkAvailable();
+    console.log('statuso', isConnected);
+    if (!isConnected) {
+      setIsEditing(!isEditing);
+      editUser().then(() => {
+        if (isEditing) {
+          userData.status == 'success'
+            ? Toast.show('Profile is updated', Toast.SHORT)
+            : Toast.show('Profile is updated', Toast.SHORT);
+        }
+        recallUserData();
+      });
+    } else {
+      Toast.show('You are offline', Toast.SHORT);
+    }
+  };
+
+  const editUser = async () => {
+    if (isEditing) {
+      dispatch(
+        loginActions.IUpdateProfileRequest({firstName, lastName, email}),
+      );
+    }
+  };
+  const recallUserData = () => {
+    dispatch(loginActions.userDetailsRequest());
+  };
+
+  console.log('tuhuu', updateResponse);
+  console.log('tuhuudata', detail);
 
   return (
     <View style={styles.container}>
@@ -93,14 +133,15 @@ const UserDetail: React.FC = () => {
           </View>
         </View>
       )}
-
       <View style={styles.editView}>
         <Button
           onPress={() => {
-            setIsEditing(!isEditing);
+            update();
           }}
+          disabled={isLoading}
           title={!isEditing ? t('Edit') : t('Update')}
           style={styles.editButton}></Button>
+        {isLoading && <ActivityIndicator />}
       </View>
     </View>
   );

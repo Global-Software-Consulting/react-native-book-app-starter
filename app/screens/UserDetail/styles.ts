@@ -57,7 +57,8 @@ const styles = StyleSheet.create({
   alignItems:'center',
   paddingLeft:5,
     width: wp('80%'),
-    height:50
+    height:50,
+    
   },
   editView:
       {

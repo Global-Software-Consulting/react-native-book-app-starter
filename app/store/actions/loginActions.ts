@@ -96,3 +96,16 @@ export function IForgotPasswordResponse(payload: ILoginResponse) {
     payload
   };
 }
+export function IUpdateProfileRequest(data:object) {
+  return {
+    type: types.UPDATE_PROFILE_REQUEST,
+    data,
+  };
+}
+
+export function IUpdateProfileResponse(payload) {
+  return {
+    type: types.UPDATE_PROFILE_RESPONSE,
+    payload
+  };
+}

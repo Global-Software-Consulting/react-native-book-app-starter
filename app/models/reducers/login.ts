@@ -7,5 +7,6 @@ userData: [];
 token:any;
 signUpResponse:any;
 forgetPasswordResponse:any;
+updateProfileResponse:any;
 
 }

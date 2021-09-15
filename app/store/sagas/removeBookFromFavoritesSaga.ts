@@ -10,9 +10,7 @@ export default function* removeBookfromFavorite(action:string) {
 
 yield put(appActions.IFetchBooksLoading());
   //calling api
-  console.log('paramo', action)
   let response = yield call(removeBookFromFavoite,action.token,action.id);
-console.log('response detailo', response);
 
   if (response && response.status == 'success') {
 

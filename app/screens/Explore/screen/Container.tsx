@@ -3,6 +3,7 @@ import {useTranslation} from 'react-i18next';
 import {
   Alert,
   FlatList,
+  Image,
   RefreshControl,
   ScrollView,
   TextInput,
@@ -20,7 +21,15 @@ import * as appActions from 'store/actions/appActions';
 import * as loginActions from 'store/actions/loginActions';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {heightPercentageToDP} from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP,
+  widthPercentageToDP,
+} from 'react-native-responsive-screen';
+import images from 'config/images';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import Toast from 'react-native-simple-toast';
+import NetworkUtils from 'utils/networkUtils';
+import {useIsFocused} from '@react-navigation/native';
 
 interface Props {
   books?: [];
@@ -39,19 +48,25 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
   const navigation = useNavigation();
   //getting data from store
   const books = useSelector(state => state.appReducer.detail);
-
+  const isFocused = useIsFocused();
   const isLoading = useSelector(state => state.appReducer.isFetching);
   const favoriteBooks = useSelector(state => state.appReducer.favorite);
   const token = useSelector(state => state.loginReducer.token);
   const newFavorites: string[] = favoriteBooks;
-
   const searchBook = (bookName: string) => {
     dispatch(appActions.IFetchBooksRequest(bookName));
   };
-
+  const [username, setUserName] = useState(
+    userData.firstName + ' ' + userData.lastName,
+  );
   const fetchBookDetails = async () => {
-    dispatch(appActions.IFetchBooksRequest('a'));
-    getFavoriteBooks();
+    const isConnected = await NetworkUtils.isNetworkAvailable();
+    if (!isConnected) {
+      dispatch(appActions.IFetchBooksRequest('a'));
+      getFavoriteBooks();
+    } else {
+      Toast.show('You are offline', Toast.SHORT);
+    }
   };
 
   //fetching favorite books
@@ -59,9 +74,18 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
     dispatch(appActions.IFetchFavoriteBooksRequest());
   };
 
+  const navigateToDetails = async params => {
+    const isConnected = await NetworkUtils.isNetworkAvailable();
+    if (!isConnected) {
+      navigation.navigate('BookDetail', params);
+    } else {
+      Toast.show('You are offline', Toast.SHORT);
+    }
+  };
+
   return (
     <View style={styles.mainViewSetting}>
-      {books.length > 0 && (
+      {books.length > 0 ? (
         <ScrollView
           nestedScrollEnabled={true}
           style={styles.container}
@@ -109,7 +133,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
                   key={item}
                   underlayColor="grey"
                   onPress={() => {
-                    navigation.navigate('BookDetail', item.id);
+                    navigateToDetails(item);
                   }}>
                   <BookCard
                     url={
@@ -142,7 +166,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
                   key={item}
                   underlayColor="grey"
                   onPress={() => {
-                    navigation.navigate('BookDetail', item.id);
+                    navigateToDetails(item);
                   }}>
                   <BookCard
                     url={
@@ -172,7 +196,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
                   key={item}
                   underlayColor="grey"
                   onPress={() => {
-                    navigation.navigate('BookDetail', item.id);
+                    navigateToDetails(item);
                   }}>
                   <BookCard
                     url={
@@ -192,6 +216,13 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
             />
           </View>
         </ScrollView>
+      ) : (
+        <View style={styles.favoriteView}>
+          <Image source={images.books.noBookFound} style={styles.imageError} />
+          <Text style={styles.bookmark}>
+            No books available or check your internet
+          </Text>
+        </View>
       )}
     </View>
   );

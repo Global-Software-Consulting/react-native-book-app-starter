@@ -5,12 +5,10 @@ import * as appActions from "../actions/appActions";
 
 
 export default function* fetchBookDetailSaga(action) {
-  console.log('actiono', action)
   //start loading
 yield put(appActions.IFetchBooksLoading());
   //calling api
   let response = yield call(fetchBookDetail, parseInt(action.id));
-console.log('response detail', response);
 
   if (response && response.status == 'success') {
 

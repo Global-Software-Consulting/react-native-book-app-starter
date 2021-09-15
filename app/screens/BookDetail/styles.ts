@@ -28,7 +28,7 @@ launchedText:
   fontWeight: '300', fontSize: 15
 },
 main: {
-  height: heightPercentageToDP('80%'),
+  height: heightPercentageToDP('100%'),
   backgroundColor:theme.colors.background
 },
 dynamicLaunchedText:
@@ -65,7 +65,7 @@ mainShimmerView:
 },
 dynamicSynopse:
 {
-  fontWeight: '400', fontSize: 15, marginBottom: 30
+  fontWeight: 'bold', fontSize: 15, marginBottom: 30, 
 },
 synopseText:
 {

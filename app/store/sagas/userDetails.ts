@@ -6,7 +6,7 @@ import * as authActions from "../actions/loginActions";
 export default function* fetchBookAsync(action:string) {
   let response = yield call(fetchUserDetails,action.token);
   if (response && response.status == 'success') {
-    yield put(authActions.userDetailsResponse(response))
+    yield put(authActions.userDetailsResponse(response.result))
   } 
   else if(response.status != 'success')
   {

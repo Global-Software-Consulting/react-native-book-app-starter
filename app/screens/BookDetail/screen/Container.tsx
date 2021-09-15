@@ -30,7 +30,6 @@ const Container: React.FC<Props> = ({books, base_url}) => {
     //To toggle the show text or hide it
     setTextShown(!textShown);
   };
-  console.log('Book detailo', books);
   return (
     <View style={styles.main}>
       <ScrollView>

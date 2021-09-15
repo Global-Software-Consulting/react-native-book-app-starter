@@ -3,7 +3,7 @@ import {useNavigation} from '@react-navigation/core';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {TabActions} from '@react-navigation/native';
 import * as themeActions from 'store/actions/themeActions';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {TouchableOpacity, View} from 'react-native';
 import {
@@ -32,7 +32,9 @@ interface IProps {
 const Drawer: React.FC = props => {
   const [checked, setChecked] = useState('first');
   const userData = useSelector(state => state.loginReducer.userData);
-  const name = userData?.firstName + ' ' + userData?.lastName;
+  const [name, setName] = useState(
+    userData?.firstName + ' ' + userData?.lastName,
+  );
   const {t, i18n} = useTranslation();
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -46,7 +48,11 @@ const Drawer: React.FC = props => {
     dispatch(loginActions.logOut());
     dispatch(themeActions.setIsDarkTheme(false));
   };
-  console.log('usero', userData);
+
+  useEffect(() => {
+    setName(userData?.firstName + ' ' + userData?.lastName);
+  }, [userData]);
+
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.drawerContent}>

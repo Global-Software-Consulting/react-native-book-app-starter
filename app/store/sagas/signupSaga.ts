@@ -27,9 +27,7 @@ const storeData = async (value) => {
 // Our worker Saga that logins the user
 export default function* signUpsync(action:any) {
   yield put(loginActions.enableLoader());
-console.log('actiono',action.params)
 const response = yield call(signupUser, action.params)
-console.log('responsu', response)
   if (response && response.status == "success") {
     yield put(loginActions.ISignupResponse(response));
     yield call(storeData,response.token);

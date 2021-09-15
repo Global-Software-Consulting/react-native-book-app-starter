@@ -15,6 +15,21 @@ const styles = StyleSheet.create({
  backgroundColor: theme.colors.background,
  marginBottom:hp('10%')
   },
+  favoriteView:
+  {
+    flex: 1,
+    alignItems:'center',
+    justifyContent:'center'
+  },
+  bookmark:
+  {
+    margin: 2
+  },
+  imageError:
+  {
+    height: hp('50%'),
+    width: wp('50%'),
+  },
   mainViewSetting:
   {height: hp('100%')},
   name: {

@@ -28,7 +28,6 @@ const storeData = async (value) => {
 // Our worker Saga that logins the user
 export default function* loginAsync(action) {
   yield put(loginActions.enableLoader());
-console.log('actionado',action)
   //how to call api
   const loginCall = yield call(loginUser, action.params);
   //mock response

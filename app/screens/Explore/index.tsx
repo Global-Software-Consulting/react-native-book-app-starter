@@ -35,7 +35,10 @@ const Explore: React.FC = () => {
 
   //images for Flatlists(Hardcoded)
   const sampleArr: any[] = ['a'];
-
+  const userData = useSelector(state => state.loginReducer.userData);
+  const [username, setUserName] = useState(
+    userData?.firstName + ' ' + userData?.lastName,
+  );
   //theme handling
   const styles = useStyles();
   const dispatch = useDispatch();
@@ -55,6 +58,10 @@ const Explore: React.FC = () => {
       getFavoriteBooks();
       //api call
     });
+
+    useEffect(() => {
+      setUserName(userData.firstName + ' ' + userData.lastName);
+    }, [IsFocused, userData]);
 
     const backAction = () => {
       Alert.alert('Book App', 'Are you sure you want to exit?', [
@@ -81,7 +88,7 @@ const Explore: React.FC = () => {
       {isLoading ? (
         <ExploreShimmer />
       ) : (
-        <ExploreComponent name="Jorge" base_url={base_url} books={books} />
+        <ExploreComponent name={username} base_url={base_url} books={books} />
       )}
     </View>
   );

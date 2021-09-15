@@ -10,7 +10,8 @@ const ApiConfig = {
   BOOKDETAIL: '/books/',
   ADDTOFAVORITES: '/favorites/',
   REMOVEFROMFAVORITES: '/favorites/',
-  FORGETPASSWORD: '/users/forgot'
+  FORGETPASSWORD: '/users/forgot',
+  UPDATEUSERDETAIL: '/users/profile'
 };
 
 export default ApiConfig;

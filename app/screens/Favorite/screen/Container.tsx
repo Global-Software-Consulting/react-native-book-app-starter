@@ -29,6 +29,8 @@ import i18n from 'config/Languages/index';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Toast from 'react-native-simple-toast';
+import NetworkUtils from 'utils/networkUtils';
 
 interface Props {
   books?: [];
@@ -52,14 +54,21 @@ const Container: React.FC<Props> = ({books, base_url}) => {
 
   //fetching favorite books
   const getFavoriteBooks = async () => {
-    try {
-      const value = await AsyncStorage.getItem('token');
-      if (value !== null) {
-        dispatch(appActions.IFetchFavoriteBooksRequest(value));
-      } else {
-        Alert.alert('Book App', 'Please login again');
-      }
-    } catch (e) {}
+    const isConnected = await NetworkUtils.isNetworkAvailable();
+    if (!isConnected) {
+      dispatch(appActions.IFetchFavoriteBooksRequest());
+    } else {
+      Toast.show('You are offline', Toast.SHORT);
+    }
+  };
+
+  const navigateToDetails = async params => {
+    const isConnected = await NetworkUtils.isNetworkAvailable();
+    if (!isConnected) {
+      navigation.navigate('BookDetail', params);
+    } else {
+      Toast.show('You are offline', Toast.SHORT);
+    }
   };
 
   const FavoriteBooks = () => {
@@ -75,7 +84,7 @@ const Container: React.FC<Props> = ({books, base_url}) => {
               key={item}
               underlayColor="grey"
               onPress={() => {
-                navigation.navigate('BookDetail', item);
+                navigateToDetails(item);
               }}>
               <BookCard
                 url={
@@ -104,7 +113,7 @@ const Container: React.FC<Props> = ({books, base_url}) => {
         refreshControl={
           <RefreshControl refreshing={isLoading} onRefresh={getFavoriteBooks} />
         }>
-        {favoriteBooks != [] ? (
+        {favoriteBooks.length > 0 ? (
           <FavoriteBooks />
         ) : (
           <View style={styles.favoriteView}>

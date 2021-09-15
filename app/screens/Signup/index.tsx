@@ -50,7 +50,6 @@ const Signup: React.FC = () => {
       // saving error
     }
   };
-  console.log('stataso', signUpStatus);
   const performSignUp = async data => {
     dispatch(loginActions.ISignupRequest(data));
     dispatch(appActions.IFetchFavoriteBooksRequest());
@@ -192,9 +191,7 @@ const Signup: React.FC = () => {
               setItems={value => console.log(value)}
               style={styles.dropDown}
               dropDownContainerStyle={styles.dropDown}
-              onChangeValue={value => {
-                console.log('2', value);
-              }}
+              onChangeValue={value => {}}
             />
           )}
           name="gender"

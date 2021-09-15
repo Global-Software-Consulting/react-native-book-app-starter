@@ -45,13 +45,11 @@ const Favorite: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log('it is called');
     getFavoriteBooks();
   }, [isFocused]);
 
   //handling back hardware button
   useEffect(() => {
-    console.log('it is called');
     const backAction = () => {
       Alert.alert('Book App', 'Are you sure you want to exit?', [
         {

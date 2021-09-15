@@ -28,7 +28,6 @@ const styles = useStyles();
 const sendResetLink = () => {
   dispatch(loginActions.IForgotPasswordRequest(email));
 };
-console.log('yeh hy', forgetpasswordResponse);
 
 return (
   <View style={styles.container}>
