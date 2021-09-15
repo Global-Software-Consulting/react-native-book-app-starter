@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     borderRadius:20,
     alignContent:'center',
     alignItems:'center',
-    ju
+
     padding:10,
     width: wp('80%'),
     height:50
