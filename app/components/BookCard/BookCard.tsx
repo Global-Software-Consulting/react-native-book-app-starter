@@ -76,7 +76,7 @@ const BookCard: React.FC<Props> = ({
 
     if (isFavorite) {
       setIsFavorite(false);
-      removeBookFromFavoite(token, id).then(response => {
+      removeBookFromFavoite(id).then(response => {
         console.log('removefromfavorites', response);
 
         if (response && response.status == 'success') {
@@ -89,7 +89,7 @@ const BookCard: React.FC<Props> = ({
     } else {
       setIsFavorite(true);
 
-      addBookToFavoite(token, id)
+      addBookToFavoite(id)
         .then(response => {
           console.log('addBookToFavoite', response);
 

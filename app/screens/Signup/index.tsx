@@ -14,6 +14,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {useStyles} from 'screens/Signup/styles';
 import * as loginActions from 'store/actions/loginActions';
+import * as appActions from 'store/actions/appActions';
 import {
   widthPercentageToDP,
   heightPercentageToDP,
@@ -49,16 +50,15 @@ const Signup: React.FC = () => {
       // saving error
     }
   };
-console.log('stataso', signUpStatus);
-const performSignUp = async data => {
-  dispatch(loginActions.ISignupRequest(data));
-  await storeData(signUpStatus.token).then(() => {
-    dispatch(loginActions.userDetailsResponse(signUpStatus.result));
+  console.log('stataso', signUpStatus);
+  const performSignUp = async data => {
+    dispatch(loginActions.ISignupRequest(data));
+    dispatch(appActions.IFetchFavoriteBooksRequest());
+    dispatch(loginActions.userDetailsResponse());
     setTimeout(() => {
       dispatch(loginActions.setLoggedIn());
     }, 2000);
-  });
-};
+  };
 
   const onSubmit = data => {
     performSignUp(data);

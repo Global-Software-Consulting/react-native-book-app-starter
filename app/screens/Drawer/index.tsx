@@ -31,7 +31,7 @@ interface IProps {
 }
 const Drawer: React.FC = props => {
   const [checked, setChecked] = useState('first');
-  const userData = useSelector(state => state.loginReducer.userData.result);
+  const userData = useSelector(state => state.loginReducer.userData);
   const name = userData?.firstName + ' ' + userData?.lastName;
   const {t, i18n} = useTranslation();
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const Drawer: React.FC = props => {
     dispatch(loginActions.logOut());
     dispatch(themeActions.setIsDarkTheme(false));
   };
-
+  console.log('usero', userData);
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.drawerContent}>

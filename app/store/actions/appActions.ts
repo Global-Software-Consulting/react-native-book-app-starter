@@ -31,10 +31,10 @@ export function IFetchBooksLoadingStop() {
 }
 
 
-  export function IFetchFavoriteBooksRequest(token:string) {
+  export function IFetchFavoriteBooksRequest() {
     return {
       type: types.FETCH_FAVORITE_BOOKLIST_REQUEST,
-      token
+      
     };
   }
   
@@ -45,7 +45,7 @@ export function IFetchBooksLoadingStop() {
     };
   }
 
-  export function IFetchBookDetailRequest(id:number) {
+  export function IFetchBookDetailRequest(id) {
     return {
       type: types.FETCH_FAVORITE_BOOKDETAIL_REQUEST,
       id,
@@ -58,18 +58,17 @@ export function IFetchBooksLoadingStop() {
       payload
     };
   }
-    export function IAddToFavoritesRequest(params:number) {
+    export function IAddToFavoritesRequest(id) {
       return {
         type: types.ADD_TO_FAVORITE_REQUEST,
-        params
+        id
       };
     }
     
-    export function IRemoveFromFavoritesRequest(token:string,id:number) {
+    export function IRemoveFromFavoritesRequest(id) {
       return {
         type: types.REMOVE_FROM_FAVORITE_REQUEST,
-        id,
-      token
+        id
       };
     }
    

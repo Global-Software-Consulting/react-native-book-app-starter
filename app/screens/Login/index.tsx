@@ -46,32 +46,16 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('fds');
   const [secure, setSecure] = useState(true);
   const [showActivityIndicator, setShowActivityIndicator] = useState(false);
-  const isLoggingIn = useSelector(state => state.loginReducer.isLoggingIn);
+  const isLoggingIn = useSelector(state => state.loadingReducer.isLoginLoading);
   const [error, setError] = useState('');
-
-  const getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('token');
-      if (value !== null) {
-        dispatch(loginActions.userDetailsRequest(value));
-        dispatch(loginActions.setLoggedIn());
-      } else {
-        setError('Please check your email and password');
-      }
-    } catch (e) {
-      setError('Error fetching data');
-    }
-  };
 
   const performLoginOperation = async () => {
     if (email != '' && password != '') {
       setError('');
       setShowActivityIndicator(isLoggingIn);
       dispatch(loginActions.requestLogin({email, password}));
-      await getData();
+
       // AddAnnotation(email, password).then(async () => {
-      await getData();
-      setShowActivityIndicator(isLoggingIn);
       // });
     } else {
       setError('Email or Password missing');

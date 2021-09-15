@@ -22,12 +22,13 @@ const dispatch = useDispatch();
 const bookId = props.route.params; //getting routed params
 
 const bookData = useSelector(state => state.appReducer.bookDetail);
+console.log('book id is', bookId);
 
-console.log('book detail is la ', bookId);
+console.log('book detail is la ', bookData);
 
-  const getDetail = async () => {
-    dispatch(appActions.IFetchBookDetailRequest(bookId));
-  };
+const getDetail = async () => {
+  dispatch(appActions.IFetchBookDetailRequest(bookId));
+};
 
   const [isLoading, setIsLoading] = useState(false); //state for display name
 

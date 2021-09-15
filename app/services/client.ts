@@ -12,7 +12,7 @@ const storeData = async (value) => {
 }
 const getAuthToken = async () => {
   try {
-    const value = await AsyncStorage.getItem("@token");
+    const value = await AsyncStorage.getItem("token");
     if (value !== null) {
       return value;
     }
@@ -24,8 +24,10 @@ const getAuthToken = async () => {
 
 
 
-export default async function api(path, body, method, token) {
-  token = await getAuthToken();
+export default async function api(path, body, method) {
+ console.log('method',method);
+ 
+  let token = await getAuthToken();
  let options = {
     headers: {
       Accept: "application/json",
@@ -36,13 +38,11 @@ export default async function api(path, body, method, token) {
       APIKey: 12355,
     },
     method: method,
-    ...(body && { body: JSON.stringify(params) }),
+    ...(body && { body: JSON.stringify(body) }),
   };
 
-  if (_DEV_) {
     console.log("in api call", path, options);
-  }
-
+  
   return fetch(path, options)
     .then((resp) => resp.json())
     .then((json) => {

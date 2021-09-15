@@ -17,10 +17,11 @@ const initI18n = i18n;
 const Container: React.FC<Props> = ({books, base_url}) => {
   //theme handling
   const styles = useStyles();
-  var author = books[0].bookAuthors[0].author.name;
+  var author = books.bookAuthors[0].author.name;
   var genre = 'Dummy Genre';
-  var pages = books[0].numberOfPages;
-  var launched = books[0].createdAt;
+  var pages = books.numberOfPages;
+  var launched = books.createdAt;
+  var title = books.title;
   const {t, i18n} = useTranslation();
 
   const [textShown, setTextShown] = useState(false); //To show ur remaining Text
@@ -35,7 +36,7 @@ const Container: React.FC<Props> = ({books, base_url}) => {
       <ScrollView>
         <BookCard
           styleSelect="ExtraLarge"
-          bookTitle={books[0].title}
+          bookTitle={title}
           authorName={author}
           hideIcon={true}
           url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU"
@@ -52,14 +53,15 @@ const Container: React.FC<Props> = ({books, base_url}) => {
           <View style={styles.launchedSubView}>
             <Text style={styles.launchedText}> {t('Launched')}</Text>
             <Text style={styles.dynamicLaunchedText}>
-              {launched.substring(0, 10)}
+              {launched.substring(0, 9)}
             </Text>
           </View>
 
           <View style={styles.pagesSubView}>
             <Text style={styles.sizeText}>{t('Size')}</Text>
             <Text style={styles.dynamicSize}>
-              {pages} {t(' pages')}
+              {pages}
+              {t(' pages')}
             </Text>
           </View>
         </View>
@@ -70,7 +72,7 @@ const Container: React.FC<Props> = ({books, base_url}) => {
             style={styles.dynamicSynopse}
             onPress={toggleNumberOfLines}
             numberOfLines={textShown ? undefined : 2}>
-            {books[0].shortSummary}
+            {books.shortSummary}
           </Text>
         </View>
       </ScrollView>

@@ -19,35 +19,15 @@ const initI18n = i18n;
 const UserDetail: React.FC = () => {
   const dispatch = useDispatch();
   const onLogout = () => dispatch(loginActions.logOut());
-  const userDetails = useSelector(state => state.loginReducer.userData.result);
+  const userData = useSelector(state => state.loginReducer.userData);
   //defining states
   const [isEditing, setIsEditing] = useState(false);
-  const [firstName, setFirstName] = useState(userDetails?.firstName);
-  const [lastName, setLastName] = useState(userDetails?.lastName);
-  const [email, setEmail] = useState(userDetails?.email);
+  const [firstName, setFirstName] = useState(userData?.firstName);
+  const [lastName, setLastName] = useState(userData?.lastName);
+  const [email, setEmail] = useState(userData?.email);
   const IsFocused = useIsFocused();
   const {t, i18n} = useTranslation();
   const styles = useStyles();
-  console.log('usero', userDetails);
-
-  const getToken = async () => {
-    try {
-      const value = await AsyncStorage.getItem('token');
-      if (value !== null) {
-        return value;
-      } else {
-      }
-    } catch (e) {}
-  };
-
-  const updateDetails = async () => {
-    const token = await getToken();
-    dispatch(loginActions.userDetailsRequest(token));
-  };
-
-  useEffect(() => {
-    updateDetails();
-  }, [IsFocused]);
 
   return (
     <View style={styles.container}>

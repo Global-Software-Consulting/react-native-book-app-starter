@@ -43,32 +43,16 @@ const Explore: React.FC = () => {
   const fetchBookDetails = async () => {
     dispatch(appActions.IFetchBooksRequest('a'));
   };
-  const getTokenAndFetchBooks = async () => {
-    try {
-      const value = await AsyncStorage.getItem('token');
-      if (value !== null) {
-        console.log('value is ', value);
-        dispatch(appActions.IFetchFavoriteBooksRequest(value));
-        dispatch(loginAction.userDetailsRequest(value));
-      } else {
-        return '';
-      }
-    } catch (e) {
-      return '';
-    }
+  const getFavoriteBooks = async () => {
+    dispatch(appActions.IFetchFavoriteBooksRequest());
   };
-  //dispatch(loginAction.logOut());
+
   //fetching favorite books
 
   //handling back hardware button
   useEffect(() => {
     fetchBookDetails().then(() => {
-      getTokenAndFetchBooks();
-      if (books.status == 'fail') {
-        setErrorExists(true);
-      } else {
-        setErrorExists(false);
-      }
+      getFavoriteBooks();
       //api call
     });
 
