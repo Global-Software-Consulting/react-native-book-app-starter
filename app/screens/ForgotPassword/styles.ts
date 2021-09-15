@@ -42,15 +42,19 @@ const styles = StyleSheet.create({
   },
   inputField:
   {
-    width:wp('50%')
+    width:wp('50%'),
+    height:40
   },
   infoView:
   {
-    marginTop:10,
+    marginTop:2,
     flexDirection:'row',
     borderWidth:1,
     borderColor:theme.colors.text,
     borderRadius:20,
+    alignContent:'center',
+    alignItems:'center',
+    
     padding:10,
     width: wp('80%'),
     height:50

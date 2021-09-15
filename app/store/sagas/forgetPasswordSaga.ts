@@ -7,7 +7,7 @@
 // import { delay } from 'redux-saga';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from 'react-native';
-import { put } from 'redux-saga/effects';
+import { put ,call} from 'redux-saga/effects';
 import ForgetPassword from 'services/forgetPassword'
 import * as loginActions from 'store/actions/loginActions';
 

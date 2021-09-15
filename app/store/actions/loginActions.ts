@@ -83,3 +83,16 @@ export function ISignupResponse(payload: ILoginResponse) {
     payload
   };
 }
+export function IForgotPasswordRequest(params:string) {
+  return {
+    type: types.FORGET_PASSWORD_REQUEST,
+    params
+  };
+}
+
+export function IForgotPasswordResponse(payload: ILoginResponse) {
+  return {
+    type: types.FORGET_PASSWORD_RESPONSE,
+    payload
+  };
+}

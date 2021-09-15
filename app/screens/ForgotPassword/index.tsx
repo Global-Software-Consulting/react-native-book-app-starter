@@ -16,34 +16,43 @@ import * as loginActions from 'store/actions/loginActions';
 const initI18n = i18n;
 const forgotPassword: React.FC = () => {
   const dispatch = useDispatch();
-  const onLogout = () => dispatch(loginActions.logOut());
-  //defining states
-  const [email, setEmail] = useState('');
+const signupResponse = useSelector(
+  state => state.loginReducer.forgetPasswordResponse,
+);
+//defining states
+const [email, setEmail] = useState('');
 
-  const {t, i18n} = useTranslation();
-  const styles = useStyles();
-  return (
-    <View style={styles.container}>
-      <Text style={styles.mainHeading}>{t('Forgot Password')}</Text>
+const {t, i18n} = useTranslation();
+const styles = useStyles();
 
-      <View>
-        <View style={styles.infoView}>
-          <Text style={styles.subHeading}>Email: </Text>
-          <TextInput
-            style={styles.inputField}
-            onChangeText={text => setEmail(text)}
-          />
-        </View>
-      </View>
+const sendResetLink = () => {
+  dispatch(loginActions.IForgotPasswordRequest(email));
+};
+console.log('Yeh hay response', signupResponse);
+return (
+  <View style={styles.container}>
+    <Text style={styles.mainHeading}>{t('Forgot Password')}</Text>
 
-      <View style={styles.editView}>
-        <Button
-          onPress={() => {}}
-          title="Submit"
-          style={styles.editButton}></Button>
+    <View>
+      <View style={styles.infoView}>
+        <Text style={styles.subHeading}>Email: </Text>
+        <TextInput
+          style={styles.inputField}
+          onChangeText={text => setEmail(text)}
+        />
       </View>
     </View>
-  );
+
+    <View style={styles.editView}>
+      <Button
+        onPress={() => {
+          sendResetLink();
+        }}
+        title="Submit"
+        style={styles.editButton}></Button>
+    </View>
+  </View>
+);
 };
 
 export default forgotPassword;

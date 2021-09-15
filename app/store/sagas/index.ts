@@ -10,7 +10,9 @@ import loginSaga from './loginSaga';
 import userDetails from './userDetails';
 import addBooktoFavorite from './addBookToFavoritesSaga';
 import removeBookFromFavoritesSaga from "store/sagas/removeBookFromFavoritesSaga";
-import signupSaga from "store/sagas/signupSaga"
+import signupSaga from "store/sagas/signupSaga";
+import forgetPasswordSaga from 'store/sagas/forgetPasswordSaga';
+
 export default function* watch() {
   yield all([takeEvery(types.LOGIN_REQUEST, loginSaga),
     takeEvery(types.FETCH_BOOKLIST_REQUEST, fetchBookSaga),
@@ -20,6 +22,8 @@ export default function* watch() {
     takeEvery(types.ADD_TO_FAVORITE_REQUEST, addBooktoFavorite),
     takeEvery(types.REMOVE_FROM_FAVORITE_REQUEST, removeBookFromFavoritesSaga),
     takeEvery(types.SIGN_UP_REQUEST, signupSaga),
+    takeEvery(types.FORGET_PASSWORD_REQUEST, forgetPasswordSaga),
+
 
     ]);
 

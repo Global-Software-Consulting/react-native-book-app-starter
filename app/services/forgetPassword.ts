@@ -3,8 +3,6 @@ import Api from './client';
 
 export default function AddAnnotation(params:string) {
   return Api(
-    ApiConfig.BASE_URL + ApiConfig.FORGETPASSWORD,
-params,
-    'POST', 'byBody',
-  );
+    ApiConfig.BASE_URL + ApiConfig.FORGETPASSWORD,params,'POST');
+  
 }

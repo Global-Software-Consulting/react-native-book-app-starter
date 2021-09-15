@@ -6,4 +6,6 @@ export interface ILoginState {
 userData: [];
 token:any;
 signUpResponse:any;
+forgetPasswordResponse:any;
+
 }
