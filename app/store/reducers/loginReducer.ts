@@ -34,7 +34,7 @@ export const loginReducer = createReducer(initialState, {
   [types.LOGIN_RESPONSE](state: ILoginState, action: ILoginResponseState) {
     return {
       ...state,
-      token: action.response
+      token: action.payload
     };
   },
   [types.LOGIN_FAILED](state: ILoginState) {

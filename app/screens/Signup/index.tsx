@@ -49,16 +49,16 @@ const Signup: React.FC = () => {
       // saving error
     }
   };
-
-  const performSignUp = async data => {
-    dispatch(loginActions.ISignupRequest(data));
-    if (signUpStatus.status == 'success') {
-      await storeData(signUpStatus.token);
+console.log('stataso', signUpStatus);
+const performSignUp = async data => {
+  dispatch(loginActions.ISignupRequest(data));
+  await storeData(signUpStatus.token).then(() => {
+    dispatch(loginActions.userDetailsResponse(signUpStatus.result));
+    setTimeout(() => {
       dispatch(loginActions.setLoggedIn());
-    } else {
-      Alert.alert('Book App', 'Registration failed');
-    }
-  };
+    }, 2000);
+  });
+};
 
   const onSubmit = data => {
     performSignUp(data);

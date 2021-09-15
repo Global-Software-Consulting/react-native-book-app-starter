@@ -7,26 +7,23 @@
 // import { delay } from 'redux-saga';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from 'react-native';
-import { yellow100 } from 'react-native-paper/lib/typescript/styles/colors';
-import { put, call } from 'redux-saga/effects';
-import loginUser from 'services/loginUser';
+import { put } from 'redux-saga/effects';
+import ForgetPassword from 'services/forgetPassword'
 import * as loginActions from 'store/actions/loginActions';
 
 // Our worker Saga that logins the user
-export default function* loginAsync(action) {
+export default function* forgetPassword(action) {
   yield put(loginActions.enableLoader());
-console.log('actionado',action)
+
   //how to call api
-  const response = yield call(loginUser, action.params);
+  const response = yield call(ForgetPassword, action.params);
   //mock response
-  console.log('login response',response)
-if (response.token != '')
-{
-    yield put(loginActions.LoginResponse(response.token));
-    yield put (loginActions.setLoggedIn())
-    
+
+  
+    yield put(loginActions.IForgotPasswordResponse(response));
+    console.log('login response',response.data)
     yield put(loginActions.disableLoader());
-}
+
     // no need to call navigate as this is handled by redux store with SwitchNavigator
     //yield call(navigationActions.navigateToHome);
   

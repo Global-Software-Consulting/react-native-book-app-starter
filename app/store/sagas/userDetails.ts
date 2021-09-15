@@ -4,7 +4,6 @@ import * as authActions from "../actions/loginActions";
 
 // Our worker Saga that logins the user
 export default function* fetchBookAsync(action:string) {
-console.log('i.',action);
   let response = yield call(fetchUserDetails,action.token);
   if (response && response.status == 'success') {
     yield put(authActions.userDetailsResponse(response))

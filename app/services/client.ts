@@ -22,7 +22,6 @@ export default async function api(
   calllType: 'byParams' | 'byBody' | 'byHeader' | 'byHeader&Params',
 ) {
   let options;
-  let authToken =getToken()
   if (calllType=='byBody')
   {
     options= {
