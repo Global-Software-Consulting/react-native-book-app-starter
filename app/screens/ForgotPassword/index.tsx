@@ -16,7 +16,7 @@ import * as loginActions from 'store/actions/loginActions';
 const initI18n = i18n;
 const forgotPassword: React.FC = () => {
   const dispatch = useDispatch();
-const signupResponse = useSelector(
+const forgetpasswordResponse = useSelector(
   state => state.loginReducer.forgetPasswordResponse,
 );
 //defining states
@@ -28,7 +28,8 @@ const styles = useStyles();
 const sendResetLink = () => {
   dispatch(loginActions.IForgotPasswordRequest(email));
 };
-console.log('Yeh hay response', signupResponse);
+console.log('yeh hy', forgetpasswordResponse);
+
 return (
   <View style={styles.container}>
     <Text style={styles.mainHeading}>{t('Forgot Password')}</Text>
@@ -51,6 +52,15 @@ return (
         title="Submit"
         style={styles.editButton}></Button>
     </View>
+    {forgetpasswordResponse ? (
+      <View>
+        <Text style={{color: 'blue'}}>
+          Message: {forgetpasswordResponse.message}
+        </Text>
+      </View>
+    ) : (
+      <View></View>
+    )}
   </View>
 );
 };

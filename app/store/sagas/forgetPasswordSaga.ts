@@ -16,7 +16,9 @@ export default function* forgetPassword(action) {
   yield put(loginActions.enableLoader());
 
   //how to call api
-  const response = yield call(ForgetPassword, action.params);
+  const response = yield call(ForgetPassword, {
+    email:action.params
+  });
   //mock response
 
   

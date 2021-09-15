@@ -24,7 +24,7 @@ const getAuthToken = async () => {
 
 
 
-export default async function api(path, body, method) {
+export default async function api(path, body, method,authorization:boolean=true) {
  console.log('method',method);
  
   let token = await getAuthToken();
@@ -40,7 +40,9 @@ export default async function api(path, body, method) {
     method: method,
     ...(body && { body: JSON.stringify(body) }),
   };
-
+if(!authorization){
+  delete options.headers.Authorization
+}
     console.log("in api call", path, options);
   
   return fetch(path, options)
