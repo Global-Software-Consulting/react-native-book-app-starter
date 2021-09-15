@@ -56,12 +56,10 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
   const searchBook = (bookName: string) => {
     dispatch(appActions.IFetchBooksRequest(bookName));
   };
-  const [username, setUserName] = useState(
-    userData.firstName + ' ' + userData.lastName,
-  );
+
   const fetchBookDetails = async () => {
     const isConnected = await NetworkUtils.isNetworkAvailable();
-    if (!isConnected) {
+    if (isConnected) {
       dispatch(appActions.IFetchBooksRequest('a'));
       getFavoriteBooks();
     } else {
@@ -76,7 +74,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
 
   const navigateToDetails = async params => {
     const isConnected = await NetworkUtils.isNetworkAvailable();
-    if (!isConnected) {
+    if (isConnected) {
       navigation.navigate('BookDetail', params);
     } else {
       Toast.show('You are offline', Toast.SHORT);

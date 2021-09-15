@@ -50,6 +50,10 @@ const Explore: React.FC = () => {
     dispatch(appActions.IFetchFavoriteBooksRequest());
   };
 
+  useEffect(() => {
+    setUserName(userData?.firstName + ' ' + userData?.lastName);
+  }, [IsFocused, userData]);
+
   //fetching favorite books
 
   //handling back hardware button
@@ -58,10 +62,6 @@ const Explore: React.FC = () => {
       getFavoriteBooks();
       //api call
     });
-
-    useEffect(() => {
-      setUserName(userData.firstName + ' ' + userData.lastName);
-    }, [IsFocused, userData]);
 
     const backAction = () => {
       Alert.alert('Book App', 'Are you sure you want to exit?', [

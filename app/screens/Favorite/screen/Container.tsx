@@ -55,7 +55,7 @@ const Container: React.FC<Props> = ({books, base_url}) => {
   //fetching favorite books
   const getFavoriteBooks = async () => {
     const isConnected = await NetworkUtils.isNetworkAvailable();
-    if (!isConnected) {
+    if (isConnected) {
       dispatch(appActions.IFetchFavoriteBooksRequest());
     } else {
       Toast.show('You are offline', Toast.SHORT);
@@ -64,7 +64,7 @@ const Container: React.FC<Props> = ({books, base_url}) => {
 
   const navigateToDetails = async params => {
     const isConnected = await NetworkUtils.isNetworkAvailable();
-    if (!isConnected) {
+    if (isConnected) {
       navigation.navigate('BookDetail', params);
     } else {
       Toast.show('You are offline', Toast.SHORT);

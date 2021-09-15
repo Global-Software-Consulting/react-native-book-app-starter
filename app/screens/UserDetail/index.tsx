@@ -40,7 +40,7 @@ const UserDetail: React.FC = () => {
   const update = async () => {
     let isConnected = await NetworkUtils.isNetworkAvailable();
     console.log('statuso', isConnected);
-    if (!isConnected) {
+    if (isConnected) {
       setIsEditing(!isEditing);
       editUser().then(() => {
         if (isEditing) {
