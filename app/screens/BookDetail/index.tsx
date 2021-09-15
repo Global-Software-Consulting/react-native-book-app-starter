@@ -49,7 +49,7 @@ const getDetail = async () => {
 
   return (
     <View>
-      {isLoading ? (
+      {bookData.length < 1 ? (
         <Shimmer />
       ) : (
         <Container base_url={base_url} books={bookData} />

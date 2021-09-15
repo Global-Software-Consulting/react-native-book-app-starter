@@ -17,7 +17,7 @@ const initI18n = i18n;
 const Container: React.FC<Props> = ({books, base_url}) => {
   //theme handling
   const styles = useStyles();
-  var author = books.bookAuthors[0].author.name;
+  var author = 'Dummy author';
   var genre = 'Dummy Genre';
   var pages = books.numberOfPages;
   var launched = books.createdAt;

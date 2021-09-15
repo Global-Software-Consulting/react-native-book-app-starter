@@ -66,6 +66,7 @@ const Container: React.FC<Props> = ({books, base_url}) => {
     return (
       <View>
         <FlatList
+          nestedScrollEnabled={true}
           numColumns={2}
           contentContainerStyle={styles.flatList}
           data={favoriteBooks}

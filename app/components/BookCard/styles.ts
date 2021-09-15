@@ -126,13 +126,13 @@ heartIconTrending:
 {
   position: 'absolute',
   marginVertical:hp('21%'),
-  marginHorizontal:hp('1%')
+  marginHorizontal:hp('2%')
 },
 heartIconLarge:
 {
   position: 'absolute',
   marginVertical:hp('26%'),
-  marginHorizontal:hp('2%')
+  marginHorizontal:hp('3%')
 },
 textTitle:
 {
@@ -160,7 +160,7 @@ heartIconGeneral:
 {
   position: 'absolute',
   marginVertical:hp('16%'),
-  marginHorizontal:hp('1%')
+  marginHorizontal:hp('2%')
 }
 
 });

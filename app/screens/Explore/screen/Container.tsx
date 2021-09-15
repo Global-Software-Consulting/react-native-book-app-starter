@@ -63,6 +63,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
     <View style={styles.mainViewSetting}>
       {books.length > 0 && (
         <ScrollView
+          nestedScrollEnabled={true}
           style={styles.container}
           refreshControl={
             <RefreshControl
@@ -97,6 +98,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
 
             <Text style={styles.listCaption}>{t('Trending')}</Text>
             <FlatList
+              nestedScrollEnabled={true}
               horizontal
               data={books?.filter(item => {
                 return item?.averageRating > 3;
