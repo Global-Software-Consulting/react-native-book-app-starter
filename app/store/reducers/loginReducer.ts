@@ -17,6 +17,7 @@ const initialState: ILoginState = {
   password: '',
   userData: [],
   token:'',
+  loginResponse:'',
   signUpResponse:'',
   forgetPasswordResponse:'',
   updateProfileResponse:''
@@ -36,7 +37,7 @@ export const loginReducer = createReducer(initialState, {
   [types.LOGIN_RESPONSE](state: ILoginState, action: ILoginResponseState) {
     return {
       ...state,
-      token: action.payload
+      loginResponse: action.payload
     };
   },
   [types.LOGIN_FAILED](state: ILoginState) {
@@ -92,6 +93,13 @@ export const loginReducer = createReducer(initialState, {
   return {
     ...state,
     updateProfileResponse: action.payload
+  };
+},
+
+[types.CLEAR_LOGIN_RESPONSE](state: ILoginState, action: ILoginResponseState) {
+  return {
+    ...state,
+    loginResponse: ''
   };
 },
 });

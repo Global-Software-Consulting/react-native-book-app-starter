@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 
     backgroundColor: theme.colors.background,
     alignItems:'center',
-    justifyContent:'center'
+    
   },
   displayPicture:
   {

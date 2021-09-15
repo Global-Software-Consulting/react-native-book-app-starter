@@ -1,6 +1,14 @@
 import images from 'config/images';
 import React, {useState} from 'react';
-import {Button, Image, TextInput, View, ScrollView, Alert} from 'react-native';
+import {
+  Button,
+  Image,
+  TextInput,
+  View,
+  ScrollView,
+  Alert,
+  ActivityIndicator,
+} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import {Text} from 'react-native-paper';
 import {
@@ -27,6 +35,7 @@ const Signup: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [open, setOpen] = useState(false);
+  const isLoading = useSelector(state => state.loadingReducer.isLoginLoading);
   const signupResponse = useSelector(state => {
     state.loginReducer.signUpResponse;
   });
@@ -204,6 +213,7 @@ const Signup: React.FC = () => {
             onPress={handleSubmit(onSubmit)}
             title="Sign up"
             style={styles.editButton}></Button>
+          {isLoading && <ActivityIndicator />}
         </View>
       </ScrollView>
     </KeyboardAwareScrollView>

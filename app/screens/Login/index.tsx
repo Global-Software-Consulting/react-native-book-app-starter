@@ -21,6 +21,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/core';
 import {useTranslation} from 'react-i18next';
 import i18n from '../../components/Languages/i18n';
+import Toast from 'react-native-simple-toast';
+import NetworkUtils from 'utils/networkUtils';
 import {
   heightPercentageToDP,
   widthPercentageToDP,
@@ -42,23 +44,34 @@ const Login: React.FC = () => {
   const navigation = useNavigation();
   const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
   const onForgot = () => NavigationService.navigate('ForgotPassword');
-  const [email, setEmail] = useState('fsdf');
-  const [password, setPassword] = useState('fds');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [secure, setSecure] = useState(true);
   const [showActivityIndicator, setShowActivityIndicator] = useState(false);
-  const isLoggingIn = useSelector(state => state.loadingReducer.isLoginLoading);
+  const isLoading = useSelector(state => state.loadingReducer.isLoginLoading);
   const [error, setError] = useState('');
+  const loginResponse = useSelector(
+    state => state.loginReducer.loginResponse.status,
+  );
 
   const performLoginOperation = async () => {
-    if (email != '' && password != '') {
-      setError('');
-      setShowActivityIndicator(isLoggingIn);
-      dispatch(loginActions.requestLogin({email, password}));
-
-      // AddAnnotation(email, password).then(async () => {
-      // });
+    const isConnected = await NetworkUtils.isNetworkAvailable();
+    if (isConnected) {
+      if (email != '' && password != '') {
+        setError('');
+        setShowActivityIndicator(isLoading);
+        dispatch(loginActions.requestLogin({email, password}));
+        if (loginResponse == 'error') {
+          setError('No user found');
+          dispatch(loginActions.IClearLoginResponse());
+        } else {
+          setError('Authenticated Successfully');
+        }
+      } else {
+        setError('Email or Password missing');
+      }
     } else {
-      setError('Email or Password missing');
+      Toast.show('You are offline', Toast.SHORT);
     }
   };
 
@@ -152,7 +165,9 @@ const Login: React.FC = () => {
           justifyContent: 'center',
           alignContent: 'center',
           alignItems: 'center',
-        }}>
+        }}
+        underlayColor="transparent"
+        onPress={() => navigation.navigate('ForgotPassword')}>
         <Text
           style={{
             alignSelf: 'flex-end',
@@ -184,9 +199,7 @@ const Login: React.FC = () => {
           }}>
           <Text style={{color: 'white'}}>Log in</Text>
         </Button>
-        {showActivityIndicator && (
-          <ActivityIndicator color="white" style={{margin: 5}} />
-        )}
+        {isLoading && <ActivityIndicator color="white" style={{margin: 5}} />}
       </View>
 
       <View

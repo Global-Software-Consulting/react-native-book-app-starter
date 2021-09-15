@@ -31,8 +31,10 @@ export default function* loginAsync(action) {
   //how to call api
   const loginCall = yield call(loginUser, action.params);
   //mock response
-if (loginCall.token != '')
+if (loginCall.status != 'error')
 {
+  yield put(loginActions.disableLoader());
+
   yield call(storeData,loginCall.token);
   yield put(loginActions.LoginResponse(loginCall.token));
 
@@ -46,7 +48,11 @@ if (loginCall.token != '')
   yield put(appActions.IFetchBooksResponse(fetchBookCall.result))
 
     yield put (loginActions.setLoggedIn())
-    yield put(loginActions.disableLoader());
+}
+else {
+  yield put(loginActions.LoginResponse(loginCall));
+  yield put(loginActions.disableLoader());
+
 }
     // no need to call navigate as this is handled by redux store with SwitchNavigator
     //yield call(navigationActions.navigateToHome);

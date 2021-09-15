@@ -109,3 +109,9 @@ export function IUpdateProfileResponse(payload) {
     payload
   };
 }
+export function IClearLoginResponse() {
+  return {
+    type: types.CLEAR_LOGIN_RESPONSE,
+    
+  };
+}
