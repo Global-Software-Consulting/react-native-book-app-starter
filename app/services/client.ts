@@ -10,95 +10,47 @@ const storeData = async (value) => {
     // saving error
   }
 }
-const getToken = async (value) => {
-  return  await AsyncStorage.getItem('token')
- 
-}
+const getAuthToken = async () => {
+  try {
+    const value = await AsyncStorage.getItem("@token");
+    if (value !== null) {
+      return value;
+    }
+    return "";
+  } catch (e) {
+    return "";
+  }
+};
 
-export default async function api(
-  path: string,
-  params: any,
-  method: string,
-  calllType: 'byParams' | 'byBody' | 'byHeader' | 'byHeader&Params',
-) {
-  let options;
-  if (calllType=='byBody')
-  {
-    options= {
+
+
+export default async function api(path, body, method, token) {
+  token = await getAuthToken();
+ let options = {
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    
-
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+      "Cache-Control": "no-cache, private",
+      Pragma: "no-cache",
+      APIKey: 12355,
     },
     method: method,
-    body: JSON.stringify(params)
-  }}
-  else if (calllType=='byParams') {
+    ...(body && { body: JSON.stringify(params) }),
+  };
 
-     options = {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      method: method,
-      body: null
-     
+  if (_DEV_) {
+    console.log("in api call", path, options);
   }
-  }
-  else if(calllType=='byHeader')
-  {
-const intoToken = params;
-const parsedData = JSON.parse(intoToken);
-const token = parsedData.token;
-console.log('paramso',params)
-    options = {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'Authorization': 'Bearer ' + token
-      },
-      method: method,
-      body: null  
-  }
-}
-else if(calllType=='byHeader&Params')
-  {
-const intoToken = params;
-const parsedData = JSON.parse(intoToken);
-const token = parsedData.token;
-console.log('paramso',params)
-    options = {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'Authorization': 'Bearer ' + token
-      },
-      method: method,
-      body: null  
-  }
-}
 
-  let fetch_result = await fetch(path, options )
-    .then((response) => response.json())
-    .then((responseJson) => {
-      if (responseJson.token)  { 
-        storeData(responseJson)
-        return responseJson;
-      }
-       else { 
-          return responseJson;
-
-        }
-      
-    
-      //Hide Loader
-  })
+  return fetch(path, options)
+    .then((resp) => resp.json())
+    .then((json) => {
+      console.log("json", json);
+      return json;
+    })
     .catch((error) => {
-      //Hide Loader
-      Alert.alert('Book App',error);
-
+      console.log("error", error);
       return error;
     });
-  return fetch_result;
 }
