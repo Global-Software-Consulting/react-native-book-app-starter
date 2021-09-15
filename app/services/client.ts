@@ -10,6 +10,10 @@ const storeData = async (value) => {
     // saving error
   }
 }
+const getToken = async (value) => {
+  return  await AsyncStorage.getItem('token')
+ 
+}
 
 export default async function api(
   path: string,
@@ -18,6 +22,7 @@ export default async function api(
   calllType: 'byParams' | 'byBody' | 'byHeader' | 'byHeader&Params',
 ) {
   let options;
+  let authToken =getToken()
   if (calllType=='byBody')
   {
     options= {

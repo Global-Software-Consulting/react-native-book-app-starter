@@ -17,6 +17,7 @@ import {useStyles} from 'screens/Explore/styles';
 import BookCard from 'components/BookCard/BookCard';
 import i18n from 'config/Languages/index';
 import * as appActions from 'store/actions/appActions';
+import * as loginActions from 'store/actions/loginActions';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {heightPercentageToDP} from 'react-native-responsive-screen';
@@ -69,6 +70,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
   const getFavoriteBooks = async () => {
     const token = await getToken();
     dispatch(appActions.IFetchFavoriteBooksRequest(token));
+    dispatch(loginActions.userDetailsRequest(token));
   };
 
   return (

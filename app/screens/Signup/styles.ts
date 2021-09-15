@@ -50,7 +50,8 @@ marginTop:10,
   inputField:
   {
     width:wp('50%'),
-    color:'black'
+    color:'black',
+    height: 40
   },
   infoView:
   {
@@ -60,7 +61,8 @@ marginTop:10,
     borderRadius:20,
    alignItems:'center',
    justifyContent:'center',
-    width: wp('80%')
+    width: wp('80%'),
+    height: 40
   },
   editView:
       {

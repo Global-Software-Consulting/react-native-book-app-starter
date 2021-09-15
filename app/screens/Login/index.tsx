@@ -46,6 +46,8 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('fds');
   const [secure, setSecure] = useState(true);
   const [showActivityIndicator, setShowActivityIndicator] = useState(false);
+  const [error, setError] = useState('');
+
   const getData = async () => {
     try {
       const value = await AsyncStorage.getItem('token');
@@ -53,19 +55,24 @@ const Login: React.FC = () => {
         dispatch(loginActions.userDetailsRequest(value));
         dispatch(loginActions.setLoggedIn());
       } else {
-        Alert.alert('Book App', 'Please check your email and password');
+        setError('Please check your email and password');
       }
     } catch (e) {
-      Alert.alert('Book App', 'Error fetching data');
+      setError('Error fetching data');
     }
   };
 
-  const performLoginOperation = () => {
-    setShowActivityIndicator(true);
-    AddAnnotation(email, password).then(() => {
-      getData();
-      setShowActivityIndicator(false);
-    });
+  const performLoginOperation = async () => {
+    if (email != '' && password != '') {
+      setError('');
+      setShowActivityIndicator(true);
+      AddAnnotation(email, password).then(async () => {
+        await getData();
+        setShowActivityIndicator(false);
+      });
+    } else {
+      setError('Email or Password missing');
+    }
   };
 
   return (
@@ -204,6 +211,18 @@ const Login: React.FC = () => {
           Sign up
         </Text>
       </View>
+
+      {
+        <Text
+          style={{
+            alignSelf: 'center',
+            marginTop: 5,
+            marginBottom: 5,
+            color: 'red',
+          }}>
+          {error}
+        </Text>
+      }
     </KeyboardAwareScrollView>
   );
 };

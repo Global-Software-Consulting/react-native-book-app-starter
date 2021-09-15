@@ -10,6 +10,7 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu';
 import {useDispatch, useSelector} from 'react-redux';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {useStyles} from 'screens/Signup/styles';
 import * as loginActions from 'store/actions/loginActions';
@@ -65,148 +66,150 @@ const Signup: React.FC = () => {
 
   const styles = useStyles();
   return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={{alignItems: 'center'}}>
-      <Image
-        source={images.app.logo}
-        style={{
-          alignSelf: 'center',
-          marginTop: 20,
-          width: widthPercentageToDP('40%'),
-          height: heightPercentageToDP('30%'),
-        }}
-      />
-      <Text style={styles.mainHeading}>Fill in the sign up form</Text>
-      <View>
-        <Text style={styles.subHeading}>First Name </Text>
+    <KeyboardAwareScrollView style={{backgroundColor: 'white'}}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{alignItems: 'center'}}>
+        <Image
+          source={images.app.logo}
+          style={{
+            alignSelf: 'center',
+            marginTop: 20,
+            width: widthPercentageToDP('40%'),
+            height: heightPercentageToDP('30%'),
+          }}
+        />
+        <Text style={styles.mainHeading}>Fill in the sign up form</Text>
+        <View>
+          <Text style={styles.subHeading}>First Name </Text>
 
-        <View style={styles.infoView}>
-          <Controller
-            control={control}
-            rules={{
-              required: true,
-            }}
-            render={({field: {onChange, onBlur, value}}) => (
-              <TextInput
-                placeholder="Enter your first name"
-                autoCapitalize="none"
-                autoCorrect={false}
-                style={styles.inputField}
-                value={value}
-                onChangeText={text => onChange(text)}
-              />
-            )}
-            name="firstName"
-            defaultValue=""
-          />
-          {errors.firstName && <Text>First name is required.</Text>}
+          <View style={styles.infoView}>
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+              }}
+              render={({field: {onChange, onBlur, value}}) => (
+                <TextInput
+                  placeholder="Enter your first name"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  style={styles.inputField}
+                  value={value}
+                  onChangeText={text => onChange(text)}
+                />
+              )}
+              name="firstName"
+              defaultValue=""
+            />
+            {errors.firstName && <Text>First name is required.</Text>}
+          </View>
+
+          <Text style={styles.subHeading}>Last Name </Text>
+          <View style={styles.infoView}>
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+              }}
+              render={({field: {onChange, onBlur, value}}) => (
+                <TextInput
+                  placeholder="Enter your last name"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  style={styles.inputField}
+                  value={value}
+                  onChangeText={text => onChange(text)}
+                />
+              )}
+              name="lastName"
+              defaultValue=""
+            />
+            {errors.lastName && <Text>Last name is required.</Text>}
+          </View>
+
+          <Text style={styles.subHeading}>Email </Text>
+          <View style={styles.infoView}>
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+              }}
+              render={({field: {onChange, onBlur, value}}) => (
+                <TextInput
+                  placeholder="Enter your email"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  style={styles.inputField}
+                  value={value}
+                  onChangeText={text => onChange(text)}
+                />
+              )}
+              name="email"
+              defaultValue=""
+            />
+            {errors.email && <Text>Email is required.</Text>}
+          </View>
+
+          <Text style={styles.subHeading}>Password</Text>
+          <View style={styles.infoView}>
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+              }}
+              render={({field: {onChange, onBlur, value}}) => (
+                <TextInput
+                  placeholder="Enter password"
+                  secureTextEntry={true}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  style={styles.inputField}
+                  value={value}
+                  onChangeText={text => onChange(text)}
+                />
+              )}
+              name="password"
+              defaultValue=""
+            />
+            {errors.lastName && <Text>Last name is required.</Text>}
+          </View>
         </View>
 
-        <Text style={styles.subHeading}>Last Name </Text>
-        <View style={styles.infoView}>
-          <Controller
-            control={control}
-            rules={{
-              required: true,
-            }}
-            render={({field: {onChange, onBlur, value}}) => (
-              <TextInput
-                placeholder="Enter your last name"
-                autoCapitalize="none"
-                autoCorrect={false}
-                style={styles.inputField}
-                value={value}
-                onChangeText={text => onChange(text)}
-              />
-            )}
-            name="lastName"
-            defaultValue=""
-          />
-          {errors.lastName && <Text>Last name is required.</Text>}
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({field: {onChange, onBlur, value}}) => (
+            <DropDownPicker
+              placeholder="Please select gender"
+              open={open}
+              value={value}
+              items={gender}
+              setOpen={setOpen}
+              setValue={onChange}
+              setItems={value => console.log(value)}
+              style={styles.dropDown}
+              dropDownContainerStyle={styles.dropDown}
+              onChangeValue={value => {
+                console.log('2', value);
+              }}
+            />
+          )}
+          name="gender"
+          defaultValue=""
+        />
+        {errors.value && <Text>Please provide gender</Text>}
+
+        <View style={styles.editView}>
+          <Button
+            onPress={handleSubmit(onSubmit)}
+            title="Sign up"
+            style={styles.editButton}></Button>
         </View>
-
-        <Text style={styles.subHeading}>Email </Text>
-        <View style={styles.infoView}>
-          <Controller
-            control={control}
-            rules={{
-              required: true,
-            }}
-            render={({field: {onChange, onBlur, value}}) => (
-              <TextInput
-                placeholder="Enter your email"
-                autoCapitalize="none"
-                autoCorrect={false}
-                style={styles.inputField}
-                value={value}
-                onChangeText={text => onChange(text)}
-              />
-            )}
-            name="email"
-            defaultValue=""
-          />
-          {errors.email && <Text>Email is required.</Text>}
-        </View>
-
-        <Text style={styles.subHeading}>Password</Text>
-        <View style={styles.infoView}>
-          <Controller
-            control={control}
-            rules={{
-              required: true,
-            }}
-            render={({field: {onChange, onBlur, value}}) => (
-              <TextInput
-                placeholder="Enter password"
-                secureTextEntry={true}
-                autoCapitalize="none"
-                autoCorrect={false}
-                style={styles.inputField}
-                value={value}
-                onChangeText={text => onChange(text)}
-              />
-            )}
-            name="password"
-            defaultValue=""
-          />
-          {errors.lastName && <Text>Last name is required.</Text>}
-        </View>
-      </View>
-
-      <Controller
-        control={control}
-        rules={{
-          required: true,
-        }}
-        render={({field: {onChange, onBlur, value}}) => (
-          <DropDownPicker
-            placeholder="Please select gender"
-            open={open}
-            value={value}
-            items={gender}
-            setOpen={setOpen}
-            setValue={onChange}
-            setItems={value => console.log(value)}
-            style={styles.dropDown}
-            dropDownContainerStyle={styles.dropDown}
-            onChangeValue={value => {
-              console.log('2', value);
-            }}
-          />
-        )}
-        name="gender"
-        defaultValue=""
-      />
-      {errors.value && <Text>Please provide gender</Text>}
-
-      <View style={styles.editView}>
-        <Button
-          onPress={handleSubmit(onSubmit)}
-          title="Sign up"
-          style={styles.editButton}></Button>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </KeyboardAwareScrollView>
   );
 };
 

@@ -16,6 +16,7 @@ import ExploreShimmer from './screen/Shimmer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ExploreComponent from './screen/Container';
 import * as loginAction from 'store/actions/loginActions';
+import {useIsFocused} from '@react-navigation/core';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 const initI18n = i18n;
 const Explore: React.FC = () => {
@@ -25,7 +26,7 @@ const Explore: React.FC = () => {
   const books = useSelector(state => state.appReducer.detail);
   const isLoading = useSelector(state => state.appReducer.isFetching);
   const token = useSelector(state => state.loginReducer.token);
-
+  const IsFocused = useIsFocused();
   const favoriteBooks = useSelector(state => state.appReducer.favorite);
   const [errorExists, setErrorExists] = useState(false);
 
@@ -48,6 +49,7 @@ const Explore: React.FC = () => {
       if (value !== null) {
         console.log('value is ', value);
         dispatch(appActions.IFetchFavoriteBooksRequest(value));
+        dispatch(loginAction.userDetailsRequest(value));
       } else {
         return '';
       }
@@ -88,7 +90,7 @@ const Explore: React.FC = () => {
     );
 
     return () => backHandler.remove();
-  }, []);
+  }, [IsFocused]);
 
   return (
     <View>

@@ -22,9 +22,9 @@ const UserDetail: React.FC = () => {
   const userDetails = useSelector(state => state.loginReducer.userData.result);
   //defining states
   const [isEditing, setIsEditing] = useState(false);
-  const [firstName, setFirstName] = useState(userDetails.firstName);
-  const [lastName, setLastName] = useState(userDetails.lastName);
-  const [email, setEmail] = useState(userDetails.email);
+  const [firstName, setFirstName] = useState(userDetails?.firstName);
+  const [lastName, setLastName] = useState(userDetails?.lastName);
+  const [email, setEmail] = useState(userDetails?.email);
   const IsFocused = useIsFocused();
   const {t, i18n} = useTranslation();
   const styles = useStyles();
@@ -70,17 +70,17 @@ const UserDetail: React.FC = () => {
         <View>
           <View style={styles.infoView}>
             <Text style={styles.subHeading}>{t('First Name')}:</Text>
-            <Text> {userDetails.firstName}</Text>
+            <Text> {firstName}</Text>
           </View>
 
           <View style={styles.infoView}>
             <Text style={styles.subHeading}>{t('Last Name')}:</Text>
-            <Text> {userDetails.lastName}</Text>
+            <Text> {lastName}</Text>
           </View>
 
           <View style={styles.infoView}>
             <Text style={styles.subHeading}>{t('Email')}:</Text>
-            <Text> {userDetails.email}</Text>
+            <Text> {email}</Text>
           </View>
         </View>
       ) : (
