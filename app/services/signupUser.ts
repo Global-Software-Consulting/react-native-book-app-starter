@@ -5,6 +5,6 @@ export default function AddAnnotation(params:object) {
   return Api(
     ApiConfig.BASE_URL + ApiConfig.SIGNUP,
 params,
-    'POST', 'byBody'
+    'POST'
   );
 }

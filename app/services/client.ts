@@ -22,26 +22,50 @@ const getAuthToken = async () => {
   }
 };
 
+export type Props = {
+  object: {
+  header: {
+Accept:object,
+Authorization:object,
+Pragma:string
+APIKey:number
+  }
+}
+};
 
 
-export default async function api(path, body, method,authorization:boolean=true) {
+export default async function api(path:string, body:object| string | null, method:string,authorization:boolean=true) {
  
   let token = await getAuthToken();
- let options = {
+ let options:object
+if(!authorization){
+   options = {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
       "Cache-Control": "no-cache, private",
       Pragma: "no-cache",
       APIKey: 12355,
     },
     method: method,
     ...(body && { body: JSON.stringify(body) }),
-  };
-if(!authorization){
-  delete options.headers.Authorization
+  }
 }
+  else {
+     options = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+        "Cache-Control": "no-cache, private",
+        Pragma: "no-cache",
+        APIKey: 12355,
+      },
+      method: method,
+      ...(body && { body: JSON.stringify(body) }),
+    };
+  }
+
   
   return fetch(path, options)
     .then((resp) => resp.json())

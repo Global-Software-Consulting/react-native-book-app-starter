@@ -6,6 +6,6 @@ export default function AddAnnotation(token:any) {
   return Api(
     ApiConfig.BASE_URL + ApiConfig.FAVBOOKLIST ,
 token,
-    'GET', 'byHeader'
+    'GET'
   );
 }

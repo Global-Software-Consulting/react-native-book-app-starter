@@ -5,6 +5,6 @@ export default function AddAnnotation(data:string) {
   return Api(
     ApiConfig.BASE_URL + ApiConfig.BOOKSLIST + '%'+data+'%',
 null,
-    'GET', 'byParams'
+    'GET'
   );
 }
