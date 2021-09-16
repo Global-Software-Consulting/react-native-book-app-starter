@@ -74,148 +74,145 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
 
   return (
     <View style={styles.mainViewSetting}>
-      {books.length > 0 ? (
-        <ScrollView
-          nestedScrollEnabled={true}
-          style={styles.container}
-          refreshControl={
-            <RefreshControl
-              refreshing={isLoading}
-              onRefresh={fetchBookDetails}
+      <ScrollView
+        nestedScrollEnabled={true}
+        style={styles.container}
+        refreshControl={
+          <RefreshControl refreshing={isLoading} onRefresh={fetchBookDetails} />
+        }>
+        <View>
+          {/* Searchbar */}
+          <View style={styles.searchView}>
+            <TextInput
+              underlineColorAndroid="transparent"
+              placeholder={t('Search Here')}
+              placeholderTextColor={theme.colors.text}
+              onChangeText={text => setSearchText(text)}
+              style={styles.searchViewChildren}
+              onEndEditing={() => searchBook(searchText)}
             />
-          }>
-          <View>
-            {/* Searchbar */}
-            <View style={styles.searchView}>
-              <TextInput
-                underlineColorAndroid="transparent"
-                placeholder={t('Search Here')}
-                placeholderTextColor={theme.colors.text}
-                onChangeText={text => setSearchText(text)}
-                style={styles.searchViewChildren}
-                onEndEditing={() => searchBook(searchText)}
-              />
-              <Icon
-                name="find-in-page"
-                size={30}
-                style={styles.searchViewChildren}
-                onPress={() => searchBook(searchText)}
-              />
-            </View>
-            <Text style={styles.name}>
-              {t('Hi')} {name}{' '}
-            </Text>
-            <Text style={styles.tagLine}>{t('Lets find something new')}</Text>
-
-            <View style={styles.horizontalRuler} />
-
-            <Text style={styles.listCaption}>{t('Trending')}</Text>
-            <FlatList
-              nestedScrollEnabled={true}
-              keyExtractor={(item, index) => index.toString()}
-              horizontal
-              data={books?.filter(item => {
-                return item?.averageRating > 3;
-              })}
-              contentContainerStyle={styles.flatList}
-              renderItem={({item, index}) => (
-                <TouchableHighlight
-                  key={item}
-                  underlayColor="grey"
-                  onPress={() => {
-                    navigateToDetails(item);
-                  }}>
-                  <BookCard
-                    url={
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
-                    }
-                    isFavorite={
-                      newFavorites.indexOf(item.title) !== -1 ? true : false
-                    }
-                    styleSelect="Custom"
-                    bookTitle={item?.title}
-                    book={item}
-                    id={item?.id}
-                  />
-                </TouchableHighlight>
-              )}
-              showsHorizontalScrollIndicator={false}
-            />
-
-            <View style={styles.horizontalRuler} />
-
-            <Text style={styles.listCaption}>{t('New Releases')}</Text>
-            <FlatList
-              horizontal
-              keyExtractor={(item, index) => index.toString()}
-              data={books?.filter(item => {
-                return item?.averageRating <= 3 && item?.averageRating > 0;
-              })}
-              contentContainerStyle={styles.flatList}
-              renderItem={({item, index}) => (
-                <TouchableHighlight
-                  key={item}
-                  underlayColor="grey"
-                  onPress={() => {
-                    navigateToDetails(item);
-                  }}>
-                  <BookCard
-                    url={
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
-                    }
-                    styleSelect="General"
-                    bookTitle={item?.title}
-                    book={item}
-                    id={item?.id}
-                  />
-                </TouchableHighlight>
-              )}
-              showsHorizontalScrollIndicator={false}
-            />
-
-            <View style={styles.horizontalRuler} />
-
-            <Text style={styles.listCaption}>{t('Selected for you')}</Text>
-            <FlatList
-              horizontal
-              keyExtractor={(item, index) => index.toString()}
-              data={books?.filter(item => {
-                return item?.averageRating == 0;
-              })}
-              contentContainerStyle={styles.flatListLast}
-              renderItem={({item, index}) => (
-                <TouchableHighlight
-                  key={item}
-                  underlayColor="grey"
-                  onPress={() => {
-                    navigateToDetails(item);
-                  }}>
-                  <BookCard
-                    url={
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
-                    }
-                    isFavorite={
-                      newFavorites.indexOf(item?.title) !== -1 ? true : false
-                    }
-                    styleSelect="General"
-                    bookTitle={item?.title}
-                    book={item}
-                    id={item?.id}
-                  />
-                </TouchableHighlight>
-              )}
-              showsHorizontalScrollIndicator={false}
+            <Icon
+              name="find-in-page"
+              size={30}
+              style={styles.searchViewChildren}
+              onPress={() => searchBook(searchText)}
             />
           </View>
-        </ScrollView>
-      ) : (
-        <View style={styles.favoriteView}>
-          <Image source={images.books.noBookFound} style={styles.imageError} />
-          <Text style={styles.bookmark}>
-            No books available or check your internet
+          <Text style={styles.name}>
+            {t('Hi')} {name}{' '}
           </Text>
+          <Text style={styles.tagLine}>{t('Lets find something new')}</Text>
+
+          {books.length > 0 ? (
+            <View>
+              <View style={styles.horizontalRuler} />
+              <Text style={styles.listCaption}>{t('Trending')}</Text>
+              <FlatList
+                nestedScrollEnabled={true}
+                keyExtractor={(item, index) => index.toString()}
+                horizontal
+                data={books?.filter(item => {
+                  return item?.averageRating > 3;
+                })}
+                contentContainerStyle={styles.flatList}
+                renderItem={({item, index}) => (
+                  <TouchableHighlight
+                    key={item}
+                    underlayColor="grey"
+                    onPress={() => {
+                      navigateToDetails(item);
+                    }}>
+                    <BookCard
+                      url={
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
+                      }
+                      isFavorite={
+                        newFavorites.indexOf(item.title) !== -1 ? true : false
+                      }
+                      styleSelect="Custom"
+                      bookTitle={item?.title}
+                      book={item}
+                      id={item?.id}
+                    />
+                  </TouchableHighlight>
+                )}
+                showsHorizontalScrollIndicator={false}
+              />
+              <View style={styles.horizontalRuler} />
+              <Text style={styles.listCaption}>{t('New Releases')}</Text>
+              <FlatList
+                horizontal
+                keyExtractor={(item, index) => index.toString()}
+                data={books?.filter(item => {
+                  return item?.averageRating <= 3 && item?.averageRating > 0;
+                })}
+                contentContainerStyle={styles.flatList}
+                renderItem={({item, index}) => (
+                  <TouchableHighlight
+                    key={item}
+                    underlayColor="grey"
+                    onPress={() => {
+                      navigateToDetails(item);
+                    }}>
+                    <BookCard
+                      url={
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
+                      }
+                      styleSelect="General"
+                      bookTitle={item?.title}
+                      book={item}
+                      id={item?.id}
+                    />
+                  </TouchableHighlight>
+                )}
+                showsHorizontalScrollIndicator={false}
+              />
+              <View style={styles.horizontalRuler} />
+              <Text style={styles.listCaption}>{t('Selected for you')}</Text>
+              <FlatList
+                horizontal
+                keyExtractor={(item, index) => index.toString()}
+                data={books?.filter(item => {
+                  return item?.averageRating == 0;
+                })}
+                contentContainerStyle={styles.flatListLast}
+                renderItem={({item, index}) => (
+                  <TouchableHighlight
+                    key={item}
+                    underlayColor="grey"
+                    onPress={() => {
+                      navigateToDetails(item);
+                    }}>
+                    <BookCard
+                      url={
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
+                      }
+                      isFavorite={
+                        newFavorites.indexOf(item?.title) !== -1 ? true : false
+                      }
+                      styleSelect="General"
+                      bookTitle={item?.title}
+                      book={item}
+                      id={item?.id}
+                    />
+                  </TouchableHighlight>
+                )}
+                showsHorizontalScrollIndicator={false}
+              />
+            </View>
+          ) : (
+            <View style={styles.favoriteView}>
+              <Image
+                source={images.books.noBookFound}
+                style={styles.imageError}
+              />
+              <Text style={styles.bookmark}>
+                No books available or check your internet
+              </Text>
+            </View>
+          )}
         </View>
-      )}
+      </ScrollView>
     </View>
   );
 };

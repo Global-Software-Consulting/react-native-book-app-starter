@@ -38,6 +38,9 @@ i18n.use(initReactI18next).init({
         'pages':'pages',
         "Synopse":'Synopse',
 
+        "Edit": "Edit",
+        "Update":"Update"
+
       },
     },
     es: {
@@ -72,6 +75,9 @@ i18n.use(initReactI18next).init({
         'Launched':'Lanzado',
         'pages':'paginas',
         "Synopse":'Sinopsis',
+
+        "Edit": "Editar",
+        "Update":"Actualizar"
       },
     },
     de: {
@@ -106,6 +112,9 @@ i18n.use(initReactI18next).init({
         'Launched':'gelanceerd',
         'pages':'Pagina',
         "Synopse":'Korte inhoud',
+
+        "Edit": "Bewerking",
+        "Update":"Update"
       },
     },
   },

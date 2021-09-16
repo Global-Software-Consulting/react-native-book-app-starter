@@ -65,7 +65,7 @@ mainShimmerView:
 },
 dynamicSynopse:
 {
-  fontWeight: 'bold', fontSize: 15, marginBottom: 30, 
+  fontWeight: 'bold', fontSize: 15, marginBottom: 50, 
 },
 synopseText:
 {

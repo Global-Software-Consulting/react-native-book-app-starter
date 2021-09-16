@@ -1,36 +1,26 @@
 //to update the favorites list
-import {useIsFocused} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
+//importing card component
+import BookCard from 'components/BookCard/BookCard';
+import images from 'config/images';
+import i18n from 'config/Languages/index';
 import React, {useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
-  Alert,
   FlatList,
   Image,
   RefreshControl,
-  SafeAreaView,
   ScrollView,
   TouchableHighlight,
   View,
 } from 'react-native';
-import {
-  Menu,
-  MenuOption,
-  MenuOptions,
-  MenuTrigger,
-} from 'react-native-popup-menu';
 import {Text} from 'react-native-paper';
-import {useStyles} from '../styles';
 import {heightPercentageToDP} from 'react-native-responsive-screen';
-//importing card component
-import BookCard from 'components/BookCard/BookCard';
-import * as appActions from 'store/actions/appActions';
-import images from 'config/images';
-import i18n from 'config/Languages/index';
-import {useNavigation} from '@react-navigation/native';
-import {useDispatch, useSelector} from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-simple-toast';
+import {useDispatch, useSelector} from 'react-redux';
+import * as appActions from 'store/actions/appActions';
 import NetworkUtils from 'utils/networkUtils';
+import {useStyles} from '../styles';
 
 interface Props {
   books?: [];
