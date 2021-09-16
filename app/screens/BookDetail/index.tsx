@@ -1,3 +1,5 @@
+import {IBookState} from 'models/reducers/fetchBooks';
+import { ILoginState } from 'models/reducers/login';
 import NavigationService from 'navigation/NavigationService';
 import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -12,40 +14,37 @@ import {useStyles} from './styles';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 
 const initI18n = i18n;
-const BookDetail: React.FC = props => {
-  const styles = useStyles(); //theme handling
-  let token = '';
-  const {t, i18n} = useTranslation(); //for translation
 
+interface IState {
+  route: {
+    params: string;
+  };
+}
+interface IStateReducer {
+  appReducer: IBookState;
+  loginReducer:ILoginState;
+}
+
+const BookDetail: React.FC<IState> = props => {
+  const styles = useStyles(); //theme handling
+  const {t, i18n} = useTranslation(); //for translation
   const dispatch = useDispatch();
   const bookId = props.route.params; //getting routed params
-
-  const bookData = useSelector(state => state.appReducer.bookDetail);
-
+  const bookData: {} = useSelector(
+    (state: IStateReducer) => state.appReducer.bookDetail,
+  );
   const getDetail = async () => {
     dispatch(appActions.IFetchBookDetailRequest(bookId));
   };
 
-  const [isLoading, setIsLoading] = useState(false); //state for display name
-
   //handling back hardware button
   useEffect(() => {
     getDetail();
-    const backAction = () => {
-      NavigationService.goBack();
-    };
-
-    const backHandler = BackHandler.addEventListener(
-      'hardwareBackPress',
-      backAction,
-    );
-
-    return () => backHandler.remove();
   }, []);
 
   return (
     <View>
-      {bookData.length < 1 ? (
+      {Object.keys(bookData).length < 1 ? (
         <Shimmer />
       ) : (
         <Container base_url={base_url} books={bookData} />

@@ -25,14 +25,15 @@ interface IState {
 interface IProps {}
 const App: React.FC<IProps> = (props: IProps) => {
   const isDark = useSelector((state: IState) => state.themeReducer.isDark);
-  const isLoggedIn = useSelector(state => state.loginReducer.isLoggedIn);
+  const isLoggedIn = useSelector(
+    (state: IState) => state.loginReducer.isLoggedIn,
+  );
 
   return (
     <NavigationContainer
       ref={navigationRef}
       theme={isDark ? NavigationDarkTheme : NavigationDefaultTheme}>
       <StatusBar barStyle={'default'} />
-
       <Stack.Navigator headerMode="none">
         {isLoggedIn ? (
           <Stack.Screen
@@ -45,12 +46,6 @@ const App: React.FC<IProps> = (props: IProps) => {
             name="Login"
             component={AuthNavigation}
             options={{headerShown: false}}
-            // options={{
-            //   // When logging out, a pop animation feels intuitive
-            //   // You can remove this if you want the default 'push' animation
-            //   animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-            //   // headerRight: () => <ThemeController />,
-            // }}
           />
         )}
       </Stack.Navigator>

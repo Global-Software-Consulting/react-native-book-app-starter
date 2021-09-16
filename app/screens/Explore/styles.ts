@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E7E5E7',
     marginBottom:2
   },
-  tagLineStyle: {
+  tagLine: {
     fontSize: hp('2%'),
     fontFamily: 'Avenir-Medium',
     alignItems:'center',

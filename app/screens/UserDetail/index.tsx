@@ -1,6 +1,9 @@
 import {useIsFocused} from '@react-navigation/core';
 import i18n from 'components/Languages/i18n';
 import images from 'config/images';
+import {IBookState} from 'models/reducers/fetchBooks';
+import {ILoading} from 'models/reducers/loading';
+import {ILoginState} from 'models/reducers/login';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {ActivityIndicator, Button, Image, TextInput, View} from 'react-native';
@@ -17,11 +20,21 @@ import {useStyles} from 'screens/UserDetail/styles';
 import * as loginActions from 'store/actions/loginActions';
 import NetworkUtils from 'utils/networkUtils';
 const initI18n = i18n;
+
+//interfaces
+interface IState {
+  loginReducer: ILoginState;
+  appReducer: IBookState;
+  loadingReducer: ILoading;
+}
+
 const UserDetail: React.FC = () => {
   const dispatch = useDispatch();
   const onLogout = () => dispatch(loginActions.logOut());
-  const userData = useSelector(state => state.loginReducer.userData);
-  const isLoading = useSelector(state => state.loadingReducer.isLoginLoading);
+  const userData = useSelector((state: IState) => state.loginReducer.userData);
+  const isLoading = useSelector(
+    (state: IState) => state.loadingReducer.isLoginLoading,
+  );
   //defining states
   const [isEditing, setIsEditing] = useState(false);
   const [firstName, setFirstName] = useState(userData?.firstName);
@@ -32,9 +45,9 @@ const UserDetail: React.FC = () => {
   const {t, i18n} = useTranslation();
   const styles = useStyles();
   const updateResponse = useSelector(
-    state => state.loginReducer.updateProfileResponse,
+    (state: IState) => state.loginReducer.updateProfileResponse,
   );
-  const detail = useSelector(state => state.loginReducer.userData);
+  const detail = useSelector((state: IState) => state.loginReducer.userData);
   const update = async () => {
     let isConnected = await NetworkUtils.isNetworkAvailable();
     if (isConnected) {
@@ -134,7 +147,7 @@ const UserDetail: React.FC = () => {
           }}
           disabled={isLoading}
           title={!isEditing ? t('Edit') : t('Update')}
-          style={styles.editButton}></Button>
+        />
         {isLoading && <ActivityIndicator />}
       </View>
     </View>

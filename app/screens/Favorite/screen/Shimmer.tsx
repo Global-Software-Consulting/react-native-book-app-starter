@@ -1,16 +1,12 @@
-import React from 'react';
-import {FlatList, TouchableHighlight, View} from 'react-native';
-import {Text} from 'react-native-paper';
-import {useStyles} from '../styles';
 //importing card component
 import BookCardShimmer from 'components/BookCard/BookCardShimmer';
+import React from 'react';
+import {FlatList, TouchableHighlight, View} from 'react-native';
+import {useStyles} from '../styles';
 
-interface Props {
-  books?: [];
-  base_url?: string;
-}
+interface Props {}
 
-const Shimmer: React.FC<Props> = ({books, base_url}) => {
+const Shimmer: React.FC<Props> = () => {
   //theme handling
   const styles = useStyles();
 

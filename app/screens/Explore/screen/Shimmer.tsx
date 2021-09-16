@@ -4,6 +4,8 @@ import React from 'react';
 import {FlatList, TouchableHighlight, View} from 'react-native';
 import {useStyles} from '../styles';
 
+interface Props {}
+
 const ExploreShimmer: React.FC<Props> = ({}) => {
   const styles = useStyles();
 

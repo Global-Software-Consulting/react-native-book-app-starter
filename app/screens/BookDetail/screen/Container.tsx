@@ -8,14 +8,20 @@ import {useStyles} from '../styles';
 
 //importing card component
 interface Props {
-  books?: [];
+  books: {
+    numberOfPages: string;
+    createdAt: string;
+    title: string;
+    shortSummary: string;
+  };
   base_url?: string;
 }
 const initI18n = i18n;
 
-const Container: React.FC<Props> = ({books, base_url}) => {
+const Container: React.FC<Props> = props => {
   //theme handling
   const styles = useStyles();
+  const {books} = props;
   var author = 'Dummy author';
   var genre = 'Dummy Genre';
   var pages = books.numberOfPages;
@@ -78,4 +84,5 @@ const Container: React.FC<Props> = ({books, base_url}) => {
   );
 };
 
+  
 export default Container;

@@ -4,6 +4,8 @@ import {useIsFocused, useNavigation} from '@react-navigation/native';
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
 import i18n from 'config/Languages/index';
+import {IBookState} from 'models/reducers/fetchBooks';
+import {ILoginState} from 'models/reducers/login';
 import React, {useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
@@ -23,9 +25,15 @@ import NetworkUtils from 'utils/networkUtils';
 import {useStyles} from '../styles';
 
 interface Props {
-  books?: [];
+  books?: {};
   base_url?: string;
 }
+
+interface IStateReducer {
+  loginReducer: ILoginState;
+  appReducer: IBookState;
+}
+
 const initI18n = i18n;
 
 const Container: React.FC<Props> = ({books, base_url}) => {
@@ -35,8 +43,12 @@ const Container: React.FC<Props> = ({books, base_url}) => {
   const isFocused = useIsFocused();
   const {t, i18n} = useTranslation();
   const navigation = useNavigation();
-  const isLoading = useSelector(state => state.appReducer.isFetching);
-  const favoriteBooks = useSelector(state => state.appReducer.favorite);
+  const isLoading = useSelector(
+    (state: IStateReducer) => state.appReducer.isFetching,
+  );
+  const favoriteBooks = useSelector(
+    (state: IStateReducer) => state.appReducer.favorite,
+  );
 
   useEffect(() => {
     getFavoriteBooks;
@@ -52,7 +64,7 @@ const Container: React.FC<Props> = ({books, base_url}) => {
     }
   };
 
-  const navigateToDetails = async params => {
+  const navigateToDetails = async (params: object) => {
     //to check if the internet connection is working
     const isConnected = await NetworkUtils.isNetworkAvailable();
     if (isConnected) {
@@ -82,7 +94,6 @@ const Container: React.FC<Props> = ({books, base_url}) => {
                   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
                 }
                 styleSelect="Large"
-                title={item?.book?.title}
                 id={item?.book.id}
                 bookTitle={item?.book?.title}
                 book={favoriteBooks}

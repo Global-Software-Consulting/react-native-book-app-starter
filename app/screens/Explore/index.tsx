@@ -1,5 +1,7 @@
 import {useIsFocused} from '@react-navigation/core';
 import i18n from 'components/Languages/i18n';
+import {IBookState} from 'models/reducers/fetchBooks';
+import {ILoginState} from 'models/reducers/login';
 import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Alert, BackHandler, View} from 'react-native';
@@ -11,23 +13,28 @@ import ExploreShimmer from './screen/Shimmer';
 import {useStyles} from './styles';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 const initI18n = i18n;
+
+interface IStateReducer {
+  appReducer: IBookState;
+  loginReducer: ILoginState;
+}
+
 const Explore: React.FC = () => {
   const {t, i18n} = useTranslation();
 
   //fetching book images from the store
-  const books = useSelector(state => state.appReducer.detail);
-  const isLoading = useSelector(state => state.appReducer.isFetching);
-  const token = useSelector(state => state.loginReducer.token);
+  const books = useSelector((state: IStateReducer) => state.appReducer.detail);
+  const isLoading = useSelector(
+    (state: IStateReducer) => state.appReducer.isFetching,
+  );
   const IsFocused = useIsFocused();
-  const favoriteBooks = useSelector(state => state.appReducer.favorite);
-  const [errorExists, setErrorExists] = useState(false);
+  const favoriteBooks = useSelector(
+    (state: IStateReducer) => state.appReducer.favorite,
+  );
 
-  //state for display name
-  const [name, setName] = useState('Jorge');
-
-  //images for Flatlists(Hardcoded)
-  const sampleArr: any[] = ['a'];
-  const userData = useSelector(state => state.loginReducer.userData);
+  const userData = useSelector(
+    (state: IStateReducer) => state.loginReducer.userData,
+  );
   const [username, setUserName] = useState(
     userData?.firstName + ' ' + userData?.lastName,
   );

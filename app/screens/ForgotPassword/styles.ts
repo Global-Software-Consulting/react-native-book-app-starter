@@ -77,9 +77,7 @@ const styles = StyleSheet.create({
       },
 editButton:
     {
-    alignSelf:'center',
-    justifyContent:'center',
-      marginTop: 5,
+    
     },
 
 

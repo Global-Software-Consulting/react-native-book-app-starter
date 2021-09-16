@@ -1,4 +1,6 @@
 import {useNavigation} from '@react-navigation/core';
+import {IBookState} from 'models/reducers/fetchBooks';
+import {ILoading} from 'models/reducers/loading';
 import {ILoginState} from 'models/reducers/login';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -18,8 +20,11 @@ import i18n from '../../components/Languages/i18n';
 import images from './../../config/images';
 import * as loginActions from './../../store/actions/loginActions';
 const initI18n = i18n;
+
 interface IState {
   loginReducer: ILoginState;
+  appReducer: IBookState;
+  loadingReducer: ILoading;
 }
 
 const Login: React.FC = () => {
@@ -27,16 +32,16 @@ const Login: React.FC = () => {
   const id = useSelector((state: IState) => state.loginReducer.id);
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
-  const onForgot = () => NavigationService.navigate('ForgotPassword');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [secure, setSecure] = useState(true);
   const [showActivityIndicator, setShowActivityIndicator] = useState(false);
-  const isLoading = useSelector(state => state.loadingReducer.isLoginLoading);
+  const isLoading = useSelector(
+    (state: IState) => state.loadingReducer.isLoginLoading,
+  );
   const [error, setError] = useState('');
   const loginResponse = useSelector(
-    state => state.loginReducer.loginResponse.status,
+    (state: IState) => state.loginReducer.loginResponse.status,
   );
 
   const performLoginOperation = async () => {

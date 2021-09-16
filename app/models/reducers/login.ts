@@ -3,10 +3,14 @@ export interface ILoginState {
   id: number;
   username: string;
   password: string;
-userData: [];
-token:any;
-signUpResponse:any;
-forgetPasswordResponse:any;
-updateProfileResponse:any;
+
+userData: {firstName:string,lastName:string, email:string, gender:string,  status:string;};
+token:'';
+signUpResponse:{};
+forgetPasswordResponse:{};
+updateProfileResponse:{};
+loginResponse:{
+  status:string
+}
 
 }

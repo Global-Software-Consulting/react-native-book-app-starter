@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/core';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {TabActions} from '@react-navigation/native';
+import {ILoginState} from 'models/reducers/login';
 import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {TouchableOpacity, View} from 'react-native';
@@ -28,9 +29,16 @@ const initI18n = i18n;
 interface IProps {
   props: IProps;
 }
+
+interface IStateReducer {
+  loginReducer: ILoginState;
+}
+
 const Drawer: React.FC = props => {
   const [checked, setChecked] = useState('first');
-  const userData = useSelector(state => state.loginReducer.userData);
+  const userData = useSelector(
+    (state: IStateReducer) => state.loginReducer.userData,
+  );
   const [name, setName] = useState(
     userData?.firstName + ' ' + userData?.lastName,
   );

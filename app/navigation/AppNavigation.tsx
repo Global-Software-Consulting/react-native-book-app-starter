@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/core';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {ILoginState} from 'models/reducers/login';
+import {IThemeState} from 'models/reducers/theme';
 import * as React from 'react';
 import {useTheme} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -11,6 +12,7 @@ import TabNavigator from './TabNavigator';
 const AppDrawer = createDrawerNavigator();
 interface IState {
   loginReducer: ILoginState;
+  themeReducer: IThemeState;
 }
 const AppNavigation = () => {
   const isDark = useSelector((state: IState) => state.themeReducer.isDark);

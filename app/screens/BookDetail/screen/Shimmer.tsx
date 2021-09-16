@@ -4,19 +4,16 @@ import {ScrollView, View} from 'react-native';
 import BookCardShimmer from '../../../components/BookCard/BookCardShimmer';
 import {useStyles} from '../styles';
 
-interface Props {
-  books?: [];
-  base_url?: string;
-}
+interface Props {}
 
-const Shimmer: React.FC<Props> = ({books, base_url}) => {
+const Shimmer: React.FC<Props> = () => {
   //theme handling
   const styles = useStyles();
 
   return (
     <View>
       <ScrollView>
-        <BookCardShimmer />
+        <BookCardShimmer styleSelect="Large" />
 
         <View style={styles.horizontalRuler} />
 

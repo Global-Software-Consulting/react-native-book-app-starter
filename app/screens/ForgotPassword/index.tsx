@@ -1,5 +1,8 @@
 import i18n from 'components/Languages/i18n';
 import images from 'config/images';
+import {IBookState} from 'models/reducers/fetchBooks';
+import {ILoading} from 'models/reducers/loading';
+import {ILoginState} from 'models/reducers/login';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {ActivityIndicator, Button, Image, TextInput, View} from 'react-native';
@@ -13,13 +16,21 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useStyles} from 'screens/ForgotPassword/styles';
 import * as loginActions from 'store/actions/loginActions';
 
+interface IAppReducer {
+  loginReducer: ILoginState;
+  appReducer: IBookState;
+  loadingReducer: ILoading;
+}
+
 const initI18n = i18n;
 const forgotPassword: React.FC = () => {
   const dispatch = useDispatch();
   //fetching data from store
-  const isLoading = useSelector(state => state.loadingReducer.isLoginLoading);
+  const isLoading = useSelector(
+    (state: IAppReducer) => state.loadingReducer.isLoginLoading,
+  );
   const forgetpasswordResponse = useSelector(
-    state => state.loginReducer.forgetPasswordResponse,
+    (state: IAppReducer) => state.loginReducer.forgetPasswordResponse,
   );
   //defining states
   const [email, setEmail] = useState('');
@@ -67,7 +78,7 @@ const forgotPassword: React.FC = () => {
             sendResetLink();
           }}
           title="Submit"
-          style={styles.editButton}></Button>
+        />
         {isLoading && <ActivityIndicator />}
       </View>
       {forgetpasswordResponse && isShowing ? (

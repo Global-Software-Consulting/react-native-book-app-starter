@@ -17,7 +17,7 @@ import * as appActions from 'store/actions/appActions';
 import styles from './styles';
 interface Props {
   book?: {};
-  id?: string;
+  id?: number;
   hideIcon?: boolean;
   url?: string;
   bookTitle?: string;

@@ -52,7 +52,10 @@ export function IFetchBooksLoadingStop() {
     };
   }
   
-  export function IFetchBookDetailResponse(payload: IFetchBooks) {
+  export function IFetchBookDetailResponse(payload: IFetchBooks):{
+    type:string
+    payload:IFetchBooks
+  } {
     return {
       type: types.FETCH_FAVORITE_BOOKDETAIL_RESPONSE,
       payload

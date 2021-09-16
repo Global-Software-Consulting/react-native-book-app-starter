@@ -3,6 +3,8 @@ import {useIsFocused, useNavigation} from '@react-navigation/native';
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
 import i18n from 'config/Languages/index';
+import {IBookState} from 'models/reducers/fetchBooks';
+import {ILoginState} from 'models/reducers/login';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
@@ -23,7 +25,7 @@ import * as appActions from 'store/actions/appActions';
 import NetworkUtils from 'utils/networkUtils';
 
 interface Props {
-  books?: [];
+  books?: {};
   name?: string;
   base_url?: string;
 }
@@ -38,12 +40,20 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
   const [searchText, setSearchText] = useState('');
   const navigation = useNavigation();
   //getting data from store
-  const books = useSelector(state => state.appReducer.detail);
+  const books = useSelector(
+    (state: {appReducer: IBookState}) => state.appReducer.detail,
+  );
   const isFocused = useIsFocused();
-  const isLoading = useSelector(state => state.appReducer.isFetching);
-  const favoriteBooks = useSelector(state => state.appReducer.favorite);
-  const token = useSelector(state => state.loginReducer.token);
-  const newFavorites: string[] = favoriteBooks;
+  const isLoading = useSelector(
+    (state: {appReducer: IBookState}) => state.appReducer.isFetching,
+  );
+  const favoriteBooks = useSelector(
+    (state: {appReducer: IBookState}) => state.appReducer.favorite,
+  );
+  const token = useSelector(
+    (state: {loginReducer: ILoginState}) => state.loginReducer.token,
+  );
+  const newFavorites: object[] = favoriteBooks;
   const searchBook = (bookName: string) => {
     dispatch(appActions.IFetchBooksRequest(bookName));
   };
@@ -63,7 +73,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
     dispatch(appActions.IFetchFavoriteBooksRequest());
   };
 
-  const navigateToDetails = async params => {
+  const navigateToDetails = async (params: object) => {
     const isConnected = await NetworkUtils.isNetworkAvailable();
     if (isConnected) {
       navigation.navigate('BookDetail', params);
@@ -126,9 +136,6 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
                       url={
                         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
                       }
-                      isFavorite={
-                        newFavorites.indexOf(item.title) !== -1 ? true : false
-                      }
                       styleSelect="Custom"
                       bookTitle={item?.title}
                       book={item}
@@ -143,7 +150,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
               <FlatList
                 horizontal
                 keyExtractor={(item, index) => index.toString()}
-                data={books?.filter(item => {
+                data={books?.filter((item: {averageRating: number}) => {
                   return item?.averageRating <= 3 && item?.averageRating > 0;
                 })}
                 contentContainerStyle={styles.flatList}
@@ -172,7 +179,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
               <FlatList
                 horizontal
                 keyExtractor={(item, index) => index.toString()}
-                data={books?.filter(item => {
+                data={books?.filter((item: {averageRating: number}) => {
                   return item?.averageRating == 0;
                 })}
                 contentContainerStyle={styles.flatListLast}
@@ -186,9 +193,6 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
                     <BookCard
                       url={
                         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE4lMLbADvLAxUvZf5ZAGvHUZ3KpBWFTW1g&usqp=CAU'
-                      }
-                      isFavorite={
-                        newFavorites.indexOf(item?.title) !== -1 ? true : false
                       }
                       styleSelect="General"
                       bookTitle={item?.title}

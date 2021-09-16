@@ -8,7 +8,7 @@ const initialState: IBookState = {
 isFetching: true,
 detail: [],
 favorite: [],
-bookDetail:[]
+bookDetail:{}
 };
 
 export const appReducer = createReducer(initialState, {

@@ -1,4 +1,7 @@
 import images from 'config/images';
+import {IBookState} from 'models/reducers/fetchBooks';
+import {ILoading} from 'models/reducers/loading';
+import {ILoginState} from 'models/reducers/login';
 import React, {useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {
@@ -20,20 +23,27 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useStyles} from 'screens/Signup/styles';
 import * as appActions from 'store/actions/appActions';
 import * as loginActions from 'store/actions/loginActions';
+
+interface IState {
+  loginReducer: ILoginState;
+  appReducer: IBookState;
+  loadingReducer: ILoading;
+}
+
 const Signup: React.FC = () => {
   const dispatch = useDispatch();
   //defining states
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [open, setOpen] = useState(false);
-  const isLoading = useSelector(state => state.loadingReducer.isLoginLoading);
-  const signupResponse = useSelector(state => {
+  const isLoading = useSelector(
+    (state: IState) => state.loadingReducer.isLoginLoading,
+  );
+  const signupResponse = useSelector((state: IState) => {
     state.loginReducer.signUpResponse;
   });
   const [value, setValue] = useState(null);
-  const signUpStatus = useSelector(state => state.loginReducer.signUpResponse);
+  const signUpStatus = useSelector(
+    (state: IState) => state.loginReducer.signUpResponse,
+  );
   const [gender, setGender] = useState([
     {label: 'Male', value: 'male'},
     {label: 'Female', value: 'female'},
@@ -44,15 +54,7 @@ const Signup: React.FC = () => {
     formState: {errors},
   } = useForm();
 
-  const storeData = async value => {
-    try {
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem('token', jsonValue);
-    } catch (e) {
-      // saving error
-    }
-  };
-  const performSignUp = async data => {
+  const performSignUp = async (data: object) => {
     dispatch(loginActions.ISignupRequest(data));
     dispatch(appActions.IFetchFavoriteBooksRequest());
     dispatch(loginActions.userDetailsResponse());
@@ -61,7 +63,7 @@ const Signup: React.FC = () => {
     }, 2000);
   };
 
-  const onSubmit = data => {
+  const onSubmit = (data: object) => {
     performSignUp(data);
   };
 
@@ -202,10 +204,7 @@ const Signup: React.FC = () => {
         {errors.value && <Text>Please provide gender</Text>}
 
         <View style={styles.editView}>
-          <Button
-            onPress={handleSubmit(onSubmit)}
-            title="Sign up"
-            style={styles.editButton}></Button>
+          <Button onPress={handleSubmit(onSubmit)} title="Sign up" />
           {isLoading && <ActivityIndicator />}
         </View>
       </ScrollView>

@@ -12,7 +12,9 @@ interface IState {
   loginReducer: ILoginState;
 }
 const AuthNavigator = () => {
-  const isLoggedIn = useSelector(state => state.loginReducer.isLoggedIn);
+  const isLoggedIn = useSelector(
+    (state: IState) => state.loginReducer.isLoggedIn,
+  );
 
   return (
     <AuthStack.Navigator>

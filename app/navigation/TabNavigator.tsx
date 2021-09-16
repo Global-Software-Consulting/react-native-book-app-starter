@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Explore from './../screens/Explore/index';
 import Favorite from './../screens/Favorite/index';
 import UserDetail from './../screens/UserDetail/index';
+import i18n from 'config/Languages';
 import {useStyles} from './header';
 const Tab = createBottomTabNavigator();
 
