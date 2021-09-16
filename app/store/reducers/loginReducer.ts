@@ -15,9 +15,9 @@ const initialState: ILoginState = {
   id: 0,
   username: '',
   password: '',
-  userData: {},
+  userData: {firstName:'',lastName:'', email:'', gender:'',  status:''},
   token:'',
-  loginResponse:'',
+  loginResponse:{status:''},
   signUpResponse:'',
   forgetPasswordResponse:'',
   updateProfileResponse:''

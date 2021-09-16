@@ -24,7 +24,10 @@ export function loginFailed() {
   };
 }
 
-export function LoginResponse(payload: ILoginResponse) {
+export function LoginResponse(payload: ILoginResponse):{
+  type:string
+  payload:ILoginResponse
+} {
   return {
     type: types.LOGIN_RESPONSE,
     payload,
@@ -56,14 +59,20 @@ export function userDetailsRequest(token: any) {
   }
 }
 
-export function setToken(payload: any) {
+export function setToken(payload: string):{
+  type:string
+  payload:string
+} {
   return {
     type: types.SET_TOKEN,
     payload,
   }
 }
 
-export function userDetailsResponse(payload: ILoginResponse) {
+export function userDetailsResponse(payload: object | undefined | string):{
+  type:string
+  payload:object | undefined | string
+} {
   return {
     type: types.USER_DETAILS_RESPONSE,
    payload
@@ -77,7 +86,10 @@ export function ISignupRequest(params:object) {
   };
 }
 
-export function ISignupResponse(payload: ILoginResponse) {
+export function ISignupResponse(payload: object | undefined | null):{
+  type:string
+  payload:object | undefined | null
+} {
   return {
     type: types.SIGN_UP_RESPONSE,
     payload
@@ -90,7 +102,10 @@ export function IForgotPasswordRequest(params:string) {
   };
 }
 
-export function IForgotPasswordResponse(payload: ILoginResponse) {
+export function IForgotPasswordResponse(payload: object | string | undefined):{
+  type:string
+  payload:object | string | undefined
+} {
   return {
     type: types.FORGET_PASSWORD_RESPONSE,
     payload
@@ -103,7 +118,10 @@ export function IUpdateProfileRequest(data:object) {
   };
 }
 
-export function IUpdateProfileResponse(payload) {
+export function IUpdateProfileResponse(payload:object):{
+  type:string
+  payload:object
+} {
   return {
     type: types.UPDATE_PROFILE_RESPONSE,
     payload

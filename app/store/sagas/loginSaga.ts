@@ -15,6 +15,7 @@ import fetchBooks from 'services/fetchBooks';
 import fetchFavoriteBooks from 'services/fetchFavoriteBooks'
 import * as loginActions from 'store/actions/loginActions';
 import * as appActions from 'store/actions/appActions'
+import {ResponseGenerator} from 'models/Saga/ResponseGenerator'
 
 const storeData = async (value) => {
   try {
@@ -38,13 +39,13 @@ if (loginCall.status != 'error')
   yield call(storeData,loginCall.token);
   yield put(loginActions.LoginResponse(loginCall.token));
 
-  const userDetailCall = yield call(fetchUserDetails); 
+  const userDetailCall:ResponseGenerator = yield call(fetchUserDetails); 
   yield put(loginActions.userDetailsResponse(userDetailCall.result))
 
-  const favoriteBookCall = yield call(fetchFavoriteBooks); 
+  const favoriteBookCall:ResponseGenerator = yield call(fetchFavoriteBooks); 
   yield put(appActions.IFetchFavoriteBooksResponse(favoriteBookCall.result))
 
-  let fetchBookCall = yield call(fetchBooks, 'a');
+  let fetchBookCall:ResponseGenerator = yield call(fetchBooks, 'a');
   yield put(appActions.IFetchBooksResponse(fetchBookCall.result))
 
     yield put (loginActions.setLoggedIn())

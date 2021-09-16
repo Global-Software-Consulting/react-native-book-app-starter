@@ -1,15 +1,15 @@
 import { call, put } from "redux-saga/effects";
 import removeBookFromFavoite from "services/removeBookFromFavoite";
 import * as appActions from "../actions/appActions";
+import { ResponseGenerator } from "models/Saga/ResponseGenerator";
 
 
-
-export default function* removeBookfromFavorite(action:string) {
+export default function* removeBookfromFavorite(action: {id:number}) {
   //start loading
 
 yield put(appActions.IFetchBooksLoading());
   //calling api
-  let response = yield call(removeBookFromFavoite,action.token,action.id);
+  let response:ResponseGenerator = yield call(removeBookFromFavoite,action.id);
 
   if (response && response.status == 'success') {
 

@@ -7,12 +7,13 @@
 import { call, put } from 'redux-saga/effects';
 import ForgetPassword from 'services/forgetPassword';
 import * as loginActions from 'store/actions/loginActions';
+import {ResponseGenerator} from 'models/Saga/ResponseGenerator'
 
 // Our worker Saga that logins the user
-export default function* forgetPassword(action) {
+export default function* forgetPassword(action: {params:string}) {
   yield put(loginActions.enableLoader());
 
-  const response = yield call(ForgetPassword, {
+  const response:ResponseGenerator = yield call(ForgetPassword, {
     email:action.params
   });
   //mock response

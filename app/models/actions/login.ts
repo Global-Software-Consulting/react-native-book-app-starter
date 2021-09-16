@@ -4,6 +4,7 @@ export interface ILoginRequestState {
   username: string;
   password: string;
   signupResponse:string;
+  payload:string
 }
 
 interface IResponse {
@@ -13,4 +14,5 @@ interface IResponse {
 export interface ILoginResponseState {
   type: String;
   response: IResponse;
+  payload:object | string | number
 }

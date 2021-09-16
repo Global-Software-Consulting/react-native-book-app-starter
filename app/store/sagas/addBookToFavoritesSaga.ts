@@ -1,15 +1,15 @@
 import { call, put } from "redux-saga/effects";
 import addBookToFavoite from "services/addBookToFavoite";
 import * as appActions from "../actions/appActions";
+import {ResponseGenerator} from 'models/Saga/ResponseGenerator'
 
 
-
-export default function* addBooktoFavorite(action:string) {
+export default function* addBooktoFavorite(action:{id:number}) {
   //start loading
 
 // yield put(appActions.IFetchBooksLoading());
   //calling api
-  let response = yield call(addBookToFavoite, action.token, action.id);
+  let response:ResponseGenerator = yield call(addBookToFavoite, action.id);
 
   if (response && response.status == 'success') {
 

@@ -1,4 +1,4 @@
 export interface IFetchBooks {
-    detail: string;
+    detail: object | string | undefined;
   }
   
