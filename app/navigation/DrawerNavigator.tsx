@@ -1,10 +1,9 @@
-import * as React from 'react';
-import { useWindowDimensions } from 'react-native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {ILoginState} from 'models/reducers/login';
-import Home from 'screens/Home';
-import Favorites from 'screens/Favorites';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import {ILoginState} from 'models/reducers/login';
+import * as React from 'react';
+import {useWindowDimensions} from 'react-native';
+import Favorites from 'screens/Favorites';
+import Home from 'screens/Home';
 const Drawer = createDrawerNavigator();
 interface IState {
   loginReducer: ILoginState;

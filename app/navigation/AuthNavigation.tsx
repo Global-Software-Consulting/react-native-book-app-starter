@@ -1,13 +1,13 @@
-import * as React from 'react';
-
-import {useSelector} from 'react-redux';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ILoginState} from 'models/reducers/login';
-const AuthStack = createNativeStackNavigator();
-const Stack = createNativeStackNavigator();
+import * as React from 'react';
+import {useSelector} from 'react-redux';
+import ForgotPassword from 'screens/ForgotPassword';
 import Login from 'screens/Login';
 import Signup from 'screens/Signup/index';
-import ForgotPassword from 'screens/ForgotPassword';
+
+const AuthStack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 interface IState {
   loginReducer: ILoginState;
 }

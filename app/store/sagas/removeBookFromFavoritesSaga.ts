@@ -1,6 +1,5 @@
 import { call, put } from "redux-saga/effects";
 import removeBookFromFavoite from "services/removeBookFromFavoite";
-import fetchFavoriteBooks from "services/fetchFavoriteBooks"
 import * as appActions from "../actions/appActions";
 
 

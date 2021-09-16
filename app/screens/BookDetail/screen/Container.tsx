@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {Text} from 'react-native-paper';
-import {useStyles} from '../styles';
 import BookCard from '../../../components/BookCard/BookCard';
 import i18n from '../../../config/Languages';
-import {heightPercentageToDP} from 'react-native-responsive-screen';
+import {useStyles} from '../styles';
 
 //importing card component
 interface Props {

@@ -29,6 +29,8 @@ const styles = StyleSheet.create({
   {
     height: hp('50%'),
     width: wp('50%'),
+    tintColor:theme.colors.text
+
   },
   mainViewSetting:
   {height: hp('100%')},

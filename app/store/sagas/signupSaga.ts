@@ -5,15 +5,14 @@
  * pwd - password
  */
 // import { delay } from 'redux-saga';
-import { Alert } from 'react-native';
-import { put, call } from 'redux-saga/effects';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import signupUser from 'services/signupUser';
-import * as loginActions from 'store/actions/loginActions';
-import fetchUserDetails from 'services/fetchUserDetails';
-import fetchFavoriteBooks from 'services/fetchFavoriteBooks'
+import { call, put } from 'redux-saga/effects';
 import fetchBooks from 'services/fetchBooks';
-import * as appActions from 'store/actions/appActions'
+import fetchFavoriteBooks from 'services/fetchFavoriteBooks';
+import fetchUserDetails from 'services/fetchUserDetails';
+import signupUser from 'services/signupUser';
+import * as appActions from 'store/actions/appActions';
+import * as loginActions from 'store/actions/loginActions';
 
 const storeData = async (value) => {
   try {
@@ -34,7 +33,7 @@ const response = yield call(signupUser, action.params)
     yield put(loginActions.disableLoader());
 
     const userDetailCall = yield call(fetchUserDetails); 
-  yield put(loginActions.userDetailsResponse(userDetailCall.result))
+  yield put(loginActions.userDetailsResponse(response.result))
 
   const favoriteBookCall = yield call(fetchFavoriteBooks); 
   yield put(appActions.IFetchFavoriteBooksResponse(favoriteBookCall.result))

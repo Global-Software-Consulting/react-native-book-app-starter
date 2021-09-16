@@ -1,8 +1,8 @@
+//importing card component
+import BookCardShimmer from 'components/BookCard/BookCardShimmer';
 import React from 'react';
 import {FlatList, TouchableHighlight, View} from 'react-native';
 import {useStyles} from '../styles';
-//importing card component
-import BookCardShimmer from 'components/BookCard/BookCardShimmer';
 
 const ExploreShimmer: React.FC<Props> = ({}) => {
   const styles = useStyles();
@@ -19,6 +19,7 @@ const ExploreShimmer: React.FC<Props> = ({}) => {
       <FlatList
         horizontal
         data={[0, 0, 0]}
+        keyExtractor={(item, index) => index.toString()}
         contentContainerStyle={styles.flatList}
         renderItem={({item, index}) => (
           <TouchableHighlight
@@ -36,6 +37,7 @@ const ExploreShimmer: React.FC<Props> = ({}) => {
       <View style={styles.listCaptionShimmer}></View>
       <FlatList
         horizontal
+        keyExtractor={(item, index) => index.toString()}
         data={[0, 0, 0]}
         contentContainerStyle={styles.flatList}
         renderItem={({item, index}) => (
@@ -54,6 +56,7 @@ const ExploreShimmer: React.FC<Props> = ({}) => {
       <View style={styles.listCaptionShimmer}></View>
       <FlatList
         horizontal
+        keyExtractor={(item, index) => index.toString()}
         data={[0, 0, 0]}
         contentContainerStyle={styles.flatListLast}
         renderItem={({item, index}) => (

@@ -1,15 +1,17 @@
-import * as React from 'react';
-import {NavigationContainer, 
+import {
+  DarkTheme as NavigationDarkTheme,
   DefaultTheme as NavigationDefaultTheme,
-  DarkTheme as NavigationDarkTheme} from '@react-navigation/native';
+  NavigationContainer,
+} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useSelector, useDispatch} from 'react-redux';
-import AuthNavigation from './AuthNavigation';
-import {navigationRef} from './NavigationService';
-import {IThemeState} from './models/reducers/theme';
-import {StatusBar, View} from 'react-native';
 import {ILoginState} from 'models/reducers/login';
+import * as React from 'react';
+import {StatusBar} from 'react-native';
+import {useSelector} from 'react-redux';
 import AppNavigation from './AppNavigation';
+import AuthNavigation from './AuthNavigation';
+import {IThemeState} from './models/reducers/theme';
+import {navigationRef} from './NavigationService';
 
 const Stack = createNativeStackNavigator();
 

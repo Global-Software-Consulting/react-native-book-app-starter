@@ -27,6 +27,15 @@ const styles = StyleSheet.create({
   {
     height: hp('50%'),
     width: wp('50%'),
+    tintColor:theme.colors.text
+  },
+  containerView:
+  {
+      flex: 1,
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+      alignItems: 'stretch',
   },
   name: {
     fontSize: hp('3%'),

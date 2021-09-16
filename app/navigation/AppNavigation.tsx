@@ -1,14 +1,13 @@
-import * as React from 'react';
-import {ILoginState} from 'models/reducers/login';
-import Drawer from 'screens/Drawer';
-import BookDetail from './../screens/BookDetail/index';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {useSelector} from 'react-redux';
-import TabNavigator from './TabNavigator';
 import {useNavigation} from '@react-navigation/core';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import NavigationService from './NavigationService';
+import {ILoginState} from 'models/reducers/login';
+import * as React from 'react';
 import {useTheme} from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {useSelector} from 'react-redux';
+import Drawer from 'screens/Drawer';
+import BookDetail from './../screens/BookDetail/index';
+import TabNavigator from './TabNavigator';
 const AppDrawer = createDrawerNavigator();
 interface IState {
   loginReducer: ILoginState;

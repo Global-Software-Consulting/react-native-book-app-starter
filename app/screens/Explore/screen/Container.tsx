@@ -1,7 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
+//importing card component
+import BookCard from 'components/BookCard/BookCard';
+import images from 'config/images';
+import i18n from 'config/Languages/index';
+import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
-  Alert,
   FlatList,
   Image,
   RefreshControl,
@@ -11,25 +15,12 @@ import {
   View,
 } from 'react-native';
 import {Text, useTheme} from 'react-native-paper';
+import Toast from 'react-native-simple-toast';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch, useSelector} from 'react-redux';
 import {useStyles} from 'screens/Explore/styles';
-//importing card component
-import BookCard from 'components/BookCard/BookCard';
-import i18n from 'config/Languages/index';
 import * as appActions from 'store/actions/appActions';
-import * as loginActions from 'store/actions/loginActions';
-import {useNavigation} from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {
-  heightPercentageToDP,
-  widthPercentageToDP,
-} from 'react-native-responsive-screen';
-import images from 'config/images';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import Toast from 'react-native-simple-toast';
 import NetworkUtils from 'utils/networkUtils';
-import {useIsFocused} from '@react-navigation/native';
 
 interface Props {
   books?: [];
@@ -121,6 +112,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
             <Text style={styles.listCaption}>{t('Trending')}</Text>
             <FlatList
               nestedScrollEnabled={true}
+              keyExtractor={(item, index) => index.toString()}
               horizontal
               data={books?.filter(item => {
                 return item?.averageRating > 3;
@@ -155,6 +147,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
             <Text style={styles.listCaption}>{t('New Releases')}</Text>
             <FlatList
               horizontal
+              keyExtractor={(item, index) => index.toString()}
               data={books?.filter(item => {
                 return item?.averageRating <= 3 && item?.averageRating > 0;
               })}
@@ -185,6 +178,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
             <Text style={styles.listCaption}>{t('Selected for you')}</Text>
             <FlatList
               horizontal
+              keyExtractor={(item, index) => index.toString()}
               data={books?.filter(item => {
                 return item?.averageRating == 0;
               })}

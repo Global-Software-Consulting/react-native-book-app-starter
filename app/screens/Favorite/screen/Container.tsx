@@ -63,6 +63,7 @@ const Container: React.FC<Props> = ({books, base_url}) => {
   };
 
   const navigateToDetails = async params => {
+    //to check if the internet connection is working
     const isConnected = await NetworkUtils.isNetworkAvailable();
     if (isConnected) {
       navigation.navigate('BookDetail', params);

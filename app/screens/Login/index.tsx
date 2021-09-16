@@ -1,37 +1,22 @@
-import React, {useEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  ActivityIndicator,
-  Alert,
-  KeyboardAvoidingView,
-  Image,
-  TextInput,
-} from 'react-native';
-import images from './../../config/images';
-import {Button} from 'react-native-paper';
-import {useDispatch, useSelector} from 'react-redux';
-import * as loginActions from './../../store/actions/loginActions';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import styles from './styles';
-import {ILoginState} from 'models/reducers/login';
-import AddAnnotation, * as loginReq from './../../services/loginUser';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/core';
+import {ILoginState} from 'models/reducers/login';
+import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import i18n from '../../components/Languages/i18n';
-import Toast from 'react-native-simple-toast';
-import NetworkUtils from 'utils/networkUtils';
+import {ActivityIndicator, Image, Text, TextInput, View} from 'react-native';
+import {TouchableHighlight} from 'react-native-gesture-handler';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {Button} from 'react-native-paper';
 import {
   heightPercentageToDP,
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
-import {
-  TouchableOpacity,
-  TouchableHighlight,
-} from 'react-native-gesture-handler';
-import {add} from 'react-native-reanimated';
+import Toast from 'react-native-simple-toast';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {useDispatch, useSelector} from 'react-redux';
+import NetworkUtils from 'utils/networkUtils';
+import i18n from '../../components/Languages/i18n';
+import images from './../../config/images';
+import * as loginActions from './../../store/actions/loginActions';
 const initI18n = i18n;
 interface IState {
   loginReducer: ILoginState;

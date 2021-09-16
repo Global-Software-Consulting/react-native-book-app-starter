@@ -1,22 +1,20 @@
-import React, {useState} from 'react';
-import {StyleSheet, View} from 'react-native';
-import {Text} from 'react-native-paper';
-//image with placeholder
-import FastImage from 'react-native-fast-image';
-//verctor icons
-import Icon from 'react-native-vector-icons/FontAwesome';
-//importing style
-import styles from './styles';
-//for responsive screen
-import {useDispatch, useSelector} from 'react-redux';
-import {useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 //to update heart icon
 import {useIsFocused} from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import addBooktoFavorite from 'store/sagas/addBookToFavoritesSaga';
-import * as appActions from 'store/actions/appActions';
+import React, {useEffect, useState} from 'react';
+import {View} from 'react-native';
+//image with placeholder
+import FastImage from 'react-native-fast-image';
+import {Text} from 'react-native-paper';
+//verctor icons
+import Icon from 'react-native-vector-icons/FontAwesome';
+//for responsive screen
+import {useDispatch, useSelector} from 'react-redux';
 import addBookToFavoite from 'services/addBookToFavoite';
 import removeBookFromFavoite from 'services/removeBookFromFavoite';
+import * as appActions from 'store/actions/appActions';
+//importing style
+import styles from './styles';
 interface Props {
   book?: {};
   id?: string;
@@ -152,7 +150,5 @@ const BookCard: React.FC<Props> = ({
     </View>
   );
 };
-
-
 
 export default BookCard;

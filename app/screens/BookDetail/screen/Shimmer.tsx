@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {ScrollView, View} from 'react-native';
 //importing card component
 import BookCardShimmer from '../../../components/BookCard/BookCardShimmer';
 import {useStyles} from '../styles';
-import {ScrollView, View} from 'react-native';
 
 interface Props {
   books?: [];

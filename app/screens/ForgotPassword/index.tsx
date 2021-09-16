@@ -1,36 +1,29 @@
+import i18n from 'components/Languages/i18n';
 import images from 'config/images';
 import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {ActivityIndicator, Button, Image, TextInput, View} from 'react-native';
 import {Text} from 'react-native-paper';
-import Toast from 'react-native-simple-toast';
-
-import {
-  Menu,
-  MenuOption,
-  MenuOptions,
-  MenuTrigger,
-} from 'react-native-popup-menu';
-import {useDispatch, useSelector} from 'react-redux';
-import {useStyles} from 'screens/ForgotPassword/styles';
-import i18n from 'components/Languages/i18n';
-
-import {useTranslation} from 'react-i18next';
-import * as loginActions from 'store/actions/loginActions';
 import {
   heightPercentageToDP,
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
+import Toast from 'react-native-simple-toast';
+import {useDispatch, useSelector} from 'react-redux';
+import {useStyles} from 'screens/ForgotPassword/styles';
+import * as loginActions from 'store/actions/loginActions';
+
 const initI18n = i18n;
 const forgotPassword: React.FC = () => {
   const dispatch = useDispatch();
+  //fetching data from store
   const isLoading = useSelector(state => state.loadingReducer.isLoginLoading);
-
   const forgetpasswordResponse = useSelector(
     state => state.loginReducer.forgetPasswordResponse,
   );
   //defining states
   const [email, setEmail] = useState('');
-
+  const [isShowing, setIsShowing] = useState(false);
   const {t, i18n} = useTranslation();
   const styles = useStyles();
 
@@ -39,6 +32,10 @@ const forgotPassword: React.FC = () => {
       Toast.show('Enter email address');
     } else {
       dispatch(loginActions.IForgotPasswordRequest(email));
+      setIsShowing(true);
+      setTimeout(() => {
+        setIsShowing(false);
+      }, 2000);
     }
   };
 
@@ -73,7 +70,7 @@ const forgotPassword: React.FC = () => {
           style={styles.editButton}></Button>
         {isLoading && <ActivityIndicator />}
       </View>
-      {forgetpasswordResponse ? (
+      {forgetpasswordResponse && isShowing ? (
         <View>
           <Text style={{color: 'blue'}}>
             Message: {forgetpasswordResponse.message}

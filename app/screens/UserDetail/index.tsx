@@ -1,23 +1,21 @@
+import {useIsFocused} from '@react-navigation/core';
+import i18n from 'components/Languages/i18n';
 import images from 'config/images';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {ActivityIndicator, Button, Image, TextInput, View} from 'react-native';
 import {Text} from 'react-native-paper';
-import NetInfo from '@react-native-community/netinfo';
-import Toast from 'react-native-simple-toast';
-import NetworkUtils from 'utils/networkUtils';
 import {
   Menu,
   MenuOption,
   MenuOptions,
   MenuTrigger,
 } from 'react-native-popup-menu';
+import Toast from 'react-native-simple-toast';
 import {useDispatch, useSelector} from 'react-redux';
 import {useStyles} from 'screens/UserDetail/styles';
-import i18n from 'components/Languages/i18n';
-import {useTranslation} from 'react-i18next';
 import * as loginActions from 'store/actions/loginActions';
-import {useIsFocused} from '@react-navigation/core';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import NetworkUtils from 'utils/networkUtils';
 const initI18n = i18n;
 const UserDetail: React.FC = () => {
   const dispatch = useDispatch();
@@ -39,7 +37,6 @@ const UserDetail: React.FC = () => {
   const detail = useSelector(state => state.loginReducer.userData);
   const update = async () => {
     let isConnected = await NetworkUtils.isNetworkAvailable();
-    console.log('statuso', isConnected);
     if (isConnected) {
       setIsEditing(!isEditing);
       editUser().then(() => {
@@ -65,9 +62,6 @@ const UserDetail: React.FC = () => {
   const recallUserData = () => {
     dispatch(loginActions.userDetailsRequest());
   };
-
-  console.log('tuhuu', updateResponse);
-  console.log('tuhuudata', detail);
 
   return (
     <View style={styles.container}>

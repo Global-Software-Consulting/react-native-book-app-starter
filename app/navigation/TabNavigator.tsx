@@ -1,21 +1,19 @@
-import * as React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {ILoginState} from 'models/reducers/login';
-import Favorite from './../screens/Favorite/index';
-import Explore from './../screens/Explore/index';
-import UserDetail from './../screens/UserDetail/index';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {useTranslation} from 'react-i18next';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {heightPercentageToDP} from 'react-native-responsive-screen';
-import {TouchableHighlight} from 'react-native-gesture-handler';
-import {DrawerActions} from '@react-navigation/native';
-import {useStyles} from './header';
 import {useNavigation} from '@react-navigation/core';
+import {DrawerActions} from '@react-navigation/native';
+import {ILoginState} from 'models/reducers/login';
+import * as React from 'react';
+import {useTranslation} from 'react-i18next';
+import {TouchableHighlight} from 'react-native-gesture-handler';
 import {useTheme} from 'react-native-paper';
+import {heightPercentageToDP} from 'react-native-responsive-screen';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Explore from './../screens/Explore/index';
+import Favorite from './../screens/Favorite/index';
+import UserDetail from './../screens/UserDetail/index';
+import {useStyles} from './header';
 const Tab = createBottomTabNavigator();
-
 
 interface IState {
   loginReducer: ILoginState;

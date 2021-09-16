@@ -2,7 +2,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/core';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {TabActions} from '@react-navigation/native';
-import * as themeActions from 'store/actions/themeActions';
 import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {TouchableOpacity, View} from 'react-native';
@@ -20,10 +19,10 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
 import * as loginActions from 'store/actions/loginActions';
+import * as themeActions from 'store/actions/themeActions';
 import ThemeController from '../../components/ThemeController';
 import i18n from '../../config/Languages/index';
 import {useStyles} from './styles';
-import UserDetail from 'screens/UserDetail';
 
 const initI18n = i18n;
 interface IProps {

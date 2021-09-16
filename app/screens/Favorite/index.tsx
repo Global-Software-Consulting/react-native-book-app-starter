@@ -75,14 +75,7 @@ const Favorite: React.FC = () => {
       {isLoading ? (
         <Shimmer />
       ) : (
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'space-around',
-            alignItems: 'stretch',
-          }}>
+        <View style={styles.containerView}>
           <Container base_url={base_url} books={favoriteBooks} />
         </View>
       )}

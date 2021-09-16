@@ -14,6 +14,7 @@ import {darkTheme, defaultTheme} from './config/theme';
 import {IThemeState} from './models/reducers/theme';
 import Navigator from './navigation';
 import configureStore from './store';
+import {LogBox} from 'react-native';
 
 const {persistor, store} = configureStore();
 
@@ -23,6 +24,8 @@ interface IState {
 
 const RootNavigation: React.FC = () => {
   const isDark = useSelector((state: IState) => state.themeReducer.isDark);
+  LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+  LogBox.ignoreAllLogs(); //Ignore all log notifications
   return (
     <PaperProvider theme={isDark ? darkTheme : defaultTheme}>
       <Navigator />

@@ -1,11 +1,10 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import NavigationService from 'navigation/NavigationService';
 import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Alert, BackHandler, ScrollView, View} from 'react-native';
+import {BackHandler, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import i18n from '../../config/Languages/index';
-import NavigationService from 'navigation/NavigationService';
 import * as appActions from 'store/actions/appActions';
+import i18n from '../../config/Languages/index';
 //importing components
 import Container from './screen/Container';
 import Shimmer from './screen/Shimmer';
@@ -15,18 +14,17 @@ const base_url = 'https://ebook-application.herokuapp.com/v1/';
 const initI18n = i18n;
 const BookDetail: React.FC = props => {
   const styles = useStyles(); //theme handling
-let token = '';
-const {t, i18n} = useTranslation(); //for translation
+  let token = '';
+  const {t, i18n} = useTranslation(); //for translation
 
-const dispatch = useDispatch();
-const bookId = props.route.params; //getting routed params
+  const dispatch = useDispatch();
+  const bookId = props.route.params; //getting routed params
 
-const bookData = useSelector(state => state.appReducer.bookDetail);
+  const bookData = useSelector(state => state.appReducer.bookDetail);
 
-
-const getDetail = async () => {
-  dispatch(appActions.IFetchBookDetailRequest(bookId));
-};
+  const getDetail = async () => {
+    dispatch(appActions.IFetchBookDetailRequest(bookId));
+  };
 
   const [isLoading, setIsLoading] = useState(false); //state for display name
 

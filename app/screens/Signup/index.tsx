@@ -1,32 +1,25 @@
 import images from 'config/images';
 import React, {useState} from 'react';
+import {Controller, useForm} from 'react-hook-form';
 import {
+  ActivityIndicator,
   Button,
   Image,
+  ScrollView,
   TextInput,
   View,
-  ScrollView,
-  Alert,
-  ActivityIndicator,
 } from 'react-native';
-import {useForm, Controller} from 'react-hook-form';
+import DropDownPicker from 'react-native-dropdown-picker';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Text} from 'react-native-paper';
 import {
-  Menu,
-  MenuOption,
-  MenuOptions,
-  MenuTrigger,
-} from 'react-native-popup-menu';
-import {useDispatch, useSelector} from 'react-redux';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import DropDownPicker from 'react-native-dropdown-picker';
-import {useStyles} from 'screens/Signup/styles';
-import * as loginActions from 'store/actions/loginActions';
-import * as appActions from 'store/actions/appActions';
-import {
-  widthPercentageToDP,
   heightPercentageToDP,
+  widthPercentageToDP,
 } from 'react-native-responsive-screen';
+import {useDispatch, useSelector} from 'react-redux';
+import {useStyles} from 'screens/Signup/styles';
+import * as appActions from 'store/actions/appActions';
+import * as loginActions from 'store/actions/loginActions';
 const Signup: React.FC = () => {
   const dispatch = useDispatch();
   //defining states
