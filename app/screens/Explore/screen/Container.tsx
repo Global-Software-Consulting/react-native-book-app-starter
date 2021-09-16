@@ -206,9 +206,7 @@ const ExploreComponent: React.FC<Props> = ({name, base_url}) => {
                 source={images.books.noBookFound}
                 style={styles.imageError}
               />
-              <Text style={styles.bookmark}>
-                No books available or check your internet
-              </Text>
+              <Text style={styles.bookmark}>No books found</Text>
             </View>
           )}
         </View>
