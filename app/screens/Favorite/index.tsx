@@ -1,11 +1,12 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useIsFocused } from '@react-navigation/core';
 import { IBookState } from 'models/reducers/fetchBooks';
 import { ILoginState } from 'models/reducers/login';
 import React, { useEffect } from 'react';
 import { Alert, BackHandler, View } from 'react-native';
+import Toast from 'react-native-simple-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import * as appActions from 'store/actions/appActions';
+import NetworkUtils from 'utils/networkUtils';
 import Container from './screen/Container';
 //importing components
 import Shimmer from './screen/Shimmer';
@@ -27,23 +28,17 @@ const Favorite: React.FC = () => {
     const dispatch = useDispatch();
 
     //fetching favorite books
-    // useEffect(() => {
-    //     const getFavoriteBooks = async () => {
-    //         try {
-    //             const value = await AsyncStorage.getItem('token');
-    //             if (value !== null) {
-    //                 dispatch(appActions.IFetchFavoriteBooksRequest());
-    //             } else {
-    //                 Alert.alert('Book App', 'Please login again');
-    //             }
-    //         } catch (e) {
-    //             return e;
-    //         }
-    //     };
-
-    //     getFavoriteBooks();
-    // }, [isFocused, dispatch]);
-
+    const getFavoriteBooks = async () => {
+        const isConnected = await NetworkUtils.isNetworkAvailable();
+        if (isConnected) {
+            dispatch(appActions.IFetchFavoriteBooksRequest());
+        } else {
+            Toast.show('You are offline', Toast.SHORT);
+        }
+    };
+    useEffect(() => {
+        getFavoriteBooks();
+    }, [isFocused]);
     //handling back hardware button
     useEffect(() => {
         const backAction = () => {
@@ -69,7 +64,11 @@ const Favorite: React.FC = () => {
                 <Shimmer />
             ) : (
                 <View style={styles.containerView}>
-                    <Container base_url={base_url} books={favoriteBooks} />
+                    <Container
+                        base_url={base_url}
+                        books={favoriteBooks}
+                        onRefresh={getFavoriteBooks}
+                    />
                 </View>
             )}
         </View>

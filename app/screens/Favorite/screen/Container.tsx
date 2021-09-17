@@ -5,7 +5,7 @@ import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
 import { IBookState } from 'models/reducers/fetchBooks';
 import { ILoginState } from 'models/reducers/login';
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
     FlatList,
     Image,
@@ -18,14 +18,13 @@ import { Text } from 'react-native-paper';
 import { heightPercentageToDP } from 'react-native-responsive-screen';
 import Toast from 'react-native-simple-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import * as appActions from 'store/actions/appActions';
 import NetworkUtils from 'utils/networkUtils';
 import { useStyles } from '../styles';
-
-// interface Props {
-//     books?: {};
-//     base_url?: string;
-// }
+interface Props {
+    //     books?: {};
+    //     base_url?: string;
+    onRefresh: () => void;
+}
 
 interface IStateReducer {
     loginReducer: ILoginState;
@@ -45,30 +44,14 @@ interface IParams {
     };
 }
 
-const Container: React.FC = () => {
+const Container: React.FC<Props> = (props) => {
     //theme handling
     const styles = useStyles();
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const isLoading = useSelector((state: IStateReducer) => state.appReducer.isFetching);
     const favoriteBooks = useSelector((state: IStateReducer) => state.appReducer.favorite);
-
-    useEffect(() => {
-        console.log('here');
-
-        getFavoriteBooks();
-    }, []);
-
-    //fetching favorite books
-    const getFavoriteBooks = async () => {
-        const isConnected = await NetworkUtils.isNetworkAvailable();
-        if (isConnected) {
-            dispatch(appActions.IFetchFavoriteBooksRequest());
-        } else {
-            Toast.show('You are offline', Toast.SHORT);
-        }
-    };
-
+    const { onRefresh } = props;
     const navigateToDetails = async (params: IParams) => {
         //to check if the internet connection is working
         const isConnected = await NetworkUtils.isNetworkAvailable();
@@ -117,9 +100,7 @@ const Container: React.FC = () => {
             <ScrollView
                 style={styles.container}
                 nestedScrollEnabled
-                refreshControl={
-                    <RefreshControl refreshing={isLoading} onRefresh={getFavoriteBooks} />
-                }>
+                refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh} />}>
                 {favoriteBooks.length > 0 ? (
                     <FavoriteBooks />
                 ) : (
