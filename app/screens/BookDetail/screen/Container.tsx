@@ -3,20 +3,18 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import BookCard from '../../../components/BookCard/BookCard';
-import i18n from '../../../config/Languages';
 import { useStyles } from '../styles';
 
 //importing card component
 interface Props {
     books: {
-        numberOfPages: string;
+        numberOfPages: string | number;
         createdAt: string;
         title: string;
         shortSummary: string;
     };
     base_url?: string;
 }
-const initI18n = i18n;
 
 const Container: React.FC<Props> = (props) => {
     //theme handling
@@ -27,10 +25,10 @@ const Container: React.FC<Props> = (props) => {
     const pages = books.numberOfPages;
     const launched = books.createdAt;
     const title = books.title;
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const [textShown, setTextShown] = useState(false); //To show ur remaining Text
-    const [lengthMore, setLengthMore] = useState(false); //to show the "Read more & Less Line"
+
     const toggleNumberOfLines = () => {
         //To toggle the show text or hide it
         setTextShown(!textShown);

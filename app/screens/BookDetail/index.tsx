@@ -1,19 +1,13 @@
 import { IBookState } from 'models/reducers/fetchBooks';
 import { ILoginState } from 'models/reducers/login';
-import NavigationService from 'navigation/NavigationService';
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { BackHandler, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import * as appActions from 'store/actions/appActions';
-import i18n from '../../config/Languages/index';
 //importing components
 import Container from './screen/Container';
 import Shimmer from './screen/Shimmer';
-import { useStyles } from './styles';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
-
-const initI18n = i18n;
 
 interface IState {
     route: {
@@ -24,21 +18,27 @@ interface IStateReducer {
     appReducer: IBookState;
     loginReducer: ILoginState;
 }
-
+interface IData {
+    id: number;
+    averageRating: number;
+    title: string;
+    numberOfPages: string | number;
+    shortSummary: string;
+    createdAt: string;
+}
 const BookDetail: React.FC<IState> = (props) => {
-    const styles = useStyles(); //theme handling
-    const { t, i18n } = useTranslation(); //for translation
     const dispatch = useDispatch();
     const bookId = props.route.params; //getting routed params
-    const bookData: {} = useSelector((state: IStateReducer) => state.appReducer.bookDetail);
-    const getDetail = async () => {
-        dispatch(appActions.IFetchBookDetailRequest(bookId));
-    };
+    const bookData: IData = useSelector((state: IStateReducer) => state.appReducer.bookDetail);
 
     //handling back hardware button
     useEffect(() => {
+        const getDetail = async () => {
+            dispatch(appActions.IFetchBookDetailRequest(parseInt(bookId, 10)));
+        };
+
         getDetail();
-    }, []);
+    }, [bookId, dispatch]);
 
     return (
         <View>

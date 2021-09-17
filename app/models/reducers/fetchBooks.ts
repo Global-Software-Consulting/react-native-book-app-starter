@@ -12,7 +12,7 @@ export interface IBookState {
         bookId: number;
         averageRating: number;
         title: string;
-        numberOfPages: number;
+        numberOfPages: string | number;
         shortSummary: string;
         book: { title: string; id: number };
     }[];
@@ -20,7 +20,8 @@ export interface IBookState {
         id: number;
         averageRating: number;
         title: string;
-        numberOfPages: number;
+        numberOfPages: number | string;
         shortSummary: string;
+        createdAt: string;
     };
 }

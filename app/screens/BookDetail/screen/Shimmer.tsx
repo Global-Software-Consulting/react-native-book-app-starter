@@ -4,9 +4,7 @@ import { ScrollView, View } from 'react-native';
 import BookCardShimmer from '../../../components/BookCard/BookCardShimmer';
 import { useStyles } from '../styles';
 
-interface Props {}
-
-const Shimmer: React.FC<Props> = () => {
+const Shimmer: React.FC = () => {
     //theme handling
     const styles = useStyles();
 
