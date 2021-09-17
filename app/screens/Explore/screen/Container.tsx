@@ -26,6 +26,7 @@ interface Props {
     books?: IBookState;
     name?: string;
     base_url?: string;
+    onRefresh: () => void;
 }
 
 interface IParams {
@@ -35,7 +36,7 @@ interface IParams {
     numberOfPages: number;
     shortSummary: string;
 }
-const ExploreComponent: React.FC<Props> = ({ name }) => {
+const ExploreComponent: React.FC<Props> = (props) => {
     //theme handling
     const styles = useStyles();
     const { t } = useTranslation();
@@ -43,6 +44,7 @@ const ExploreComponent: React.FC<Props> = ({ name }) => {
     const dispatch = useDispatch();
     const [searchText, setSearchText] = useState('');
     const navigation = useNavigation();
+    const { name, onRefresh } = props;
     //getting data from store
     const books = useSelector((state: { appReducer: IBookState }) => state.appReducer.detail);
     const isLoading = useSelector(
@@ -51,21 +53,6 @@ const ExploreComponent: React.FC<Props> = ({ name }) => {
 
     const searchBook = (bookName: string) => {
         dispatch(appActions.IFetchBooksRequest(bookName));
-    };
-
-    const fetchBookDetails = async () => {
-        const isConnected = await NetworkUtils.isNetworkAvailable();
-        if (isConnected) {
-            dispatch(appActions.IFetchBooksRequest('a'));
-            getFavoriteBooks();
-        } else {
-            Toast.show('You are offline', Toast.SHORT);
-        }
-    };
-
-    //fetching favorite books
-    const getFavoriteBooks = async () => {
-        dispatch(appActions.IFetchFavoriteBooksRequest());
     };
 
     const navigateToDetails = async (params: IParams) => {
@@ -82,9 +69,7 @@ const ExploreComponent: React.FC<Props> = ({ name }) => {
             <ScrollView
                 nestedScrollEnabled={true}
                 style={styles.container}
-                refreshControl={
-                    <RefreshControl refreshing={isLoading} onRefresh={fetchBookDetails} />
-                }>
+                refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh} />}>
                 <View>
                     {/* Searchbar */}
                     <View style={styles.searchView}>

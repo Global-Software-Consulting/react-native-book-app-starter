@@ -38,6 +38,7 @@ const Favorite: React.FC = () => {
     };
     useEffect(() => {
         getFavoriteBooks();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isFocused]);
     //handling back hardware button
     useEffect(() => {

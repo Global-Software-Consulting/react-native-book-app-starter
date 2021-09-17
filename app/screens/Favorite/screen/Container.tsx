@@ -17,7 +17,7 @@ import {
 import { Text } from 'react-native-paper';
 import { heightPercentageToDP } from 'react-native-responsive-screen';
 import Toast from 'react-native-simple-toast';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import NetworkUtils from 'utils/networkUtils';
 import { useStyles } from '../styles';
 interface Props {
@@ -47,7 +47,6 @@ interface IParams {
 const Container: React.FC<Props> = (props) => {
     //theme handling
     const styles = useStyles();
-    const dispatch = useDispatch();
     const navigation = useNavigation();
     const isLoading = useSelector((state: IStateReducer) => state.appReducer.isFetching);
     const favoriteBooks = useSelector((state: IStateReducer) => state.appReducer.favorite);
