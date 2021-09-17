@@ -3,10 +3,11 @@ import fetchUserDetails from '../../services/fetchUserDetails';
 import * as authActions from '../actions/loginActions';
 import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
 // Our worker Saga that logins the user
-export default function* fetchBookAsync(action: { token: string }) {
+export default function* fetchBookAsync() {
     const response: ResponseGenerator = yield call(fetchUserDetails);
-    if (response && response.status == 'success') {
+    if (response && response.status === 'success') {
         yield put(authActions.userDetailsResponse(response.result));
-    } else if (response.status != 'success') {
+    } else if (response.status !== 'success') {
+        console.log('Print');
     }
 }

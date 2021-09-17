@@ -9,14 +9,11 @@ export default function* fetchBookAsync(action: { keyword: string }) {
     //calling api
 
     const response: ResponseGenerator = yield call(fetchBooks, action.keyword);
-    if (response && response.status == 'success') {
+    if (response && response.status === 'success') {
         yield put(appActions.IFetchBooksResponse(response.result));
         //ends loading
         yield put(appActions.IFetchBooksLoadingStop());
-    } else if (response.status != 'success') {
+    } else if (response.status !== 'success') {
         yield put(appActions.IFetchBooksResponse(response));
-    }
-
-    {
     }
 }

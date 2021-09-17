@@ -2,10 +2,9 @@
  * handles login states in the app
  */
 import createReducer from 'lib/createReducer';
-import * as types from 'store/actions/types';
-
-import { ILoginState } from './../../models/reducers/login';
 import { ILoginRequestState, ILoginResponseState } from 'models/actions/login';
+import * as types from 'store/actions/types';
+import { ILoginState } from './../../models/reducers/login';
 
 const initialState: ILoginState = {
     isLoggedIn: false,
@@ -61,7 +60,7 @@ export const loginReducer = createReducer(initialState, {
             isLoggedIn: true,
         };
     },
-    [types.USER_DETAILS_REQUEST](state: ILoginState, action: ILoginRequestState) {
+    [types.USER_DETAILS_REQUEST](state: ILoginState) {
         return {
             ...state,
         };
@@ -93,7 +92,7 @@ export const loginReducer = createReducer(initialState, {
         };
     },
 
-    [types.CLEAR_LOGIN_RESPONSE](state: ILoginState, action: ILoginResponseState) {
+    [types.CLEAR_LOGIN_RESPONSE](state: ILoginState) {
         return {
             ...state,
             loginResponse: '',

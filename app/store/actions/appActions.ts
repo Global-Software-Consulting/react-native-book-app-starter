@@ -2,8 +2,10 @@
  * Reducer actions related with login
  */
 import * as types from './types';
-import { IFetchBooks } from './../../models/api/fetchBooks';
 
+interface IData {
+    data: [];
+}
 export function IFetchBooksRequest(keyword: string) {
     return {
         type: types.FETCH_BOOKLIST_REQUEST,
@@ -11,9 +13,9 @@ export function IFetchBooksRequest(keyword: string) {
     };
 }
 
-export function IFetchBooksResponse(payload: string | object | undefined): {
+export function IFetchBooksResponse(payload: string | IData | undefined): {
     type: string;
-    payload: string | object | undefined;
+    payload: string | IData | undefined;
 } {
     return {
         type: types.FETCH_BOOKLIST_RESPONSE,
@@ -39,9 +41,9 @@ export function IFetchFavoriteBooksRequest() {
     };
 }
 
-export function IFetchFavoriteBooksResponse(payload: object | string | undefined): {
+export function IFetchFavoriteBooksResponse(payload: IData | string | undefined): {
     type: string;
-    payload: object | string | undefined;
+    payload: IData | string | undefined;
 } {
     return {
         type: types.FETCH_FAVORITE_BOOKLIST_RESPONSE,
@@ -56,9 +58,9 @@ export function IFetchBookDetailRequest(id: number) {
     };
 }
 
-export function IFetchBookDetailResponse(payload: object | string | undefined): {
+export function IFetchBookDetailResponse(payload: IData | string | undefined): {
     type: string;
-    payload: object | string | undefined;
+    payload: IData | string | undefined;
 } {
     return {
         type: types.FETCH_FAVORITE_BOOKDETAIL_RESPONSE,

@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import { color } from 'react-native-reanimated';
 import {
     heightPercentageToDP,
     heightPercentageToDP as hp,

@@ -6,15 +6,14 @@
  */
 // import { delay } from 'redux-saga';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
 import { call, put } from 'redux-saga/effects';
 import fetchBooks from 'services/fetchBooks';
 import fetchFavoriteBooks from 'services/fetchFavoriteBooks';
-import fetchUserDetails from 'services/fetchUserDetails';
 import signupUser from 'services/signupUser';
 import * as appActions from 'store/actions/appActions';
 import * as loginActions from 'store/actions/loginActions';
-import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
-const storeData = async (value: any) => {
+const storeData = async (value: string) => {
     try {
         await AsyncStorage.setItem('token', value);
     } catch (e) {
@@ -26,12 +25,11 @@ const storeData = async (value: any) => {
 export default function* signUpsync(action: any) {
     yield put(loginActions.enableLoader());
     const response: ResponseGenerator = yield call(signupUser, action.params);
-    if (response && response.status == 'success') {
+    if (response && response.status === 'success') {
         yield put(loginActions.ISignupResponse(response));
         yield call(storeData, response.token);
         yield put(loginActions.disableLoader());
 
-        const userDetailCall: ResponseGenerator = yield call(fetchUserDetails);
         yield put(loginActions.userDetailsResponse(response.result));
 
         const favoriteBookCall: ResponseGenerator = yield call(fetchFavoriteBooks);

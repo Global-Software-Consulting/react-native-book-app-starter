@@ -10,10 +10,9 @@ export default function* removeBookfromFavorite(action: { id: number }) {
     //calling api
     const response: ResponseGenerator = yield call(removeBookFromFavoite, action.id);
 
-    if (response && response.status == 'success') {
-    } else if (response.status != 'success') {
+    if (response && response.status === 'success') {
+        console.log('Response Printed');
+    } else if (response.status !== 'success') {
         yield put(appActions.IFetchBooksLoadingStop());
-    }
-    {
     }
 }

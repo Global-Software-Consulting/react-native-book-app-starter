@@ -1,22 +1,19 @@
+import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
 import { call, put } from 'redux-saga/effects';
 import fetchFavoriteBooks from '../../services/fetchFavoriteBooks';
 import * as appActions from '../actions/appActions';
-import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
 
-export default function* fetchFavoriteBookAsync(action: { token: string }) {
+export default function* fetchFavoriteBookAsync() {
     //start loading
     yield put(appActions.IFetchBooksLoading());
     //calling api
     const response: ResponseGenerator = yield call(fetchFavoriteBooks);
 
-    if (response && response.status == 'Success') {
+    if (response && response.status === 'Success') {
         yield put(appActions.IFetchFavoriteBooksResponse(response.result));
         //ends loading
         yield put(appActions.IFetchBooksLoadingStop());
-    } else if (response.status != 'success') {
+    } else if (response.status !== 'success') {
         yield put(appActions.IFetchBooksLoadingStop());
-    }
-
-    {
     }
 }

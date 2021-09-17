@@ -1,5 +1,3 @@
-import { useIsFocused } from '@react-navigation/core';
-import i18n from 'components/Languages/i18n';
 import images from 'config/images';
 import { IBookState } from 'models/reducers/fetchBooks';
 import { ILoading } from 'models/reducers/loading';
@@ -14,7 +12,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/UserDetail/styles';
 import * as loginActions from 'store/actions/loginActions';
 import NetworkUtils from 'utils/networkUtils';
-const initI18n = i18n;
 
 //interfaces
 interface IState {
@@ -25,29 +22,27 @@ interface IState {
 
 const UserDetail: React.FC = () => {
     const dispatch = useDispatch();
-    const onLogout = () => dispatch(loginActions.logOut());
     const userData = useSelector((state: IState) => state.loginReducer.userData);
     const isLoading = useSelector((state: IState) => state.loadingReducer.isLoginLoading);
     //defining states
     const [isEditing, setIsEditing] = useState(false);
     const [firstName, setFirstName] = useState(userData?.firstName);
     const [lastName, setLastName] = useState(userData?.lastName);
-    const [message, setMessage] = useState('');
     const [email, setEmail] = useState(userData?.email);
-    const IsFocused = useIsFocused();
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const styles = useStyles();
-    const updateResponse = useSelector((state: IState) => state.loginReducer.updateProfileResponse);
-    const detail = useSelector((state: IState) => state.loginReducer.userData);
+
     const update = async () => {
         const isConnected = await NetworkUtils.isNetworkAvailable();
         if (isConnected) {
             setIsEditing(!isEditing);
             editUser().then(() => {
-                if (isEditing) {
-                    userData.status == 'success'
-                        ? Toast.show('Profile is updated', Toast.SHORT)
-                        : Toast.show('Profile is updated', Toast.SHORT);
+                if (isEditing === true) {
+                    if (userData.status === 'success') {
+                        Toast.show('Profile is updated', Toast.SHORT);
+                    } else {
+                        Toast.show('Profile is updated', Toast.SHORT);
+                    }
                 }
                 recallUserData();
             });

@@ -1,10 +1,14 @@
 /*
  * Reducer actions related with login
  */
-import * as types from './types';
 import { ILoginResponse } from 'models/api/login';
+import * as types from './types';
 
-export function requestLogin(params: object) {
+interface IData {
+    data: [];
+}
+
+export function requestLogin(params: IData) {
     return {
         type: types.LOGIN_REQUEST,
         params,
@@ -68,9 +72,9 @@ export function setToken(payload: string): {
     };
 }
 
-export function userDetailsResponse(payload: object | undefined | string): {
+export function userDetailsResponse(payload: IData | undefined | string): {
     type: string;
-    payload: object | undefined | string;
+    payload: IData | undefined | string;
 } {
     return {
         type: types.USER_DETAILS_RESPONSE,
@@ -78,16 +82,16 @@ export function userDetailsResponse(payload: object | undefined | string): {
     };
 }
 
-export function ISignupRequest(params: object) {
+export function ISignupRequest(params: IData) {
     return {
         type: types.SIGN_UP_REQUEST,
         params,
     };
 }
 
-export function ISignupResponse(payload: object | undefined | null): {
+export function ISignupResponse(payload: IData | undefined | null): {
     type: string;
-    payload: object | undefined | null;
+    payload: IData | undefined | null;
 } {
     return {
         type: types.SIGN_UP_RESPONSE,
@@ -101,25 +105,25 @@ export function IForgotPasswordRequest(params: string) {
     };
 }
 
-export function IForgotPasswordResponse(payload: object | string | undefined): {
+export function IForgotPasswordResponse(payload: IData | string | undefined): {
     type: string;
-    payload: object | string | undefined;
+    payload: IData | string | undefined;
 } {
     return {
         type: types.FORGET_PASSWORD_RESPONSE,
         payload,
     };
 }
-export function IUpdateProfileRequest(data: object) {
+export function IUpdateProfileRequest(data: IData) {
     return {
         type: types.UPDATE_PROFILE_REQUEST,
         data,
     };
 }
 
-export function IUpdateProfileResponse(payload: object): {
+export function IUpdateProfileResponse(payload: IData): {
     type: string;
-    payload: object;
+    payload: IData;
 } {
     return {
         type: types.UPDATE_PROFILE_RESPONSE,

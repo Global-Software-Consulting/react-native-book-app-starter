@@ -6,18 +6,20 @@
  */
 // import { delay } from 'redux-saga';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Alert } from 'react-native';
-import { yellow100 } from 'react-native-paper/lib/typescript/styles/colors';
-import { put, call } from 'redux-saga/effects';
-import loginUser from 'services/loginUser';
-import fetchUserDetails from 'services/fetchUserDetails';
+import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
+import { call, put } from 'redux-saga/effects';
 import fetchBooks from 'services/fetchBooks';
 import fetchFavoriteBooks from 'services/fetchFavoriteBooks';
-import * as loginActions from 'store/actions/loginActions';
+import fetchUserDetails from 'services/fetchUserDetails';
+import loginUser from 'services/loginUser';
 import * as appActions from 'store/actions/appActions';
-import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
+import * as loginActions from 'store/actions/loginActions';
 
-const storeData = async (value) => {
+interface ILoginDetail {
+    data: [];
+}
+
+const storeData = async (value: string) => {
     try {
         await AsyncStorage.setItem('token', value);
     } catch (e) {
@@ -26,12 +28,12 @@ const storeData = async (value) => {
 };
 
 // Our worker Saga that logins the user
-export default function* loginAsync(action) {
+export default function* loginAsync(action: ILoginDetail) {
     yield put(loginActions.enableLoader());
     //how to call api
-    const loginCall = yield call(loginUser, action.params);
+    const loginCall: ResponseGenerator = yield call(loginUser, action.params);
     //mock response
-    if (loginCall.status != 'error') {
+    if (loginCall.status !== 'error') {
         yield put(loginActions.disableLoader());
 
         yield call(storeData, loginCall.token);

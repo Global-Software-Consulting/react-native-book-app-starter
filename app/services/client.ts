@@ -1,14 +1,5 @@
-import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const storeData = async (value) => {
-    try {
-        const jsonValue = JSON.stringify(value);
-        await AsyncStorage.setItem('token', jsonValue);
-    } catch (e) {
-        // saving error
-    }
-};
 const getAuthToken = async () => {
     try {
         const value = await AsyncStorage.getItem('token');
@@ -21,25 +12,29 @@ const getAuthToken = async () => {
     }
 };
 
-export type Props = {
-    object: {
-        header: {
-            Accept: object;
-            Authorization: object;
-            Pragma: string;
-            APIKey: number;
-        };
+interface RequestInit {
+    headers: {
+        Accept: string;
+        'Content-Type': string;
+        'Cache-Control': string;
+        Authorization?: string;
+        Pragma: string;
+        APIKey: number;
     };
-};
+    method: string;
+}
 
+interface IData {
+    data: [];
+}
 export default async function api(
     path: string,
-    body: object | string | null,
+    body: IData | string | null,
     method: string,
     authorization = true,
 ) {
     const token = await getAuthToken();
-    let options: object;
+    let options: RequestInit;
     if (!authorization) {
         options = {
             headers: {

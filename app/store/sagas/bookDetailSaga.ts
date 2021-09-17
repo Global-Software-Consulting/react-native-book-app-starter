@@ -1,18 +1,21 @@
-import { IFetchBooks } from 'models/api/fetchBooks';
 import { call, put } from 'redux-saga/effects';
 import fetchBookDetail from '../../services/fetchBookDetail';
 import * as appActions from '../actions/appActions';
 
+interface IData {
+    data: [];
+}
+
 export interface ResponseGenerator {
     config?: string;
     data?: string;
-    headers?: object;
+    headers?: IData;
     params?: string;
-    request?: object | string | number;
+    request?: IData | string | number;
     status?: string;
     statusText?: string;
-    result?: object;
-    response?: object | undefined;
+    result?: IData;
+    response?: IData | undefined;
 }
 
 export default function* fetchBookDetailSaga(action: { id: number }) {
@@ -21,14 +24,11 @@ export default function* fetchBookDetailSaga(action: { id: number }) {
     //calling api
     const response: ResponseGenerator = yield call(fetchBookDetail, action.id);
 
-    if (response && response.status == 'success') {
+    if (response && response.status === 'success') {
         yield put(appActions.IFetchBookDetailResponse(response.result));
         //ends loading
         yield put(appActions.IFetchBooksLoadingStop());
-    } else if (response.status != 'success') {
+    } else if (response.status !== 'success') {
         yield put(appActions.IFetchBooksLoadingStop());
-    }
-
-    {
     }
 }

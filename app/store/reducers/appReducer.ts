@@ -1,12 +1,7 @@
 import { IBookState } from 'app/models/reducers/fetchBooks';
 import createReducer from 'lib/createReducer';
 import * as types from 'store/actions/types';
-import {
-    IBookRequest,
-    IBookResponse,
-    IFetchBooksLoading,
-    IFetchBooksLoadingStop,
-} from './../../models/actions/fetchBooks';
+import { IBookResponse } from './../../models/actions/fetchBooks';
 
 const initialState: IBookState = {
     isFetching: true,
@@ -16,7 +11,7 @@ const initialState: IBookState = {
 };
 
 export const appReducer = createReducer(initialState, {
-    [types.FETCH_BOOKLIST_REQUEST](state: IBookState, action: IBookRequest) {
+    [types.FETCH_BOOKLIST_REQUEST](state: IBookState) {
         return {
             ...state,
         };
@@ -27,20 +22,20 @@ export const appReducer = createReducer(initialState, {
             detail: action.payload,
         };
     },
-    [types.FETCH_LOADING](state: IBookState, action: IFetchBooksLoading) {
+    [types.FETCH_LOADING](state: IBookState) {
         return {
             ...state,
             isFetching: true,
         };
     },
-    [types.FETCH_STOPLOADING](state: IBookState, action: IFetchBooksLoadingStop) {
+    [types.FETCH_STOPLOADING](state: IBookState) {
         return {
             ...state,
             isFetching: false,
         };
     },
 
-    [types.FETCH_FAVORITE_BOOKLIST_REQUEST](state: IBookState, action: IBookRequest) {
+    [types.FETCH_FAVORITE_BOOKLIST_REQUEST](state: IBookState) {
         return {
             ...state,
         };
@@ -51,7 +46,7 @@ export const appReducer = createReducer(initialState, {
             favorite: action.payload,
         };
     },
-    [types.FETCH_FAVORITE_BOOKDETAIL_REQUEST](state: IBookState, action: IBookRequest) {
+    [types.FETCH_FAVORITE_BOOKDETAIL_REQUEST](state: IBookState) {
         return {
             ...state,
         };
@@ -63,13 +58,13 @@ export const appReducer = createReducer(initialState, {
         };
     },
 
-    [types.ADD_TO_FAVORITE_REQUEST](state: IBookState, action: IBookRequest) {
+    [types.ADD_TO_FAVORITE_REQUEST](state: IBookState) {
         return {
             ...state,
         };
     },
 
-    [types.REMOVE_FROM_FAVORITE_REQUEST](state: IBookState, action: IBookRequest) {
+    [types.REMOVE_FROM_FAVORITE_REQUEST](state: IBookState) {
         return {
             ...state,
         };
