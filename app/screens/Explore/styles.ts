@@ -1,9 +1,8 @@
 import { StyleSheet } from 'react-native';
-import { color } from 'react-native-reanimated';
 import { useTheme } from 'react-native-paper';
 import {
-    widthPercentageToDP as wp,
     heightPercentageToDP as hp,
+    widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
 export const useStyles = () => {

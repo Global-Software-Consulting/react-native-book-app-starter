@@ -32,7 +32,7 @@ interface IData {
     bookId: number;
     averageRating: number;
     title: string;
-    numberOfPages: number;
+    numberOfPages: string | number;
     shortSummary: string;
     book: {
         title: string;

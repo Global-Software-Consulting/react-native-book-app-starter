@@ -1,10 +1,8 @@
-import { useIsFocused, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 //importing card component
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
-import i18n from 'config/Languages/index';
 import { IBookState } from 'models/reducers/fetchBooks';
-import { ILoginState } from 'models/reducers/login';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -25,31 +23,32 @@ import * as appActions from 'store/actions/appActions';
 import NetworkUtils from 'utils/networkUtils';
 
 interface Props {
-    books?: {};
+    books?: IBookState;
     name?: string;
     base_url?: string;
 }
-const initI18n = i18n;
 
-const ExploreComponent: React.FC<Props> = ({ name, base_url }) => {
+interface IParams {
+    id: number;
+    averageRating: number;
+    title: string;
+    numberOfPages: number;
+    shortSummary: string;
+}
+const ExploreComponent: React.FC<Props> = ({ name }) => {
     //theme handling
     const styles = useStyles();
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const theme = useTheme();
     const dispatch = useDispatch();
     const [searchText, setSearchText] = useState('');
     const navigation = useNavigation();
     //getting data from store
     const books = useSelector((state: { appReducer: IBookState }) => state.appReducer.detail);
-    const isFocused = useIsFocused();
     const isLoading = useSelector(
         (state: { appReducer: IBookState }) => state.appReducer.isFetching,
     );
-    const favoriteBooks = useSelector(
-        (state: { appReducer: IBookState }) => state.appReducer.favorite,
-    );
-    const token = useSelector((state: { loginReducer: ILoginState }) => state.loginReducer.token);
-    const newFavorites: object[] = favoriteBooks;
+
     const searchBook = (bookName: string) => {
         dispatch(appActions.IFetchBooksRequest(bookName));
     };
@@ -69,7 +68,7 @@ const ExploreComponent: React.FC<Props> = ({ name, base_url }) => {
         dispatch(appActions.IFetchFavoriteBooksRequest());
     };
 
-    const navigateToDetails = async (params: object) => {
+    const navigateToDetails = async (params: IParams) => {
         const isConnected = await NetworkUtils.isNetworkAvailable();
         if (isConnected) {
             navigation.navigate('BookDetail', params);
@@ -115,13 +114,12 @@ const ExploreComponent: React.FC<Props> = ({ name, base_url }) => {
                             <Text style={styles.listCaption}>{t('Trending')}</Text>
                             <FlatList
                                 nestedScrollEnabled={true}
-                                keyExtractor={(item, index) => index.toString()}
                                 horizontal
                                 data={books?.filter((item) => {
                                     return item?.averageRating > 3;
                                 })}
                                 contentContainerStyle={styles.flatList}
-                                renderItem={({ item, index }) => (
+                                renderItem={({ item }) => (
                                     <TouchableHighlight
                                         key={item}
                                         underlayColor="grey"
@@ -145,12 +143,11 @@ const ExploreComponent: React.FC<Props> = ({ name, base_url }) => {
                             <Text style={styles.listCaption}>{t('New Releases')}</Text>
                             <FlatList
                                 horizontal
-                                keyExtractor={(item, index) => index.toString()}
                                 data={books?.filter((item: { averageRating: number }) => {
                                     return item?.averageRating <= 3 && item?.averageRating > 0;
                                 })}
                                 contentContainerStyle={styles.flatList}
-                                renderItem={({ item, index }) => (
+                                renderItem={({ item }) => (
                                     <TouchableHighlight
                                         key={item}
                                         underlayColor="grey"
@@ -174,12 +171,11 @@ const ExploreComponent: React.FC<Props> = ({ name, base_url }) => {
                             <Text style={styles.listCaption}>{t('Selected for you')}</Text>
                             <FlatList
                                 horizontal
-                                keyExtractor={(item, index) => index.toString()}
                                 data={books?.filter((item: { averageRating: number }) => {
-                                    return item?.averageRating == 0;
+                                    return item?.averageRating === 0;
                                 })}
                                 contentContainerStyle={styles.flatListLast}
-                                renderItem={({ item, index }) => (
+                                renderItem={({ item }) => (
                                     <TouchableHighlight
                                         key={item}
                                         underlayColor="grey"

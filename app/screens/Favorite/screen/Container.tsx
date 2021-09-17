@@ -1,13 +1,11 @@
 //to update the favorites list
-import { useIsFocused, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 //importing card component
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
-import i18n from 'config/Languages/index';
 import { IBookState } from 'models/reducers/fetchBooks';
 import { ILoginState } from 'models/reducers/login';
 import React, { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import {
     FlatList,
     Image,
@@ -24,30 +22,41 @@ import * as appActions from 'store/actions/appActions';
 import NetworkUtils from 'utils/networkUtils';
 import { useStyles } from '../styles';
 
-interface Props {
-    books?: {};
-    base_url?: string;
-}
+// interface Props {
+//     books?: {};
+//     base_url?: string;
+// }
 
 interface IStateReducer {
     loginReducer: ILoginState;
     appReducer: IBookState;
 }
 
-const initI18n = i18n;
+interface IParams {
+    id: number;
+    bookId: number;
+    averageRating: number;
+    title: string;
+    numberOfPages: string | number;
+    shortSummary: string;
+    book: {
+        title: string;
+        id: number;
+    };
+}
 
-const Container: React.FC<Props> = ({ books, base_url }) => {
+const Container: React.FC = () => {
     //theme handling
     const styles = useStyles();
     const dispatch = useDispatch();
-    const isFocused = useIsFocused();
-    const { t, i18n } = useTranslation();
     const navigation = useNavigation();
     const isLoading = useSelector((state: IStateReducer) => state.appReducer.isFetching);
     const favoriteBooks = useSelector((state: IStateReducer) => state.appReducer.favorite);
 
     useEffect(() => {
-        getFavoriteBooks;
+        console.log('here');
+
+        getFavoriteBooks();
     }, []);
 
     //fetching favorite books
@@ -60,7 +69,7 @@ const Container: React.FC<Props> = ({ books, base_url }) => {
         }
     };
 
-    const navigateToDetails = async (params: object) => {
+    const navigateToDetails = async (params: IParams) => {
         //to check if the internet connection is working
         const isConnected = await NetworkUtils.isNetworkAvailable();
         if (isConnected) {
@@ -78,7 +87,7 @@ const Container: React.FC<Props> = ({ books, base_url }) => {
                     numColumns={2}
                     contentContainerStyle={styles.flatList}
                     data={favoriteBooks}
-                    renderItem={({ item, index }) => (
+                    renderItem={({ item }) => (
                         <TouchableHighlight
                             key={item}
                             underlayColor="grey"

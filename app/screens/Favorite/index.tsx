@@ -1,20 +1,17 @@
-import React, { useEffect } from 'react';
-import { View, Alert, BackHandler, ScrollView, RefreshControl } from 'react-native';
-//importing card component
-import { useStyles } from './styles';
-import { useTranslation } from 'react-i18next';
-import i18n from 'components/Languages/i18n';
-import { useSelector, useDispatch } from 'react-redux';
-//importing components
-import Shimmer from './screen/Shimmer';
-import Container from './screen/Container';
-import * as appActions from 'store/actions/appActions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useIsFocused } from '@react-navigation/core';
 import { IBookState } from 'models/reducers/fetchBooks';
 import { ILoginState } from 'models/reducers/login';
+import React, { useEffect } from 'react';
+import { Alert, BackHandler, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import * as appActions from 'store/actions/appActions';
+import Container from './screen/Container';
+//importing components
+import Shimmer from './screen/Shimmer';
+//importing card component
+import { useStyles } from './styles';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
-const initI18n = i18n;
 
 interface IAppReducer {
     loginReducer: ILoginState;
@@ -27,26 +24,25 @@ const Favorite: React.FC = () => {
     const favoriteBooks = useSelector((state: IAppReducer) => state.appReducer.favorite);
     const isLoading = useSelector((state: IAppReducer) => state.appReducer.isFetching);
     //const [favoriteBookss, setFavoriteBookss] = useState(favoriteBooks);
-
-    const { t, i18n } = useTranslation();
-
     const dispatch = useDispatch();
 
     //fetching favorite books
-    const getFavoriteBooks = async () => {
-        try {
-            const value = await AsyncStorage.getItem('token');
-            if (value !== null) {
-                dispatch(appActions.IFetchFavoriteBooksRequest());
-            } else {
-                Alert.alert('Book App', 'Please login again');
-            }
-        } catch (e) {}
-    };
+    // useEffect(() => {
+    //     const getFavoriteBooks = async () => {
+    //         try {
+    //             const value = await AsyncStorage.getItem('token');
+    //             if (value !== null) {
+    //                 dispatch(appActions.IFetchFavoriteBooksRequest());
+    //             } else {
+    //                 Alert.alert('Book App', 'Please login again');
+    //             }
+    //         } catch (e) {
+    //             return e;
+    //         }
+    //     };
 
-    useEffect(() => {
-        getFavoriteBooks();
-    }, [isFocused]);
+    //     getFavoriteBooks();
+    // }, [isFocused, dispatch]);
 
     //handling back hardware button
     useEffect(() => {

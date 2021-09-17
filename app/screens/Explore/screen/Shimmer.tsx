@@ -4,9 +4,7 @@ import React from 'react';
 import { FlatList, TouchableHighlight, View } from 'react-native';
 import { useStyles } from '../styles';
 
-interface Props {}
-
-const ExploreShimmer: React.FC<Props> = ({}) => {
+const ExploreShimmer: React.FC = () => {
     const styles = useStyles();
 
     return (
@@ -21,9 +19,8 @@ const ExploreShimmer: React.FC<Props> = ({}) => {
             <FlatList
                 horizontal
                 data={[0, 0, 0]}
-                keyExtractor={(item, index) => index.toString()}
                 contentContainerStyle={styles.flatList}
-                renderItem={({ item, index }) => (
+                renderItem={({ item }) => (
                     <TouchableHighlight key={item} underlayColor="grey" onPress={() => {}}>
                         <BookCardShimmer styleSelect="Custom" />
                     </TouchableHighlight>
@@ -36,10 +33,9 @@ const ExploreShimmer: React.FC<Props> = ({}) => {
             <View style={styles.listCaptionShimmer} />
             <FlatList
                 horizontal
-                keyExtractor={(item, index) => index.toString()}
                 data={[0, 0, 0]}
                 contentContainerStyle={styles.flatList}
-                renderItem={({ item, index }) => (
+                renderItem={({ item }) => (
                     <TouchableHighlight key={item} underlayColor="grey" onPress={() => {}}>
                         <BookCardShimmer styleSelect="General" />
                     </TouchableHighlight>
@@ -52,10 +48,9 @@ const ExploreShimmer: React.FC<Props> = ({}) => {
             <View style={styles.listCaptionShimmer} />
             <FlatList
                 horizontal
-                keyExtractor={(item, index) => index.toString()}
                 data={[0, 0, 0]}
                 contentContainerStyle={styles.flatListLast}
-                renderItem={({ item, index }) => (
+                renderItem={({ item }) => (
                     <TouchableHighlight key={item} underlayColor="grey" onPress={() => {}}>
                         <BookCardShimmer styleSelect="General" />
                     </TouchableHighlight>

@@ -106,7 +106,8 @@ const Drawer: React.FC = (props) => {
                 <List.Accordion title={<Text style={styles.text}>{t('Languages')} </Text>}>
                     <TouchableOpacity
                         onPress={() => {
-                            setChecked('first'), i18n.changeLanguage('en');
+                            setChecked('first');
+                            i18n.changeLanguage('en');
                         }} //Here I change the language to "en" English
                         style={styles.listbutton}>
                         <RadioButton
@@ -119,7 +120,8 @@ const Drawer: React.FC = (props) => {
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => {
-                            setChecked('second'), i18n.changeLanguage('es');
+                            setChecked('second');
+                            i18n.changeLanguage('es');
                         }} //Here I change the language to "es" Spanish
                         style={styles.listbutton}>
                         <RadioButton
@@ -135,7 +137,8 @@ const Drawer: React.FC = (props) => {
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => {
-                            setChecked('third'), i18n.changeLanguage('de');
+                            setChecked('third');
+                            i18n.changeLanguage('de');
                         }} //Here I change the language to "de" German
                         style={styles.listbutton}>
                         <RadioButton
