@@ -3,7 +3,6 @@ import { IBookState } from 'models/reducers/fetchBooks';
 import { ILoading } from 'models/reducers/loading';
 import { ILoginState } from 'models/reducers/login';
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Image, Text, TextInput, View } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -13,10 +12,8 @@ import Toast from 'react-native-simple-toast';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useDispatch, useSelector } from 'react-redux';
 import NetworkUtils from 'utils/networkUtils';
-import i18n from '../../components/Languages/i18n';
 import images from './../../config/images';
 import * as loginActions from './../../store/actions/loginActions';
-const initI18n = i18n;
 
 interface IState {
     loginReducer: ILoginState;
@@ -25,8 +22,6 @@ interface IState {
 }
 
 const Login: React.FC = () => {
-    const { t, i18n } = useTranslation();
-    const id = useSelector((state: IState) => state.loginReducer.id);
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
@@ -40,11 +35,11 @@ const Login: React.FC = () => {
     const performLoginOperation = async () => {
         const isConnected = await NetworkUtils.isNetworkAvailable();
         if (isConnected) {
-            if (email != '' && password != '') {
+            if (email !== '' && password !== '') {
                 setError('');
                 setShowActivityIndicator(isLoading);
                 dispatch(loginActions.requestLogin({ email, password }));
-                if (loginResponse == 'error') {
+                if (loginResponse === 'error') {
                     setError('No user found');
                     dispatch(loginActions.IClearLoginResponse());
                 } else {

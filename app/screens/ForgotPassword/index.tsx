@@ -1,10 +1,8 @@
-import i18n from 'components/Languages/i18n';
 import images from 'config/images';
 import { IBookState } from 'models/reducers/fetchBooks';
 import { ILoading } from 'models/reducers/loading';
 import { ILoginState } from 'models/reducers/login';
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Button, Image, TextInput, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
@@ -19,22 +17,21 @@ interface IAppReducer {
     loadingReducer: ILoading;
 }
 
-const initI18n = i18n;
-const forgotPassword: React.FC = () => {
+const ForgotPassword: React.FC = () => {
+    //defining states
+    const [email, setEmail] = useState('');
     const dispatch = useDispatch();
+    const [isShowing, setIsShowing] = useState(false);
+    const styles = useStyles();
+
     //fetching data from store
     const isLoading = useSelector((state: IAppReducer) => state.loadingReducer.isLoginLoading);
     const forgetpasswordResponse = useSelector(
         (state: IAppReducer) => state.loginReducer.forgetPasswordResponse,
     );
-    //defining states
-    const [email, setEmail] = useState('');
-    const [isShowing, setIsShowing] = useState(false);
-    const { t, i18n } = useTranslation();
-    const styles = useStyles();
 
     const sendResetLink = () => {
-        if (email == '') {
+        if (email === '') {
             Toast.show('Enter email address');
         } else {
             dispatch(loginActions.IForgotPasswordRequest(email));
@@ -84,4 +81,4 @@ const forgotPassword: React.FC = () => {
     );
 };
 
-export default forgotPassword;
+export default ForgotPassword;

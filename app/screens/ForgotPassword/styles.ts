@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import {
     heightPercentageToDP,
-    heightPercentageToDP as hp,
     widthPercentageToDP,
     widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';

@@ -1,12 +1,6 @@
-import { Center } from 'native-base';
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import {
-    heightPercentageToDP,
-    heightPercentageToDP as hp,
-    widthPercentageToDP,
-    widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
+import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 
 export const useStyles = () => {
     const theme = useTheme();
@@ -16,7 +10,7 @@ export const useStyles = () => {
             backgroundColor: 'white',
         },
         dropDown: {
-            width: wp('80%'),
+            width: widthPercentageToDP('80%'),
             alignSelf: 'center',
             borderRadius: 20,
             marginTop: 10,
@@ -46,7 +40,7 @@ export const useStyles = () => {
             color: theme.colors.text,
         },
         inputField: {
-            width: wp('50%'),
+            width: widthPercentageToDP('50%'),
             color: 'black',
             height: 40,
         },
@@ -57,7 +51,7 @@ export const useStyles = () => {
             borderRadius: 20,
             alignItems: 'center',
             justifyContent: 'center',
-            width: wp('80%'),
+            width: widthPercentageToDP('80%'),
             height: 50,
         },
         editView: {

@@ -19,37 +19,37 @@ interface IState {
     appReducer: IBookState;
     loadingReducer: ILoading;
 }
-
+interface ISignupData {
+    firstName: string;
+    lastName: string;
+    email: string;
+    gender: string;
+    password: string;
+}
 const Signup: React.FC = () => {
     const dispatch = useDispatch();
     //defining states
     const [open, setOpen] = useState(false);
     const isLoading = useSelector((state: IState) => state.loadingReducer.isLoginLoading);
-    const signupResponse = useSelector((state: IState) => {
-        state.loginReducer.signUpResponse;
-    });
-    const [value, setValue] = useState(null);
-    const signUpStatus = useSelector((state: IState) => state.loginReducer.signUpResponse);
-    const [gender, setGender] = useState([
+    const gender = [
         { label: 'Male', value: 'male' },
         { label: 'Female', value: 'female' },
-    ]);
+    ];
     const {
         control,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
-    const performSignUp = async (data: object) => {
+    const performSignUp = async (data: ISignupData) => {
         dispatch(loginActions.ISignupRequest(data));
         dispatch(appActions.IFetchFavoriteBooksRequest());
-        dispatch(loginActions.userDetailsResponse());
         setTimeout(() => {
             dispatch(loginActions.setLoggedIn());
         }, 2000);
     };
 
-    const onSubmit = (data: object) => {
+    const onSubmit = (data: ISignupData) => {
         performSignUp(data);
     };
 
@@ -76,7 +76,7 @@ const Signup: React.FC = () => {
                             rules={{
                                 required: true,
                             }}
-                            render={({ field: { onChange, onBlur, value } }) => (
+                            render={({ field: { onChange, value } }) => (
                                 <TextInput
                                     placeholder="Enter your first name"
                                     autoCapitalize="none"
@@ -99,7 +99,7 @@ const Signup: React.FC = () => {
                             rules={{
                                 required: true,
                             }}
-                            render={({ field: { onChange, onBlur, value } }) => (
+                            render={({ field: { onChange, value } }) => (
                                 <TextInput
                                     placeholder="Enter your last name"
                                     autoCapitalize="none"
@@ -122,7 +122,7 @@ const Signup: React.FC = () => {
                             rules={{
                                 required: true,
                             }}
-                            render={({ field: { onChange, onBlur, value } }) => (
+                            render={({ field: { onChange, value } }) => (
                                 <TextInput
                                     placeholder="Enter your email"
                                     autoCapitalize="none"
@@ -145,7 +145,7 @@ const Signup: React.FC = () => {
                             rules={{
                                 required: true,
                             }}
-                            render={({ field: { onChange, onBlur, value } }) => (
+                            render={({ field: { onChange, value } }) => (
                                 <TextInput
                                     placeholder="Enter password"
                                     secureTextEntry={true}
@@ -168,7 +168,7 @@ const Signup: React.FC = () => {
                     rules={{
                         required: true,
                     }}
-                    render={({ field: { onChange, onBlur, value } }) => (
+                    render={({ field: { onChange, value } }) => (
                         <DropDownPicker
                             placeholder="Please select gender"
                             open={open}
@@ -176,10 +176,8 @@ const Signup: React.FC = () => {
                             items={gender}
                             setOpen={setOpen}
                             setValue={onChange}
-                            setItems={(value) => console.log(value)}
                             style={styles.dropDown}
                             dropDownContainerStyle={styles.dropDown}
-                            onChangeValue={(value) => {}}
                         />
                     )}
                     name="gender"
