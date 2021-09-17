@@ -1,17 +1,13 @@
-import {
-    DarkTheme as PaperDarkTheme,
-    DefaultTheme as PaperDefaultTheme
-  } from 'react-native-paper';
-  
-   const darkTheme = {
+import { DarkTheme as PaperDarkTheme, DefaultTheme as PaperDefaultTheme } from 'react-native-paper';
+
+const darkTheme = {
     ...PaperDarkTheme,
     colors: {
-      ...PaperDarkTheme.colors,
-      primary: 'white',
-      accent: 'gray',
-      background:'black',
+        ...PaperDarkTheme.colors,
+        primary: 'white',
+        accent: 'gray',
+        background: 'black',
     },
-  };
-  
-  
-  export default darkTheme
+};
+
+export default darkTheme;

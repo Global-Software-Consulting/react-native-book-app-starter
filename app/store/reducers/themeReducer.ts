@@ -9,11 +9,11 @@ import { IThemeState } from 'models/reducers/theme';
 import { IThemeToggleAction } from 'models/actions/theme';
 
 const initialState: IThemeState = {
-  isDark: false,
+    isDark: false,
 };
 
 export const themeReducer = createReducer(initialState, {
-  [types.TOGGLE_THEME](state: IThemeState, action: IThemeToggleAction) {
-    return { ...state, isDark: action.isDark };
-  },
+    [types.TOGGLE_THEME](state: IThemeState, action: IThemeToggleAction) {
+        return { ...state, isDark: action.isDark };
+    },
 });

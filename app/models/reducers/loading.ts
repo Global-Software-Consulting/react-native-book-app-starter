@@ -1,3 +1,3 @@
 export interface ILoading {
-  isLoginLoading: boolean;
+    isLoginLoading: boolean;
 }

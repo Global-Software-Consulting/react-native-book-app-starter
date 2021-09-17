@@ -1,3 +1,3 @@
 export interface ILoginResponse {
-  data: any;
+    data: any;
 }

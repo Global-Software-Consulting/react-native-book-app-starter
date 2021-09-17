@@ -1,14 +1,13 @@
 interface IResponse {
     detail: string;
-  }
-  
-  export interface IBookResponse {
+}
+
+export interface IBookResponse {
     type: string;
     payload: IResponse;
-  }
+}
 
-  export interface IBookRequest {
+export interface IBookRequest {
     type: string;
-    keyword: String;
-  };
-
+    keyword: string;
+}
