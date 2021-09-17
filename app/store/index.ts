@@ -18,8 +18,6 @@ const sagaMiddleware = createSagaMiddleware();
 
 middleware.push(sagaMiddleware);
 
-
-
 const reducers = persistCombineReducers(config, rootReducers);
 const enhancers = [applyMiddleware(...middleware)];
 // const initialState = {};

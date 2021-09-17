@@ -15,20 +15,13 @@ import {
     RadioButton,
     Text,
     Title,
-    useTheme,
 } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch, useSelector } from 'react-redux';
 import * as loginActions from 'store/actions/loginActions';
 import * as themeActions from 'store/actions/themeActions';
 import ThemeController from '../../components/ThemeController';
-import i18n from '../../config/Languages/index';
 import { useStyles } from './styles';
-
-const initI18n = i18n;
-interface IProps {
-    props: IProps;
-}
 
 interface IStateReducer {
     loginReducer: ILoginState;
@@ -44,7 +37,6 @@ const Drawer: React.FC = (props) => {
     const Explore = TabActions.jumpTo('Explore');
     const Favorite = TabActions.jumpTo('Favorite');
     const Detail = TabActions.jumpTo('UserDetail');
-    const theme = useTheme();
     const styles = useStyles();
     const onLogout = () => {
         AsyncStorage.removeItem('token');
@@ -55,6 +47,11 @@ const Drawer: React.FC = (props) => {
     useEffect(() => {
         setName(userData?.firstName + ' ' + userData?.lastName);
     }, [userData]);
+
+    const checkEnglish = () => {
+        setChecked('first');
+        i18n.changeLanguage('en');
+    };
 
     return (
         <DrawerContentScrollView {...props}>
@@ -115,9 +112,7 @@ const Drawer: React.FC = (props) => {
                         <RadioButton
                             value="first"
                             status={checked === 'first' ? 'checked' : 'unchecked'}
-                            onPress={() => {
-                                setChecked('first'), i18n.changeLanguage('en');
-                            }}
+                            onPress={checkEnglish}
                             color="red"
                         />
                         <Text style={styles.chekboxtext}>English</Text>
@@ -131,7 +126,8 @@ const Drawer: React.FC = (props) => {
                             value="second"
                             status={checked === 'second' ? 'checked' : 'unchecked'}
                             onPress={() => {
-                                setChecked('second'), i18n.changeLanguage('es');
+                                setChecked('second');
+                                i18n.changeLanguage('es');
                             }}
                             color="red"
                         />
@@ -146,7 +142,8 @@ const Drawer: React.FC = (props) => {
                             value="third"
                             status={checked === 'third' ? 'checked' : 'unchecked'}
                             onPress={() => {
-                                setChecked('third'), i18n.changeLanguage('de');
+                                setChecked('third');
+                                i18n.changeLanguage('de');
                             }}
                             color="red"
                         />
