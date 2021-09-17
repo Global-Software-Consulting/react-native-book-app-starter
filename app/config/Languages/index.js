@@ -8,7 +8,6 @@ i18n.use(initReactI18next).init({
         en: {
             translation: {
                 'Dark Theme': 'Dark Theme',
-                Languages: 'Languages',
                 'Home Sreen': 'Home Sreen',
                 Login: 'Login',
                 'Login Status': 'Login Status',
@@ -40,7 +39,6 @@ i18n.use(initReactI18next).init({
         es: {
             translation: {
                 'Dark Theme': 'Dunkles Thema',
-                Languages: 'Sprachen',
                 'Home Sreen': 'Startbildschirm',
                 Login: 'Anmeldung',
                 'Login Status': 'Login-Status',
@@ -73,7 +71,6 @@ i18n.use(initReactI18next).init({
         de: {
             translation: {
                 'Dark Theme': 'Tema oscuro',
-                Languages: 'Idiomas',
                 'Home Sreen': 'Pantalla de inicio',
                 Login: 'Acceso',
                 'Login Status': 'Estado de inicio de sesiÃ³n',

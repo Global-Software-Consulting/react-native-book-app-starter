@@ -16,7 +16,6 @@ i18n.use(initReactI18next).init({
                 Explore: 'Explore',
                 Favorite: 'Favorite',
                 'User Details': 'User Details',
-                Languages: 'Languages',
                 'Log out': 'Log out',
 
                 Hi: 'Hi',
@@ -53,7 +52,6 @@ i18n.use(initReactI18next).init({
                 Explore: 'ontdekken',
                 Favorite: 'favoriet',
                 'User Details': 'gebruiker',
-                Languages: 'Lanuages',
                 'Log out': 'Log out',
 
                 Hi: 'Hoi',
@@ -90,7 +88,6 @@ i18n.use(initReactI18next).init({
                 Explore: 'explorar',
                 Favorite: 'favorito',
                 'User Details': 'usuaria',
-                Languages: 'idiomas',
                 Logout: 'cerrar sesiÃ³n',
                 Hi: 'Hola',
                 'Search Here': 'busca aquÃ­',
