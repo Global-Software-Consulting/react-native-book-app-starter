@@ -1,4 +1,4 @@
-import { DarkTheme as PaperDarkTheme, DefaultTheme as PaperDefaultTheme } from 'react-native-paper';
+import { DarkTheme as PaperDarkTheme} from 'react-native-paper';
 
 const darkTheme = {
     ...PaperDarkTheme,
