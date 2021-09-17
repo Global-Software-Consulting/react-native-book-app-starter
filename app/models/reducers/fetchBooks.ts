@@ -9,7 +9,7 @@ export interface IBookState {
     }[];
     favorite: {
         id: number;
-        bookId:number;
+        bookId: number;
         averageRating: number;
         title: string;
         numberOfPages: number;

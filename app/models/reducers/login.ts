@@ -1,3 +1,6 @@
+interface IResponse {
+    data: [];
+}
 export interface ILoginState {
     isLoggedIn: boolean;
     id: number;
@@ -12,9 +15,9 @@ export interface ILoginState {
         status: string;
     };
     token: '';
-    signUpResponse: {};
-    forgetPasswordResponse: {};
-    updateProfileResponse: {};
+    signUpResponse: IResponse;
+    forgetPasswordResponse: IResponse;
+    updateProfileResponse: IResponse;
     loginResponse: {
         status: string;
     };

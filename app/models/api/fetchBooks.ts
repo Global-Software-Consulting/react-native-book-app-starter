@@ -1,3 +1,7 @@
+interface IResponse {
+    data: [];
+}
+
 export interface IFetchBooks {
-    detail: object | string | undefined;
+    detail: IResponse | string | undefined;
 }

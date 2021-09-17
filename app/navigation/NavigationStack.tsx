@@ -22,8 +22,7 @@ interface IState {
     loginReducer: ILoginState;
 }
 
-interface IProps {}
-const App: React.FC<IProps> = (props: IProps) => {
+const App: React.FC = () => {
     const isDark = useSelector((state: IState) => state.themeReducer.isDark);
     const isLoggedIn = useSelector((state: IState) => state.loginReducer.isLoggedIn);
 

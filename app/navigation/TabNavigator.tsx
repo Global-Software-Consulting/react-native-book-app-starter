@@ -1,7 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation } from '@react-navigation/core';
 import { DrawerActions } from '@react-navigation/native';
-import { ILoginState } from 'models/reducers/login';
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { TouchableHighlight } from 'react-native-gesture-handler';
@@ -12,17 +11,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Explore from './../screens/Explore/index';
 import Favorite from './../screens/Favorite/index';
 import UserDetail from './../screens/UserDetail/index';
-import i18n from 'config/Languages';
 import { useStyles } from './header';
 const Tab = createBottomTabNavigator();
 
-interface IState {
-    loginReducer: ILoginState;
-}
-
 const TabNavigator = () => {
-    const initI18n = i18n;
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const navigation = useNavigation();
     const theme = useTheme();
     const styles = useStyles();

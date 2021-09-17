@@ -1,12 +1,31 @@
+interface IResult {
+    id: number;
+    firstName: string;
+    lastName: string;
+}
+
+interface IResponse {
+    id: number;
+    status: string;
+    result: IResult;
+}
+
+interface IHeaders {
+    Authorization: string;
+    body: string;
+    params: string;
+    method: string;
+}
+
 export interface ResponseGenerator {
     config?: string;
     data?: string;
-    headers?: object;
+    headers?: IHeaders;
     params?: string;
-    request?: object | string | number;
+    request?: IHeaders | string | number;
     status?: string;
     statusText?: string;
-    result?: object;
+    result?: IResponse;
     token?: string;
-    response?: object | undefined;
+    response?: IResponse | undefined;
 }
