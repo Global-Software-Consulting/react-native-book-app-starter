@@ -29,5 +29,6 @@ export default function* fetchBookDetailSaga(action: { id: number }) {
         //ends loading
         yield put(appActions.IFetchBooksLoadingStop());
     } else if (response.status !== 'success') {
+        console.log('Error fetching book detail');
     }
 }

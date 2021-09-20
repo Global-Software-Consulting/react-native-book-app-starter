@@ -74,15 +74,14 @@ export const useStyles = () => {
             marginBottom: 10,
         },
 
-        bookShimmer:
-        {
+        bookShimmer: {
             height: hp('45%'),
             width: wp('60%'),
             borderRadius: 4,
             backgroundColor: '#E7E5E7',
             alignSelf: 'center',
-            margin:20,
-                },
+            margin: 20,
+        },
 
         sizeText: {
             fontWeight: '300',
