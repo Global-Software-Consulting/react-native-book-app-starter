@@ -8,6 +8,6 @@ export default function* fetchBookAsync() {
     if (response && response.status === 'success') {
         yield put(authActions.userDetailsResponse(response.result));
     } else if (response.status !== 'success') {
-        console.log('Print');
+        console.log('Error Fetching books');
     }
 }

@@ -33,8 +33,6 @@ const BookDetail: React.FC<IState> = (props) => {
     const bookData: IData = useSelector((state: IStateReducer) => state.appReducer.bookDetail);
     const isLoading: boolean = useSelector((state: IStateReducer) => state.appReducer.isFetching);
     const isFocussed = useIsFocused();
-    console.log('book id is ', bookId);
-    console.log('Book data is ', bookData);
 
     //handling back hardware button
     useEffect(() => {
