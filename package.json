@@ -13,7 +13,9 @@
     "clean:ios": "rm -rf ios/Pods && rm -rf ios/Podfile.lock",
     "clean": "rm -rf node_modules && rm -rf package-lock.json",
     "android:production-release": "ENVFILE=.env.production react-native run-android --variant=release",
-    "android:staging-release": "ENVFILE=.env.staging  react-native run-android --variant=release"
+    "android:staging-release": "ENVFILE=.env.staging  react-native run-android --variant=release",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.7",
@@ -87,6 +89,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.2",
     "jest": "^27.0.6",
+    "lint-staged": "^11.1.2",
     "metro-react-native-babel-preset": "^0.66.2",
     "react-test-renderer": "17.0.1",
     "typescript": "^3.8.3"
