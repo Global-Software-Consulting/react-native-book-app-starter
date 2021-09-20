@@ -29,6 +29,5 @@ export default function* fetchBookDetailSaga(action: { id: number }) {
         //ends loading
         yield put(appActions.IFetchBooksLoadingStop());
     } else if (response.status !== 'success') {
-        yield put(appActions.IFetchBooksLoadingStop());
     }
 }

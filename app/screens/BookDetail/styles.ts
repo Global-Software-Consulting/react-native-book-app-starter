@@ -61,16 +61,28 @@ export const useStyles = () => {
             alignSelf: 'center',
             backgroundColor: '#E7E5E7',
         },
+
         dynamicSynopse: {
             fontWeight: 'bold',
             fontSize: 15,
             marginBottom: 50,
         },
+
         synopseText: {
             fontWeight: '300',
             fontSize: 15,
             marginBottom: 10,
         },
+
+        bookShimmer:
+        {
+            height: hp('45%'),
+            width: wp('60%'),
+            borderRadius: 4,
+            backgroundColor: '#E7E5E7',
+            alignSelf: 'center',
+            margin:20,
+                },
 
         sizeText: {
             fontWeight: '300',

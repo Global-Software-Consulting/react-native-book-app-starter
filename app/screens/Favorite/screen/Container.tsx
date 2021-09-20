@@ -33,7 +33,7 @@ interface IStateReducer {
 
 interface IParams {
     id: number;
-    bookId: number;
+    bookId: number | string;
     averageRating: number;
     title: string;
     numberOfPages: string | number;
@@ -74,7 +74,7 @@ const Container: React.FC<Props> = (props) => {
                             key={item}
                             underlayColor="grey"
                             onPress={() => {
-                                navigateToDetails(item);
+                                navigateToDetails(item.bookId);
                             }}>
                             <BookCard
                                 url={

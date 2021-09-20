@@ -11,7 +11,7 @@ const Shimmer: React.FC = () => {
     return (
         <View>
             <ScrollView>
-                <BookCardShimmer styleSelect="Large" />
+                <View style={styles.bookShimmer} />
 
                 <View style={styles.horizontalRuler} />
 

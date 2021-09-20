@@ -7,6 +7,7 @@ import * as appActions from 'store/actions/appActions';
 //importing components
 import Container from './screen/Container';
 import Shimmer from './screen/Shimmer';
+import { useIsFocused } from '@react-navigation/core';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 
 interface IState {
@@ -30,6 +31,10 @@ const BookDetail: React.FC<IState> = (props) => {
     const dispatch = useDispatch();
     const bookId = props.route.params; //getting routed params
     const bookData: IData = useSelector((state: IStateReducer) => state.appReducer.bookDetail);
+    const isLoading: boolean = useSelector((state: IStateReducer) => state.appReducer.isFetching);
+    const isFocussed = useIsFocused();
+    console.log('book id is ', bookId);
+    console.log('Book data is ', bookData);
 
     //handling back hardware button
     useEffect(() => {
@@ -38,11 +43,11 @@ const BookDetail: React.FC<IState> = (props) => {
         };
 
         getDetail();
-    }, [bookId, dispatch]);
+    }, [bookId, dispatch, isFocussed]);
 
     return (
         <View>
-            {Object.keys(bookData).length < 1 ? (
+            {isLoading || bookData === null ? (
                 <Shimmer />
             ) : (
                 <Container base_url={base_url} books={bookData} />

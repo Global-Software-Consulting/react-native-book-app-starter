@@ -22,11 +22,10 @@ const Container: React.FC<Props> = (props) => {
     const { books } = props;
     const author = 'Dummy author';
     const genre = 'Dummy Genre';
-    const pages = books.numberOfPages;
-    const launched = books.createdAt;
-    const title = books.title;
+    const pages = books.numberOfPages ?? '111';
+    const launched = books.createdAt ?? '11-11-11';
+    const title = books.title ?? 'Dummy Title';
     const { t } = useTranslation();
-
     const [textShown, setTextShown] = useState(false); //To show ur remaining Text
 
     const toggleNumberOfLines = () => {

@@ -109,7 +109,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
                                         key={item}
                                         underlayColor="grey"
                                         onPress={() => {
-                                            navigateToDetails(item);
+                                            navigateToDetails(item.id);
                                         }}>
                                         <BookCard
                                             url={
@@ -137,7 +137,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
                                         key={item}
                                         underlayColor="grey"
                                         onPress={() => {
-                                            navigateToDetails(item);
+                                            navigateToDetails(item.id);
                                         }}>
                                         <BookCard
                                             url={
@@ -165,7 +165,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
                                         key={item}
                                         underlayColor="grey"
                                         onPress={() => {
-                                            navigateToDetails(item);
+                                            navigateToDetails(item.id);
                                         }}>
                                         <BookCard
                                             url={
