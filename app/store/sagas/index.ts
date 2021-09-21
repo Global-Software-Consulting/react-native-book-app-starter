@@ -17,10 +17,10 @@ import updateProfileDetails from 'store/sagas/updateProfileDetails';
 export default function* watch() {
     yield all([
         takeEvery(types.LOGIN_REQUEST, loginSaga),
-        takeEvery(types.FETCH_BOOKLIST_REQUEST, fetchBookSaga),
+        takeEvery(types.GET_BOOK_REQUEST, fetchBookSaga),
         takeEvery(types.USER_DETAILS_REQUEST, userDetails),
-        takeEvery(types.FETCH_FAVORITE_BOOKLIST_REQUEST, favoriteBookSaga),
-        takeEvery(types.FETCH_FAVORITE_BOOKDETAIL_REQUEST, bookDetailSaga),
+        takeEvery(types.GET_FAVORITE_BOOKLIST_REQUEST, favoriteBookSaga),
+        takeEvery(types.GET_BOOKDETAIL_REQUEST, bookDetailSaga),
         takeEvery(types.ADD_TO_FAVORITE_REQUEST, addBooktoFavorite),
         takeEvery(types.REMOVE_FROM_FAVORITE_REQUEST, removeBookFromFavoritesSaga),
         takeEvery(types.SIGN_UP_REQUEST, signupSaga),

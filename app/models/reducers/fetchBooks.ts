@@ -1,6 +1,6 @@
 export interface IBookState {
     isFetching: boolean;
-    detail: {
+    books: {
         id: number;
         averageRating: number;
         title: string;

@@ -23,18 +23,13 @@ const Favorite: React.FC = () => {
     const styles = useStyles();
     const isFocused = useIsFocused();
     const favoriteBooks = useSelector((state: IAppReducer) => state.appReducer.favorite);
-    const isLoading = useSelector((state: IAppReducer) => state.appReducer.isFetching);
+    const isLoading = useSelector((state: IAppReducer) => state.loadingReducer.isLoading);
     //const [favoriteBookss, setFavoriteBookss] = useState(favoriteBooks);
     const dispatch = useDispatch();
 
     //fetching favorite books
     const getFavoriteBooks = async () => {
-        const isConnected = await NetworkUtils.isNetworkAvailable();
-        if (isConnected) {
-            dispatch(appActions.IFetchFavoriteBooksRequest());
-        } else {
-            Toast.show('You are offline', Toast.SHORT);
-        }
+        dispatch(appActions.getFavoriteBookRequest());
     };
     useEffect(() => {
         getFavoriteBooks();

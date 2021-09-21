@@ -5,21 +5,20 @@ import { IBookResponse } from './../../models/actions/fetchBooks';
 
 const initialState: IBookState = {
     isFetching: true,
-    detail: [],
-    favorite: [],
-    bookDetail: {},
+    books: [], // books
+    favorite: [], //favorite
 };
 
 export const appReducer = createReducer(initialState, {
-    [types.FETCH_BOOKLIST_REQUEST](state: IBookState) {
+    [types.GET_BOOK_REQUEST](state: IBookState) {
         return {
             ...state,
         };
     },
-    [types.FETCH_BOOKLIST_RESPONSE](state: IBookState, action: IBookResponse) {
+    [types.GET_BOOK_RESPONSE](state: IBookState, action: IBookResponse) {
         return {
             ...state,
-            detail: action.payload,
+            books: action.payload,
         };
     },
     [types.FETCH_LOADING](state: IBookState) {
@@ -35,23 +34,23 @@ export const appReducer = createReducer(initialState, {
         };
     },
 
-    [types.FETCH_FAVORITE_BOOKLIST_REQUEST](state: IBookState) {
+    [types.GET_FAVORITE_BOOKLIST_REQUEST](state: IBookState) {
         return {
             ...state,
         };
     },
-    [types.FETCH_FAVORITE_BOOKLIST_RESPONSE](state: IBookState, action: IBookResponse) {
+    [types.GET_FAVORITE_BOOKLIST_RESPONSE](state: IBookState, action: IBookResponse) {
         return {
             ...state,
             favorite: action.payload,
         };
     },
-    [types.FETCH_FAVORITE_BOOKDETAIL_REQUEST](state: IBookState) {
+    [types.GET_BOOKDETAIL_REQUEST](state: IBookState) {
         return {
             ...state,
         };
     },
-    [types.FETCH_FAVORITE_BOOKDETAIL_RESPONSE](state: IBookState, action: IBookResponse) {
+    [types.GET_BOOKDETAIL_RESPONSE](state: IBookState, action: IBookResponse) {
         return {
             ...state,
             bookDetail: action.payload,

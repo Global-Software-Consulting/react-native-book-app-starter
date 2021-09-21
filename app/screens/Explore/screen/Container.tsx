@@ -46,22 +46,16 @@ const ExploreComponent: React.FC<Props> = (props) => {
     const navigation = useNavigation();
     const { name, onRefresh } = props;
     //getting data from store
-    const books = useSelector((state: { appReducer: IBookState }) => state.appReducer.detail);
-    const isLoading = useSelector(
-        (state: { appReducer: IBookState }) => state.appReducer.isFetching,
-    );
+    const books = useSelector((state: { appReducer: IBookState }) => state.appReducer.books);
+    const isLoading = useSelector((state) => state.loadingReducer.isLoading);
 
+    console.log('books are', books);
     const searchBook = (bookName: string) => {
-        dispatch(appActions.IFetchBooksRequest(bookName));
+        dispatch(appActions.getBookRequest(bookName));
     };
 
     const navigateToDetails = async (params: IParams) => {
-        const isConnected = await NetworkUtils.isNetworkAvailable();
-        if (isConnected) {
-            navigation.navigate('BookDetail', params);
-        } else {
-            Toast.show('You are offline', Toast.SHORT);
-        }
+        navigation.navigate('BookDetail', params);
     };
 
     return (
@@ -93,7 +87,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
                     </Text>
                     <Text style={styles.tagLine}>{t('Lets find something new')}</Text>
 
-                    {books.length > 0 ? (
+                    {books?.length > 1 ? (
                         <View>
                             <View style={styles.horizontalRuler} />
                             <Text style={styles.listCaption}>{t('Trending')}</Text>

@@ -28,28 +28,23 @@ const Login: React.FC = () => {
     const [password, setPassword] = useState('');
     const [secure, setSecure] = useState(true);
     const [showActivityIndicator, setShowActivityIndicator] = useState(false);
-    const isLoading = useSelector((state: IState) => state.loadingReducer.isLoginLoading);
+    const isLoading = useSelector((state: IState) => state.loadingReducer.isLoading);
     const [error, setError] = useState('');
     const loginResponse = useSelector((state: IState) => state.loginReducer.loginResponse.status);
 
     const performLoginOperation = async () => {
-        const isConnected = await NetworkUtils.isNetworkAvailable();
-        if (isConnected) {
-            if (email !== '' && password !== '') {
-                setError('');
-                setShowActivityIndicator(isLoading);
-                dispatch(loginActions.requestLogin({ email, password }));
-                if (loginResponse === 'error') {
-                    setError('No user found');
-                    dispatch(loginActions.IClearLoginResponse());
-                } else {
-                    setError('Authenticated Successfully');
-                }
+        if (email !== '' && password !== '') {
+            setError('');
+            setShowActivityIndicator(isLoading);
+            dispatch(loginActions.requestLogin({ email, password }));
+            if (loginResponse === 'error') {
+                setError('No user found');
+                dispatch(loginActions.IClearLoginResponse());
             } else {
-                setError('Email or Password missing');
+                setError('Authenticated Successfully');
             }
         } else {
-            Toast.show('You are offline', Toast.SHORT);
+            setError('Email or Password missing');
         }
     };
 

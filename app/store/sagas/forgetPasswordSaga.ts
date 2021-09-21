@@ -5,12 +5,15 @@
  * pwd - password
  */
 import { call, put } from 'redux-saga/effects';
-import ForgetPassword from 'services/forgetPassword';
+import ForgetPassword from 'services/forgotPassword';
 import * as loginActions from 'store/actions/loginActions';
 import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
+import * as loadingActions from 'store/actions/loginActions';
+
 
 // Our worker Saga that logins the user
 export default function* forgetPassword(action: { params: string }) {
+try {
     yield put(loginActions.enableLoader());
 
     const response: ResponseGenerator = yield call(ForgetPassword, {
@@ -22,4 +25,10 @@ export default function* forgetPassword(action: { params: string }) {
 
     // no need to call navigate as this is handled by redux store with SwitchNavigator
     //yield call(navigationActions.navigateToHome);
+}
+catch (error) {
+
+}
+
+  
 }

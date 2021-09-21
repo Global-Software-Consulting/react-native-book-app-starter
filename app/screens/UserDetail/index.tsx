@@ -23,7 +23,7 @@ interface IState {
 const UserDetail: React.FC = () => {
     const dispatch = useDispatch();
     const userData = useSelector((state: IState) => state.loginReducer.userData);
-    const isLoading = useSelector((state: IState) => state.loadingReducer.isLoginLoading);
+    const isLoading = useSelector((state: IState) => state.loadingReducer.isLoading);
     //defining states
     const [isEditing, setIsEditing] = useState(false);
     const [firstName, setFirstName] = useState(userData?.firstName);
@@ -33,22 +33,17 @@ const UserDetail: React.FC = () => {
     const styles = useStyles();
 
     const update = async () => {
-        const isConnected = await NetworkUtils.isNetworkAvailable();
-        if (isConnected) {
-            setIsEditing(!isEditing);
-            editUser().then(() => {
-                if (isEditing === true) {
-                    if (userData.status === 'success') {
-                        Toast.show('Profile is updated', Toast.SHORT);
-                    } else {
-                        Toast.show('Profile is updated', Toast.SHORT);
-                    }
+        setIsEditing(!isEditing);
+        editUser().then(() => {
+            if (isEditing === true) {
+                if (userData.status === 'success') {
+                    Toast.show('Profile is updated', Toast.SHORT);
+                } else {
+                    Toast.show('Profile is updated', Toast.SHORT);
                 }
-                recallUserData();
-            });
-        } else {
-            Toast.show('You are offline', Toast.SHORT);
-        }
+            }
+            //recallUserData();
+        });
     };
 
     const editUser = async () => {
@@ -56,9 +51,9 @@ const UserDetail: React.FC = () => {
             dispatch(loginActions.IUpdateProfileRequest({ firstName, lastName, email }));
         }
     };
-    const recallUserData = () => {
-        dispatch(loginActions.userDetailsRequest());
-    };
+    // const recallUserData = () => {
+    //     dispatch(loginActions.userDetailsRequest());
+    // };
 
     return (
         <View style={styles.container}>
@@ -133,6 +128,6 @@ const UserDetail: React.FC = () => {
             </View>
         </View>
     );
-};
+};;
 
 export default UserDetail;

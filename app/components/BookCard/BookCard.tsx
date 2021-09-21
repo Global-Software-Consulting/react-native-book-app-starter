@@ -57,7 +57,7 @@ const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, 
         if (isFavorite) {
             setIsFavorite(false);
             removeBookFromFavoite(id).then((response) => {
-                if (response && response.status === 'success') {
+                if (response && response?.status === 'success') {
                     return response;
                 } else {
                     setIsFavorite(true);

@@ -67,7 +67,6 @@ export const useStyles = () => {
             color: theme.colors.text,
             padding: 10,
 
-            editButton: {},
         },
     });
     return styles;

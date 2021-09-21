@@ -3,6 +3,6 @@ import Api from './client';
 interface IData {
     data: [];
 }
-export default function AddAnnotation(params: IData) {
-    return Api(ApiConfig.BASE_URL + ApiConfig.SIGNUP, params, 'POST');
+export default function signupUser(params: string) {
+    return Api(ApiConfig.BASE_URL + ApiConfig.SIGNUP, params, 'POST', false);
 }

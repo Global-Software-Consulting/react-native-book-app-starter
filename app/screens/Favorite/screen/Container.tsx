@@ -48,17 +48,13 @@ const Container: React.FC<Props> = (props) => {
     //theme handling
     const styles = useStyles();
     const navigation = useNavigation();
-    const isLoading = useSelector((state: IStateReducer) => state.appReducer.isFetching);
+    const isLoading = useSelector((state: IStateReducer) => state.loadingReducer.isLoading);
     const favoriteBooks = useSelector((state: IStateReducer) => state.appReducer.favorite);
     const { onRefresh } = props;
     const navigateToDetails = async (params: IParams) => {
         //to check if the internet connection is working
-        const isConnected = await NetworkUtils.isNetworkAvailable();
-        if (isConnected) {
-            navigation.navigate('BookDetail', params);
-        } else {
-            Toast.show('You are offline', Toast.SHORT);
-        }
+
+        navigation.navigate('BookDetail', params);
     };
 
     const FavoriteBooks = () => {
@@ -100,7 +96,7 @@ const Container: React.FC<Props> = (props) => {
                 style={styles.container}
                 nestedScrollEnabled
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh} />}>
-                {favoriteBooks.length > 0 ? (
+                {favoriteBooks?.length > 0 ? (
                     <FavoriteBooks />
                 ) : (
                     <View style={styles.favoriteView}>

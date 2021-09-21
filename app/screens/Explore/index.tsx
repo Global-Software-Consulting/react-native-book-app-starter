@@ -18,8 +18,8 @@ interface IStateReducer {
 
 const Explore: React.FC = () => {
     //fetching book images from the store
-    const books = useSelector((state: IStateReducer) => state.appReducer.detail);
-    const isLoading = useSelector((state: IStateReducer) => state.appReducer.isFetching);
+    const books = useSelector((state: IStateReducer) => state.appReducer.books);
+    const isLoading = useSelector((state: IStateReducer) => state.loadingReducer.isLoading);
     const IsFocused = useIsFocused();
     const userData = useSelector((state: IStateReducer) => state.loginReducer.userData);
     const [username, setUserName] = useState(userData?.firstName + ' ' + userData?.lastName);
@@ -53,18 +53,13 @@ const Explore: React.FC = () => {
     });
 
     const fetchBookDetails = async () => {
-        const isConnected = await NetworkUtils.isNetworkAvailable();
-        if (isConnected) {
-            dispatch(appActions.IFetchBooksRequest('a'));
-            getFavoriteBooks();
-        } else {
-            Toast.show('You are offline', Toast.SHORT);
-        }
+        dispatch(appActions.getBookRequest('a'));
+        getFavoriteBooks();
     };
 
     //fetching favorite books
     const getFavoriteBooks = async () => {
-        dispatch(appActions.IFetchFavoriteBooksRequest());
+        dispatch(appActions.getFavoriteBookRequest());
     };
 
     return (

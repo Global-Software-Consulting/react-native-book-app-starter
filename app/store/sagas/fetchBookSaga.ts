@@ -1,19 +1,36 @@
 import { call, put } from 'redux-saga/effects';
 import fetchBooks from '../../services/fetchBooks';
 import * as appActions from '../actions/appActions';
+import Toast from 'react-native-simple-toast'
 import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
+import * as loadingActions from 'store/actions/loginActions';
+
 
 export default function* fetchBookAsync(action: { keyword: string }) {
-    //start loading
-    yield put(appActions.IFetchBooksLoading());
-    //calling api
+    try {
+        yield put(loadingActions.enableLoader());
+        //calling api
+    
+        const response: ResponseGenerator = yield call(fetchBooks, action.keyword);
 
-    const response: ResponseGenerator = yield call(fetchBooks, action.keyword);
-    if (response && response.status === 'success') {
-        yield put(appActions.IFetchBooksResponse(response.result));
-        //ends loading
-        yield put(appActions.IFetchBooksLoadingStop());
-    } else if (response.status !== 'success') {
-        yield put(appActions.IFetchBooksResponse(response));
+        if (response?.status === 'network request failed')
+        {   Toast.show('You are offline',Toast.SHORT);
+        yield put(loadingActions.disableLoader());
+
+        }
+        else {
+            if (response && response?.status === 'success') {
+                yield put(appActions.getBookResponse(response.result));
+            } else if (response?.status !== 'success') {
+            }
+        }
+        yield put(loadingActions.disableLoader());
+     
     }
+    catch (error)
+     {
+
+     }
+    //start loading
+    
 }

@@ -30,7 +30,7 @@ const Signup: React.FC = () => {
     const dispatch = useDispatch();
     //defining states
     const [open, setOpen] = useState(false);
-    const isLoading = useSelector((state: IState) => state.loadingReducer.isLoginLoading);
+    const isLoading = useSelector((state: IState) => state.loadingReducer.isLoading);
     const gender = [
         { label: 'Male', value: 'male' },
         { label: 'Female', value: 'female' },
@@ -43,7 +43,7 @@ const Signup: React.FC = () => {
 
     const performSignUp = async (data: ISignupData) => {
         dispatch(loginActions.ISignupRequest(data));
-        dispatch(appActions.IFetchFavoriteBooksRequest());
+        dispatch(appActions.getFavoriteBookRequest());
         setTimeout(() => {
             dispatch(loginActions.setLoggedIn());
         }, 2000);

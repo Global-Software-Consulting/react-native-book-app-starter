@@ -29,10 +29,13 @@ const storeData = async (value: string) => {
 
 // Our worker Saga that logins the user
 export default function* loginAsync(action: ILoginDetail) {
+    try {
     yield put(loginActions.enableLoader());
     //how to call api
     const loginCall: ResponseGenerator = yield call(loginUser, action.params);
     //mock response
+    console.log('login call', loginCall);
+    
     if (loginCall.status !== 'error') {
         yield put(loginActions.disableLoader());
 
@@ -43,16 +46,21 @@ export default function* loginAsync(action: ILoginDetail) {
         yield put(loginActions.userDetailsResponse(userDetailCall.result));
 
         const favoriteBookCall: ResponseGenerator = yield call(fetchFavoriteBooks);
-        yield put(appActions.IFetchFavoriteBooksResponse(favoriteBookCall.result));
+        yield put(appActions.getFavoriteBookResponse(favoriteBookCall.result));
 
         const fetchBookCall: ResponseGenerator = yield call(fetchBooks, 'a');
-        yield put(appActions.IFetchBooksResponse(fetchBookCall.result));
+        yield put(appActions.getBookResponse(fetchBookCall.result));
 
         yield put(loginActions.setLoggedIn());
+
     } else {
         yield put(loginActions.LoginResponse(loginCall));
         yield put(loginActions.disableLoader());
     }
+}
+catch (error) {}
+yield put(loginActions.disableLoader());
+
     // no need to call navigate as this is handled by redux store with SwitchNavigator
     //yield call(navigationActions.navigateToHome);
 }

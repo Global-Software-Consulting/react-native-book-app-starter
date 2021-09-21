@@ -9,6 +9,7 @@ import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsi
 import Toast from 'react-native-simple-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/ForgotPassword/styles';
+import forgotPassword from 'services/forgotPassword';
 import * as loginActions from 'store/actions/loginActions';
 
 interface IAppReducer {
@@ -20,21 +21,25 @@ interface IAppReducer {
 const ForgotPassword: React.FC = () => {
     //defining states
     const [email, setEmail] = useState('');
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const [isShowing, setIsShowing] = useState(false);
     const styles = useStyles();
 
     //fetching data from store
-    const isLoading = useSelector((state: IAppReducer) => state.loadingReducer.isLoginLoading);
-    const forgetpasswordResponse = useSelector(
-        (state: IAppReducer) => state.loginReducer.forgetPasswordResponse,
-    );
+    const [isLoading, setIsLoading] = useState<boolean>();
+    const [forgetpasswordResponse, setForgetPasswordResponse] = useState<object>();
 
     const sendResetLink = () => {
         if (email === '') {
             Toast.show('Enter email address');
         } else {
-            dispatch(loginActions.IForgotPasswordRequest(email));
+            // dispatch(loginActions.IForgotPasswordRequest(email));
+            setIsLoading(true);
+            forgotPassword(email).then((response) => {
+                console.log('Y>', response);
+                setForgetPasswordResponse(response);
+                setIsLoading(false);
+            });
             setIsShowing(true);
             setTimeout(() => {
                 setIsShowing(false);
