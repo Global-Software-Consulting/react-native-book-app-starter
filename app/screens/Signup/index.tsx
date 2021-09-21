@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/Signup/styles';
 import * as appActions from 'store/actions/appActions';
 import * as loginActions from 'store/actions/loginActions';
-
+import * as snackbarActions from 'store/actions/snackbarActions';
 interface IState {
     loginReducer: ILoginState;
     appReducer: IBookState;
@@ -45,7 +45,7 @@ const Signup: React.FC = () => {
         dispatch(loginActions.ISignupRequest(data));
         dispatch(appActions.getFavoriteBookRequest());
         setTimeout(() => {
-            dispatch(loginActions.setLoggedIn());
+            dispatch(snackbarActions.clearMessageFromSnackbar());
         }, 2000);
     };
 
@@ -54,6 +54,8 @@ const Signup: React.FC = () => {
     };
 
     const styles = useStyles();
+    const message = useSelector((state) => state.snackbarReducer.snackbarMessage);
+    console.log('message in signup is', message);
     return (
         <KeyboardAwareScrollView style={{ backgroundColor: 'white' }}>
             <ScrollView style={styles.container} contentContainerStyle={{ alignItems: 'center' }}>
@@ -189,6 +191,7 @@ const Signup: React.FC = () => {
                     <Button onPress={handleSubmit(onSubmit)} title="Sign up" />
                     {isLoading && <ActivityIndicator />}
                 </View>
+                {message !== '' ? <Text>{message}</Text> : <Text> </Text>}
             </ScrollView>
         </KeyboardAwareScrollView>
     );

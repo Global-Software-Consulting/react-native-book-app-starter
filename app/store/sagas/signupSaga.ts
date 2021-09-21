@@ -13,6 +13,7 @@ import fetchFavoriteBooks from 'services/fetchFavoriteBooks';
 import signupUser from 'services/signupUser';
 import * as appActions from 'store/actions/appActions';
 import * as loginActions from 'store/actions/loginActions';
+import * as snackbarActions from 'store/actions/snackbarActions';
 const storeData = async (value: string) => {
     try {
         await AsyncStorage.setItem('token', value);
@@ -37,15 +38,23 @@ export default function* signUpsync(action: any) {
 
         const fetchBookCall: ResponseGenerator = yield call(fetchBooks, 'a');
         yield put(appActions.getBookResponse(fetchBookCall.result));
+        //if successful then set user as logged in
+        yield put(loginActions.setLoggedIn());
+        yield put(snackbarActions.storeMessageInSnackbar('Signup successful'))
+
         yield put(loginActions.disableLoader());
 
         // no need to call navigate as this is handled by redux store with SwitchNavigator
         //yield call(navigationActions.navigateToHome);
-    } else if (response === 'error' ) {
+    } else if (response.status === 'error' ) {
         yield put(loginActions.disableLoader());
+        yield put(snackbarActions.storeMessageInSnackbar('Email already exists'))
+        yield put(snackbarActions.showSnackbar())
     }
 }
 catch(error) {
-
+    yield put(loginActions.disableLoader());
+    yield put(snackbarActions.storeMessageInSnackbar('Error registering user, please check the credentials'))
+    yield put(snackbarActions.showSnackbar())
 }
 }
