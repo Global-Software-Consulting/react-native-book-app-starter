@@ -48,13 +48,11 @@ export default function* signUpsync(action: any) {
         //yield call(navigationActions.navigateToHome);
     } else if (response.status === 'error' ) {
         yield put(loginActions.disableLoader());
-        yield put(snackbarActions.storeMessageInSnackbar('Email already exists'))
-        yield put(snackbarActions.showSnackbar())
+        yield put(snackbarActions.enableSnackbar('Email already exists'))
     }
 }
 catch(error) {
     yield put(loginActions.disableLoader());
-    yield put(snackbarActions.storeMessageInSnackbar('Error registering user, please check the credentials'))
-    yield put(snackbarActions.showSnackbar())
+    yield put(snackbarActions.enableSnackbar('Error registering user, please check the credentials'))
 }
 }

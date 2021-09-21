@@ -3,15 +3,14 @@ import { IBookState } from 'models/reducers/fetchBooks';
 import { ILoading } from 'models/reducers/loading';
 import { ILoginState } from 'models/reducers/login';
 import React, { useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { ActivityIndicator, Image, Text, TextInput, View } from 'react-native';
-import { State, TouchableHighlight } from 'react-native-gesture-handler';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Button } from 'react-native-paper';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
-import Toast from 'react-native-simple-toast';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useDispatch, useSelector } from 'react-redux';
-import NetworkUtils from 'utils/networkUtils';
 import images from './../../config/images';
 import * as loginActions from './../../store/actions/loginActions';
 import * as snackbarActions from './../../store/actions/snackbarActions';
@@ -22,11 +21,14 @@ interface IState {
     loadingReducer: ILoading;
 }
 
+interface ILoginData {
+    email: string;
+    password: string;
+}
+
 const Login: React.FC = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [secure, setSecure] = useState(true);
     const [showActivityIndicator, setShowActivityIndicator] = useState(false);
     const isSnackbarVisible = useSelector((state) => state.snackbarReducer.snackbarVisible);
@@ -34,19 +36,23 @@ const Login: React.FC = () => {
     const message = useSelector((state) => state.snackbarReducer.snackbarMessage);
     const [error, setError] = useState(message);
     const loginResponse = useSelector((state: IState) => state.loginReducer.loginResponse.status);
+    //form data
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
-    const performLoginOperation = async () => {
-        dispatch(snackbarActions.clearMessageFromSnackbar());
-        if (email !== '' && password !== '') {
-            setError('');
-            setShowActivityIndicator(isLoading);
-            dispatch(loginActions.requestLogin({ email, password }));
-            setTimeout(() => {
-                dispatch(snackbarActions.clearMessageFromSnackbar());
-            }, 2000);
-        } else {
-            setError('Email or Password missing');
-        }
+    const performLoginOperation = async (data: ILoginData) => {
+        setShowActivityIndicator(isLoading);
+        dispatch(loginActions.requestLogin(data));
+        setTimeout(() => {
+            dispatch(snackbarActions.disableSnackbar());
+        }, 4000);
+    };
+
+    const onSubmit = (data: ILoginData) => {
+        performLoginOperation(data);
     };
 
     return (
@@ -80,26 +86,37 @@ const Login: React.FC = () => {
                 Please login to continue using our app
             </Text>
 
-            <TextInput
-                autoCorrect={false}
-                placeholder="Email"
-                placeholderTextColor="black"
-                onChangeText={(keyword) => setEmail(keyword)}
-                style={{
-                    width: widthPercentageToDP('80%'),
-                    height: 50,
-                    padding: 5,
-                    alignSelf: 'center',
-                    borderWidth: 1,
-                    borderRadius: 20,
-                    marginTop: 10,
-                    backgroundColor: 'white',
+            <Controller
+                control={control}
+                rules={{
+                    required: true,
                 }}
+                render={({ field: { onChange, value } }) => (
+                    <TextInput
+                        placeholder="Enter your email address"
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        style={{
+                            width: widthPercentageToDP('80%'),
+                            height: 50,
+                            padding: 5,
+                            alignSelf: 'center',
+                            borderWidth: 1,
+                            borderRadius: 20,
+                            marginTop: 10,
+                            backgroundColor: 'white',
+                        }}
+                        value={value}
+                        onChangeText={(text) => onChange(text)}
+                    />
+                )}
+                name="email"
+                defaultValue=""
             />
+            {errors.email && <Text style={{ alignSelf: 'center' }}>Email is required</Text>}
 
             <View
                 style={{
-                    marginBottom: 20,
                     flexDirection: 'row',
                     borderColor: 'black',
                     borderWidth: 1,
@@ -111,21 +128,33 @@ const Login: React.FC = () => {
                     marginTop: 5,
                     alignSelf: 'center',
                 }}>
-                <TextInput
-                    autoCorrect={false}
-                    placeholder="Password"
-                    onChangeText={(keyword) => setPassword(keyword)}
-                    placeholderTextColor="black"
-                    secureTextEntry={secure}
-                    style={{
-                        padding: 5,
-                        alignSelf: 'center',
-                        borderRadius: 20,
-                        margin: 5,
-                        backgroundColor: 'white',
-                        width: widthPercentageToDP('60%'),
+                <Controller
+                    control={control}
+                    rules={{
+                        required: true,
                     }}
+                    render={({ field: { onChange, value } }) => (
+                        <TextInput
+                            placeholder="Enter your password"
+                            autoCapitalize="none"
+                            secureTextEntry={secure}
+                            autoCorrect={false}
+                            style={{
+                                padding: 5,
+                                alignSelf: 'center',
+                                borderRadius: 20,
+                                margin: 5,
+                                backgroundColor: 'white',
+                                width: widthPercentageToDP('60%'),
+                            }}
+                            value={value}
+                            onChangeText={(text) => onChange(text)}
+                        />
+                    )}
+                    name="password"
+                    defaultValue=""
                 />
+
                 <Icon
                     name="remove-red-eye"
                     size={30}
@@ -133,6 +162,7 @@ const Login: React.FC = () => {
                     onPress={() => setSecure(!secure)}
                 />
             </View>
+            {errors.password && <Text style={{ alignSelf: 'center' }}>Password is required</Text>}
 
             <TouchableHighlight
                 style={{
@@ -164,7 +194,7 @@ const Login: React.FC = () => {
                     marginTop: 15,
                 }}>
                 <Button
-                    onPress={performLoginOperation}
+                    onPress={handleSubmit(onSubmit)}
                     disabled={showActivityIndicator}
                     style={{
                         height: 40,
@@ -190,9 +220,7 @@ const Login: React.FC = () => {
                         marginTop: 5,
                         marginBottom: 5,
                         color: 'red',
-                    }}>
-                    {error !== 'Email or Password missing' ? message : error}
-                </Text>
+                    }}></Text>
             }
         </KeyboardAwareScrollView>
     );

@@ -3,27 +3,15 @@
  */
 import * as types from './types';
 
-export function showSnackbar() {
+export function enableSnackbar(payload:string) {
     return {
-        type: types.SHOW_SNACKBAR,
-    };
-}
-
-export function hideSnackbar() {
-    return {
-        type: types.HIDE_SNACKBAR,
-    };
-}
-
-export function storeMessageInSnackbar(payload:string) {
-    return {
-        type: types.STORE_MESSAGE_IN_SNACKBAR,
+        type: types.ENABLE_SNACKBAR,
         payload
     };
 }
 
-export function clearMessageFromSnackbar() {
+export function disableSnackbar() {
     return {
-        type: types.CLEAR_MESSAGE_FROM_SNACKBAR,
+        type: types.DISABLE_SNACKBAR,
     };
 }

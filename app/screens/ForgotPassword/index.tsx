@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/ForgotPassword/styles';
 import forgotPassword from 'services/forgotPassword';
 import * as loginActions from 'store/actions/loginActions';
+import * as snackbarActions from 'store/actions/snackbarActions';
 
 interface IAppReducer {
     loginReducer: ILoginState;
@@ -21,7 +22,7 @@ interface IAppReducer {
 const ForgotPassword: React.FC = () => {
     //defining states
     const [email, setEmail] = useState('');
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const [isShowing, setIsShowing] = useState(false);
     const styles = useStyles();
 
@@ -38,15 +39,16 @@ const ForgotPassword: React.FC = () => {
                 setIsLoading(true);
                 forgotPassword(email).then((response) => {
                     console.log('Y>', response);
-                    setForgetPasswordResponse(response);
-                    setIsLoading(false);
+                    snackbarActions.enableSnackbar(response), setIsLoading(false);
                 });
                 setIsShowing(true);
                 setTimeout(() => {
                     setIsShowing(false);
                 }, 2000);
             } catch {
-                Toast.show('Error occurred, please try again', Toast.SHORT);
+                dispatch(
+                    snackbarActions.enableSnackbar('Login failed, please check your credentials'),
+                );
             }
         }
     };

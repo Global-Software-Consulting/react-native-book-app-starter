@@ -10,6 +10,7 @@ import { StatusBar } from 'react-native';
 import { useSelector } from 'react-redux';
 import AppNavigation from './AppNavigation';
 import AuthNavigation from './AuthNavigation';
+import { Button, Snackbar } from 'react-native-paper';
 import { IThemeState } from './models/reducers/theme';
 import { navigationRef } from './NavigationService';
 
@@ -25,6 +26,8 @@ interface IState {
 const App: React.FC = () => {
     const isDark = useSelector((state: IState) => state.themeReducer.isDark);
     const isLoggedIn = useSelector((state: IState) => state.loginReducer.isLoggedIn);
+    const message = useSelector((state) => state.snackbarReducer.snackbarMessage);
+    const isVisible = useSelector((state) => state.snackbarReducer.snackbarVisible);
 
     return (
         <NavigationContainer
@@ -46,6 +49,7 @@ const App: React.FC = () => {
                     />
                 )}
             </Stack.Navigator>
+            <Snackbar visible={isVisible}>{message}</Snackbar>
         </NavigationContainer>
     );
 };

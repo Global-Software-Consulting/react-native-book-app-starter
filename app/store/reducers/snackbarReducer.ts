@@ -9,29 +9,18 @@ const initialState: IBookState = {
 };
 
 export const snackbarReducer = createReducer(initialState, {
-    [types.SHOW_SNACKBAR](state: IBookState) {
+    [types.ENABLE_SNACKBAR](state: IBookState, action: {payload:string}) {
         return {
             ...state,
             snackbarVisible: true,
+            snackbarMessage: action.payload
         };
     },
-    [types.HIDE_SNACKBAR](state: IBookState) {
+    [types.DISABLE_SNACKBAR](state: IBookState) {
         return {
             ...state,
             snackbarVisible: false,
-        };
-    },
-    [types.STORE_MESSAGE_IN_SNACKBAR](state: IBookState, action: IBookResponse) {
-        return {
-            ...state,
-            snackbarMessage: action.payload,
-        };
-    },
-    [types.CLEAR_MESSAGE_FROM_SNACKBAR](state: IBookState) {
-        return {
-            ...state,
             snackbarMessage: ''
         };
     },
-
 });

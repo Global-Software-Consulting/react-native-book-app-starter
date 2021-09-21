@@ -55,14 +55,13 @@ export default function* loginAsync(action: ILoginDetail) {
 
     } else {
         yield put(loginActions.disableLoader());
-        yield put(snackbarActions.storeMessageInSnackbar(loginCall.message))
-        yield put(snackbarActions.showSnackbar())
+        yield put(snackbarActions.enableSnackbar('Login failed, please check your credentials'))
+       
     }
 }
-catch (error) {}
-yield put(loginActions.disableLoader());
-yield put(snackbarActions.storeMessageInSnackbar('Login failed, please check your credentials'))
-yield put(snackbarActions.showSnackbar())
+catch (error) {yield put(loginActions.disableLoader());
+    yield put(snackbarActions.enableSnackbar('Login failed, please check your credentials'))}
+
 
 //create a delay of 2 seconds
 
