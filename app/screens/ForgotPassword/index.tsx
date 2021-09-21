@@ -7,6 +7,7 @@ import { ActivityIndicator, Button, Image, TextInput, View } from 'react-native'
 import { Text } from 'react-native-paper';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import Toast from 'react-native-simple-toast';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/ForgotPassword/styles';
 import forgotPassword from 'services/forgotPassword';
@@ -39,55 +40,61 @@ const ForgotPassword: React.FC = () => {
                 setIsLoading(true);
                 forgotPassword(email).then((response) => {
                     console.log('Y>', response);
-                    snackbarActions.enableSnackbar(response), setIsLoading(false);
+                    dispatch(snackbarActions.enableSnackbar(response.message));
+                    setIsLoading(false);
                 });
                 setIsShowing(true);
                 setTimeout(() => {
-                    setIsShowing(false);
-                }, 2000);
+                    dispatch(snackbarActions.disableSnackbar());
+                }, 4000);
             } catch {
-                dispatch(
-                    snackbarActions.enableSnackbar('Login failed, please check your credentials'),
-                );
+                dispatch(snackbarActions.enableSnackbar('Operation failed, please try again'));
             }
         }
     };
 
     return (
         <View style={styles.container}>
-            <Image
-                source={images.app.logo}
-                style={{
-                    marginTop: 30,
-                    alignSelf: 'center',
-                    width: widthPercentageToDP('40%'),
-                    height: heightPercentageToDP('30%'),
-                }}
-            />
-
-            <View>
-                <View style={styles.infoView}>
-                    <Text style={styles.subHeading}>Email: </Text>
-                    <TextInput style={styles.inputField} onChangeText={(text) => setEmail(text)} />
-                </View>
-            </View>
-
-            <View style={styles.editView}>
-                <Button
-                    onPress={() => {
-                        sendResetLink();
+            <KeyboardAwareScrollView style={{ flex: 1 }}>
+                <Image
+                    source={images.app.logo}
+                    style={{
+                        marginTop: 30,
+                        alignSelf: 'center',
+                        width: widthPercentageToDP('40%'),
+                        height: heightPercentageToDP('30%'),
                     }}
-                    title="Submit"
                 />
-                {isLoading && <ActivityIndicator />}
-            </View>
-            {forgetpasswordResponse && isShowing ? (
+
                 <View>
-                    <Text style={{ color: 'blue' }}>Message: {forgetpasswordResponse.message}</Text>
+                    <View style={styles.infoView}>
+                        <Text style={styles.subHeading}>Email: </Text>
+                        <TextInput
+                            style={styles.inputField}
+                            onChangeText={(text) => setEmail(text)}
+                        />
+                    </View>
                 </View>
-            ) : (
-                <View />
-            )}
+
+                <View style={styles.editView}>
+                    <Button
+                        onPress={() => {
+                            sendResetLink();
+                        }}
+                        title="Submit"
+                    />
+                    {isLoading && <ActivityIndicator />}
+                </View>
+                {forgetpasswordResponse && isShowing ? (
+                    <View>
+                        <Text style={{ color: 'blue' }}>
+                            Message: {forgetpasswordResponse.message}
+                        </Text>
+                    </View>
+                ) : (
+                    <View />
+                )}
+            </KeyboardAwareScrollView>
         </View>
     );
 };
