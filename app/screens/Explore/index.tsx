@@ -21,7 +21,7 @@ const Explore: React.FC = () => {
     const books = useSelector((state: IStateReducer) => state.appReducer.books);
     const isLoading = useSelector((state: IStateReducer) => state.loadingReducer.isLoading);
     const IsFocused = useIsFocused();
-    const userData = useSelector((state: IStateReducer) => state.loginReducer.userData);
+    const userData = useSelector((state: IStateReducer) => state.loginReducer.user);
     const [username, setUserName] = useState(userData?.firstName + ' ' + userData?.lastName);
     const dispatch = useDispatch();
 

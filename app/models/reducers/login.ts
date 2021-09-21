@@ -6,19 +6,14 @@ export interface ILoginState {
     id: number;
     username: string;
     password: string;
+    user:user 
+}
 
-    userData: {
+export type user =
+    {
         firstName: string;
         lastName: string;
         email: string;
         gender: string;
         status: string;
     };
-    token: '';
-    signUpResponse: IResponse;
-    forgetPasswordResponse: IResponse;
-    updateProfileResponse: IResponse;
-    loginResponse: {
-        status: string;
-    };
-}

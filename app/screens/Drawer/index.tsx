@@ -29,7 +29,7 @@ interface IStateReducer {
 
 const Drawer: React.FC = (props) => {
     const [checked, setChecked] = useState('first');
-    const userData = useSelector((state: IStateReducer) => state.loginReducer.userData);
+    const userData = useSelector((state: IStateReducer) => state.loginReducer.user);
     const [name, setName] = useState(userData?.firstName + ' ' + userData?.lastName);
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();

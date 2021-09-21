@@ -39,9 +39,6 @@ export default function* loginAsync(action: ILoginDetail) {
     if (loginCall.status !== 'error') {
         yield put(loginActions.disableLoader());
 
-        yield call(storeData, loginCall.token);
-        yield put(loginActions.LoginResponse(loginCall.token));
-
         const userDetailCall: ResponseGenerator = yield call(fetchUserDetails);
         yield put(loginActions.userDetailsResponse(userDetailCall.result));
 
@@ -54,7 +51,6 @@ export default function* loginAsync(action: ILoginDetail) {
         yield put(loginActions.setLoggedIn());
 
     } else {
-        yield put(loginActions.LoginResponse(loginCall));
         yield put(loginActions.disableLoader());
     }
 }

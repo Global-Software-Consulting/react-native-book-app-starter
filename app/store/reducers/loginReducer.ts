@@ -8,15 +8,7 @@ import { ILoginState } from './../../models/reducers/login';
 
 const initialState: ILoginState = {
     isLoggedIn: false,
-    id: 0,
-    username: '',
-    password: '',
-    userData: { firstName: '', lastName: '', email: '', gender: '', status: '' },
-    token: '',
-    loginResponse: { status: '' },
-    signUpResponse: '',
-    forgetPasswordResponse: '',
-    updateProfileResponse: '',
+    user: { firstName: '', lastName: '', email: '', gender: '', status: '' },
 };
 
 export const loginReducer = createReducer(initialState, {
@@ -68,7 +60,7 @@ export const loginReducer = createReducer(initialState, {
     [types.USER_DETAILS_RESPONSE](state: ILoginState, action: ILoginResponseState) {
         return {
             ...state,
-            userData: action.payload,
+            user: action.payload,
         };
     },
 
@@ -85,17 +77,4 @@ export const loginReducer = createReducer(initialState, {
         };
     },
 
-    [types.UPDATE_PROFILE_RESPONSE](state: ILoginState, action: ILoginResponseState) {
-        return {
-            ...state,
-            updateProfileResponse: action.payload,
-        };
-    },
-
-    [types.CLEAR_LOGIN_RESPONSE](state: ILoginState) {
-        return {
-            ...state,
-            loginResponse: '',
-        };
-    },
 });

@@ -19,7 +19,7 @@ export default function* watch() {
         takeEvery(types.LOGIN_REQUEST, loginSaga),
         takeEvery(types.GET_BOOK_REQUEST, fetchBookSaga),
         takeEvery(types.USER_DETAILS_REQUEST, userDetails),
-        takeEvery(types.GET_FAVORITE_BOOKLIST_REQUEST, favoriteBookSaga),
+        takeEvery(types.GET_FAVORITE_BOOK_LIST_REQUEST, favoriteBookSaga),
         takeEvery(types.GET_BOOKDETAIL_REQUEST, bookDetailSaga),
         takeEvery(types.ADD_TO_FAVORITE_REQUEST, addBooktoFavorite),
         takeEvery(types.REMOVE_FROM_FAVORITE_REQUEST, removeBookFromFavoritesSaga),

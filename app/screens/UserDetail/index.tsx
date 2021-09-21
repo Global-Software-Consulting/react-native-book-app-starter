@@ -22,7 +22,7 @@ interface IState {
 
 const UserDetail: React.FC = () => {
     const dispatch = useDispatch();
-    const userData = useSelector((state: IState) => state.loginReducer.userData);
+    const userData = useSelector((state: IState) => state.loginReducer.user);
     const isLoading = useSelector((state: IState) => state.loadingReducer.isLoading);
     //defining states
     const [isEditing, setIsEditing] = useState(false);
@@ -128,6 +128,6 @@ const UserDetail: React.FC = () => {
             </View>
         </View>
     );
-};;
+};
 
 export default UserDetail;

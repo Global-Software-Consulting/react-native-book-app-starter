@@ -66,6 +66,7 @@ export default async function api(
             ...(body && { body: JSON.stringify(body) }),
         };
     }
+    console.log('here',options);
     
 return NetInfo.fetch().then (state => {
 if (state.isConnected) {

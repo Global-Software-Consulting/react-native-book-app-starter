@@ -1,27 +1,22 @@
 export interface IBookState {
-    isFetching: boolean;
-    books: {
-        id: number;
-        averageRating: number;
-        title: string;
-        numberOfPages: number;
-        shortSummary: string;
-    }[];
-    favorite: {
-        id: number;
-        bookId: number;
-        averageRating: number;
-        title: string;
-        numberOfPages: string | number;
-        shortSummary: string;
-        book: { title: string; id: number };
-    }[];
-    bookDetail: {
-        id: number;
-        averageRating: number;
-        title: string;
-        numberOfPages: number | string;
-        shortSummary: string;
-        createdAt: string;
-    };
+    books: books[];
+    favorite: favoriteBook[];
+}
+
+export type books ={
+    id: number;
+    averageRating: number;
+    title: string;
+    numberOfPages: number;
+    shortSummary: string;
+}
+
+export type favoriteBook ={
+    id: number;
+    bookId: number;
+    averageRating: number;
+    title: string;
+    numberOfPages: string | number;
+    shortSummary: string;
+    book: { title: string; id: number };
 }

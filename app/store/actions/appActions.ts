@@ -25,7 +25,7 @@ export function getBookResponse(payload: string | IData | undefined): {
 
 export function getFavoriteBookRequest() {
     return {
-        type: types.GET_FAVORITE_BOOKLIST_REQUEST,
+        type: types.GET_FAVORITE_BOOK_LIST_REQUEST,
     };
 }
 
@@ -34,7 +34,7 @@ export function getFavoriteBookResponse(payload: IData | string | undefined): {
     payload: IData | string | undefined;
 } {
     return {
-        type: types.GET_FAVORITE_BOOKLIST_RESPONSE,
+        type: types.GET_FAVORITE_BOOK_LIST_RESPONSE,
         payload,
     };
 }
@@ -66,5 +66,29 @@ export function removeBookToFavoriteRequest(id: number) {
     return {
         type: types.REMOVE_FROM_FAVORITE_REQUEST,
         id,
+    };
+}
+
+export function showSnackbar() {
+    return {
+        type: types.SHOW_SNACKBAR,
+    };
+}
+
+export function hideSnackbar() {
+    return {
+        type: types.HIDE_SNACKBAR,
+    };
+}
+
+export function storeMessageInSnackbar() {
+    return {
+        type: types.STORE_MESSAGE_IN_SNACKBAR,
+    };
+}
+
+export function clearMessageFromSnackbar() {
+    return {
+        type: types.CLEAR_MESSAGE_FROM_SNACKBAR,
     };
 }

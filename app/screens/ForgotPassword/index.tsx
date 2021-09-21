@@ -34,16 +34,20 @@ const ForgotPassword: React.FC = () => {
             Toast.show('Enter email address');
         } else {
             // dispatch(loginActions.IForgotPasswordRequest(email));
-            setIsLoading(true);
-            forgotPassword(email).then((response) => {
-                console.log('Y>', response);
-                setForgetPasswordResponse(response);
-                setIsLoading(false);
-            });
-            setIsShowing(true);
-            setTimeout(() => {
-                setIsShowing(false);
-            }, 2000);
+            try {
+                setIsLoading(true);
+                forgotPassword(email).then((response) => {
+                    console.log('Y>', response);
+                    setForgetPasswordResponse(response);
+                    setIsLoading(false);
+                });
+                setIsShowing(true);
+                setTimeout(() => {
+                    setIsShowing(false);
+                }, 2000);
+            } catch {
+                Toast.show('Error occurred, please try again', Toast.SHORT);
+            }
         }
     };
 
