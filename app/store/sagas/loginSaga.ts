@@ -14,7 +14,7 @@ import fetchUserDetails from 'services/fetchUserDetails';
 import loginUser from 'services/loginUser';
 import * as appActions from 'store/actions/appActions';
 import * as loginActions from 'store/actions/loginActions';
-
+import * as snackbarActions from 'store/actions/snackbarActions';
 interface ILoginDetail {
     data: [];
 }
@@ -27,6 +27,8 @@ const storeData = async (value: string) => {
     }
 };
 
+const delay = time => new Promise(resolve => setTimeout(resolve, time));
+
 // Our worker Saga that logins the user
 export default function* loginAsync(action: ILoginDetail) {
     try {
@@ -36,10 +38,11 @@ export default function* loginAsync(action: ILoginDetail) {
     //mock response
     console.log('login call', loginCall);
     
-    if (loginCall.status !== 'error') {
-        yield put(loginActions.disableLoader());
+        if (loginCall.status !== 'error') {
+            storeData(loginCall.token);
 
         const userDetailCall: ResponseGenerator = yield call(fetchUserDetails);
+        console.log('user details in saga are ', userDetailCall)
         yield put(loginActions.userDetailsResponse(userDetailCall.result));
 
         const favoriteBookCall: ResponseGenerator = yield call(fetchFavoriteBooks);
@@ -52,10 +55,16 @@ export default function* loginAsync(action: ILoginDetail) {
 
     } else {
         yield put(loginActions.disableLoader());
+        yield put(snackbarActions.storeMessageInSnackbar(loginCall.message))
+        yield put(snackbarActions.showSnackbar())
     }
 }
 catch (error) {}
 yield put(loginActions.disableLoader());
+yield put(snackbarActions.storeMessageInSnackbar('Login failed, please check your credentials'))
+yield put(snackbarActions.showSnackbar())
+
+//create a delay of 2 seconds
 
     // no need to call navigate as this is handled by redux store with SwitchNavigator
     //yield call(navigationActions.navigateToHome);

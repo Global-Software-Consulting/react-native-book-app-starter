@@ -49,7 +49,6 @@ const ExploreComponent: React.FC<Props> = (props) => {
     const books = useSelector((state: { appReducer: IBookState }) => state.appReducer.books);
     const isLoading = useSelector((state) => state.loadingReducer.isLoading);
 
-    console.log('books are', books);
     const searchBook = (bookName: string) => {
         dispatch(appActions.getBookRequest(bookName));
     };

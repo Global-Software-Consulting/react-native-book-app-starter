@@ -4,7 +4,7 @@ import { ILoading } from 'models/reducers/loading';
 import { ILoginState } from 'models/reducers/login';
 import React, { useState } from 'react';
 import { ActivityIndicator, Image, Text, TextInput, View } from 'react-native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { State, TouchableHighlight } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Button } from 'react-native-paper';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import NetworkUtils from 'utils/networkUtils';
 import images from './../../config/images';
 import * as loginActions from './../../store/actions/loginActions';
+import * as snackbarActions from './../../store/actions/snackbarActions';
 
 interface IState {
     loginReducer: ILoginState;
@@ -28,21 +29,21 @@ const Login: React.FC = () => {
     const [password, setPassword] = useState('');
     const [secure, setSecure] = useState(true);
     const [showActivityIndicator, setShowActivityIndicator] = useState(false);
-    const isLoading = useSelector((state: IState) => state.loadingReducer.isLoading);
-    const [error, setError] = useState('');
+    const isSnackbarVisible = useSelector((state) => state.snackbarReducer.snackbarVisible);
+    const isLoading = useSelector((state) => state.loadingReducer.isLoading);
+    const message = useSelector((state) => state.snackbarReducer.snackbarMessage);
+    const [error, setError] = useState(message);
     const loginResponse = useSelector((state: IState) => state.loginReducer.loginResponse.status);
 
     const performLoginOperation = async () => {
+        dispatch(snackbarActions.clearMessageFromSnackbar());
         if (email !== '' && password !== '') {
             setError('');
             setShowActivityIndicator(isLoading);
             dispatch(loginActions.requestLogin({ email, password }));
-            if (loginResponse === 'error') {
-                setError('No user found');
-                dispatch(loginActions.IClearLoginResponse());
-            } else {
-                setError('Authenticated Successfully');
-            }
+            setTimeout(() => {
+                dispatch(snackbarActions.clearMessageFromSnackbar());
+            }, 2000);
         } else {
             setError('Email or Password missing');
         }
@@ -190,7 +191,7 @@ const Login: React.FC = () => {
                         marginBottom: 5,
                         color: 'red',
                     }}>
-                    {error}
+                    {error !== 'Email or Password missing' ? message : error}
                 </Text>
             }
         </KeyboardAwareScrollView>

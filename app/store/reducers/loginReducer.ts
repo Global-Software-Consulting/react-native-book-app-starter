@@ -67,7 +67,7 @@ export const loginReducer = createReducer(initialState, {
     [types.SIGN_UP_RESPONSE](state: ILoginState, action: ILoginResponseState) {
         return {
             ...state,
-            signUpResponse: action.payload,
+            user: action.payload,
         };
     },
     [types.FORGET_PASSWORD_RESPONSE](state: ILoginState, action: ILoginResponseState) {

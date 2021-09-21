@@ -68,27 +68,3 @@ export function removeBookToFavoriteRequest(id: number) {
         id,
     };
 }
-
-export function showSnackbar() {
-    return {
-        type: types.SHOW_SNACKBAR,
-    };
-}
-
-export function hideSnackbar() {
-    return {
-        type: types.HIDE_SNACKBAR,
-    };
-}
-
-export function storeMessageInSnackbar() {
-    return {
-        type: types.STORE_MESSAGE_IN_SNACKBAR,
-    };
-}
-
-export function clearMessageFromSnackbar() {
-    return {
-        type: types.CLEAR_MESSAGE_FROM_SNACKBAR,
-    };
-}
