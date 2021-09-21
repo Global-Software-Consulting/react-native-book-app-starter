@@ -32,7 +32,6 @@ export default function* fetchBookDetailSaga(action: { id: number }) {
      //ends loading
      yield put(loadingActions.disableLoader());
     } else if (response?.status !== 'success') {
-     console.log('Error fetching book detail');
  }
     }
     catch (error) {

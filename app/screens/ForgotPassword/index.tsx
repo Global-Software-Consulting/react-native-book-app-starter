@@ -4,14 +4,13 @@ import { ILoading } from 'models/reducers/loading';
 import { ILoginState } from 'models/reducers/login';
 import React, { useState } from 'react';
 import { ActivityIndicator, Button, Image, TextInput, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Text } from 'react-native-paper';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import Toast from 'react-native-simple-toast';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useStyles } from 'screens/ForgotPassword/styles';
 import forgotPassword from 'services/forgotPassword';
-import * as loginActions from 'store/actions/loginActions';
 import * as snackbarActions from 'store/actions/snackbarActions';
 
 interface IAppReducer {
@@ -39,7 +38,6 @@ const ForgotPassword: React.FC = () => {
             try {
                 setIsLoading(true);
                 forgotPassword(email).then((response) => {
-                    console.log('Y>', response);
                     dispatch(snackbarActions.enableSnackbar(response.message));
                     setIsLoading(false);
                 });
@@ -85,15 +83,6 @@ const ForgotPassword: React.FC = () => {
                     />
                     {isLoading && <ActivityIndicator />}
                 </View>
-                {forgetpasswordResponse && isShowing ? (
-                    <View>
-                        <Text style={{ color: 'blue' }}>
-                            Message: {forgetpasswordResponse.message}
-                        </Text>
-                    </View>
-                ) : (
-                    <View />
-                )}
             </KeyboardAwareScrollView>
         </View>
     );

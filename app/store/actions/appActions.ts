@@ -68,3 +68,10 @@ export function removeBookToFavoriteRequest(id: number) {
         id,
     };
 }
+
+export function setNewFavorites(payload:[]) {
+    return {
+        type: types.SET_NEW_FAVORITE_BOOKS,
+        payload,
+    };
+}

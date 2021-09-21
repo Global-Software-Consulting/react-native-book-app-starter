@@ -27,7 +27,6 @@ export default function* signUpsync(action: any) {
     try {
     yield put(loginActions.enableLoader());
     const response: ResponseGenerator = yield call(signupUser, action.params);
-    console.log('SignupResponse', response)
     if (response && response.status === 'success') {
         yield call(storeData, response.token);
 

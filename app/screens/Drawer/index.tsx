@@ -43,7 +43,6 @@ const Drawer: React.FC = (props) => {
         dispatch(loginActions.logOut());
         dispatch(themeActions.setIsDarkTheme(false));
     };
-    console.log('user details are ', userData);
     useEffect(() => {
         setName(userData?.firstName + ' ' + userData?.lastName);
     }, [userData]);

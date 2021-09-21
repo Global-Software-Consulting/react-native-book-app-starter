@@ -44,9 +44,6 @@ const Signup: React.FC = () => {
     const performSignUp = async (data: ISignupData) => {
         dispatch(loginActions.ISignupRequest(data));
         dispatch(appActions.getFavoriteBookRequest());
-        setTimeout(() => {
-            dispatch(snackbarActions.disableSnackbar());
-        }, 4000);
     };
 
     const onSubmit = (data: ISignupData) => {
@@ -55,7 +52,6 @@ const Signup: React.FC = () => {
 
     const styles = useStyles();
     const message = useSelector((state) => state.snackbarReducer.snackbarMessage);
-    console.log('message in signup is', message);
     return (
         <KeyboardAwareScrollView style={{ backgroundColor: 'white' }}>
             <ScrollView style={styles.container} contentContainerStyle={{ alignItems: 'center' }}>

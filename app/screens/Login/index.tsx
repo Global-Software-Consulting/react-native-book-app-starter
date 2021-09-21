@@ -46,9 +46,6 @@ const Login: React.FC = () => {
     const performLoginOperation = async (data: ILoginData) => {
         setShowActivityIndicator(isLoading);
         dispatch(loginActions.requestLogin(data));
-        setTimeout(() => {
-            dispatch(snackbarActions.disableSnackbar());
-        }, 4000);
     };
 
     const onSubmit = (data: ILoginData) => {

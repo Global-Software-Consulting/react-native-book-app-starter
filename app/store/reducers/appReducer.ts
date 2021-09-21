@@ -31,4 +31,11 @@ export const appReducer = createReducer(initialState, {
             favorite: action.payload,
         };
     },
+
+    [types.SET_NEW_FAVORITE_BOOKS](state: IBookState, action: IBookResponse) {
+        return {
+            ...state,
+            favorite: action.payload,
+        };
+    },
 });

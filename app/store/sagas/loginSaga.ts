@@ -35,14 +35,11 @@ export default function* loginAsync(action: ILoginDetail) {
     yield put(loginActions.enableLoader());
     //how to call api
     const loginCall: ResponseGenerator = yield call(loginUser, action.params);
-    //mock response
-    console.log('login call', loginCall);
     
         if (loginCall.status !== 'error') {
             storeData(loginCall.token);
 
         const userDetailCall: ResponseGenerator = yield call(fetchUserDetails);
-        console.log('user details in saga are ', userDetailCall)
         yield put(loginActions.userDetailsResponse(userDetailCall.result));
 
         const favoriteBookCall: ResponseGenerator = yield call(fetchFavoriteBooks);

@@ -6,13 +6,15 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ILoginState } from 'models/reducers/login';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { StatusBar } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import AppNavigation from './AppNavigation';
 import AuthNavigation from './AuthNavigation';
 import { Button, Snackbar } from 'react-native-paper';
 import { IThemeState } from './models/reducers/theme';
 import { navigationRef } from './NavigationService';
+import * as snackbarActions from 'store/actions/snackbarActions';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +30,12 @@ const App: React.FC = () => {
     const isLoggedIn = useSelector((state: IState) => state.loginReducer.isLoggedIn);
     const message = useSelector((state) => state.snackbarReducer.snackbarMessage);
     const isVisible = useSelector((state) => state.snackbarReducer.snackbarVisible);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        setTimeout(() => {
+            dispatch(snackbarActions.disableSnackbar());
+        }, 4000);
+    }, [isVisible]);
 
     return (
         <NavigationContainer

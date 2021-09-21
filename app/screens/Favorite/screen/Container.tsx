@@ -16,9 +16,7 @@ import {
 } from 'react-native';
 import { Text } from 'react-native-paper';
 import { heightPercentageToDP } from 'react-native-responsive-screen';
-import Toast from 'react-native-simple-toast';
 import { useSelector } from 'react-redux';
-import NetworkUtils from 'utils/networkUtils';
 import { useStyles } from '../styles';
 interface Props {
     //     books?: {};
@@ -53,7 +51,6 @@ const Container: React.FC<Props> = (props) => {
     const { onRefresh } = props;
     const navigateToDetails = async (params: IParams) => {
         //to check if the internet connection is working
-
         navigation.navigate('BookDetail', params);
     };
 
