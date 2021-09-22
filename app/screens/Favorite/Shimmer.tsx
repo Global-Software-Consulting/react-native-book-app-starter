@@ -2,7 +2,7 @@
 import BookCardShimmer from 'components/BookCard/BookCardShimmer';
 import React from 'react';
 import { FlatList, TouchableHighlight, View } from 'react-native';
-import { useStyles } from '../styles';
+import { useStyles } from './styles';
 
 const Shimmer: React.FC = () => {
     //theme handling

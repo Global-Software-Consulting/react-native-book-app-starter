@@ -1,5 +1,5 @@
 import images from 'config/images';
-import { IBookState } from 'models/reducers/fetchBooks';
+import { IAppState } from 'models/reducers/appReducers';
 import { ILoading } from 'models/reducers/loading';
 import { ILoginState } from 'models/reducers/login';
 import React, { useState } from 'react';
@@ -12,12 +12,7 @@ import { useDispatch } from 'react-redux';
 import { useStyles } from 'screens/ForgotPassword/styles';
 import forgotPassword from 'services/forgotPassword';
 import * as snackbarActions from 'store/actions/snackbarActions';
-
-interface IAppReducer {
-    loginReducer: ILoginState;
-    appReducer: IBookState;
-    loadingReducer: ILoading;
-}
+import { IStateReducer } from 'models/reducers/index';
 
 const ForgotPassword: React.FC = () => {
     //defining states

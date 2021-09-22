@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/core';
-import { IBookState } from 'models/reducers/fetchBooks';
+import { IAppState } from 'models/reducers/appReducers';
 import { ILoading } from 'models/reducers/loading';
 import { ILoginState } from 'models/reducers/login';
 import React, { useState } from 'react';
@@ -14,12 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import images from './../../config/images';
 import * as loginActions from './../../store/actions/loginActions';
 import * as snackbarActions from './../../store/actions/snackbarActions';
-
-interface IState {
-    loginReducer: ILoginState;
-    appReducer: IBookState;
-    loadingReducer: ILoading;
-}
+import { IStateReducer } from 'models/reducers/index';
 
 interface ILoginData {
     email: string;
@@ -31,11 +26,15 @@ const Login: React.FC = () => {
     const navigation = useNavigation();
     const [secure, setSecure] = useState(true);
     const [showActivityIndicator, setShowActivityIndicator] = useState(false);
-    const isSnackbarVisible = useSelector((state) => state.snackbarReducer.snackbarVisible);
-    const isLoading = useSelector((state) => state.loadingReducer.isLoading);
-    const message = useSelector((state) => state.snackbarReducer.snackbarMessage);
+    const isSnackbarVisible = useSelector(
+        (state: IStateReducer) => state.snackbarReducer.snackbarVisible,
+    );
+    const isLoading = useSelector((state: IStateReducer) => state.loadingReducer.isLoading);
+    const message = useSelector((state: IStateReducer) => state.snackbarReducer.snackbarMessage);
     const [error, setError] = useState(message);
-    const loginResponse = useSelector((state: IState) => state.loginReducer.loginResponse.status);
+    const loginResponse = useSelector(
+        (state: IStateReducer) => state.loginReducer.loginResponse.status,
+    );
     //form data
     const {
         control,

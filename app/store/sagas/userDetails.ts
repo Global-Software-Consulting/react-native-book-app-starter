@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import fetchUserDetails from '../../services/fetchUserDetails';
+import getUserDetail from '../../services/getUserDetail';
 import * as authActions from '../actions/loginActions';
 import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
 import * as loadingActions from 'store/actions/loginActions';
@@ -7,7 +7,7 @@ import * as snackbarActions from 'store/actions/snackbarActions';
 
 export default function* fetchBookAsync() {
     try {
-        const response: ResponseGenerator = yield call(fetchUserDetails);
+        const response: ResponseGenerator = yield call(getUserDetail);
         if (response) {
             if(response?.status === 'success') {
                 yield put(authActions.userDetailsResponse(response.result));

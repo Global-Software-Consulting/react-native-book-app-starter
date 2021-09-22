@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import fetchBooks from '../../services/fetchBooks';
+import getBooks from '../../services/getBooks';
 import * as appActions from '../actions/appActions';
 import Toast from 'react-native-simple-toast'
 import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
@@ -11,7 +11,8 @@ export default function* fetchBookAsync(action: { keyword: string }) {
         yield put(loadingActions.enableLoader());
         //calling api
     
-        const response: ResponseGenerator = yield call(fetchBooks, action.keyword);
+        const response: ResponseGenerator = yield call(getBooks, action.keyword);
+        console.log("a>",response);
         if (response.status === 'networkFailed') 
         {   
         yield put(loadingActions.disableLoader());

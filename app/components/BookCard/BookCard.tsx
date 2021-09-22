@@ -1,6 +1,6 @@
 //to update heart icon on focus
 import { useIsFocused } from '@react-navigation/native';
-import { IBookState } from 'models/reducers/fetchBooks';
+import { IAppState } from 'models/reducers/appReducers';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 //image with placeholder
@@ -25,7 +25,7 @@ interface Props {
     isFavorite?: boolean;
 }
 interface IState {
-    appReducer: IBookState;
+    appReducer: IAppState;
 }
 
 interface IData {

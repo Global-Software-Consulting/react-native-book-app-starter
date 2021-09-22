@@ -1,5 +1,5 @@
 import { useIsFocused } from '@react-navigation/core';
-import { IBookState } from 'models/reducers/fetchBooks';
+import { IAppState } from 'models/reducers/appReducers';
 import { ILoginState } from 'models/reducers/login';
 import React, { useEffect, useState } from 'react';
 import { Alert, BackHandler, View } from 'react-native';
@@ -7,23 +7,21 @@ import Toast from 'react-native-simple-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import * as appActions from 'store/actions/appActions';
 import NetworkUtils from 'utils/networkUtils';
-import Container from './screen/Container';
+import Container from './Container';
 //importing components
-import Shimmer from './screen/Shimmer';
+import Shimmer from './Shimmer';
 //importing card component
 import { useStyles } from './styles';
+import { IStateReducer } from 'models/reducers/index';
+
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 
-interface IAppReducer {
-    loginReducer: ILoginState;
-    appReducer: IBookState;
-}
 const Favorite: React.FC = () => {
     //theme handling
     const styles = useStyles();
     const isFocused = useIsFocused();
-    const favoriteBooks = useSelector((state: IAppReducer) => state.appReducer.favorite);
-    const isLoading = useSelector((state: IAppReducer) => state.loadingReducer.isLoading);
+    const favoriteBooks = useSelector((state: IStateReducer) => state.appReducer.favorite);
+    const isLoading = useSelector((state: IStateReducer) => state.loadingReducer.isLoading);
     const [favoriteBookss, setFavoriteBookss] = useState(favoriteBooks);
     const dispatch = useDispatch();
 

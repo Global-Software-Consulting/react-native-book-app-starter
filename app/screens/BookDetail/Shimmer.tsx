@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
-import { useStyles } from '../styles';
+import { useStyles } from './styles';
 
 const Shimmer: React.FC = () => {
     //theme handling

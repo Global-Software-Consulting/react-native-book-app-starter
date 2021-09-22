@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 //importing card component
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
-import { IBookState } from 'models/reducers/fetchBooks';
+import { IAppState } from 'models/reducers/appReducers';
 import { ILoginState } from 'models/reducers/login';
 import React from 'react';
 import {
@@ -17,16 +17,12 @@ import {
 import { Text } from 'react-native-paper';
 import { heightPercentageToDP } from 'react-native-responsive-screen';
 import { useSelector } from 'react-redux';
-import { useStyles } from '../styles';
+import { useStyles } from './styles';
+import { IStateReducer } from 'models/reducers/index';
 interface Props {
     //     books?: {};
     //     base_url?: string;
     onRefresh: () => void;
-}
-
-interface IStateReducer {
-    loginReducer: ILoginState;
-    appReducer: IBookState;
 }
 
 interface IParams {

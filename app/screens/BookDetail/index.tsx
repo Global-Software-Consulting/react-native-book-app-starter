@@ -1,13 +1,14 @@
 import { useIsFocused } from '@react-navigation/core';
-import { IBookState } from 'models/reducers/fetchBooks';
+import { IAppState } from 'models/reducers/appReducers';
 import { ILoginState } from 'models/reducers/login';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
+import { IStateReducer } from 'models/reducers/index';
 import { useDispatch } from 'react-redux';
-import getBookDetail from 'services/fetchBookDetail';
+import getBookDetail from 'services/getBookDetail';
 //importing components
-import Container from './screen/Container';
-import Shimmer from './screen/Shimmer';
+import Container from './Container';
+import Shimmer from './Shimmer';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 import Toast from 'react-native-simple-toast';
 
@@ -16,10 +17,7 @@ interface IState {
         params: string;
     };
 }
-interface IStateReducer {
-    appReducer: IBookState;
-    loginReducer: ILoginState;
-}
+
 interface IData {
     id: number;
     averageRating: number;

@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import fetchBookDetail from '../../services/fetchBookDetail';
+import getBookDetail from '../../services/getBookDetail';
 import * as appActions from '../actions/appActions';
 import * as loadingActions from 'store/actions/loginActions';
 import * as snackbarActions from 'store/actions/snackbarActions';
@@ -25,7 +25,7 @@ export default function* fetchBookDetailSaga(action: { id: number }) {
  //start loading
  yield put(loadingActions.enableLoader());
  //calling api
- const response: ResponseGenerator = yield call(fetchBookDetail, action.id);
+ const response: ResponseGenerator = yield call(getBookDetail, action.id);
 
         if (response && response?.status === 'success') {
             yield put(appActions.getBookDetailResponse(response.result));

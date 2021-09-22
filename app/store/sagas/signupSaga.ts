@@ -8,8 +8,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
 import { call, put } from 'redux-saga/effects';
-import fetchBooks from 'services/fetchBooks';
-import fetchFavoriteBooks from 'services/fetchFavoriteBooks';
+import getBooks from 'services/getBooks';
+import getFavoriteBooks from 'services/getFavoriteBooks';
 import signupUser from 'services/signupUser';
 import * as appActions from 'store/actions/appActions';
 import * as loginActions from 'store/actions/loginActions';
@@ -32,10 +32,10 @@ export default function* signUpsync(action: any) {
 
         yield put(loginActions.userDetailsResponse(response.result));
 
-        const favoriteBookCall: ResponseGenerator = yield call(fetchFavoriteBooks);
+        const favoriteBookCall: ResponseGenerator = yield call(getFavoriteBooks);
         yield put(appActions.getFavoriteBookResponse(favoriteBookCall.result));
 
-        const fetchBookCall: ResponseGenerator = yield call(fetchBooks, 'a');
+        const fetchBookCall: ResponseGenerator = yield call(getBooks, 'a');
         yield put(appActions.getBookResponse(fetchBookCall.result));
         //if successful then set user as logged in
         yield put(loginActions.setLoggedIn());

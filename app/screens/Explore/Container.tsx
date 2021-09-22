@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 //importing card component
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
-import { IBookState } from 'models/reducers/fetchBooks';
+import { IAppState } from 'models/reducers/appReducers';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -23,7 +23,7 @@ import * as appActions from 'store/actions/appActions';
 import NetworkUtils from 'utils/networkUtils';
 
 interface Props {
-    books?: IBookState;
+    books?: IAppState;
     name?: string;
     base_url?: string;
     onRefresh: () => void;
@@ -42,12 +42,12 @@ const ExploreComponent: React.FC<Props> = (props) => {
     const { t } = useTranslation();
     const theme = useTheme();
     const dispatch = useDispatch();
-    const [searchText, setSearchText] = useState('');
+    const [searchText, setSearchText] = useState('a');
     const navigation = useNavigation();
     const { name, onRefresh } = props;
     //getting data from store
-    const books = useSelector((state: { appReducer: IBookState }) => state.appReducer.books);
-    const isLoading = useSelector((state) => state.loadingReducer.isLoading);
+    const books = useSelector((state: { appReducer: IAppState }) => state.appReducer.books);
+    const isLoading = useSelector((state: IAppState) => state.loadingReducer.isLoading);
 
     const searchBook = (bookName: string) => {
         dispatch(appActions.getBookRequest(bookName));

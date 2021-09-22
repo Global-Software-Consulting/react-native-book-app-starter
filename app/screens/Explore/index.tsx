@@ -1,5 +1,5 @@
 import { useIsFocused } from '@react-navigation/core';
-import { IBookState } from 'models/reducers/fetchBooks';
+import { IAppState } from 'models/reducers/appReducers';
 import { ILoginState } from 'models/reducers/login';
 import React, { useEffect, useState } from 'react';
 import { Alert, BackHandler, TextInput, View } from 'react-native';
@@ -11,20 +11,17 @@ import { useTheme } from 'react-native-paper';
 import { useStyles } from 'screens/Explore/styles';
 import NetworkUtils from 'utils/networkUtils';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import ExploreComponent from './screen/Container';
-import ExploreShimmer from './screen/Shimmer';
+import ExploreComponent from './Container';
+import ExploreShimmer from './Shimmer';
+import { IStateReducer } from 'models/reducers/index';
 
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
-interface IStateReducer {
-    appReducer: IBookState;
-    loginReducer: ILoginState;
-}
 
 const Explore: React.FC = () => {
     //fetching book images from the store
     const books = useSelector((state: IStateReducer) => state.appReducer.books);
     const isLoading = useSelector((state: IStateReducer) => state.loadingReducer.isLoading);
-    const [searchText, setSearchText] = useState();
+    const [searchText, setSearchText] = useState('');
     const IsFocused = useIsFocused();
     const userData = useSelector((state: IStateReducer) => state.loginReducer.user);
     const [username, setUserName] = useState(userData?.firstName + ' ' + userData?.lastName);
@@ -71,7 +68,7 @@ const Explore: React.FC = () => {
     };
 
     return (
-        <View>
+        <View style={{ backgroundColor: theme.colors.background }}>
             {/* Searchbar */}
             <View style={styles.searchView}>
                 <TextInput
@@ -92,12 +89,7 @@ const Explore: React.FC = () => {
             {isLoading ? (
                 <ExploreShimmer />
             ) : (
-                <ExploreComponent
-                    name={username}
-                    base_url={base_url}
-                    books={books}
-                    onRefresh={fetchBookDetails}
-                />
+                <ExploreComponent name={username} books={books} onRefresh={fetchBookDetails} />
             )}
         </View>
     );

@@ -13,10 +13,7 @@ export function getBookRequest(keyword: string) {
     };
 }
 
-export function getBookResponse(payload: string | IData | undefined): {
-    type: string;
-    payload: string | IData | undefined;
-} {
+export function getBookResponse(payload: string | IData | undefined) {
     return {
         type: types.GET_BOOK_RESPONSE,
         payload,

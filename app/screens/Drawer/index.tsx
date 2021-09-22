@@ -23,10 +23,7 @@ import * as loginActions from 'store/actions/loginActions';
 import * as themeActions from 'store/actions/themeActions';
 import ThemeController from '../../components/ThemeController';
 import { useStyles } from './styles';
-
-interface IStateReducer {
-    loginReducer: ILoginState;
-}
+import { IStateReducer } from 'models/reducers/index';
 
 const Drawer: React.FC = (props, { navigationo }) => {
     const [checked, setChecked] = useState('first');

@@ -1,6 +1,4 @@
-export interface IBookState {
-    snackbarVisible: boolean,
-    snackbarMessage:string,
+export interface IAppState {
     books: books[];
     favorite: favoriteBook;
 }

@@ -1,5 +1,5 @@
 import images from 'config/images';
-import { IBookState } from 'models/reducers/fetchBooks';
+import { IAppState } from 'models/reducers/appReducers';
 import { ILoading } from 'models/reducers/loading';
 import { ILoginState } from 'models/reducers/login';
 import React, { useState } from 'react';
@@ -16,7 +16,7 @@ import * as loginActions from 'store/actions/loginActions';
 import * as snackbarActions from 'store/actions/snackbarActions';
 interface IState {
     loginReducer: ILoginState;
-    appReducer: IBookState;
+    appReducer: IAppState;
     loadingReducer: ILoading;
 }
 interface ISignupData {
