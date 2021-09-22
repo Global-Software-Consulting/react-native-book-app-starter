@@ -64,23 +64,6 @@ const ExploreComponent: React.FC<Props> = (props) => {
                 style={styles.container}
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh} />}>
                 <View>
-                    {/* Searchbar */}
-                    <View style={styles.searchView}>
-                        <TextInput
-                            underlineColorAndroid="transparent"
-                            placeholder={t('Search Here')}
-                            placeholderTextColor={theme.colors.text}
-                            onChangeText={(text) => setSearchText(text)}
-                            style={styles.searchViewChildren}
-                            onEndEditing={() => searchBook(searchText)}
-                        />
-                        <Icon
-                            name="find-in-page"
-                            size={30}
-                            style={styles.searchViewChildren}
-                            onPress={() => searchBook(searchText)}
-                        />
-                    </View>
                     <Text style={styles.name}>
                         {t('Hi')} {name}{' '}
                     </Text>

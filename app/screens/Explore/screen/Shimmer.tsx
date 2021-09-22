@@ -9,7 +9,6 @@ const ExploreShimmer: React.FC = () => {
 
     return (
         <View>
-            <View style={styles.searchViewShimmer} />
             <View style={styles.nameShimmer} />
             <View style={styles.tagLineShimmer} />
 

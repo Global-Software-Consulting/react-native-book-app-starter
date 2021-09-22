@@ -92,6 +92,7 @@ export const useStyles = () => {
             justifyContent: 'center',
         },
         searchView: {
+            marginTop:20,
             marginBottom: 20,
             flexDirection: 'row',
             borderColor: 'grey',
