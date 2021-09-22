@@ -30,7 +30,9 @@ const Favorite: React.FC = () => {
         dispatch(appActions.getFavoriteBookRequest());
     };
     useEffect(() => {
-        getFavoriteBooks();
+        if (isFocused) {
+            getFavoriteBooks();
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isFocused]);
 

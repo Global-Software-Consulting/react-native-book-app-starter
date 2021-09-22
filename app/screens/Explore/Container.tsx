@@ -10,17 +10,13 @@ import {
     Image,
     RefreshControl,
     ScrollView,
-    TextInput,
     TouchableHighlight,
     View,
 } from 'react-native';
 import { Text, useTheme } from 'react-native-paper';
-import Toast from 'react-native-simple-toast';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/Explore/styles';
 import * as appActions from 'store/actions/appActions';
-import NetworkUtils from 'utils/networkUtils';
 
 interface Props {
     books?: IAppState;

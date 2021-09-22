@@ -1,28 +1,22 @@
 import { useIsFocused } from '@react-navigation/core';
-import { IAppState } from 'models/reducers/appReducers';
-import { ILoginState } from 'models/reducers/login';
+import { IStateReducer } from 'models/reducers/index';
 import React, { useEffect, useState } from 'react';
-import { Alert, BackHandler, TextInput, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import Toast from 'react-native-simple-toast';
-import { useDispatch, useSelector } from 'react-redux';
-import * as appActions from 'store/actions/appActions';
+import { Alert, BackHandler, TextInput, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import { useStyles } from 'screens/Explore/styles';
-import NetworkUtils from 'utils/networkUtils';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useDispatch, useSelector } from 'react-redux';
+import { useStyles } from 'screens/Explore/styles';
+import * as appActions from 'store/actions/appActions';
 import ExploreComponent from './Container';
 import ExploreShimmer from './Shimmer';
-import { IStateReducer } from 'models/reducers/index';
-
-const base_url = 'https://ebook-application.herokuapp.com/v1/';
 
 const Explore: React.FC = () => {
     //fetching book images from the store
     const books = useSelector((state: IStateReducer) => state.appReducer.books);
     const isLoading = useSelector((state: IStateReducer) => state.loadingReducer.isLoading);
     const [searchText, setSearchText] = useState('');
-    const IsFocused = useIsFocused();
+    const isFocused = useIsFocused();
     const userData = useSelector((state: IStateReducer) => state.loginReducer.user);
     const [username, setUserName] = useState(userData?.firstName + ' ' + userData?.lastName);
     const dispatch = useDispatch();
@@ -32,11 +26,11 @@ const Explore: React.FC = () => {
     const theme = useTheme();
     useEffect(() => {
         setUserName(userData?.firstName + ' ' + userData?.lastName);
-        fetchBookDetails().then(() => {
-            getFavoriteBooks();
-        });
+        if (isFocused) {
+            fetchBookDetails();
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [IsFocused, userData]);
+    }, [isFocused, userData]);
 
     //handling back hardware button
     useEffect(() => {
@@ -59,12 +53,6 @@ const Explore: React.FC = () => {
 
     const fetchBookDetails = async () => {
         dispatch(appActions.getBookRequest(searchText));
-        getFavoriteBooks();
-    };
-
-    //fetching favorite books
-    const getFavoriteBooks = async () => {
-        dispatch(appActions.getFavoriteBookRequest());
     };
 
     return (
@@ -77,13 +65,13 @@ const Explore: React.FC = () => {
                     placeholderTextColor={theme.colors.text}
                     onChangeText={(text) => setSearchText(text)}
                     style={styles.searchViewChildren}
-                    onEndEditing={() => fetchBookDetails(searchText)}
+                    onEndEditing={() => fetchBookDetails()}
                 />
                 <Icon
                     name="find-in-page"
                     size={30}
                     style={styles.searchViewChildren}
-                    onPress={() => fetchBookDetails(searchText)}
+                    onPress={() => fetchBookDetails()}
                 />
             </View>
             {isLoading ? (

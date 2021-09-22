@@ -21,15 +21,17 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { useDispatch, useSelector } from 'react-redux';
 import * as loginActions from 'store/actions/loginActions';
 import * as themeActions from 'store/actions/themeActions';
+import i18n from 'components/Languages/i18n';
+const initI18n = i18n;
 import ThemeController from '../../components/ThemeController';
 import { useStyles } from './styles';
 import { IStateReducer } from 'models/reducers/index';
 
-const Drawer: React.FC = (props, { navigationo }) => {
+const Drawer: React.FC = (props) => {
+    const { t, i18n } = useTranslation();
     const [checked, setChecked] = useState('first');
     const userData = useSelector((state: IStateReducer) => state.loginReducer.user);
     const [name, setName] = useState(userData?.firstName + ' ' + userData?.lastName);
-    const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const Explore = TabActions.jumpTo('Explore');

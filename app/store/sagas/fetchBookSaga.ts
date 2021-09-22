@@ -4,6 +4,7 @@ import * as appActions from '../actions/appActions';
 import Toast from 'react-native-simple-toast'
 import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
 import * as loadingActions from 'store/actions/loginActions';
+import getFavoriteBooks from '../../services/getFavoriteBooks';
 import * as snackbarActions from 'store/actions/snackbarActions'
 
 export default function* fetchBookAsync(action: { keyword: string }) {
@@ -12,7 +13,6 @@ export default function* fetchBookAsync(action: { keyword: string }) {
         //calling api
     
         const response: ResponseGenerator = yield call(getBooks, action.keyword);
-        console.log("a>",response);
         if (response.status === 'networkFailed') 
         {   
         yield put(loadingActions.disableLoader());
@@ -20,7 +20,12 @@ export default function* fetchBookAsync(action: { keyword: string }) {
         else {
             if (response && response?.status === 'success') {
                 yield put(appActions.getBookResponse(response.result));
-            } else if (response?.status !== 'success') {
+                const favoriteBooksResponse: ResponseGenerator = yield call(getFavoriteBooks);
+                    yield put(appActions.getFavoriteBookResponse(favoriteBooksResponse.result));
+                    yield put(loadingActions.disableLoader());
+            }
+            else if (response?.status !== 'success')
+            {
                 yield put(loadingActions.disableLoader());
                 yield put(snackbarActions.enableSnackbar('Error loading book list, please try again'))    
             }
