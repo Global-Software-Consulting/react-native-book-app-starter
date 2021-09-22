@@ -22,12 +22,12 @@ try {
     //mock response
     yield put(loginActions.IForgotPasswordResponse(response));
     yield put(loginActions.disableLoader());
-
     // no need to call navigate as this is handled by redux store with SwitchNavigator
     //yield call(navigationActions.navigateToHome);
 }
 catch (error) {
-
+    yield put(loadingActions.disableLoader());
+    yield put(snackbarActions.enableSnackbar('Error occurred. Please try again.'));
 }
 
   

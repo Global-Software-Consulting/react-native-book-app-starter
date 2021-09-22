@@ -92,6 +92,8 @@ const Login: React.FC = () => {
                     <TextInput
                         placeholder="Enter your email address"
                         autoCapitalize="none"
+                        textContentType="emailAddress"
+                        keyboardType="email-address"
                         autoCorrect={false}
                         style={{
                             width: widthPercentageToDP('80%'),

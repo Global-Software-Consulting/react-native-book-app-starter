@@ -34,16 +34,8 @@ const UserDetail: React.FC = () => {
 
     const update = async () => {
         setIsEditing(!isEditing);
-        editUser().then(() => {
-            if (isEditing === true) {
-                if (userData.status === 'success') {
-                    Toast.show('Profile is updated', Toast.SHORT);
-                } else {
-                    Toast.show('Profile is updated', Toast.SHORT);
-                }
-            }
-            //recallUserData();
-        });
+        editUser();
+        //recallUserData();
     };
 
     const editUser = async () => {
@@ -111,6 +103,10 @@ const UserDetail: React.FC = () => {
                         <TextInput
                             style={styles.inputField}
                             value={email}
+                            textContentType="emailAddress"
+                            keyboardType="email-address"
+                            autoCapitalize={false}
+                            spellCheck={false}
                             onChangeText={(text) => setEmail(text)}
                         />
                     </View>

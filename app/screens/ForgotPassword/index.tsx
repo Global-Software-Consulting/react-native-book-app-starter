@@ -69,6 +69,8 @@ const ForgotPassword: React.FC = () => {
                         <Text style={styles.subHeading}>Email: </Text>
                         <TextInput
                             style={styles.inputField}
+                            textContentType="emailAddress"
+                            keyboardType="email-address"
                             onChangeText={(text) => setEmail(text)}
                         />
                     </View>

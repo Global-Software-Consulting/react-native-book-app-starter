@@ -1,7 +1,7 @@
 import { useIsFocused } from '@react-navigation/core';
 import { IBookState } from 'models/reducers/fetchBooks';
 import { ILoginState } from 'models/reducers/login';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, BackHandler, View } from 'react-native';
 import Toast from 'react-native-simple-toast';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,7 +24,7 @@ const Favorite: React.FC = () => {
     const isFocused = useIsFocused();
     const favoriteBooks = useSelector((state: IAppReducer) => state.appReducer.favorite);
     const isLoading = useSelector((state: IAppReducer) => state.loadingReducer.isLoading);
-    //const [favoriteBookss, setFavoriteBookss] = useState(favoriteBooks);
+    const [favoriteBookss, setFavoriteBookss] = useState(favoriteBooks);
     const dispatch = useDispatch();
 
     //fetching favorite books
@@ -35,6 +35,12 @@ const Favorite: React.FC = () => {
         getFavoriteBooks();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isFocused]);
+
+    useEffect(() => {
+        setFavoriteBookss(favoriteBooks);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [favoriteBooks]);
+
     //handling back hardware button
     useEffect(() => {
         const backAction = () => {
@@ -62,7 +68,7 @@ const Favorite: React.FC = () => {
                 <View style={styles.containerView}>
                     <Container
                         base_url={base_url}
-                        books={favoriteBooks}
+                        books={favoriteBookss}
                         onRefresh={getFavoriteBooks}
                     />
                 </View>

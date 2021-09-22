@@ -2,7 +2,7 @@ export interface IBookState {
     snackbarVisible: boolean,
     snackbarMessage:string,
     books: books[];
-    favorite: favoriteBook[];
+    favorite: favoriteBook;
 }
 
 export type books ={

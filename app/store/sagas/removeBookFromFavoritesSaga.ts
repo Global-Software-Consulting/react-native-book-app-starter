@@ -3,7 +3,7 @@ import removeBookFromFavoite from 'services/removeBookFromFavoite';
 import * as appActions from '../actions/appActions';
 import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
 import * as loadingActions from 'store/actions/loginActions';
-
+import * as snackbarActions from 'store/actions/snackbarActions';
 
 export default function* removeBookfromFavorite(action: { id: number }) {
     try {
@@ -15,11 +15,17 @@ export default function* removeBookfromFavorite(action: { id: number }) {
 
     if (response && response?.status === 'success') {
         console.log('Response Printed');
-    } else if (response?.status !== 'success') {
+    }
+    else if (response?.status === 'networkFailed') {
         yield put(loadingActions.disableLoader());
     }
+    else  {
+        yield put(loadingActions.disableLoader());
+        yield put(snackbarActions.enableSnackbar('Error removing book from the favorites'))
+        }
 }
 catch (error) {
-    
+    yield put(loadingActions.disableLoader());
+    yield put(snackbarActions.enableSnackbar('Error removing book from the favorites'))
 }
 }

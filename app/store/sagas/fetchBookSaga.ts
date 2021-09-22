@@ -4,7 +4,7 @@ import * as appActions from '../actions/appActions';
 import Toast from 'react-native-simple-toast'
 import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
 import * as loadingActions from 'store/actions/loginActions';
-
+import * as snackbarActions from 'store/actions/snackbarActions'
 
 export default function* fetchBookAsync(action: { keyword: string }) {
     try {
@@ -12,24 +12,23 @@ export default function* fetchBookAsync(action: { keyword: string }) {
         //calling api
     
         const response: ResponseGenerator = yield call(fetchBooks, action.keyword);
-
-        if (response?.status === 'network request failed')
-        {   Toast.show('You are offline',Toast.SHORT);
+        if (response.status === 'networkFailed') 
+        {   
         yield put(loadingActions.disableLoader());
-
         }
         else {
             if (response && response?.status === 'success') {
                 yield put(appActions.getBookResponse(response.result));
             } else if (response?.status !== 'success') {
+                yield put(loadingActions.disableLoader());
+                yield put(snackbarActions.enableSnackbar('Error loading book list, please try again'))    
             }
         }
-        yield put(loadingActions.disableLoader());
-     
     }
     catch (error)
      {
-
+        yield put(loadingActions.disableLoader());
+        yield put(snackbarActions.enableSnackbar('Error loading book list, please try again'))
      }
     //start loading
     

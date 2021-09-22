@@ -2,7 +2,7 @@ import { call, put } from 'redux-saga/effects';
 import fetchBookDetail from '../../services/fetchBookDetail';
 import * as appActions from '../actions/appActions';
 import * as loadingActions from 'store/actions/loginActions';
-
+import * as snackbarActions from 'store/actions/snackbarActions';
 interface IData {
     data: [];
 }
@@ -27,15 +27,26 @@ export default function* fetchBookDetailSaga(action: { id: number }) {
  //calling api
  const response: ResponseGenerator = yield call(fetchBookDetail, action.id);
 
- if (response && response?.status === 'success') {
-     yield put(appActions.getBookDetailResponse(response.result));
-     //ends loading
+        if (response && response?.status === 'success') {
+            yield put(appActions.getBookDetailResponse(response.result));
+            //ends loading
+            yield put(loadingActions.disableLoader());
+        }
+     else if (response?.status === 'networkFailed')
+     {
+         yield put(loadingActions.disableLoader());
+
+         }
+    else if (response?.result === null) {
      yield put(loadingActions.disableLoader());
-    } else if (response?.status !== 'success') {
+     //error message not available in response
+    yield put(snackbarActions.enableSnackbar('Error getting book detail, please try again'))
  }
     }
     catch (error) {
-        
+        yield put(loadingActions.disableLoader());
+        yield put(snackbarActions.enableSnackbar('Error getting book detail, please try again'))
+     
     }
    
 }

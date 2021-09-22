@@ -41,13 +41,13 @@ interface IData {
     };
 }
 const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, authorName }) => {
-    const newFavorites = useSelector((state: IState) => state.appReducer.favorite);
-    let favoriteBooks = newFavorites;
+    const favoriteBooks = useSelector((state: IState) => state.appReducer.favorite);
     const isFocused = useIsFocused();
     const [isFavorite, setIsFavorite] = useState(false);
     const dispatch = useDispatch();
     useEffect(() => {
-        newFavorites?.findIndex((value: IData) => {
+        console.log('Favoritebooks', favoriteBooks);
+        favoriteBooks?.findIndex((value: IData) => {
             if (value?.bookId === id) {
                 setIsFavorite(true);
             }
@@ -57,14 +57,16 @@ const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, 
 
     const apiAddFavorite = async () => {
         if (isFavorite) {
-            //here we will delete the object from the objects
-            // favoriteBooks?.findIndex((value: IData) => {
-            //     if (value?.bookId === id) {
-            //         setIsFavorite(true);
-            //     }
-            // });
-            //here you will write the code
-            dispatch(appActions.setNewFavorites(favoriteBooks));
+            //filtering out new data after deletion
+            let newData = favoriteBooks.filter((item) => item.bookId !== id);
+
+            //removing the red heart icon
+            setIsFavorite(false);
+
+            //passing on the new data to be set as favorite
+            dispatch(appActions.setNewFavorites(newData));
+
+            //calling the api for removal of data
             removeBookFromFavoite(id).then((response) => {
                 if (response && response?.status === 'success') {
                     return response;

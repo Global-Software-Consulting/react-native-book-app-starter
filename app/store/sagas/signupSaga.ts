@@ -49,6 +49,9 @@ export default function* signUpsync(action: any) {
         yield put(loginActions.disableLoader());
         yield put(snackbarActions.enableSnackbar('Email already exists'))
     }
+    else if (response?.status === 'networkFailed') {
+        yield put(loginActions.disableLoader());
+    }
 }
 catch(error) {
     yield put(loginActions.disableLoader());

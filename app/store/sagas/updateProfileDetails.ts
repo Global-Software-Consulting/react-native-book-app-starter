@@ -8,6 +8,7 @@ import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
 import { call, put } from 'redux-saga/effects';
 import updateProfile from 'services/updateProfile';
 import * as loginActions from 'store/actions/loginActions';
+import * as snackbarActions from 'store/actions/snackbarActions';
 interface IData {
     data: [];
 }
@@ -17,25 +18,28 @@ export default function* updateUserDetails(action: { data: IData }) {
     try {
     yield put(loginActions.enableLoader());
     //how to call api
-    const response: ResponseGenerator = yield call(updateProfile, action.data);
+        const response: ResponseGenerator = yield call(updateProfile, action.data);
+        console.log('responswa',response)
     //mock response
-    if (response) {
-        yield put(loginActions.IUpdateProfileResponse(response));
-        if (response?.status === 'success') {
-            yield put(loginActions.userDetailsResponse(response.result));
-            yield put(loadingActions.disableLoader());
-
-        }
-        else
-        {
-            yield put(loadingActions.disableLoader());
-
-
-        }
+        if (response) {
+            if (response.status === 'networkFailed') {
+                yield put(loginActions.disableLoader());
+            }
+            else {
+                yield put(loginActions.IUpdateProfileResponse(response));
+                if (response?.status === 'success') {
+                    yield put(loginActions.userDetailsResponse(response.result));
+                }
+                else {
+                    yield put(snackbarActions.enableSnackbar('Error updating profile, please try again'))
+                }
+                yield put(loginActions.disableLoader());
+            }
+    }
+}
+    catch (error) {
+        yield put(loginActions.disableLoader());
+        yield put(snackbarActions.enableSnackbar('Error updating profile, please try again'))
     }
 
-}
-catch (error) {}
-    // no need to call navigate as this is handled by redux store with SwitchNavigator
-    //yield call(navigationActions.navigateToHome);
 }

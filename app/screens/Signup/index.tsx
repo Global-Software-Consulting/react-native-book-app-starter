@@ -124,6 +124,8 @@ const Signup: React.FC = () => {
                                 <TextInput
                                     placeholder="Enter your email"
                                     autoCapitalize="none"
+                                    textContentType="emailAddress"
+                                    keyboardType="email-address"
                                     autoCorrect={false}
                                     style={styles.inputField}
                                     value={value}

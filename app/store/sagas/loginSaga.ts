@@ -36,27 +36,33 @@ export default function* loginAsync(action: ILoginDetail) {
     //how to call api
     const loginCall: ResponseGenerator = yield call(loginUser, action.params);
     
-        if (loginCall.status !== 'error') {
-            storeData(loginCall.token);
+        if (loginCall.status === 'networkFailed') {
+            yield put(loginActions.disableLoader());
+        } else {
+            if (loginCall.status !== 'error') {
+                storeData(loginCall.token);
 
-        const userDetailCall: ResponseGenerator = yield call(fetchUserDetails);
-        yield put(loginActions.userDetailsResponse(userDetailCall.result));
+                const userDetailCall: ResponseGenerator = yield call(fetchUserDetails);
+                yield put(loginActions.userDetailsResponse(userDetailCall.result));
 
-        const favoriteBookCall: ResponseGenerator = yield call(fetchFavoriteBooks);
-        yield put(appActions.getFavoriteBookResponse(favoriteBookCall.result));
+                const favoriteBookCall: ResponseGenerator = yield call(fetchFavoriteBooks);
+                yield put(appActions.getFavoriteBookResponse(favoriteBookCall.result));
 
-        const fetchBookCall: ResponseGenerator = yield call(fetchBooks, 'a');
-        yield put(appActions.getBookResponse(fetchBookCall.result));
+                const fetchBookCall: ResponseGenerator = yield call(fetchBooks, 'a');
+                yield put(appActions.getBookResponse(fetchBookCall.result));
 
-        yield put(loginActions.setLoggedIn());
-
-    } else {
-        yield put(loginActions.disableLoader());
-        yield put(snackbarActions.enableSnackbar('Login failed, please check your credentials'))
+                yield put(loginActions.setLoggedIn());
+            }
+        
+            else {
+                yield put(loginActions.disableLoader());
+                yield put(snackbarActions.enableSnackbar('Login failed, please check your credentials'))
        
-    }
+            }
+        }
 }
-catch (error) {yield put(loginActions.disableLoader());
+    catch (error) {
+    yield put(loginActions.disableLoader());
     yield put(snackbarActions.enableSnackbar('Login failed, please check your credentials'))}
 
 
