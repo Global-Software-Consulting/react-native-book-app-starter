@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/core';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { TabActions } from '@react-navigation/native';
+import { DrawerActions } from '@react-navigation/native';
 import { ILoginState } from 'models/reducers/login';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -27,7 +28,7 @@ interface IStateReducer {
     loginReducer: ILoginState;
 }
 
-const Drawer: React.FC = (props) => {
+const Drawer: React.FC = (props, { navigationo }) => {
     const [checked, setChecked] = useState('first');
     const userData = useSelector((state: IStateReducer) => state.loginReducer.user);
     const [name, setName] = useState(userData?.firstName + ' ' + userData?.lastName);
@@ -80,21 +81,30 @@ const Drawer: React.FC = (props) => {
                         <MaterialCommunityIcons name="account-outline" color={color} size={size} />
                     )}
                     label={t('Explore')}
-                    onPress={() => navigation.dispatch(Explore)}
+                    onPress={() => {
+                        navigation.dispatch(Explore);
+                        navigation.dispatch(DrawerActions.toggleDrawer());
+                    }}
                 />
                 <DrawerItem
                     icon={({ color, size }) => (
                         <MaterialCommunityIcons name="tune" color={color} size={size} />
                     )}
                     label={t('Favorite')}
-                    onPress={() => navigation.dispatch(Favorite)}
+                    onPress={() => {
+                        navigation.dispatch(Favorite);
+                        navigation.dispatch(DrawerActions.toggleDrawer());
+                    }}
                 />
                 <DrawerItem
                     icon={({ color, size }) => (
                         <MaterialCommunityIcons name="bookmark-outline" color={color} size={size} />
                     )}
                     label={t('User Details')}
-                    onPress={() => navigation.dispatch(Detail)}
+                    onPress={() => {
+                        navigation.dispatch(Detail);
+                        navigation.dispatch(DrawerActions.toggleDrawer());
+                    }}
                 />
 
                 <View style={styles.preference}>
