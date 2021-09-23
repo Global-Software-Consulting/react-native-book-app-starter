@@ -35,7 +35,7 @@ const Signup: React.FC = () => {
     } = useForm();
 
     const performSignUp = async (data: ISignupData) => {
-        dispatch(loginActions.ISignupRequest(data));
+        dispatch(loginActions.signupRequest(data));
         dispatch(appActions.getFavoriteBookRequest());
     };
 

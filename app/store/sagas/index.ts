@@ -13,7 +13,7 @@ import removeBookFromFavoritesSaga from 'store/sagas/removeBookFromFavoritesSaga
 import signupSaga from 'store/sagas/signupSaga';
 import forgetPasswordSaga from 'store/sagas/forgetPasswordSaga';
 import updateProfileDetails from 'store/sagas/updateProfileDetails';
-
+import loginWithGoogle from 'store/sagas/loginWithGoogle'
 export default function* watch() {
     yield all([
         takeEvery(types.LOGIN_REQUEST, loginSaga),
@@ -26,5 +26,7 @@ export default function* watch() {
         takeEvery(types.SIGN_UP_REQUEST, signupSaga),
         takeEvery(types.FORGET_PASSWORD_REQUEST, forgetPasswordSaga),
         takeEvery(types.UPDATE_PROFILE_REQUEST, updateProfileDetails),
+        takeEvery(types.LOGIN_WITH_GOOGLE_REQUEST, loginWithGoogle),
+
     ]);
 }

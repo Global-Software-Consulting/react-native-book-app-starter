@@ -26,7 +26,7 @@ export default function* updateUserDetails(action: { data: IData }) {
                 yield put(loginActions.disableLoader());
             }
             else {
-                yield put(loginActions.IUpdateProfileResponse(response));
+                yield put(loginActions.updateProfileResponse(response));
                 if (response?.status === 'success') {
                     yield put(loginActions.userDetailsResponse(response.result));
                 }

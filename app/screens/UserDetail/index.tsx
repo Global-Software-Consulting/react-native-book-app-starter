@@ -2,9 +2,17 @@ import images from 'config/images';
 import { IAppState } from 'models/reducers/appReducers';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, Button, Image, TextInput, View } from 'react-native';
+import {
+    ActivityIndicator,
+    Button,
+    Image,
+    TextInput,
+    TouchableWithoutFeedback,
+    View,
+} from 'react-native';
 import { Text } from 'react-native-paper';
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-menu';
+import { useAnimatedRef } from 'react-native-reanimated';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/UserDetail/styles';
 import * as loginActions from 'store/actions/loginActions';
@@ -31,7 +39,7 @@ const UserDetail: React.FC = () => {
 
     const editUser = async () => {
         if (isEditing) {
-            dispatch(loginActions.IUpdateProfileRequest({ firstName, lastName, email }));
+            dispatch(loginActions.updateProfileRequest({ firstName, lastName, email }));
         }
     };
     // const recallUserData = () => {
@@ -41,8 +49,15 @@ const UserDetail: React.FC = () => {
     return (
         <View style={styles.container}>
             <Menu>
-                <MenuTrigger>
-                    <Image source={images.app.profilePicture} style={styles.displayPicture} />
+                <MenuTrigger triggerOnLongPress={true} customStyles={triggerStyles}>
+                    <Image
+                        source={
+                            userData?.image !== undefined
+                                ? userData.image
+                                : images.app.profilePicture
+                        }
+                        style={styles.displayPicture}
+                    />
                 </MenuTrigger>
                 <MenuOptions>
                     <MenuOption onSelect={() => {}} text="Change" />
@@ -118,3 +133,14 @@ const UserDetail: React.FC = () => {
 };
 
 export default UserDetail;
+const triggerStyles = {
+    triggerWrapper: {
+        backgroundColor: 'transparent',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    triggerTouchable: {
+        underlayColor: 'transparent',
+        activeOpacity: 70,
+    },
+};

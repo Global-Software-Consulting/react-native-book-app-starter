@@ -82,14 +82,14 @@ export function userDetailsResponse(payload: IData | undefined | string): {
     };
 }
 
-export function ISignupRequest(params: IData) {
+export function signupRequest(params: IData) {
     return {
         type: types.SIGN_UP_REQUEST,
         params,
     };
 }
 
-export function ISignupResponse(payload: IData | undefined | null): {
+export function signupResponse(payload: IData | undefined | null): {
     type: string;
     payload: IData | undefined | null;
 } {
@@ -98,14 +98,14 @@ export function ISignupResponse(payload: IData | undefined | null): {
         payload,
     };
 }
-export function IForgotPasswordRequest(params: string) {
+export function forgotPassword(params: string) {
     return {
         type: types.FORGET_PASSWORD_REQUEST,
         params,
     };
 }
 
-export function IForgotPasswordResponse(payload: IData | string | undefined): {
+export function forgotPasswordResponse(payload: IData | string | undefined): {
     type: string;
     payload: IData | string | undefined;
 } {
@@ -114,14 +114,14 @@ export function IForgotPasswordResponse(payload: IData | string | undefined): {
         payload,
     };
 }
-export function IUpdateProfileRequest(data: IData) {
+export function updateProfileRequest(data: IData) {
     return {
         type: types.UPDATE_PROFILE_REQUEST,
         data,
     };
 }
 
-export function IUpdateProfileResponse(payload: IData): {
+export function updateProfileResponse(payload: IData): {
     type: string;
     payload: IData;
 } {
@@ -130,8 +130,21 @@ export function IUpdateProfileResponse(payload: IData): {
         payload,
     };
 }
-export function IClearLoginResponse() {
+export function clearLoginResponse() {
     return {
         type: types.CLEAR_LOGIN_RESPONSE,
+    };
+}
+export function loginWithGoogleRequest(data:string) {
+    return {
+        type: types.LOGIN_WITH_GOOGLE_REQUEST,
+        data
+    };
+}
+
+export function loginWithGoogleResponse(payload:string) {
+    return {
+        type: types.LOGIN_WITH_GOOGLE_RESPONSE,
+        payload
     };
 }

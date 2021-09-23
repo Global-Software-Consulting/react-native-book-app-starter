@@ -43,12 +43,12 @@ const Login: React.FC = () => {
         performLoginOperation(data);
     };
 
-    const loginWithGoogle = () => {
+    const loginWithGoogle = async () => {
         try {
-            GoogleSignin.hasPlayServices();
-            const userInfo = GoogleSignin.signIn();
-
-            //call api here
+            await GoogleSignin.hasPlayServices();
+            const userInfo = await GoogleSignin.signIn();
+            const x = JSON.stringify(userInfo);
+            console.log('Google response', x);
         } catch (error) {
             if (error.code === statusCodes.SIGN_IN_CANCELLED) {
                 // user cancelled the login flow
