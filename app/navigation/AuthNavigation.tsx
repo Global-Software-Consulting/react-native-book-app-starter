@@ -5,14 +5,12 @@ import { useSelector } from 'react-redux';
 import ForgotPassword from 'screens/ForgotPassword';
 import Login from 'screens/Login';
 import Signup from 'screens/Signup/index';
-
+import { reducerState } from 'models/reducers/index';
 const AuthStack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
-interface IState {
-    loginReducer: ILoginState;
-}
+
 const AuthNavigator = () => {
-    const isLoggedIn = useSelector((state: IState) => state.loginReducer.isLoggedIn);
+    const isLoggedIn = useSelector((state: reducerState) => state.loginReducer.isLoggedIn);
 
     return (
         <AuthStack.Navigator>

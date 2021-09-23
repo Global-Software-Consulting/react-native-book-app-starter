@@ -1,6 +1,6 @@
 import { useIsFocused } from '@react-navigation/core';
 import SearchBar from 'components/SearchBar';
-import { IStateReducer } from 'models/reducers/index';
+import { reducerState } from 'models/reducers/index';
 import React, { useEffect, useState } from 'react';
 import { Alert, BackHandler, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
@@ -11,16 +11,14 @@ import ExploreShimmer from './Shimmer';
 
 const Explore: React.FC = () => {
     //fetching book images from the store
-    const books = useSelector((state: IStateReducer) => state.appReducer.books);
-    const isLoading = useSelector((state: IStateReducer) => state.loadingReducer.isLoading);
+    const books = useSelector((state: reducerState) => state.appReducer.books);
+    const isLoading = useSelector((state: reducerState) => state.loadingReducer.isLoading);
     const isFocused = useIsFocused();
-    const userData = useSelector((state: IStateReducer) => state.loginReducer.user);
-    const [username, setUserName] = useState(userData?.firstName + ' ' + userData?.lastName);
+    const userData = useSelector((state: reducerState) => state.loginReducer.user);
     const dispatch = useDispatch();
     const theme = useTheme();
 
     useEffect(() => {
-        setUserName(userData?.firstName + ' ' + userData?.lastName);
         if (isFocused) {
             fetchBookDetails();
         }
@@ -56,7 +54,11 @@ const Explore: React.FC = () => {
             {isLoading ? (
                 <ExploreShimmer />
             ) : (
-                <ExploreComponent name={username} books={books} onRefresh={fetchBookDetails} />
+                <ExploreComponent
+                    name={userData?.firstName + ' ' + userData?.lastName}
+                    books={books}
+                    onRefresh={fetchBookDetails}
+                />
             )}
         </View>
     );

@@ -6,16 +6,14 @@ import * as React from 'react';
 import { useTheme } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux';
-import Drawer from 'screens/Drawer';
+import Drawer from 'components/Drawer';
 import BookDetail from './../screens/BookDetail/index';
 import TabNavigator from './TabNavigator';
+import { reducerState } from 'models/reducers/index';
 const AppDrawer = createDrawerNavigator();
-interface IState {
-    loginReducer: ILoginState;
-    themeReducer: IThemeState;
-}
+
 const AppNavigation = () => {
-    const isDark = useSelector((state: IState) => state.themeReducer.isDark);
+    const isDark = useSelector((state: reducerState) => state.themeReducer.isDark);
     const navigation = useNavigation();
     const theme = useTheme();
 

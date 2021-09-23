@@ -1,7 +1,7 @@
-import { IAppState } from 'models/reducers/appReducers';
+import { books } from 'models/reducers/appReducers';
 
 export interface Props {
-    books?: IAppState;
+    books?: books[];
     name?: string;
     base_url?: string;
     onRefresh: () => void;

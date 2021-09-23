@@ -3,7 +3,7 @@ import { IAppState } from 'models/reducers/appReducers';
 import { ILoginState } from 'models/reducers/login';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import { IStateReducer } from 'models/reducers/index';
+import { reducerState } from 'models/reducers/index';
 import { useDispatch } from 'react-redux';
 import getBookDetail from 'services/getBookDetail';
 //importing components

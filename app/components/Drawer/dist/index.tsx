@@ -26,7 +26,7 @@ import MaterialCommunityIcons_1 = require('react-native-vector-icons/MaterialCom
 import ThemeController_1 = require('components/ThemeController');
 import react_redux_1 = require('react-redux');
 import loginActions = require('store/actions/loginActions');
-import styles_1 = require('screens/Drawer/styles');
+import styles_1 = require('components/Drawer/styles');
 import react_i18next_1 = require('react-i18next');
 
 const Drawer = function (props: any) {

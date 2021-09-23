@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/core';
-import { IStateReducer } from 'models/reducers/index';
+import { reducerState } from 'models/reducers/index';
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { ActivityIndicator, Image, Text, TextInput, useWindowDimensions, View } from 'react-native';
@@ -24,8 +24,8 @@ const Login: React.FC = () => {
     const { t, i18n } = useTranslation();
     const [secure, setSecure] = useState(true);
     const [showActivityIndicator, setShowActivityIndicator] = useState(false);
-    const isLoading = useSelector((state: IStateReducer) => state.loadingReducer.isLoading);
-    const message = useSelector((state: IStateReducer) => state.snackbarReducer.snackbarMessage);
+    const isLoading = useSelector((state: reducerState) => state.loadingReducer.isLoading);
+    const message = useSelector((state: reducerState) => state.snackbarReducer.snackbarMessage);
 
     //form data
     const {

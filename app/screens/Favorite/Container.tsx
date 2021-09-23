@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 //importing card component
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
-import { IStateReducer } from 'models/reducers/index';
+import { reducerState } from 'models/reducers/index';
 import { Props, IParams } from './types';
 import React from 'react';
 import {
@@ -23,8 +23,8 @@ const Container: React.FC<Props> = (props) => {
     //theme handling
     const styles = useStyles();
     const navigation = useNavigation();
-    const isLoading = useSelector((state: IStateReducer) => state.loadingReducer.isLoading);
-    const favoriteBooks = useSelector((state: IStateReducer) => state.appReducer.favorite);
+    const isLoading = useSelector((state: reducerState) => state.loadingReducer.isLoading);
+    const favoriteBooks = useSelector((state: reducerState) => state.appReducer.favorite);
     const { onRefresh } = props;
     const navigateToDetails = async (params: IParams) => {
         //to check if the internet connection is working

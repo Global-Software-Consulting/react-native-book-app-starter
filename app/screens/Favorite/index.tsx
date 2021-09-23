@@ -12,7 +12,7 @@ import Container from './Container';
 import Shimmer from './Shimmer';
 //importing card component
 import { useStyles } from './styles';
-import { IStateReducer } from 'models/reducers/index';
+import { reducerState } from 'models/reducers/index';
 
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 
@@ -20,8 +20,8 @@ const Favorite: React.FC = () => {
     //theme handling
     const styles = useStyles();
     const isFocused = useIsFocused();
-    const favoriteBooks = useSelector((state: IStateReducer) => state.appReducer.favorite);
-    const isLoading = useSelector((state: IStateReducer) => state.loadingReducer.isLoading);
+    const favoriteBooks = useSelector((state: reducerState) => state.appReducer.favorite);
+    const isLoading = useSelector((state: reducerState) => state.loadingReducer.isLoading);
     const [favoriteBookss, setFavoriteBookss] = useState(favoriteBooks);
     const dispatch = useDispatch();
 
