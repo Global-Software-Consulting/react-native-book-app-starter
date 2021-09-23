@@ -39,7 +39,9 @@ const App: React.FC = () => {
     }, [isVisible]);
 
     return (
-        <NavigationContainer ref={navigationRef}>
+        <NavigationContainer
+            ref={navigationRef}
+            theme={isDark ? NavigationDarkTheme : NavigationDefaultTheme}>
             <StatusBar barStyle={'default'} />
             <Stack.Navigator headerMode="none">
                 {isLoggedIn ? (
