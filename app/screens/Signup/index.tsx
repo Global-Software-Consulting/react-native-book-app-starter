@@ -1,7 +1,5 @@
 import images from 'config/images';
 import { IAppState } from 'models/reducers/appReducers';
-import { ILoading } from 'models/reducers/loading';
-import { ILoginState } from 'models/reducers/login';
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { ActivityIndicator, Button, Image, ScrollView, TextInput, View } from 'react-native';
@@ -13,24 +11,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/Signup/styles';
 import * as appActions from 'store/actions/appActions';
 import * as loginActions from 'store/actions/loginActions';
-import * as snackbarActions from 'store/actions/snackbarActions';
-interface IState {
-    loginReducer: ILoginState;
-    appReducer: IAppState;
-    loadingReducer: ILoading;
-}
-interface ISignupData {
-    firstName: string;
-    lastName: string;
-    email: string;
-    gender: string;
-    password: string;
-}
+import { ISignupData } from './types';
+import { useTranslation } from 'react-i18next';
+import i18n from 'config/Languages/i18n';
+const initI18n = i18n;
+
 const Signup: React.FC = () => {
     const dispatch = useDispatch();
     //defining states
     const [open, setOpen] = useState(false);
-    const isLoading = useSelector((state: IState) => state.loadingReducer.isLoading);
+    const { t } = useTranslation();
+    const isLoading = useSelector(
+        (state: { loadingReducer: IAppState }) => state.loadingReducer.isLoading,
+    );
     const gender = [
         { label: 'Male', value: 'male' },
         { label: 'Female', value: 'female' },
@@ -51,7 +44,7 @@ const Signup: React.FC = () => {
     };
 
     const styles = useStyles();
-    const message = useSelector((state) => state.snackbarReducer.snackbarMessage);
+
     return (
         <KeyboardAwareScrollView style={{ backgroundColor: 'white' }}>
             <ScrollView style={styles.container} contentContainerStyle={{ alignItems: 'center' }}>
@@ -64,10 +57,8 @@ const Signup: React.FC = () => {
                         height: heightPercentageToDP('30%'),
                     }}
                 />
-                <Text style={styles.mainHeading}>Fill in the sign up form</Text>
+                <Text style={styles.mainHeading}>{t('Fill in the sign up form')}</Text>
                 <View>
-                    <Text style={styles.subHeading}>First Name </Text>
-
                     <View style={styles.infoView}>
                         <Controller
                             control={control}
@@ -76,7 +67,7 @@ const Signup: React.FC = () => {
                             }}
                             render={({ field: { onChange, value } }) => (
                                 <TextInput
-                                    placeholder="Enter your first name"
+                                    placeholder={t('Enter your first name')}
                                     autoCapitalize="none"
                                     autoCorrect={false}
                                     style={styles.inputField}
@@ -87,10 +78,9 @@ const Signup: React.FC = () => {
                             name="firstName"
                             defaultValue=""
                         />
-                        {errors.firstName && <Text>First name is required.</Text>}
+                        {errors.firstName && <Text>{t('First name is required')}</Text>}
                     </View>
 
-                    <Text style={styles.subHeading}>Last Name </Text>
                     <View style={styles.infoView}>
                         <Controller
                             control={control}
@@ -99,7 +89,7 @@ const Signup: React.FC = () => {
                             }}
                             render={({ field: { onChange, value } }) => (
                                 <TextInput
-                                    placeholder="Enter your last name"
+                                    placeholder={t('Enter your last name')}
                                     autoCapitalize="none"
                                     autoCorrect={false}
                                     style={styles.inputField}
@@ -110,10 +100,9 @@ const Signup: React.FC = () => {
                             name="lastName"
                             defaultValue=""
                         />
-                        {errors.lastName && <Text>Last name is required.</Text>}
+                        {errors.lastName && <Text>{t('Last name is required')}</Text>}
                     </View>
 
-                    <Text style={styles.subHeading}>Email </Text>
                     <View style={styles.infoView}>
                         <Controller
                             control={control}
@@ -122,7 +111,7 @@ const Signup: React.FC = () => {
                             }}
                             render={({ field: { onChange, value } }) => (
                                 <TextInput
-                                    placeholder="Enter your email"
+                                    placeholder={t('Enter your email')}
                                     autoCapitalize="none"
                                     textContentType="emailAddress"
                                     keyboardType="email-address"
@@ -135,10 +124,9 @@ const Signup: React.FC = () => {
                             name="email"
                             defaultValue=""
                         />
-                        {errors.email && <Text>Email is required.</Text>}
+                        {errors.email && <Text>{t('Email is required')}</Text>}
                     </View>
 
-                    <Text style={styles.subHeading}>Password</Text>
                     <View style={styles.infoView}>
                         <Controller
                             control={control}
@@ -147,7 +135,7 @@ const Signup: React.FC = () => {
                             }}
                             render={({ field: { onChange, value } }) => (
                                 <TextInput
-                                    placeholder="Enter password"
+                                    placeholder={t('Enter password')}
                                     secureTextEntry={true}
                                     autoCapitalize="none"
                                     autoCorrect={false}
@@ -159,7 +147,7 @@ const Signup: React.FC = () => {
                             name="password"
                             defaultValue=""
                         />
-                        {errors.lastName && <Text>Last name is required.</Text>}
+                        {errors.lastName && <Text>{t('Password is required')}</Text>}
                     </View>
                 </View>
 
@@ -170,7 +158,7 @@ const Signup: React.FC = () => {
                     }}
                     render={({ field: { onChange, value } }) => (
                         <DropDownPicker
-                            placeholder="Please select gender"
+                            placeholder={t('Please select gender')}
                             open={open}
                             value={value}
                             items={gender}
@@ -183,10 +171,10 @@ const Signup: React.FC = () => {
                     name="gender"
                     defaultValue=""
                 />
-                {errors.value && <Text>Please provide gender</Text>}
+                {errors.value && <Text>{t('Please provide gender')}</Text>}
 
                 <View style={styles.editView}>
-                    <Button onPress={handleSubmit(onSubmit)} title="Sign up" />
+                    <Button onPress={handleSubmit(onSubmit)} title={t('Sign up')} />
                     {isLoading && <ActivityIndicator />}
                 </View>
             </ScrollView>

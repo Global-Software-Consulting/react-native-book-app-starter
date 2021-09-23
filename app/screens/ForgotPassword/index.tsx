@@ -13,6 +13,9 @@ import { useStyles } from 'screens/ForgotPassword/styles';
 import forgotPassword from 'services/forgotPassword';
 import * as snackbarActions from 'store/actions/snackbarActions';
 import { IStateReducer } from 'models/reducers/index';
+import { useTranslation } from 'react-i18next';
+import i18n from 'config/Languages/i18n';
+const initI18n = i18n;
 
 const ForgotPassword: React.FC = () => {
     //defining states
@@ -20,6 +23,7 @@ const ForgotPassword: React.FC = () => {
     const dispatch = useDispatch();
     const [isShowing, setIsShowing] = useState(false);
     const styles = useStyles();
+    const { t } = useTranslation();
 
     //fetching data from store
     const [isLoading, setIsLoading] = useState<boolean>();
@@ -61,11 +65,11 @@ const ForgotPassword: React.FC = () => {
 
                 <View>
                     <View style={styles.infoView}>
-                        <Text style={styles.subHeading}>Email: </Text>
                         <TextInput
                             style={styles.inputField}
                             textContentType="emailAddress"
                             keyboardType="email-address"
+                            placeholder={t('Enter your email')}
                             onChangeText={(text) => setEmail(text)}
                         />
                     </View>
@@ -76,7 +80,7 @@ const ForgotPassword: React.FC = () => {
                         onPress={() => {
                             sendResetLink();
                         }}
-                        title="Submit"
+                        title={t('Submit')}
                     />
                     {isLoading && <ActivityIndicator />}
                 </View>

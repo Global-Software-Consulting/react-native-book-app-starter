@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
 import { IAppState } from 'models/reducers/appReducers';
+import { Props, IParams } from './types';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -18,20 +19,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/Explore/styles';
 import * as appActions from 'store/actions/appActions';
 
-interface Props {
-    books?: IAppState;
-    name?: string;
-    base_url?: string;
-    onRefresh: () => void;
-}
-
-interface IParams {
-    id: number;
-    averageRating: number;
-    title: string;
-    numberOfPages: number;
-    shortSummary: string;
-}
 const ExploreComponent: React.FC<Props> = (props) => {
     //theme handling
     const styles = useStyles();
@@ -43,7 +30,9 @@ const ExploreComponent: React.FC<Props> = (props) => {
     const { name, onRefresh } = props;
     //getting data from store
     const books = useSelector((state: { appReducer: IAppState }) => state.appReducer.books);
-    const isLoading = useSelector((state: IAppState) => state.loadingReducer.isLoading);
+    const isLoading = useSelector(
+        (state: { loadingReducer: IAppState }) => state.loadingReducer.isLoading,
+    );
 
     const searchBook = (bookName: string) => {
         dispatch(appActions.getBookRequest(bookName));
@@ -65,7 +54,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
                     </Text>
                     <Text style={styles.tagLine}>{t('Lets find something new')}</Text>
 
-                    {books?.length > 1 ? (
+                    {books?.length > 0 ? (
                         <View>
                             <View style={styles.horizontalRuler} />
                             <Text style={styles.listCaption}>{t('Trending')}</Text>

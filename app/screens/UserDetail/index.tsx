@@ -1,29 +1,20 @@
 import images from 'config/images';
 import { IAppState } from 'models/reducers/appReducers';
-import { ILoading } from 'models/reducers/loading';
-import { ILoginState } from 'models/reducers/login';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Button, Image, TextInput, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-menu';
-import Toast from 'react-native-simple-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/UserDetail/styles';
 import * as loginActions from 'store/actions/loginActions';
-import NetworkUtils from 'utils/networkUtils';
-
-//interfaces
-interface IState {
-    loginReducer: ILoginState;
-    appReducer: IAppState;
-    loadingReducer: ILoading;
-}
 
 const UserDetail: React.FC = () => {
     const dispatch = useDispatch();
-    const userData = useSelector((state: IState) => state.loginReducer.user);
-    const isLoading = useSelector((state: IState) => state.loadingReducer.isLoading);
+    const userData = useSelector((state: { loginReducer: IAppState }) => state.loginReducer.user);
+    const isLoading = useSelector(
+        (state: { loadingReducer: IAppState }) => state.loadingReducer.isLoading,
+    );
     //defining states
     const [isEditing, setIsEditing] = useState(false);
     const [firstName, setFirstName] = useState(userData?.firstName);

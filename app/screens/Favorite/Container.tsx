@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
 import { IStateReducer } from 'models/reducers/index';
+import { Props, IParams } from './types';
 import React from 'react';
 import {
     FlatList,
@@ -17,24 +18,6 @@ import { Text } from 'react-native-paper';
 import { heightPercentageToDP } from 'react-native-responsive-screen';
 import { useSelector } from 'react-redux';
 import { useStyles } from './styles';
-interface Props {
-    //     books?: {};
-    //     base_url?: string;
-    onRefresh: () => void;
-}
-
-interface IParams {
-    id: number;
-    bookId: number | string;
-    averageRating: number;
-    title: string;
-    numberOfPages: string | number;
-    shortSummary: string;
-    book: {
-        title: string;
-        id: number;
-    };
-}
 
 const Container: React.FC<Props> = (props) => {
     //theme handling

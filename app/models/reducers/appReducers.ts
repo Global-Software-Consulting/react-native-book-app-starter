@@ -1,6 +1,8 @@
 export interface IAppState {
     books: books[];
     favorite: favoriteBook;
+    isLoading: boolean;
+    snackbarMessage:string
 }
 
 export type books ={

@@ -4,17 +4,7 @@ import { ScrollView, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import BookCard from '../../components/BookCard/BookCard';
 import { useStyles } from './styles';
-
-//importing card component
-interface Props {
-    books: {
-        numberOfPages: string | number;
-        createdAt: string;
-        title: string;
-        shortSummary: string;
-    };
-    base_url?: string;
-}
+import { Props } from './types';
 
 const Container: React.FC<Props> = (props) => {
     //theme handling

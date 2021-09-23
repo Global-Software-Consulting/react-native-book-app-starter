@@ -1,40 +1,31 @@
 import { useNavigation } from '@react-navigation/core';
-import { IAppState } from 'models/reducers/appReducers';
-import { ILoading } from 'models/reducers/loading';
-import { ILoginState } from 'models/reducers/login';
+import { IStateReducer } from 'models/reducers/index';
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { ActivityIndicator, Image, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Image, Text, TextInput, useWindowDimensions, View } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Button } from 'react-native-paper';
+import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-menu';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button } from 'react-native-paper';
 import images from './../../config/images';
 import * as loginActions from './../../store/actions/loginActions';
-import * as snackbarActions from './../../store/actions/snackbarActions';
-import { IStateReducer } from 'models/reducers/index';
-
-interface ILoginData {
-    email: string;
-    password: string;
-}
+import { ILoginData } from './types';
+import { useTranslation } from 'react-i18next';
+import i18n from 'config/Languages/i18n';
+const initI18n = i18n;
 
 const Login: React.FC = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
+    const { t, i18n } = useTranslation();
     const [secure, setSecure] = useState(true);
     const [showActivityIndicator, setShowActivityIndicator] = useState(false);
-    const isSnackbarVisible = useSelector(
-        (state: IStateReducer) => state.snackbarReducer.snackbarVisible,
-    );
     const isLoading = useSelector((state: IStateReducer) => state.loadingReducer.isLoading);
     const message = useSelector((state: IStateReducer) => state.snackbarReducer.snackbarMessage);
-    const [error, setError] = useState(message);
-    const loginResponse = useSelector(
-        (state: IStateReducer) => state.loginReducer.loginResponse.status,
-    );
+
     //form data
     const {
         control,
@@ -70,7 +61,7 @@ const Login: React.FC = () => {
                     justifyContent: 'center',
                     marginTop: 20,
                 }}>
-                Log In Now
+                {t('Log In Now')}
             </Text>
             <Text
                 style={{
@@ -79,7 +70,7 @@ const Login: React.FC = () => {
                     color: 'grey',
                     alignSelf: 'center',
                 }}>
-                Please login to continue using our app
+                {t('Please login to continue using our app')}
             </Text>
 
             <Controller
@@ -89,7 +80,7 @@ const Login: React.FC = () => {
                 }}
                 render={({ field: { onChange, value } }) => (
                     <TextInput
-                        placeholder="Enter your email address"
+                        placeholder={t('Enter your email address')}
                         autoCapitalize="none"
                         textContentType="emailAddress"
                         keyboardType="email-address"
@@ -111,7 +102,7 @@ const Login: React.FC = () => {
                 name="email"
                 defaultValue=""
             />
-            {errors.email && <Text style={{ alignSelf: 'center' }}>Email is required</Text>}
+            {errors.email && <Text style={{ alignSelf: 'center' }}>{t('Email is required')}</Text>}
 
             <View
                 style={{
@@ -133,7 +124,7 @@ const Login: React.FC = () => {
                     }}
                     render={({ field: { onChange, value } }) => (
                         <TextInput
-                            placeholder="Enter your password"
+                            placeholder={t('Enter your password')}
                             autoCapitalize="none"
                             secureTextEntry={secure}
                             autoCorrect={false}
@@ -160,7 +151,9 @@ const Login: React.FC = () => {
                     onPress={() => setSecure(!secure)}
                 />
             </View>
-            {errors.password && <Text style={{ alignSelf: 'center' }}>Password is required</Text>}
+            {errors.password && (
+                <Text style={{ alignSelf: 'center' }}>{t('Password is required')}</Text>
+            )}
 
             <TouchableHighlight
                 style={{
@@ -178,7 +171,7 @@ const Login: React.FC = () => {
                         justifyContent: 'center',
                     }}
                     onPress={() => navigation.navigate('ForgotPassword')}>
-                    Forgot Password
+                    {t('Forgot Password')}
                 </Text>
             </TouchableHighlight>
 
@@ -199,15 +192,15 @@ const Login: React.FC = () => {
                         width: widthPercentageToDP('60%'),
                         marginTop: 5,
                     }}>
-                    <Text style={{ color: 'white' }}>Log in</Text>
+                    <Text style={{ color: 'white' }}>{t('Log in')}</Text>
                 </Button>
                 {isLoading && <ActivityIndicator color="white" style={{ margin: 5 }} />}
             </View>
 
             <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 5 }}>
-                <Text>Do not have an account? </Text>
+                <Text>{t('Do not have an account?')} </Text>
                 <Text style={{ color: '#db7093' }} onPress={() => navigation.navigate('Signup')}>
-                    Sign up
+                    {t('Sign up')}
                 </Text>
             </View>
 
@@ -220,6 +213,33 @@ const Login: React.FC = () => {
                         color: 'red',
                     }}></Text>
             }
+            <View style={{ alignItems: 'center' }}>
+                <Menu>
+                    <MenuTrigger>
+                        <Button>{t('Change Language')}</Button>
+                    </MenuTrigger>
+                    <MenuOptions>
+                        <MenuOption
+                            onSelect={() => {
+                                i18n.changeLanguage('en');
+                            }}
+                            text="English"
+                        />
+                        <MenuOption
+                            onSelect={() => {
+                                i18n.changeLanguage('es');
+                            }}
+                            text="Spanish"
+                        />
+                        <MenuOption
+                            onSelect={() => {
+                                i18n.changeLanguage('de');
+                            }}
+                            text="Dutch"
+                        />
+                    </MenuOptions>
+                </Menu>
+            </View>
         </KeyboardAwareScrollView>
     );
 };
