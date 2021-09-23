@@ -1,0 +1,63 @@
+{
+    "Dark Theme": "Dark Theme",
+    "Languages": "Languages",
+    "Home Sreen": "Home Sreen",
+    "Login": "Login",
+    "Login Status": "Login Status",
+    "Forgot Password": "Forgot Password",
+    "Explore": "Explore",
+    "Favorite": "Favorite",
+    "User Details": "User Details",
+    "Log out": "Log out",
+
+    "Hi": "Hi",
+    "Search Here": "Search Here",
+    "Lets find something new": "Lets find something new",
+    "Trending": "Trending",
+    "Selected for you": "Selected for you",
+    "New Releases": "New Releases",
+
+    "My Favorites": "My Favorites",
+
+    "First Name": "First Name",
+    "Last Name": "Last Name",
+    "Email": "Email",
+    "Gender": "Gender",
+
+    "Genre": "Genre",
+    "Launched": "Launched",
+    "pages": "pages",
+    "Synopse": "Synopse",
+
+    "Edit": "Edit",
+    "Update": "Update",
+
+    "Log In Now": "Log In Now",
+    "Please login to continue using our app": "Please login to continue using our app",
+    "Enter your email address": "Enter your email address",
+    "Enter your password": "Enter your password",
+    "Forgot Password": "Forgot Password",
+    "Log in": "Log in",
+    "Do not have an account?": "Do not have an account?",
+    "Sign up": "Sign up",
+    "Change Language": "Change Language",
+    "Email is required":"Email is required",
+    "Password is required": "Password is required",
+    
+    "Fill in the sign up form": "Fill in the sign up form",
+    "Enter your first name": "Enter your first name",
+    "Enter your last name": "Enter your last name",
+    "Enter your email": "Enter your email",
+    "Enter password": "Enter password",
+    "Please select gender": "Please select gender",
+    "First name is required": "First name is required",
+    "Last name is required": "Last name is required",
+    "Male": "Male",
+    "Female": "Female",
+
+    "Submit":"Submit",
+    "Operation failed, please try again":"Operation failed, please try again"
+
+
+    
+}

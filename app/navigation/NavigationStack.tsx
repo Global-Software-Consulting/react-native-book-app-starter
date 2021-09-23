@@ -9,27 +9,28 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
+import { IStateReducer } from 'models/reducers/index';
 import AppNavigation from './AppNavigation';
 import AuthNavigation from './AuthNavigation';
 import { Button, Snackbar } from 'react-native-paper';
-import { IThemeState } from './models/reducers/theme';
 import { navigationRef } from './NavigationService';
 import * as snackbarActions from 'store/actions/snackbarActions';
 
 const Stack = createNativeStackNavigator();
 
-interface IState {
-    themeReducer: IThemeState;
-}
-interface IState {
-    loginReducer: ILoginState;
-}
-
 const App: React.FC = () => {
-    const isDark = useSelector((state: IState) => state.themeReducer.isDark);
-    const isLoggedIn = useSelector((state: IState) => state.loginReducer.isLoggedIn);
-    const message = useSelector((state) => state.snackbarReducer.snackbarMessage);
-    const isVisible = useSelector((state) => state.snackbarReducer.snackbarVisible);
+    const isDark = useSelector(
+        (state: { themReducer: IStateReducer }) => state.themeReducer.isDark,
+    );
+    const isLoggedIn = useSelector(
+        (state: { loginReducer: IStateReducer }) => state.loginReducer.isLoggedIn,
+    );
+    const message = useSelector(
+        (state: { snackbarReducer: IStateReducer }) => state.snackbarReducer.snackbarMessage,
+    );
+    const isVisible = useSelector(
+        (state: { snackbarReducer: IStateReducer }) => state.snackbarReducer.snackbarVisible,
+    );
     const dispatch = useDispatch();
     useEffect(() => {
         setTimeout(() => {
@@ -38,9 +39,7 @@ const App: React.FC = () => {
     }, [isVisible]);
 
     return (
-        <NavigationContainer
-            ref={navigationRef}
-            theme={isDark ? NavigationDarkTheme : NavigationDefaultTheme}>
+        <NavigationContainer ref={navigationRef}>
             <StatusBar barStyle={'default'} />
             <Stack.Navigator headerMode="none">
                 {isLoggedIn ? (
@@ -51,7 +50,7 @@ const App: React.FC = () => {
                     />
                 ) : (
                     <Stack.Screen
-                        name="Login"
+                        name="Auth"
                         component={AuthNavigation}
                         options={{ headerShown: false }}
                     />

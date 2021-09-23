@@ -8,6 +8,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-menu';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import socialLogin from 'utils/socialLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-native-paper';
@@ -15,9 +17,7 @@ import images from './../../config/images';
 import * as loginActions from './../../store/actions/loginActions';
 import { ILoginData } from './types';
 import { useTranslation } from 'react-i18next';
-import i18n from 'config/Languages/i18n';
-const initI18n = i18n;
-
+GoogleSignin.configure();
 const Login: React.FC = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
@@ -41,6 +41,25 @@ const Login: React.FC = () => {
 
     const onSubmit = (data: ILoginData) => {
         performLoginOperation(data);
+    };
+
+    const loginWithGoogle = () => {
+        try {
+            GoogleSignin.hasPlayServices();
+            const userInfo = GoogleSignin.signIn();
+
+            //call api here
+        } catch (error) {
+            if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+                // user cancelled the login flow
+            } else if (error.code === statusCodes.IN_PROGRESS) {
+                // operation (e.g. sign in) is in progress already
+            } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+                // play services not available or outdated
+            } else {
+                // some other error happened
+            }
+        }
     };
 
     return (
@@ -243,13 +262,13 @@ const Login: React.FC = () => {
             </View>
 
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                <TouchableHighlight>
-                    <Image source={images.social.google} />
-                </TouchableHighlight>
                 <TouchableHighlight
                     onPress={() => {
-                        socialLogin.loginWithFacebook().then((response) => console.log(response));
+                        loginWithGoogle();
                     }}>
+                    <Image source={images.social.google} />
+                </TouchableHighlight>
+                <TouchableHighlight>
                     <Image source={images.social.facebook} />
                 </TouchableHighlight>
             </View>

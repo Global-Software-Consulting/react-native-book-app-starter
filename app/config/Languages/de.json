@@ -1,0 +1,60 @@
+{
+    "Dark Theme": "Tema oscuro",
+    "Languages": "Idiomas",
+    "Home Sreen": "Pantalla de inicio",
+    "Login": "Acceso",
+    "Login Status": "Estado de inicio de sesiÃ³n",
+    "Forgot Password": "Has olvidado tu contraseÃ±a",
+    "Explore": "explorar",
+    "Favorite": "favorito",
+    "User Details": "usuaria",
+    "Logout": "cerrar sesiÃ³n",
+    "Hi": "Hola",
+    "Search Here": "busca aquÃ­",
+    "Lets find something new": "Busquemos algo nuevo",
+    "Trending": "Tendencias",
+    "Selected for you": "Seleccionado para ti",
+    "New Releases": "Nuevos lanzamientos",
+
+    "My Favorites": "Mis favoritas",
+
+    "First Name": "Primer nombre",
+    "Last Name": "Apellido",
+    "Email": "Correo electrÃ³nico",
+    "Gender": "GÃ©nero",
+
+    "Genre": "Genre",
+    "Launched": "gelanceerd",
+    "pages": "Pagina",
+    "Synopse": "Korte inhoud",
+
+    "Edit": "Bewerking",
+    "Update": "Update",
+
+    "Log In Now": "Log nu in",
+    "Please login to continue using our app": "Log in om onze app te blijven gebruiken",
+    "Enter your email address": "Vul je e-mail adres in",
+    "Enter your password": "Voer uw wachtwoord in",
+    "Forgot Password": "Wachtwoord vergeten",
+    "Log in": "Log in",
+    "Do not have an account?": "Heb je geen account?",
+    "Sign up": "Inschrijven",
+    "Change Language": "Taal wijzigen",
+    "Email is required":"E-mail is vereist",
+    "Password is required": "Password is vereist",
+    
+    "Fill in the sign up form": "Vul het aanmeldformulier in",
+    "Enter your first name": "Vul uw voornaam in",
+    "Enter your last name": "Vul je achternaam in",
+    "Enter your email": "Vul je e-mailadres in",
+    "Enter password": "Voer wachtwoord in",
+    "Please select gender": "Selecteer a.u.b. geslacht",
+    "First name is required": "voornaam is verplicht",
+    "Last name is required": "Achternaam is verplicht",
+    "Male": "Mannelijk",
+    "Female": "Vrouwelijk",
+    
+    "Submit":"Indienen",
+    "Operation failed, please try again":"Bewerking mislukt, probeer het opnieuw"
+    
+}
