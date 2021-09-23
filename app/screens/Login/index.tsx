@@ -8,6 +8,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-menu';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import socialLogin from 'utils/socialLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-native-paper';
 import images from './../../config/images';
@@ -239,6 +240,18 @@ const Login: React.FC = () => {
                         />
                     </MenuOptions>
                 </Menu>
+            </View>
+
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                <TouchableHighlight>
+                    <Image source={images.social.google} />
+                </TouchableHighlight>
+                <TouchableHighlight
+                    onPress={() => {
+                        socialLogin.loginWithFacebook().then((response) => console.log(response));
+                    }}>
+                    <Image source={images.social.facebook} />
+                </TouchableHighlight>
             </View>
         </KeyboardAwareScrollView>
     );

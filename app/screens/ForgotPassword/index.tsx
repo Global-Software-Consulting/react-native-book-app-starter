@@ -1,20 +1,15 @@
 import images from 'config/images';
-import { IAppState } from 'models/reducers/appReducers';
-import { ILoading } from 'models/reducers/loading';
-import { ILoginState } from 'models/reducers/login';
+import i18n from 'config/Languages/i18n';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Button, Image, TextInput, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Text } from 'react-native-paper';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import Toast from 'react-native-simple-toast';
 import { useDispatch } from 'react-redux';
 import { useStyles } from 'screens/ForgotPassword/styles';
 import forgotPassword from 'services/forgotPassword';
 import * as snackbarActions from 'store/actions/snackbarActions';
-import { IStateReducer } from 'models/reducers/index';
-import { useTranslation } from 'react-i18next';
-import i18n from 'config/Languages/i18n';
 const initI18n = i18n;
 
 const ForgotPassword: React.FC = () => {
