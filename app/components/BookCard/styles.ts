@@ -54,13 +54,13 @@ const styles = StyleSheet.create({
     bookTrending: {
         height: hp('25%'),
         width: wp('37%'),
-        borderRadius: 4,
+        borderRadius: 15,
     },
 
     bookGeneral: {
         height: hp('20%'),
         width: wp('30%'),
-        borderRadius: 4,
+        borderRadius: 15,
     },
 
     bookLarge: {
@@ -122,7 +122,8 @@ const styles = StyleSheet.create({
 
     bookView: {
         backgroundColor: 'transparent',
-        margin: 5,
+        margin: 2,
+        borderRadius:20
     },
 
     heartIconTrending: {

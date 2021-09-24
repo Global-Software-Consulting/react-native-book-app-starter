@@ -4,7 +4,7 @@ import { useTheme } from 'react-native-paper';
 import { useStyles } from './styles';
 import * as appActions from 'store/actions/appActions';
 import { useDispatch } from 'react-redux';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { useTranslation } from 'react-i18next';
 
 const SearchBar: React.FC = () => {
@@ -29,8 +29,8 @@ const SearchBar: React.FC = () => {
                 onEndEditing={() => fetchBookDetails()}
             />
             <Icon
-                name="find-in-page"
-                size={30}
+                name="search"
+                size={20}
                 style={styles.searchViewChildren}
                 onPress={() => fetchBookDetails()}
             />

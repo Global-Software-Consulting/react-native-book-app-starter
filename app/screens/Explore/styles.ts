@@ -1,13 +1,36 @@
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
+import { Dimensions } from 'react-native';
+import { useDeviceOrientation } from '@react-native-community/hooks'
 import {
     heightPercentageToDP as hp,
     widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-
+import { useEffect, useState } from 'react';
 export const useStyles = () => {
     const theme = useTheme();
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
+    const [dimensions, setDimensions] = useState({ window, screen });
+    const window = Dimensions.get("window");
+    const [orientation, setOrientation] = useState();
+const screen = Dimensions.get("screen");
 
+    useEffect(() => {
+        const subscription = Dimensions.addEventListener(
+          "change",
+          ({ window, screen }) => {
+              setDimensions({ window, screen });
+              if (window.height > window.width) {
+                setOrientation('Portrait')
+              }
+              else {
+                setOrientation('Landscape')
+              }
+          }
+        );
+        return () => subscription?.remove();
+      });
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -29,13 +52,18 @@ export const useStyles = () => {
             width: wp('50%'),
             tintColor: theme.colors.text,
         },
-        mainViewSetting: { height: hp('100%') },
+        mainViewSetting: { height: windowHeight},
         name: {
             fontSize: hp('3%'),
             fontWeight: 'bold',
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
             color: theme.colors.text,
+            
+            
+        },
+        middleView: {
+            marginBottom: orientation==='Landscape' ? window.height * 0.25 : window.height * 0.20
         },
         nameShimmer: {
             width: wp('25%'),
@@ -55,7 +83,7 @@ export const useStyles = () => {
             backgroundColor: '#E7E5E7',
         },
         listCaption: {
-            marginTop: 15,
+            marginTop: hp('2%'),
             fontSize: hp('2%'),
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
@@ -77,13 +105,12 @@ export const useStyles = () => {
         horizontalRuler: {
             borderBottomColor: '#DCDCDC',
             borderBottomWidth: 1,
-            marginTop: 3,
+            marginTop: hp('0.5%'),
             color: theme.colors.primary,
         },
         flatList: {
             flexGrow: 1,
             marginTop: 10,
-            justifyContent: 'center',
         },
         flatListLast: {
             flexGrow: 1,

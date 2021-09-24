@@ -18,6 +18,7 @@ import { Text, useTheme } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/Explore/styles';
 import * as appActions from 'store/actions/appActions';
+import { heightPercentageToDP } from 'react-native-responsive-screen';
 
 const ExploreComponent: React.FC<Props> = (props) => {
     //theme handling
@@ -48,7 +49,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
                 nestedScrollEnabled={true}
                 style={styles.container}
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh} />}>
-                <View>
+                <View style={styles.middleView}>
                     <Text style={styles.name}>
                         {t('Hi')} {name}{' '}
                     </Text>
