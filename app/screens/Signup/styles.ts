@@ -46,7 +46,6 @@ export const useStyles = () => {
         },
         infoView: {
             marginBottom: 10,
-            borderWidth: 1,
             borderColor: theme.colors.text,
             borderRadius: 20,
             alignItems: 'center',
@@ -55,23 +54,20 @@ export const useStyles = () => {
             height: 50,
         },
         editView: {
-            backgroundColor: '#E6E6FA',
-            alignContent: 'center',
-            alignSelf: 'center',
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-            marginTop: 20,
+            backgroundColor: '#00416A',
+                        alignContent: 'center',
+                        alignSelf: 'center',
+                        justifyContent: 'space-between',
+                        flexDirection: 'row',
+                        marginTop: 30,
             borderRadius: 20,
-            alignItems: 'center',
-            textAlign: 'center',
-            color: theme.colors.text,
-            padding: 10,
-            marginBottom: 30,
+                        marginBottom:20
         },
         editButton: {
             alignSelf: 'center',
             justifyContent: 'center',
             marginTop: 5,
+
         },
     });
     return styles;

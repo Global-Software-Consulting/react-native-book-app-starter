@@ -23,6 +23,8 @@ const AuthNavigator = () => {
                         fontSize: 20,
                         color: 'black',
                     },
+                    headerShown: false,
+
                     // When logging out, a pop animation feels intuitive
                     // You can remove this if you want the default 'push' animation
                     animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
@@ -37,6 +39,7 @@ const AuthNavigator = () => {
                         fontSize: 20,
                         color: 'black',
                     },
+
                     // When logging out, a pop animation feels intuitive
                     // You can remove this if you want the default 'push' animation
                     animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
