@@ -1,20 +1,25 @@
 //importing card component
 import BookCardShimmer from 'components/BookCard/BookCardShimmer';
+import LinearGradient from 'react-native-linear-gradient';
+import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
+import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
+
 import React from 'react';
 import { FlatList, TouchableHighlight, View } from 'react-native';
 import { useStyles } from './styles';
 
 const ExploreShimmer: React.FC = () => {
     const styles = useStyles();
+    const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient);
 
     return (
-        <View>
-            <View style={styles.nameShimmer} />
-            <View style={styles.tagLineShimmer} />
+        <View style={{ paddingLeft: 20 }}>
+            <ShimmerPlaceHolder style={styles.nameShimmer} />
+            <ShimmerPlaceHolder style={styles.tagLineShimmer} />
 
-            <View style={styles.horizontalRuler} />
+            <ShimmerPlaceHolder style={styles.horizontalRuler} />
 
-            <View style={styles.listCaptionShimmer} />
+            <ShimmerPlaceHolder style={styles.listCaptionShimmer} />
             <FlatList
                 horizontal
                 data={[0, 0, 0]}
@@ -26,10 +31,9 @@ const ExploreShimmer: React.FC = () => {
                 )}
                 showsHorizontalScrollIndicator={false}
             />
+            <ShimmerPlaceHolder style={styles.horizontalRuler} />
 
-            <View style={styles.horizontalRuler} />
-
-            <View style={styles.listCaptionShimmer} />
+            <ShimmerPlaceHolder style={styles.listCaptionShimmer} />
             <FlatList
                 horizontal
                 data={[0, 0, 0]}
@@ -42,9 +46,9 @@ const ExploreShimmer: React.FC = () => {
                 showsHorizontalScrollIndicator={false}
             />
 
-            <View style={styles.horizontalRuler} />
+            <ShimmerPlaceHolder style={styles.horizontalRuler} />
 
-            <View style={styles.listCaptionShimmer} />
+            <ShimmerPlaceHolder style={styles.listCaptionShimmer} />
             <FlatList
                 horizontal
                 data={[0, 0, 0]}

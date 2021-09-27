@@ -13,6 +13,7 @@ import Shimmer from './Shimmer';
 //importing card component
 import { useStyles } from './styles';
 import { reducerState } from 'models/reducers/index';
+import { heightPercentageToDP } from 'react-native-responsive-screen';
 
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 
@@ -65,13 +66,11 @@ const Favorite: React.FC = () => {
             {isLoading ? (
                 <Shimmer />
             ) : (
-                <View style={styles.containerView}>
-                    <Container
-                        base_url={base_url}
-                        books={favoriteBookss}
-                        onRefresh={getFavoriteBooks}
-                    />
-                </View>
+                <Container
+                    base_url={base_url}
+                    books={favoriteBookss}
+                    onRefresh={getFavoriteBooks}
+                />
             )}
         </View>
     );

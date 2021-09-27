@@ -1,12 +1,10 @@
-import { StyleSheet } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Dimensions, StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import { Dimensions } from 'react-native';
-import { useDeviceOrientation } from '@react-native-community/hooks'
 import {
     heightPercentageToDP as hp,
-    widthPercentageToDP as wp,
+    widthPercentageToDP as wp
 } from 'react-native-responsive-screen';
-import { useEffect, useState } from 'react';
 export const useStyles = () => {
     const theme = useTheme();
     const windowWidth = Dimensions.get('window').width;
@@ -14,7 +12,7 @@ export const useStyles = () => {
     const [dimensions, setDimensions] = useState({ window, screen });
     const window = Dimensions.get("window");
     const [orientation, setOrientation] = useState();
-const screen = Dimensions.get("screen");
+    const screen = Dimensions.get("screen");
 
     useEffect(() => {
         const subscription = Dimensions.addEventListener(
@@ -63,7 +61,7 @@ const screen = Dimensions.get("screen");
             
         },
         middleView: {
-            marginBottom: orientation==='Landscape' ? window.height * 0.25 : window.height * 0.20
+            marginBottom: orientation==='Landscape' ? windowHeight * 0.25 : windowHeight * 0.20
         },
         nameShimmer: {
             width: wp('25%'),

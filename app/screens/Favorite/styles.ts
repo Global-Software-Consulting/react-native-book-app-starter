@@ -7,16 +7,15 @@ import {
 
 export const useStyles = () => {
     const theme = useTheme();
-
+   
     const styles = StyleSheet.create({
         container: {
-            flexGrow: 1,
             paddingVertical: 0,
             paddingHorizontal: 0,
-            height: 100,
         },
         favoriteView: {
             flex: 1,
+            paddingBottom: 2,
         },
         bookmark: {
             margin: 2,
@@ -27,7 +26,6 @@ export const useStyles = () => {
             tintColor: theme.colors.text,
         },
         containerView: {
-            flex: 1,
             flexDirection: 'row',
             flexWrap: 'wrap',
             justifyContent: 'space-around',

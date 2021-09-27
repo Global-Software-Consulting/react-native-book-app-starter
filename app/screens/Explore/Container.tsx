@@ -39,7 +39,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
         dispatch(appActions.getBookRequest(bookName));
     };
 
-    const navigateToDetails = async (params: IParams) => {
+    const navigateToDetails = (params: IParams) => {
         navigation.navigate('BookDetail', params);
     };
 

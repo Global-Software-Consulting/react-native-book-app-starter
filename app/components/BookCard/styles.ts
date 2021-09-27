@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     bookLarge: {
         height: hp('30%'),
         width: wp('40%'),
-        borderRadius: 4,
+        borderRadius: 15,
         margin: 10,
     },
     bookLargeShimmer: {
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     bookExtraLarge: {
         height: hp('50%'),
         width: wp('65%'),
-        borderRadius: 4,
+        borderRadius: 20,
         margin: 5,
         alignSelf: 'center',
     },
@@ -94,9 +94,10 @@ const styles = StyleSheet.create({
     bookTrendingExtraLargeShimmer: {
         height: hp('45%'),
         width: wp('60%'),
-        borderRadius: 4,
+        borderRadius: 20,
         backgroundColor: '#E7E5E7',
         alignSelf: 'center',
+
     },
 
     textTitleEnlarged: {
@@ -123,7 +124,8 @@ const styles = StyleSheet.create({
     bookView: {
         backgroundColor: 'transparent',
         margin: 2,
-        borderRadius:20
+        borderRadius: 20,
+     
     },
 
     heartIconTrending: {
@@ -140,11 +142,16 @@ const styles = StyleSheet.create({
         maxWidth: wp('30%'),
         fontWeight: 'bold',
         alignSelf: 'center',
+        textAlign:'center'
+
     },
     authorTitle: {
         maxWidth: wp('30%'),
         fontWeight: '200',
         alignSelf: 'center',
+        textAlign:'center'
+
+       
     },
     textTitleShimmer: {
         width: wp('30%'),

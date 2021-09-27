@@ -1,5 +1,6 @@
 import images from 'config/images';
 import { IAppState } from 'models/reducers/appReducers';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -47,14 +48,16 @@ const UserDetail: React.FC = () => {
     // };
 
     return (
-        <View style={styles.container}>
+        <KeyboardAwareScrollView contentContainerStyle={styles.container}>
             <Menu>
                 <MenuTrigger triggerOnLongPress={true} customStyles={triggerStyles}>
                     <Image
                         source={
                             userData?.image !== undefined
                                 ? userData.image
-                                : images.app.profilePicture
+                                : {
+                                      uri: 'https://pbs.twimg.com/profile_images/952545910990495744/b59hSXUd_400x400.jpg',
+                                  }
                         }
                         style={styles.displayPicture}
                     />
@@ -86,28 +89,31 @@ const UserDetail: React.FC = () => {
                 </View>
             ) : (
                 <View>
-                    <View style={styles.infoView}>
+                    <View style={styles.infoInputView}>
                         <Text style={styles.subHeading}>{t('First Name')}: </Text>
                         <TextInput
                             style={styles.inputField}
+                            placeholder="Enter your first name"
                             value={firstName}
                             onChangeText={(text) => setFirstName(text)}
                         />
                     </View>
 
-                    <View style={styles.infoView}>
+                    <View style={styles.infoInputView}>
                         <Text style={styles.subHeading}>{t('Last Name')}: </Text>
                         <TextInput
                             style={styles.inputField}
+                            placeholder="Enter your last name"
                             value={lastName}
                             onChangeText={(text) => setLastName(text)}
                         />
                     </View>
 
-                    <View style={styles.infoView}>
+                    <View style={styles.infoInputView}>
                         <Text style={styles.subHeading}>{t('Email')}: </Text>
                         <TextInput
                             style={styles.inputField}
+                            placeholder="Enter your email address"
                             value={email}
                             textContentType="emailAddress"
                             keyboardType="email-address"
@@ -128,7 +134,7 @@ const UserDetail: React.FC = () => {
                 />
                 {isLoading && <ActivityIndicator />}
             </View>
-        </View>
+        </KeyboardAwareScrollView>
     );
 };
 

@@ -30,7 +30,6 @@ export const useStyles = () => {
             fontSize: 15,
         },
         main: {
-            height: heightPercentageToDP('100%'),
             backgroundColor: theme.colors.background,
         },
         dynamicLaunchedText: {

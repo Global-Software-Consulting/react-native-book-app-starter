@@ -11,13 +11,14 @@ export const useStyles = () => {
     const theme = useTheme();
     const styles = StyleSheet.create({
         container: {
-            flex: 1,
             backgroundColor: theme.colors.background,
             alignItems: 'center',
+            flexGrow:1
+            
         },
         displayPicture: {
             height: heightPercentageToDP('15%'),
-            width: widthPercentageToDP('30%'),
+            width: widthPercentageToDP('30%'), 
             marginVertical: 20,
             borderRadius: 40,
             backgroundColor: 'transparent',
@@ -48,6 +49,15 @@ export const useStyles = () => {
             borderWidth: 1,
             borderColor: theme.colors.text,
             borderRadius: 20,
+            alignContent: 'center',
+            alignItems: 'center',
+            paddingLeft: 5,
+            width: wp('80%'),
+            height: 50,
+        },
+        infoInputView: {
+            marginTop: 5,
+            flexDirection: 'row',
             alignContent: 'center',
             alignItems: 'center',
             paddingLeft: 5,
