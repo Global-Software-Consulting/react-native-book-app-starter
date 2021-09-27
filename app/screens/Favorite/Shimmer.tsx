@@ -20,6 +20,7 @@ const Shimmer: React.FC = () => {
             }}>
             <FlatList
                 numColumns={orientation.portrait ? 2 : 4}
+                key={orientation.portrait ? 2 : 4}
                 data={[0, 0, 0, 0, 0, 0, 0, 0]}
                 contentContainerStyle={styles.flatList}
                 renderItem={({ item }) => (

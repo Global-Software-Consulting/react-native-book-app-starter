@@ -108,6 +108,12 @@ export const useStyles = () => {
             alignItems: 'center',
             padding:20
         },
+        searchViewInput: {
+            margin: 2,
+            marginLeft: 5,
+            color: theme.colors.text,
+            width:wp('72%')
+        },
         searchViewShimmer: {
             marginBottom: 20,
             flexDirection: 'row',

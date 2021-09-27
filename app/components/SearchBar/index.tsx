@@ -25,7 +25,7 @@ const SearchBar: React.FC = () => {
                 placeholder={t('Search Here')}
                 placeholderTextColor={theme.colors.text}
                 onChangeText={(text) => setSearchText(text)}
-                style={styles.searchViewChildren}
+                style={styles.searchViewInput}
                 onEndEditing={() => fetchBookDetails()}
             />
             <Icon

@@ -3,6 +3,8 @@ import {
     heightPercentageToDP as hp,
     widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import DeviceInfo from 'react-native-device-info';
+
 
 const styles = StyleSheet.create({
     container: {
@@ -131,12 +133,12 @@ const styles = StyleSheet.create({
     heartIconTrending: {
         position: 'absolute',
         marginVertical: hp('21%'),
-        marginHorizontal: hp('2%'),
+        marginHorizontal: DeviceInfo.isTablet() ? wp('9%') : wp('2%'),
     },
     heartIconLarge: {
         position: 'absolute',
         marginVertical: hp('26%'),
-        marginHorizontal: hp('3%'),
+        marginHorizontal: DeviceInfo.isTablet() ? wp('9%') : wp('2%'),
     },
     textTitle: {
         maxWidth: wp('30%'),
@@ -162,7 +164,7 @@ const styles = StyleSheet.create({
     heartIconGeneral: {
         position: 'absolute',
         marginVertical: hp('16%'),
-        marginHorizontal: hp('2%'),
+        marginHorizontal: DeviceInfo.isTablet() ? wp('7%') : wp('2%')
     },
 });
 export default styles;
