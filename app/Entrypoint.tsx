@@ -3,7 +3,7 @@
  * Everything starts from the Entry-point
  */
 import React, { useEffect } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, LogBox } from 'react-native';
 import CodePush from 'react-native-code-push';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { MenuProvider } from 'react-native-popup-menu';
@@ -14,7 +14,6 @@ import { darkTheme, defaultTheme } from './config/theme';
 import { IThemeState } from './models/reducers/theme';
 import Navigator from './navigation';
 import configureStore from './store';
-import { LogBox } from 'react-native';
 
 const { persistor, store } = configureStore();
 

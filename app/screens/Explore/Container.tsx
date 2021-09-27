@@ -3,8 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
 import { IAppState } from 'models/reducers/appReducers';
-import { Props, IParams } from './types';
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import {
     FlatList,
@@ -14,19 +13,15 @@ import {
     TouchableHighlight,
     View,
 } from 'react-native';
-import { Text, useTheme } from 'react-native-paper';
-import { useDispatch, useSelector } from 'react-redux';
+import { Text } from 'react-native-paper';
+import { useSelector } from 'react-redux';
 import { useStyles } from 'screens/Explore/styles';
-import * as appActions from 'store/actions/appActions';
-import { heightPercentageToDP } from 'react-native-responsive-screen';
+import { IParams, Props } from './types';
 
 const ExploreComponent: React.FC<Props> = (props) => {
     //theme handling
     const styles = useStyles();
     const { t } = useTranslation();
-    const theme = useTheme();
-    const dispatch = useDispatch();
-    const [searchText, setSearchText] = useState('a');
     const navigation = useNavigation();
     const { name, onRefresh } = props;
     const dummyImages = [
@@ -48,10 +43,6 @@ const ExploreComponent: React.FC<Props> = (props) => {
     const isLoading = useSelector(
         (state: { loadingReducer: IAppState }) => state.loadingReducer.isLoading,
     );
-
-    const searchBook = (bookName: string) => {
-        dispatch(appActions.getBookRequest(bookName));
-    };
 
     const navigateToDetails = (params: IParams) => {
         navigation.navigate('BookDetail', params);

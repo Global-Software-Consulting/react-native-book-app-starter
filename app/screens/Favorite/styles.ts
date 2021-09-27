@@ -7,7 +7,7 @@ import {
 
 export const useStyles = () => {
     const theme = useTheme();
-   
+
     const styles = StyleSheet.create({
         container: {
             paddingVertical: 0,
@@ -16,6 +16,11 @@ export const useStyles = () => {
         favoriteView: {
             flex: 1,
             paddingBottom: 2,
+        },
+        mainShimmerView: {
+            height: hp('100%'),
+            justifyContent: 'center',
+            alignItems: 'center',
         },
         bookmark: {
             margin: 2,

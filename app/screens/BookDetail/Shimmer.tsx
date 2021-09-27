@@ -1,9 +1,8 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
-import { useStyles } from './styles';
 import LinearGradient from 'react-native-linear-gradient';
-import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
+import { useStyles } from './styles';
 
 const Shimmer: React.FC = () => {
     //theme handling

@@ -12,7 +12,7 @@ const ApiConfig = {
     REMOVEFROMFAVORITES: '/favorites/',
     FORGETPASSWORD: '/users/forgot',
     UPDATEUSERDETAIL: '/users/profile',
-    LOGINWITHGOOGLE: '---'
+    LOGINWITHGOOGLE: '---',
 };
 
 export default ApiConfig;

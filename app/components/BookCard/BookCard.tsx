@@ -9,7 +9,7 @@ import { Text } from 'react-native-paper';
 //verctor icons
 import Icon from 'react-native-vector-icons/FontAwesome';
 //for responsive screen
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import addBookToFavoite from 'services/addBookToFavoite';
 import removeBookFromFavoite from 'services/removeBookFromFavoite';
 import * as appActions from 'store/actions/appActions';
@@ -58,7 +58,8 @@ const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, 
     const apiAddFavorite = async () => {
         if (isFavorite) {
             //filtering out new data after deletion
-            let newData = favoriteBooks.filter((item) => item.bookId !== id);
+            const newData = [];
+            newData = favoriteBooks.filter((item) => item.bookId !== id);
 
             //removing the red heart icon
             setIsFavorite(false);

@@ -4,10 +4,10 @@ import { ILoginState } from 'models/reducers/login';
 import { ILoading } from './loading';
 import { IThemeState } from './theme';
 
-export interface reducerState {
+export interface ReducerState {
     appReducer: IAppState;
     loginReducer: ILoginState;
     loadingReducer: ILoading;
-    snackbarReducer: ISnackbar
-    themeReducer: IThemeState
+    snackbarReducer: ISnackbar;
+    themeReducer: IThemeState;
 }

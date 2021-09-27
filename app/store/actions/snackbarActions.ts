@@ -3,10 +3,10 @@
  */
 import * as types from './types';
 
-export function enableSnackbar(payload:string) {
+export function enableSnackbar(payload: string) {
     return {
         type: types.ENABLE_SNACKBAR,
-        payload
+        payload,
     };
 }
 

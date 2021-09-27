@@ -27,15 +27,13 @@ const storeData = async (value: string) => {
     }
 };
 
-const delay = time => new Promise(resolve => setTimeout(resolve, time));
-
 // Our worker Saga that logins the user
 export default function* loginAsync(action: ILoginDetail) {
     try {
-    yield put(loginActions.enableLoader());
-    //how to call api
-    const loginCall: ResponseGenerator = yield call(loginUser, action.params);
-    
+        yield put(loginActions.enableLoader());
+        //how to call api
+        const loginCall: ResponseGenerator = yield call(loginUser, action.params);
+
         if (loginCall.status === 'networkFailed') {
             yield put(loginActions.disableLoader());
         } else {
@@ -52,21 +50,19 @@ export default function* loginAsync(action: ILoginDetail) {
                 yield put(appActions.getBookResponse(fetchBookCall.result));
 
                 yield put(loginActions.setLoggedIn());
-            }
-        
-            else {
+            } else {
                 yield put(loginActions.disableLoader());
-                yield put(snackbarActions.enableSnackbar('Login failed, please check your credentials'))
-       
+                yield put(
+                    snackbarActions.enableSnackbar('Login failed, please check your credentials'),
+                );
             }
         }
-}
-    catch (error) {
-    yield put(loginActions.disableLoader());
-    yield put(snackbarActions.enableSnackbar('Login failed, please check your credentials'))}
+    } catch (error) {
+        yield put(loginActions.disableLoader());
+        yield put(snackbarActions.enableSnackbar('Login failed, please check your credentials'));
+    }
 
-
-//create a delay of 2 seconds
+    //create a delay of 2 seconds
 
     // no need to call navigate as this is handled by redux store with SwitchNavigator
     //yield call(navigationActions.navigateToHome);

@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-simple-toast';
-import NetworkUtils from 'utils/networkUtils';
 import NetInfo from '@react-native-community/netinfo';
 
 const getAuthToken = async () => {
@@ -36,8 +35,6 @@ export default async function api(
     method: string,
     authorization = true,
 ) {
-    const isConnected = await NetworkUtils.isNetworkAvailable();
-    const errorResponse = {status:'Error'}
     const token = await getAuthToken();
     let options: RequestInit;
     if (!authorization) {
@@ -66,21 +63,22 @@ export default async function api(
             ...(body && { body: JSON.stringify(body) }),
         };
     }
-    
-return NetInfo.fetch().then (state => {
-if (state.isConnected) {
-return true
-}
-Toast.show('you are offline',Toast.SHORT)
-throw('network request failed')
-}).then(() => fetch(path, options)).then(resp => resp.json())
-.then((json) => json)
-.catch((error) =>{
- 
-if(error =='network request failed'){
-   
-    return { status:"networkFailed" }
-}
-return error;
-});
+
+    return NetInfo.fetch()
+        .then((state) => {
+            if (state.isConnected) {
+                return true;
+            }
+            Toast.show('you are offline', Toast.SHORT);
+            throw 'network request failed';
+        })
+        .then(() => fetch(path, options))
+        .then((resp) => resp.json())
+        .then((json) => json)
+        .catch((error) => {
+            if (error === 'network request failed') {
+                return { status: 'networkFailed' };
+            }
+            return error;
+        });
 }

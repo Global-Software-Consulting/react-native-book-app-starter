@@ -9,20 +9,15 @@ export default function* addBooktoFavorite(action: { id: number }) {
 
         if (response && response?.status === 'success') {
             yield put(loadingActions.disableLoader());
-        }
-        else if (response?.status === 'networkFailed')
-        {
+        } else if (response?.status === 'networkFailed') {
             yield put(loadingActions.disableLoader());
-        }
-        else {
+        } else {
             yield put(loadingActions.disableLoader());
-         //error message not available in response
-            yield put(snackbarActions.enableSnackbar('Error adding book to the favorites'))
-        }    
+            //error message not available in response
+            yield put(snackbarActions.enableSnackbar('Error adding book to the favorites'));
+        }
     } catch (error) {
         yield put(loadingActions.disableLoader());
-        yield put(snackbarActions.enableSnackbar('Error adding book to the favorites'))
-
+        yield put(snackbarActions.enableSnackbar('Error adding book to the favorites'));
     }
-    
 }

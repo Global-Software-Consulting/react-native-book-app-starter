@@ -1,11 +1,11 @@
-import { IAppState } from 'models/reducers/appReducers';
 import createReducer from 'lib/createReducer';
+import { IAppState } from 'models/reducers/appReducers';
 import * as types from 'store/actions/types';
 import { IBookResponse } from '../../models/actions/appActions';
 
 const initialState: IAppState = {
     books: [],
-    favorite: []
+    favorite: [],
 };
 
 export const appReducer = createReducer(initialState, {

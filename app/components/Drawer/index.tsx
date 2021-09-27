@@ -1,36 +1,24 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/core';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-import { TabActions } from '@react-navigation/native';
-import { DrawerActions } from '@react-navigation/native';
-import { ILoginState } from 'models/reducers/login';
+import { DrawerActions, TabActions } from '@react-navigation/native';
+import i18n from 'config/Languages/i18n';
+import { ReducerState } from 'models/reducers/index';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TouchableOpacity, View } from 'react-native';
-import {
-    Avatar,
-    Button,
-    Caption,
-    List,
-    Paragraph,
-    RadioButton,
-    Text,
-    Title,
-} from 'react-native-paper';
+import { Avatar, Button, List, RadioButton, Text, Title } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch, useSelector } from 'react-redux';
 import * as loginActions from 'store/actions/loginActions';
 import * as themeActions from 'store/actions/themeActions';
-import i18n from 'config/Languages/i18n';
-const initI18n = i18n;
 import ThemeController from '../ThemeController';
 import { useStyles } from './styles';
-import { reducerState } from 'models/reducers/index';
 
 const Drawer: React.FC = (props) => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [checked, setChecked] = useState('first');
-    const userData = useSelector((state: reducerState) => state.loginReducer.user);
+    const userData = useSelector((state: ReducerState) => state.loginReducer.user);
     const [name, setName] = useState(userData?.firstName + ' ' + userData?.lastName);
     const dispatch = useDispatch();
     const navigation = useNavigation();
@@ -59,13 +47,19 @@ const Drawer: React.FC = (props) => {
         <DrawerContentScrollView {...props}>
             <View style={styles.drawerContent}>
                 <View style={styles.userInfoSection}>
-                    <Avatar.Image
-                        source={{
-                            uri: 'https://pbs.twimg.com/profile_images/952545910990495744/b59hSXUd_400x400.jpg',
-                        }}
-                        size={50}
-                    />
-                    <Title style={styles.title}>{name ?? 'Anonymous'}</Title>
+                    <TouchableOpacity
+                        onPress={() => {
+                            navigation.dispatch(Detail);
+                            navigation.dispatch(DrawerActions.toggleDrawer());
+                        }}>
+                        <Avatar.Image
+                            source={{
+                                uri: 'https://pbs.twimg.com/profile_images/952545910990495744/b59hSXUd_400x400.jpg',
+                            }}
+                            size={50}
+                        />
+                        <Title style={styles.title}>{name ?? 'Anonymous'}</Title>
+                    </TouchableOpacity>
                 </View>
                 <DrawerItem
                     icon={({ color, size }) => (

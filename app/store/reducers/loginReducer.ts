@@ -76,11 +76,4 @@ export const loginReducer = createReducer(initialState, {
             forgetPasswordResponse: action.payload,
         };
     },
-    [types.LOGIN_WITH_GOOGLE_RESPONSE](state: ILoginState, action: ILoginResponseState) {
-        return {
-            ...state,
-            user: action.payload,
-        };
-    },
-
 });

@@ -25,36 +25,36 @@ const storeData = async (value: string) => {
 // Our worker Saga that logins the user
 export default function* signUpsync(action: any) {
     try {
-    yield put(loginActions.enableLoader());
-    const response: ResponseGenerator = yield call(signupUser, action.params);
-    if (response && response.status === 'success') {
-        yield call(storeData, response.token);
+        yield put(loginActions.enableLoader());
+        const response: ResponseGenerator = yield call(signupUser, action.params);
+        if (response && response.status === 'success') {
+            yield call(storeData, response.token);
 
-        yield put(loginActions.userDetailsResponse(response.result));
+            yield put(loginActions.userDetailsResponse(response.result));
 
-        const favoriteBookCall: ResponseGenerator = yield call(getFavoriteBooks);
-        yield put(appActions.getFavoriteBookResponse(favoriteBookCall.result));
+            const favoriteBookCall: ResponseGenerator = yield call(getFavoriteBooks);
+            yield put(appActions.getFavoriteBookResponse(favoriteBookCall.result));
 
-        const fetchBookCall: ResponseGenerator = yield call(getBooks, 'a');
-        yield put(appActions.getBookResponse(fetchBookCall.result));
-        //if successful then set user as logged in
-        yield put(loginActions.setLoggedIn());
-        yield put(snackbarActions.storeMessageInSnackbar('Signup successful'))
+            const fetchBookCall: ResponseGenerator = yield call(getBooks, 'a');
+            yield put(appActions.getBookResponse(fetchBookCall.result));
+            //if successful then set user as logged in
+            yield put(loginActions.setLoggedIn());
+            yield put(snackbarActions.storeMessageInSnackbar('Signup successful'));
 
+            yield put(loginActions.disableLoader());
+
+            // no need to call navigate as this is handled by redux store with SwitchNavigator
+            //yield call(navigationActions.navigateToHome);
+        } else if (response.status === 'error') {
+            yield put(loginActions.disableLoader());
+            yield put(snackbarActions.enableSnackbar('Email already exists'));
+        } else if (response?.status === 'networkFailed') {
+            yield put(loginActions.disableLoader());
+        }
+    } catch (error) {
         yield put(loginActions.disableLoader());
-
-        // no need to call navigate as this is handled by redux store with SwitchNavigator
-        //yield call(navigationActions.navigateToHome);
-    } else if (response.status === 'error' ) {
-        yield put(loginActions.disableLoader());
-        yield put(snackbarActions.enableSnackbar('Email already exists'))
+        yield put(
+            snackbarActions.enableSnackbar('Error registering user, please check the credentials'),
+        );
     }
-    else if (response?.status === 'networkFailed') {
-        yield put(loginActions.disableLoader());
-    }
-}
-catch(error) {
-    yield put(loginActions.disableLoader());
-    yield put(snackbarActions.enableSnackbar('Error registering user, please check the credentials'))
-}
 }

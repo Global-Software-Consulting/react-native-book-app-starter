@@ -1,11 +1,9 @@
 //importing card component
 import BookCardShimmer from 'components/BookCard/BookCardShimmer';
-import LinearGradient from 'react-native-linear-gradient';
-import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
-import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
-
 import React from 'react';
 import { FlatList, ScrollView, TouchableHighlight, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
 import { useStyles } from './styles';
 
 const ExploreShimmer: React.FC = () => {

@@ -1,19 +1,19 @@
 export interface IAppState {
-    books: books[];
-    favorite: favoriteBook;
+    books: Books[];
+    favorite: FavoriteBook;
     isLoading: boolean;
-    snackbarMessage:string
+    snackbarMessage: string;
 }
 
-export type books ={
+export type Books = {
     id: number;
     averageRating: number;
     title: string;
     numberOfPages: number;
     shortSummary: string;
-}
+};
 
-export type favoriteBook ={
+export type FavoriteBook = {
     id: number;
     bookId: number;
     averageRating: number;
@@ -21,4 +21,4 @@ export type favoriteBook ={
     numberOfPages: string | number;
     shortSummary: string;
     book: { title: string; id: number };
-}
+};

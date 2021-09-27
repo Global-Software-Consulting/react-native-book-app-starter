@@ -6,11 +6,9 @@ import {
 } from 'react-native-responsive-screen';
 import { useOrientation } from 'utils/dimentionUtil';
 
-
 export const useStyles = () => {
     const theme = useTheme();
-    const { width: widthPercentageToDP, height: heightPercentageToDP } = useOrientation();
-
+    const { width: widthPercentageToDP } = useOrientation();
 
     const styles = StyleSheet.create({
         container: {
@@ -96,23 +94,23 @@ export const useStyles = () => {
             justifyContent: 'center',
         },
         searchView: {
-            marginTop:20,
+            marginTop: 20,
             marginBottom: 20,
             flexDirection: 'row',
             borderWidth: 1,
             borderRadius: 20,
             alignSelf: 'center',
-            width:widthPercentageToDP('90%'),
-            borderColor:'grey',
+            width: widthPercentageToDP('90%'),
+            borderColor: 'grey',
             justifyContent: 'space-between',
             alignItems: 'center',
-            padding:20
+            padding: 20,
         },
         searchViewInput: {
             margin: 2,
             marginLeft: 5,
             color: theme.colors.text,
-            width:wp('72%')
+            width: wp('72%'),
         },
         searchViewShimmer: {
             marginBottom: 20,

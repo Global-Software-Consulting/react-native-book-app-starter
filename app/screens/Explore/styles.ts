@@ -3,32 +3,28 @@ import { Dimensions, StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import {
     heightPercentageToDP as hp,
-    widthPercentageToDP as wp
+    widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 export const useStyles = () => {
     const theme = useTheme();
-    const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
     const [dimensions, setDimensions] = useState({ window, screen });
-    const window = Dimensions.get("window");
+    const window = Dimensions.get('window');
     const [orientation, setOrientation] = useState();
-    const screen = Dimensions.get("screen");
+    const screen = Dimensions.get('screen');
 
     useEffect(() => {
-        const subscription = Dimensions.addEventListener(
-          "change",
-          ({ window, screen }) => {
-              setDimensions({ window, screen });
-              if (window.height > window.width) {
-                setOrientation('Portrait')
-              }
-              else {
-                setOrientation('Landscape')
-              }
-          }
-        );
+        const subscription = Dimensions.addEventListener('change', ({ window, screen }) => {
+            setDimensions({ window, screen });
+            if (window.height > window.width) {
+                setOrientation('Portrait');
+            } else {
+                setOrientation('Landscape');
+            }
+            console.log(dimensions); //necessary
+        });
         return () => subscription?.remove();
-      });
+    });
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -50,18 +46,16 @@ export const useStyles = () => {
             width: wp('50%'),
             tintColor: theme.colors.text,
         },
-        mainViewSetting: { height: windowHeight},
+        mainViewSetting: { height: windowHeight },
         name: {
             fontSize: hp('3%'),
             fontWeight: 'bold',
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
             color: theme.colors.text,
-            
-            
         },
         middleView: {
-            marginBottom: orientation==='Landscape' ? windowHeight * 0.25 : windowHeight * 0.20
+            marginBottom: orientation === 'Landscape' ? windowHeight * 0.25 : windowHeight * 0.2,
         },
         nameShimmer: {
             width: wp('25%'),
@@ -117,7 +111,7 @@ export const useStyles = () => {
             justifyContent: 'center',
         },
         searchView: {
-            marginTop:20,
+            marginTop: 20,
             marginBottom: 20,
             flexDirection: 'row',
             borderColor: 'grey',

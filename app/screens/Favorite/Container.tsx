@@ -1,10 +1,10 @@
 //to update the favorites list
+import { useDeviceOrientation } from '@react-native-community/hooks';
 import { useNavigation } from '@react-navigation/native';
 //importing card component
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
-import { reducerState } from 'models/reducers/index';
-import { Props, IParams } from './types';
+import { ReducerState } from 'models/reducers/index';
 import React, { useEffect, useState } from 'react';
 import {
     FlatList,
@@ -15,10 +15,9 @@ import {
     View,
 } from 'react-native';
 import { Text } from 'react-native-paper';
-import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import { useSelector } from 'react-redux';
 import { useStyles } from './styles';
-import { useDeviceOrientation } from '@react-native-community/hooks';
+import { IParams, Props } from './types';
 
 const Container: React.FC<Props> = (props) => {
     const dummyImages = [
@@ -39,9 +38,9 @@ const Container: React.FC<Props> = (props) => {
     const styles = useStyles();
     const orientation = useDeviceOrientation();
     const navigation = useNavigation();
-    const isLoading = useSelector((state: reducerState) => state.loadingReducer.isLoading);
+    const isLoading = useSelector((state: ReducerState) => state.loadingReducer.isLoading);
     const [columns, setColumns] = useState<number>();
-    const favoriteBooks = useSelector((state: reducerState) => state.appReducer.favorite);
+    const favoriteBooks = useSelector((state: ReducerState) => state.appReducer.favorite);
     const { onRefresh } = props;
     const navigateToDetails = async (params: IParams) => {
         //to check if the internet connection is working

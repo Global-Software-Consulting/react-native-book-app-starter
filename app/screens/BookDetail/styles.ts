@@ -21,7 +21,7 @@ export const useStyles = () => {
         genreText: {
             fontWeight: '300',
             fontSize: 15,
-            textAlign:'center'
+            textAlign: 'center',
         },
         launchedSubView: {
             flexDirection: 'column',
@@ -29,8 +29,7 @@ export const useStyles = () => {
         launchedText: {
             fontWeight: '300',
             fontSize: 15,
-            textAlign:'center'
-
+            textAlign: 'center',
         },
         main: {
             backgroundColor: theme.colors.background,
@@ -39,15 +38,13 @@ export const useStyles = () => {
             fontWeight: 'bold',
             fontSize: 15,
             maxWidth: widthPercentageToDP('25%'),
-            textAlign:'center'
-
+            textAlign: 'center',
         },
         dynamicSize: {
             fontWeight: 'bold',
             fontSize: 15,
             maxWidth: widthPercentageToDP('25%'),
-            textAlign:'center'
-
+            textAlign: 'center',
         },
         synopseView: {
             flexDirection: 'column',
@@ -92,8 +89,7 @@ export const useStyles = () => {
         sizeText: {
             fontWeight: '300',
             fontSize: 15,
-            textAlign:'center'
-
+            textAlign: 'center',
         },
         pagesSubView: {
             flexDirection: 'column',
@@ -102,7 +98,7 @@ export const useStyles = () => {
             fontWeight: 'bold',
             fontSize: 15,
             maxWidth: widthPercentageToDP('25%'),
-            textAlign:'center'
+            textAlign: 'center',
         },
         mainView: {
             flexDirection: 'row',

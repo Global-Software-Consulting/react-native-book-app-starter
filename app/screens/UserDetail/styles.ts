@@ -13,12 +13,11 @@ export const useStyles = () => {
         container: {
             backgroundColor: theme.colors.background,
             alignItems: 'center',
-            flexGrow:1
-            
+            flexGrow: 1,
         },
         displayPicture: {
             height: heightPercentageToDP('15%'),
-            width: widthPercentageToDP('30%'), 
+            width: widthPercentageToDP('30%'),
             marginVertical: 20,
             borderRadius: 40,
             backgroundColor: 'transparent',

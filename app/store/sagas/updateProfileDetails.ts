@@ -16,30 +16,28 @@ interface IData {
 // Our worker Saga that logins the user
 export default function* updateUserDetails(action: { data: IData }) {
     try {
-    yield put(loginActions.enableLoader());
-    //how to call api
+        yield put(loginActions.enableLoader());
+        //how to call api
         const response: ResponseGenerator = yield call(updateProfile, action.data);
-        console.log('responswa',response)
-    //mock response
+        console.log('responswa', response);
+        //mock response
         if (response) {
             if (response.status === 'networkFailed') {
                 yield put(loginActions.disableLoader());
-            }
-            else {
+            } else {
                 yield put(loginActions.updateProfileResponse(response));
                 if (response?.status === 'success') {
                     yield put(loginActions.userDetailsResponse(response.result));
-                }
-                else {
-                    yield put(snackbarActions.enableSnackbar('Error updating profile, please try again'))
+                } else {
+                    yield put(
+                        snackbarActions.enableSnackbar('Error updating profile, please try again'),
+                    );
                 }
                 yield put(loginActions.disableLoader());
             }
-    }
-}
-    catch (error) {
+        }
+    } catch (error) {
         yield put(loginActions.disableLoader());
-        yield put(snackbarActions.enableSnackbar('Error updating profile, please try again'))
+        yield put(snackbarActions.enableSnackbar('Error updating profile, please try again'));
     }
-
 }

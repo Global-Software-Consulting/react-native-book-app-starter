@@ -1,6 +1,10 @@
-import { StyleSheet } from 'react-native';
-import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import AppStyles from 'config/styles';
+import { StyleSheet } from 'react-native';
+import {
+    heightPercentageToDP,
+    heightPercentageToDP as hp,
+    widthPercentageToDP,
+} from 'react-native-responsive-screen';
 
 const styles = StyleSheet.create({
     container: {
@@ -29,21 +33,8 @@ const styles = StyleSheet.create({
         marginTop: 10,
         backgroundColor: 'white',
     },
-    passwordView: {
-        marginBottom: 20,
-        flexDirection: 'row',
-        borderColor: 'black',
-        borderWidth: 1,
-        borderRadius: 30,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: widthPercentageToDP('80%'),
-        height: heightPercentageToDP('6%'),
-        marginTop: 5,
-        alignSelf: 'center',
-    },
+
     passwordText: {
-        padding: 5,
         alignSelf: 'center',
         borderRadius: 20,
         margin: 5,
@@ -114,18 +105,115 @@ const styles = StyleSheet.create({
     login: {
         margin: 12,
     },
-    logo: {
-        alignSelf: 'center',
-        marginTop: 20,
-        width: widthPercentageToDP('40%'),
-        height: heightPercentageToDP('30%'),
-    },
+
     forgot: {
         color: AppStyles.colors.COLOR_BLACK,
         marginTop: 12,
     },
     label: {
         fontSize: 12,
+    },
+    linearGradient: {
+        height: hp('25%'),
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: widthPercentageToDP('100%'),
+    },
+    welcomeText: { color: '#FAF9F6', fontSize: 30 },
+    subHeading: {
+        color: '#FAF9F6',
+        fontSize: 15,
+        maxWidth: widthPercentageToDP('85%'),
+    },
+    cardView: {
+        backgroundColor: 'white',
+        width: widthPercentageToDP('90%'),
+        zIndex: 5,
+        borderRadius: 20,
+        marginTop: -30,
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    logo: { alignSelf: 'center', position: 'relative' },
+    logInText: {
+        fontSize: 30,
+        fontWeight: '500',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        marginTop: 20,
+        color: '#3A3B3C',
+    },
+    subLoginText: {
+        fontSize: 15,
+        fontWeight: '300',
+        color: 'grey',
+        alignSelf: 'center',
+        marginBottom: hp('3%'),
+    },
+    miniView: {
+        fontSize: 15,
+        fontWeight: '300',
+        color: 'grey',
+        alignSelf: 'center',
+    },
+    emailInput: {
+        alignSelf: 'center',
+        borderRadius: 20,
+        margin: 5,
+        backgroundColor: 'white',
+        width: widthPercentageToDP('60%'),
+    },
+    passwordView: {
+        flexDirection: 'row',
+        borderColor: 'black',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: widthPercentageToDP('62%'),
+        height: 50,
+        marginTop: 5,
+        alignSelf: 'center',
+    },
+    icon: { position: 'absolute', marginLeft: '85%' },
+    errorMessage: { alignSelf: 'center', color: 'red' },
+    touchableOpacity: {
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+    },
+    link: {
+        alignSelf: 'flex-end',
+        marginRight: 20,
+        color: '#00416A',
+        justifyContent: 'center',
+    },
+    submitView: {
+        backgroundColor: '#00416A',
+        alignContent: 'center',
+        alignSelf: 'center',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        marginTop: 30,
+        borderRadius: 20,
+    },
+    menu: {
+        margin: 5,
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+    },
+    submit: {
+        height: 40,
+        width: widthPercentageToDP('60%'),
+        marginTop: 5,
+    },
+    activity: {
+        marginLeft: widthPercentageToDP('50%'),
+        alignSelf: 'center',
+        position: 'absolute',
+    },
+    basicText: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 5,
     },
 });
 

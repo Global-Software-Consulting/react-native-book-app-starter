@@ -1,5 +1,3 @@
-import { IAppState } from 'models/reducers/appReducers';
-
 export interface Props {
     //     books?: {};
     //     base_url?: string;

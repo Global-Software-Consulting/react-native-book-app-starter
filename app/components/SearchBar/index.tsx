@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TextInput, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import { useStyles } from './styles';
-import * as appActions from 'store/actions/appActions';
-import { useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
+import * as appActions from 'store/actions/appActions';
+import { useStyles } from './styles';
 
 const SearchBar: React.FC = () => {
     const [searchText, setSearchText] = useState('');

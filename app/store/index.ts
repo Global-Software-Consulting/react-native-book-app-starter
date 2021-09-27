@@ -8,7 +8,7 @@ import sagas from 'store/sagas';
 const config = {
     key: 'root',
     storage: AsyncStorage,
-    blacklist: ['loadingReducer','snackbarReducer'],
+    blacklist: ['loadingReducer', 'snackbarReducer'],
     debug: true, //to get useful logging
 };
 

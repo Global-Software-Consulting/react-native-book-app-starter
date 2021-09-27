@@ -1,7 +1,7 @@
 import { useIsFocused } from '@react-navigation/core';
 import SearchBar from 'components/SearchBar';
-import { reducerState } from 'models/reducers/index';
-import React, { useEffect, useState } from 'react';
+import { ReducerState } from 'models/reducers/index';
+import React, { useEffect } from 'react';
 import { Alert, BackHandler, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,10 +11,10 @@ import ExploreShimmer from './Shimmer';
 
 const Explore: React.FC = () => {
     //fetching book images from the store
-    const books = useSelector((state: reducerState) => state.appReducer.books);
-    const isLoading = useSelector((state: reducerState) => state.loadingReducer.isLoading);
+    const books = useSelector((state: ReducerState) => state.appReducer.books);
+    const isLoading = useSelector((state: ReducerState) => state.loadingReducer.isLoading);
     const isFocused = useIsFocused();
-    const userData = useSelector((state: reducerState) => state.loginReducer.user);
+    const userData = useSelector((state: ReducerState) => state.loginReducer.user);
     const dispatch = useDispatch();
     const theme = useTheme();
 

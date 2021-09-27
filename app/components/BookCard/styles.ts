@@ -1,10 +1,9 @@
 import { StyleSheet } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 import {
     heightPercentageToDP as hp,
     widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import DeviceInfo from 'react-native-device-info';
-
 
 const styles = StyleSheet.create({
     container: {
@@ -99,7 +98,6 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: '#E7E5E7',
         alignSelf: 'center',
-
     },
 
     textTitleEnlarged: {
@@ -127,7 +125,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         margin: 2,
         borderRadius: 20,
-     
     },
 
     heartIconTrending: {
@@ -144,16 +141,13 @@ const styles = StyleSheet.create({
         maxWidth: wp('30%'),
         fontWeight: 'bold',
         alignSelf: 'center',
-        textAlign:'center'
-
+        textAlign: 'center',
     },
     authorTitle: {
         maxWidth: wp('30%'),
         fontWeight: '200',
         alignSelf: 'center',
-        textAlign:'center'
-
-       
+        textAlign: 'center',
     },
     textTitleShimmer: {
         width: wp('30%'),
@@ -164,7 +158,7 @@ const styles = StyleSheet.create({
     heartIconGeneral: {
         position: 'absolute',
         marginVertical: hp('16%'),
-        marginHorizontal: DeviceInfo.isTablet() ? wp('7%') : wp('2%')
+        marginHorizontal: DeviceInfo.isTablet() ? wp('7%') : wp('2%'),
     },
 });
 export default styles;

@@ -135,16 +135,3 @@ export function clearLoginResponse() {
         type: types.CLEAR_LOGIN_RESPONSE,
     };
 }
-export function loginWithGoogleRequest(data:string) {
-    return {
-        type: types.LOGIN_WITH_GOOGLE_REQUEST,
-        data
-    };
-}
-
-export function loginWithGoogleResponse(payload:string) {
-    return {
-        type: types.LOGIN_WITH_GOOGLE_RESPONSE,
-        payload
-    };
-}

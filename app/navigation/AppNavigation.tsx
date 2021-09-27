@@ -1,19 +1,17 @@
 import { useNavigation } from '@react-navigation/core';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { ILoginState } from 'models/reducers/login';
-import { IThemeState } from 'models/reducers/theme';
+import Drawer from 'components/Drawer';
+import { ReducerState } from 'models/reducers/index';
 import * as React from 'react';
 import { useTheme } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux';
-import Drawer from 'components/Drawer';
 import BookDetail from './../screens/BookDetail/index';
 import TabNavigator from './TabNavigator';
-import { reducerState } from 'models/reducers/index';
 const AppDrawer = createDrawerNavigator();
 
 const AppNavigation = () => {
-    const isDark = useSelector((state: reducerState) => state.themeReducer.isDark);
+    const isDark = useSelector((state: ReducerState) => state.themeReducer.isDark);
     const navigation = useNavigation();
     const theme = useTheme();
 
@@ -25,7 +23,6 @@ const AppNavigation = () => {
                 options={{
                     drawerLabel: 'Explore',
                     headerShown: false,
-
                     headerStyle: { backgroundColor: isDark ? '#D3D3D3' : 'white' },
                     headerTintColor: 'black',
                 }}

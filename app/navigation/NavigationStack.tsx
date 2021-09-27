@@ -4,31 +4,30 @@ import {
     NavigationContainer,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ILoginState } from 'models/reducers/login';
+import { ReducerState } from 'models/reducers/index';
 import * as React from 'react';
 import { useEffect } from 'react';
 import { StatusBar } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
-import { reducerState } from 'models/reducers/index';
+import { Snackbar } from 'react-native-paper';
+import { useDispatch, useSelector } from 'react-redux';
+import * as snackbarActions from 'store/actions/snackbarActions';
 import AppNavigation from './AppNavigation';
 import AuthNavigation from './AuthNavigation';
-import { Button, Snackbar } from 'react-native-paper';
 import { navigationRef } from './NavigationService';
-import * as snackbarActions from 'store/actions/snackbarActions';
 
 const Stack = createNativeStackNavigator();
 
 const App: React.FC = () => {
-    const isDark = useSelector((state: reducerState) => state.themeReducer.isDark);
-    const isLoggedIn = useSelector((state: reducerState) => state.loginReducer.isLoggedIn);
-    const message = useSelector((state: reducerState) => state.snackbarReducer.snackbarMessage);
-    const isVisible = useSelector((state: reducerState) => state.snackbarReducer.snackbarVisible);
+    const isDark = useSelector((state: ReducerState) => state.themeReducer.isDark);
+    const isLoggedIn = useSelector((state: ReducerState) => state.loginReducer.isLoggedIn);
+    const message = useSelector((state: ReducerState) => state.snackbarReducer.snackbarMessage);
+    const isVisible = useSelector((state: ReducerState) => state.snackbarReducer.snackbarVisible);
     const dispatch = useDispatch();
     useEffect(() => {
         setTimeout(() => {
             dispatch(snackbarActions.disableSnackbar());
         }, 4000);
-    }, [isVisible]);
+    }, [isVisible, dispatch]);
 
     return (
         <NavigationContainer

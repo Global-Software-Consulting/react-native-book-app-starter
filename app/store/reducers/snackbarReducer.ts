@@ -5,7 +5,7 @@ import { ISnackbarResponse } from '../../models/actions/snackbar';
 
 const initialState: ISnackbar = {
     snackbarVisible: false,
-    snackbarMessage:'',
+    snackbarMessage: '',
 };
 
 export const snackbarReducer = createReducer(initialState, {
@@ -13,14 +13,14 @@ export const snackbarReducer = createReducer(initialState, {
         return {
             ...state,
             snackbarVisible: true,
-            snackbarMessage: action.payload
+            snackbarMessage: action.payload,
         };
     },
     [types.DISABLE_SNACKBAR](state: ISnackbar) {
         return {
             ...state,
             snackbarVisible: false,
-            snackbarMessage: ''
+            snackbarMessage: '',
         };
     },
 });

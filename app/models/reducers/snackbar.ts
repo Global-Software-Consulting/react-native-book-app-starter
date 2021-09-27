@@ -1,4 +1,4 @@
 export interface ISnackbar {
-        snackbarVisible: boolean,
-        snackbarMessage:string,
+    snackbarVisible: boolean;
+    snackbarMessage: string;
 }

@@ -1,19 +1,10 @@
-import images from 'config/images';
 import { IAppState } from 'models/reducers/appReducers';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-    ActivityIndicator,
-    Button,
-    Image,
-    TextInput,
-    TouchableWithoutFeedback,
-    View,
-} from 'react-native';
+import { ActivityIndicator, Button, Image, TextInput, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Text } from 'react-native-paper';
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-menu';
-import { useAnimatedRef } from 'react-native-reanimated';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/UserDetail/styles';
 import * as loginActions from 'store/actions/loginActions';
