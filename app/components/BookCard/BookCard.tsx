@@ -16,7 +16,7 @@ import * as appActions from 'store/actions/appActions';
 //importing style
 import styles from './styles';
 interface Props {
-    id?: number;
+    id: number;
     hideIcon?: boolean;
     url?: string;
     bookTitle?: string;
@@ -29,7 +29,7 @@ interface IState {
 }
 
 interface IData {
-    id: number;
+    id?: number;
     bookId: number;
     averageRating: number;
     title: string;
@@ -46,7 +46,6 @@ const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, 
     const [isFavorite, setIsFavorite] = useState(false);
     const dispatch = useDispatch();
     useEffect(() => {
-        console.log('Favoritebooks', favoriteBooks);
         favoriteBooks?.findIndex((value: IData) => {
             if (value?.bookId === id) {
                 setIsFavorite(true);

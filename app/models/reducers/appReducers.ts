@@ -1,7 +1,7 @@
 export interface IAppState {
     books: Books[] | [];
     favorite: FavoriteBook | [];
-    isLoading?: boolean;
+    isLoading: boolean;
     snackbarMessage?: string;
 }
 
@@ -16,6 +16,7 @@ export type Books = {
 export type FavoriteBook = {
     id: number;
     bookId: number;
+    length: number;
     averageRating: number;
     title: string;
     numberOfPages: string | number;

@@ -4,10 +4,11 @@ import {
     heightPercentageToDP as hp,
     widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-
+import { Dimensions } from 'react-native';
 export const useStyles = () => {
     const theme = useTheme();
-
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
     const styles = StyleSheet.create({
         container: {
             paddingVertical: 0,
@@ -66,10 +67,10 @@ export const useStyles = () => {
             marginTop: 30,
         },
         flatList: {
-            flexGrow: 0,
+            height: windowHeight > windowWidth ? hp('100%') : wp('100'),
             marginTop: 10,
             flexDirection: 'column',
-            marginBottom: 40,
+            marginBottom: 30,
         },
 
         books: {

@@ -13,4 +13,5 @@ export interface IParams {
     title: string;
     numberOfPages: number;
     shortSummary: string;
+    item: { id: number };
 }

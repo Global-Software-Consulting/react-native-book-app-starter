@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
 import { ReducerState } from 'models/reducers/index';
+import { theme } from 'native-base';
 import React, { useEffect, useState } from 'react';
 import {
     FlatList,
@@ -58,7 +59,7 @@ const Container: React.FC<Props> = (props) => {
                 nestedScrollEnabled={true}
                 numColumns={columns}
                 key={columns}
-                contentContainerStyle={styles.flatList}
+                style={styles.flatList}
                 data={favoriteBooks}
                 renderItem={({ item }) => (
                     <TouchableHighlight
