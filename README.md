@@ -56,3 +56,5 @@ for Android
 run npm run android
 
 ```
+
+[How to Change Code Push App Center Account](https://dev.to/karanpratapsingh/update-your-react-native-apps-seamlessly-using-microsoft-s-codepush-f61)
