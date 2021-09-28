@@ -17,3 +17,42 @@
  * Redux with saga 
  * Code Push with App center
  * Husky
+
+
+## Code Structure
+
+#### There are six major screens i.e Login, Sign up, Forgot Password, Explore, Favorites and User details.
+##### Important Code:
+* app/Entrypoint.tsx App entry point 
+* app/assets All assets
+* app/components/...tsx Reusable Components
+* app/config/Language Language files
+* app/config/theme Themes for light and dark
+* app/models Typescript models
+* app/navigation App navigation
+* app/screens/...tsx App Screens
+* app/services API services
+* app/store Redux implementation
+
+
+## ▶ How to Setup
+
+#### Step 1: git clone this repo.
+
+#### Step 2: cd to the cloned repo.
+
+#### Step 3: Rename the project bundleId, package name and application name.
+
+#### Step 4: Install the npm modules required for the project with npm i
+
+## ▶ How to Run App
+
+```
+cd to the repo
+Run Build for either OS
+for iOS
+run npm run ios
+for Android
+run npm run android
+
+```
