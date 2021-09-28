@@ -3,9 +3,6 @@
  */
 import * as types from './types';
 
-interface IData {
-    data: [];
-}
 export function getBookRequest(keyword: string) {
     return {
         type: types.GET_BOOK_REQUEST,
@@ -13,7 +10,7 @@ export function getBookRequest(keyword: string) {
     };
 }
 
-export function getBookResponse(payload: string | IData | undefined) {
+export function getBookResponse(payload: string | undefined) {
     return {
         type: types.GET_BOOK_RESPONSE,
         payload,
@@ -26,9 +23,9 @@ export function getFavoriteBookRequest() {
     };
 }
 
-export function getFavoriteBookResponse(payload: IData | string | undefined): {
+export function getFavoriteBookResponse(payload: string | undefined): {
     type: string;
-    payload: IData | string | undefined;
+    payload: string | undefined;
 } {
     return {
         type: types.GET_FAVORITE_BOOK_LIST_RESPONSE,
@@ -43,9 +40,9 @@ export function getBookDetailRequest(id: number) {
     };
 }
 
-export function getBookDetailResponse(payload: IData | string | undefined): {
+export function getBookDetailResponse(payload: string | undefined): {
     type: string;
-    payload: IData | string | undefined;
+    payload: string | undefined;
 } {
     return {
         type: types.GET_BOOKDETAIL_RESPONSE,

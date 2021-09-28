@@ -5,5 +5,4 @@ export interface Props {
         title: string;
         shortSummary: string;
     };
-    base_url?: string;
 }

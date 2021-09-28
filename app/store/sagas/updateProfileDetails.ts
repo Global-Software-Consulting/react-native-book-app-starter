@@ -1,25 +1,18 @@
-/* Redux saga class
- * logins the user into the app
- * requires username and password.
- * un - username
- * pwd - password
- */
-import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
+import { Response } from './types';
 import { call, put } from 'redux-saga/effects';
 import updateProfile from 'services/updateProfile';
 import * as loginActions from 'store/actions/loginActions';
 import * as snackbarActions from 'store/actions/snackbarActions';
+
 interface IData {
     data: [];
 }
 
-// Our worker Saga that logins the user
 export default function* updateUserDetails(action: { data: IData }) {
     try {
         yield put(loginActions.enableLoader());
-        //how to call api
-        const response: ResponseGenerator = yield call(updateProfile, action.data);
-        console.log('responswa', response);
+        //calling api
+        const response: Response = yield call(updateProfile, action.data);
         //mock response
         if (response) {
             if (response.status === 'networkFailed') {

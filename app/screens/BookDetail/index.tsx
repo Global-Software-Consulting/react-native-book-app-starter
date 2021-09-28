@@ -7,6 +7,7 @@ import getBookDetail from 'services/getBookDetail';
 //importing components
 import Container from './Container';
 import Shimmer from './Shimmer';
+import { Props } from './types';
 const base_url = 'https://ebook-application.herokuapp.com/v1/';
 
 interface IState {
@@ -18,7 +19,7 @@ interface IState {
 const BookDetail: React.FC<IState> = (props) => {
     const dispatch = useDispatch();
     const bookId = props.route.params; //getting routed params
-    const [bookData, setBookData] = useState([]);
+    const [bookData, setBookData] = useState<Props>();
     const [isLoading, setIsLoading] = useState(true);
     const isFocussed = useIsFocused();
 

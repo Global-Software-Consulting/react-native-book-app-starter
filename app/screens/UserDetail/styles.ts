@@ -75,6 +75,7 @@ export const useStyles = () => {
             textAlign: 'center',
             color: theme.colors.text,
             padding: 10,
+            marginBottom: 10,
         },
         editButton: {
             alignSelf: 'center',

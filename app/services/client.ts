@@ -1,6 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-simple-toast';
 import NetInfo from '@react-native-community/netinfo';
+import { IData } from './types';
+import { UpdateProfile } from './types';
+import { LoginDetail } from './types';
 
 const getAuthToken = async () => {
     try {
@@ -15,28 +18,17 @@ const getAuthToken = async () => {
 };
 
 interface RequestInit {
-    headers: {
-        Accept: string;
-        'Content-Type': string;
-        'Cache-Control': string;
-        Authorization?: string;
-        Pragma: string;
-        APIKey: number;
-    };
-    method: string;
+    [key: string]: string;
 }
 
-interface IData {
-    data: [];
-}
 export default async function api(
     path: string,
-    body: IData | string | null,
+    body: IData | string | null | UpdateProfile | LoginDetail,
     method: string,
     authorization = true,
 ) {
     const token = await getAuthToken();
-    let options: RequestInit;
+    let options: { headers: RequestInit; method: string };
     if (!authorization) {
         options = {
             headers: {
@@ -44,7 +36,6 @@ export default async function api(
                 'Content-Type': 'application/json',
                 'Cache-Control': 'no-cache, private',
                 Pragma: 'no-cache',
-                APIKey: 12355,
             },
             method: method,
             ...(body && { body: JSON.stringify(body) }),
@@ -57,7 +48,6 @@ export default async function api(
                 Authorization: 'Bearer ' + token,
                 'Cache-Control': 'no-cache, private',
                 Pragma: 'no-cache',
-                APIKey: 12355,
             },
             method: method,
             ...(body && { body: JSON.stringify(body) }),

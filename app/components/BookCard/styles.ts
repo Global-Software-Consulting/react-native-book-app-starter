@@ -130,12 +130,12 @@ const styles = StyleSheet.create({
     heartIconTrending: {
         position: 'absolute',
         marginVertical: hp('21%'),
-        marginHorizontal: DeviceInfo.isTablet() ? wp('9%') : wp('2%'),
+        marginHorizontal: DeviceInfo.isTablet() ? wp('9%') : wp('4%'),
     },
     heartIconLarge: {
         position: 'absolute',
         marginVertical: hp('26%'),
-        marginHorizontal: DeviceInfo.isTablet() ? wp('9%') : wp('2%'),
+        marginHorizontal: DeviceInfo.isTablet() ? wp('9%') : wp('4%'),
     },
     textTitle: {
         maxWidth: wp('30%'),
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     heartIconGeneral: {
         position: 'absolute',
         marginVertical: hp('16%'),
-        marginHorizontal: DeviceInfo.isTablet() ? wp('7%') : wp('2%'),
+        marginHorizontal: DeviceInfo.isTablet() ? wp('7%') : wp('4%'),
     },
 });
 export default styles;

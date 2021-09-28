@@ -4,11 +4,15 @@
 import { ILoginResponse } from 'models/api/login';
 import * as types from './types';
 
-interface IData {
-    data: [];
+export interface UserData {
+    email: string;
+    password: string;
+    gender: string;
+    firstName: string;
+    lastName: string;
 }
 
-export function requestLogin(params: IData) {
+export function requestLogin(params: UserData) {
     return {
         type: types.LOGIN_REQUEST,
         params,
@@ -55,7 +59,7 @@ export function logOut() {
     };
 }
 
-export function userDetailsRequest(token: any) {
+export function userDetailsRequest(token: string) {
     return {
         type: types.USER_DETAILS_REQUEST,
         token,
@@ -72,9 +76,9 @@ export function setToken(payload: string): {
     };
 }
 
-export function userDetailsResponse(payload: IData | undefined | string): {
+export function userDetailsResponse(payload: undefined | string): {
     type: string;
-    payload: IData | undefined | string;
+    payload: undefined | string;
 } {
     return {
         type: types.USER_DETAILS_RESPONSE,
@@ -82,16 +86,16 @@ export function userDetailsResponse(payload: IData | undefined | string): {
     };
 }
 
-export function signupRequest(params: IData) {
+export function signupRequest(params: UserData) {
     return {
         type: types.SIGN_UP_REQUEST,
         params,
     };
 }
 
-export function signupResponse(payload: IData | undefined | null): {
+export function signupResponse(payload: UserData | undefined | null): {
     type: string;
-    payload: IData | undefined | null;
+    payload: UserData | undefined | null;
 } {
     return {
         type: types.SIGN_UP_RESPONSE,
@@ -105,25 +109,25 @@ export function forgotPassword(params: string) {
     };
 }
 
-export function forgotPasswordResponse(payload: IData | string | undefined): {
+export function forgotPasswordResponse(payload: UserData): {
     type: string;
-    payload: IData | string | undefined;
+    payload: UserData;
 } {
     return {
         type: types.FORGET_PASSWORD_RESPONSE,
         payload,
     };
 }
-export function updateProfileRequest(data: IData) {
+export function updateProfileRequest(data: UserData) {
     return {
         type: types.UPDATE_PROFILE_REQUEST,
         data,
     };
 }
 
-export function updateProfileResponse(payload: IData): {
+export function updateProfileResponse(payload: UserData): {
     type: string;
-    payload: IData;
+    payload: UserData;
 } {
     return {
         type: types.UPDATE_PROFILE_RESPONSE,

@@ -1,7 +1,7 @@
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useNavigation } from '@react-navigation/core';
 import { ReducerState } from 'models/reducers/index';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
@@ -13,14 +13,18 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { useDispatch, useSelector } from 'react-redux';
 import images from './../../config/images';
 import * as loginActions from './../../store/actions/loginActions';
-import styles from './styles';
+import { useStyles } from './styles';
 import { ILoginData } from './types';
+import { Dimensions } from 'react-native';
+import { heightPercentageToDP } from 'react-native-responsive-screen';
+
 GoogleSignin.configure();
 const Login: React.FC = () => {
     const dispatch = useDispatch();
 
     const navigation = useNavigation();
     const { t, i18n } = useTranslation();
+    const styles = useStyles();
     const [secure, setSecure] = useState(true);
     const [showActivityIndicator, setShowActivityIndicator] = useState(false);
     const isLoading = useSelector((state: ReducerState) => state.loadingReducer.isLoading);
@@ -40,6 +44,16 @@ const Login: React.FC = () => {
     const onSubmit = (data: ILoginData) => {
         performLoginOperation(data);
     };
+
+    const window = Dimensions.get('window');
+    const screen = Dimensions.get('screen');
+    const [dimensions, setDimensions] = useState({ window, screen });
+    useEffect(() => {
+        const subscription = Dimensions.addEventListener('change', ({ window, screen }) => {
+            setDimensions({ window, screen });
+        });
+        return () => subscription?.remove();
+    });
 
     // const loginWithGoogle = async () => {
     //     console.log('called');
@@ -69,14 +83,28 @@ const Login: React.FC = () => {
                 start={{ x: 0.0, y: 0.5 }}
                 end={{ x: 0.1, y: 3.0 }}
                 locations={[0, 0.5, 0.6]}
-                style={styles.linearGradient}>
+                style={{
+                    height: heightPercentageToDP('25%'),
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: dimensions.window.width,
+                }}>
                 <Text style={styles.welcomeText}>Welcome</Text>
                 <Text style={styles.subHeading}>
                     Book app aims to provide variety with a quick sharing of resources among friends
                     and family.
                 </Text>
             </LinearGradient>
-            <View style={styles.cardView}>
+            <View
+                style={{
+                    backgroundColor: 'white',
+                    width: dimensions.window.width * 0.9,
+                    zIndex: 5,
+                    borderRadius: 20,
+                    marginTop: -30,
+                    alignSelf: 'center',
+                    justifyContent: 'center',
+                }}>
                 <Image source={images.app.logo} style={styles.logo} />
 
                 <Text style={styles.logInText}>{t('Log In Now')}</Text>
@@ -97,7 +125,13 @@ const Login: React.FC = () => {
                                 textContentType="emailAddress"
                                 keyboardType="email-address"
                                 autoCorrect={false}
-                                style={styles.emailInput}
+                                style={{
+                                    alignSelf: 'center',
+                                    borderRadius: 20,
+                                    margin: 5,
+                                    backgroundColor: 'white',
+                                    width: dimensions.window.width * 0.6,
+                                }}
                                 value={value}
                                 onChangeText={(text) => onChange(text)}
                             />
@@ -111,7 +145,17 @@ const Login: React.FC = () => {
                         </Text>
                     )}
 
-                    <View style={styles.passwordView}>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            borderColor: 'black',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            width: dimensions.window.width * 0.62,
+                            height: 50,
+                            marginTop: 5,
+                            alignSelf: 'center',
+                        }}>
                         <Controller
                             control={control}
                             rules={{
@@ -123,7 +167,13 @@ const Login: React.FC = () => {
                                     autoCapitalize="none"
                                     secureTextEntry={secure}
                                     autoCorrect={false}
-                                    style={styles.passwordText}
+                                    style={{
+                                        alignSelf: 'center',
+                                        borderRadius: 20,
+                                        margin: 5,
+                                        backgroundColor: 'white',
+                                        width: dimensions.window.width * 0.6,
+                                    }}
                                     value={value}
                                     onChangeText={(text) => onChange(text)}
                                 />

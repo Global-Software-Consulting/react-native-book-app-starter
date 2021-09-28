@@ -3,28 +3,14 @@ import * as loadingActions from 'store/actions/loginActions';
 import * as snackbarActions from 'store/actions/snackbarActions';
 import getBookDetail from '../../services/getBookDetail';
 import * as appActions from '../actions/appActions';
-interface IData {
-    data: [];
-}
-
-export interface ResponseGenerator {
-    config?: string;
-    data?: string;
-    headers?: IData;
-    params?: string;
-    request?: IData | string | number;
-    status?: string;
-    statusText?: string;
-    result?: IData;
-    response?: IData | undefined;
-}
+import { Response } from './types';
 
 export default function* fetchBookDetailSaga(action: { id: number }) {
     try {
         //start loading
         yield put(loadingActions.enableLoader());
         //calling api
-        const response: ResponseGenerator = yield call(getBookDetail, action.id);
+        const response: Response = yield call(getBookDetail, action.id);
 
         if (response && response?.status === 'success') {
             yield put(appActions.getBookDetailResponse(response.result));

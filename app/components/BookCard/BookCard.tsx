@@ -58,8 +58,8 @@ const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, 
     const apiAddFavorite = async () => {
         if (isFavorite) {
             //filtering out new data after deletion
-            const newData = [];
-            newData = favoriteBooks.filter((item) => item.bookId !== id);
+
+            const newData = favoriteBooks.filter((item) => item.bookId !== id);
 
             //removing the red heart icon
             setIsFavorite(false);

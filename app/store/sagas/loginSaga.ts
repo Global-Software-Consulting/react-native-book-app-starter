@@ -6,7 +6,7 @@
  */
 // import { delay } from 'redux-saga';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
+import { Response } from './types';
 import { call, put } from 'redux-saga/effects';
 import getBooks from 'services/getBooks';
 import getFavoriteBooks from 'services/getFavoriteBooks';
@@ -15,9 +15,7 @@ import loginUser from 'services/loginUser';
 import * as appActions from 'store/actions/appActions';
 import * as loginActions from 'store/actions/loginActions';
 import * as snackbarActions from 'store/actions/snackbarActions';
-interface ILoginDetail {
-    data: [];
-}
+import { LoginDetail } from 'services/types';
 
 const storeData = async (value: string) => {
     try {
@@ -28,11 +26,11 @@ const storeData = async (value: string) => {
 };
 
 // Our worker Saga that logins the user
-export default function* loginAsync(action: ILoginDetail) {
+export default function* loginAsync(action: LoginDetail) {
     try {
         yield put(loginActions.enableLoader());
         //how to call api
-        const loginCall: ResponseGenerator = yield call(loginUser, action.params);
+        const loginCall: Response = yield call(loginUser, action.params);
 
         if (loginCall.status === 'networkFailed') {
             yield put(loginActions.disableLoader());
@@ -40,13 +38,13 @@ export default function* loginAsync(action: ILoginDetail) {
             if (loginCall.status !== 'error') {
                 storeData(loginCall.token);
 
-                const userDetailCall: ResponseGenerator = yield call(getUserDetail);
+                const userDetailCall: Response = yield call(getUserDetail);
                 yield put(loginActions.userDetailsResponse(userDetailCall.result));
 
-                const favoriteBookCall: ResponseGenerator = yield call(getFavoriteBooks);
+                const favoriteBookCall: Response = yield call(getFavoriteBooks);
                 yield put(appActions.getFavoriteBookResponse(favoriteBookCall.result));
 
-                const fetchBookCall: ResponseGenerator = yield call(getBooks, 'a');
+                const fetchBookCall: Response = yield call(getBooks, 'a');
                 yield put(appActions.getBookResponse(fetchBookCall.result));
 
                 yield put(loginActions.setLoggedIn());

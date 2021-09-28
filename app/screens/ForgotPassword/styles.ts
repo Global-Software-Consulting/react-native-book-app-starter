@@ -1,17 +1,12 @@
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import {
-    heightPercentageToDP,
-    widthPercentageToDP,
-    widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
+import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 
 export const useStyles = () => {
     const theme = useTheme();
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-
             backgroundColor: theme.colors.background,
             alignItems: 'center',
         },
@@ -37,10 +32,7 @@ export const useStyles = () => {
             fontWeight: 'bold',
             color: theme.colors.text,
         },
-        inputField: {
-            width: wp('50%'),
-            height: 40,
-        },
+        inputField: {},
         infoView: {
             marginBottom: 10,
             borderColor: theme.colors.text,
@@ -60,12 +52,7 @@ export const useStyles = () => {
             borderRadius: 20,
             marginBottom: 20,
         },
-        linearGradient: {
-            height: heightPercentageToDP('15%'),
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: widthPercentageToDP('100%'),
-        },
+        linearGradient: {},
         cardView: {
             backgroundColor: 'white',
             width: widthPercentageToDP('90%'),
@@ -84,7 +71,11 @@ export const useStyles = () => {
             color: '#3A3B3C',
         },
         button: { height: 40, width: widthPercentageToDP('60%'), marginTop: 5 },
-        activityIndicator: { position: 'absolute', marginLeft: widthPercentageToDP('30%') },
+        activityIndicator: {
+            marginLeft: widthPercentageToDP('50%'),
+            alignSelf: 'center',
+            position: 'absolute',
+        },
     });
     return styles;
 };

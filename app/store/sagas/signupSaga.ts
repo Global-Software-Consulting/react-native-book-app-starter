@@ -6,7 +6,7 @@
  */
 // import { delay } from 'redux-saga';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
+import { Response } from './types';
 import { call, put } from 'redux-saga/effects';
 import getBooks from 'services/getBooks';
 import getFavoriteBooks from 'services/getFavoriteBooks';
@@ -26,20 +26,20 @@ const storeData = async (value: string) => {
 export default function* signUpsync(action: any) {
     try {
         yield put(loginActions.enableLoader());
-        const response: ResponseGenerator = yield call(signupUser, action.params);
+        const response: Response = yield call(signupUser, action.params);
         if (response && response.status === 'success') {
             yield call(storeData, response.token);
 
             yield put(loginActions.userDetailsResponse(response.result));
 
-            const favoriteBookCall: ResponseGenerator = yield call(getFavoriteBooks);
+            const favoriteBookCall: Response = yield call(getFavoriteBooks);
             yield put(appActions.getFavoriteBookResponse(favoriteBookCall.result));
 
-            const fetchBookCall: ResponseGenerator = yield call(getBooks, 'a');
+            const fetchBookCall: Response = yield call(getBooks, 'a');
             yield put(appActions.getBookResponse(fetchBookCall.result));
             //if successful then set user as logged in
             yield put(loginActions.setLoggedIn());
-            yield put(snackbarActions.storeMessageInSnackbar('Signup successful'));
+            yield put(snackbarActions.enableSnackbar('Signup successful'));
 
             yield put(loginActions.disableLoader());
 
