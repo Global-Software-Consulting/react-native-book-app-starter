@@ -53,50 +53,42 @@ const Container: React.FC<Props> = (props) => {
             setColumns(2);
         } else setColumns(3);
     }, [orientation]);
-    const FavoriteBooks = () => {
-        return (
-            <FlatList
-                nestedScrollEnabled={true}
-                numColumns={columns}
-                key={columns}
-                style={styles.flatList}
-                data={favoriteBooks}
-                renderItem={({ item }) => (
-                    <TouchableHighlight
-                        key={item}
-                        underlayColor="grey"
-                        onPress={() => {
-                            navigateToDetails(item.bookId);
-                        }}>
-                        <BookCard
-                            url={generateRandomURL()}
-                            styleSelect="Large"
-                            id={item?.book.id}
-                            bookTitle={item?.book?.title}
-                            book={favoriteBooks}
-                            hideIcon={false}
-                        />
-                    </TouchableHighlight>
-                )}
-                showsHorizontalScrollIndicator={false}
-            />
-        );
-    };
 
     return (
-        <ScrollView
-            nestedScrollEnabled
-            contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
-            refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh} />}>
+        <View style={styles.mainView}>
             {favoriteBooks?.length > 0 ? (
-                <FavoriteBooks />
+                <FlatList
+                    numColumns={columns}
+                    key={columns}
+                    data={favoriteBooks}
+                    onRefresh={onRefresh}
+                    refreshing={isLoading}
+                    renderItem={({ item }) => (
+                        <TouchableHighlight
+                            key={item}
+                            underlayColor="grey"
+                            onPress={() => {
+                                navigateToDetails(item.bookId);
+                            }}>
+                            <BookCard
+                                url={generateRandomURL()}
+                                styleSelect="Large"
+                                id={item?.book.id}
+                                bookTitle={item?.book?.title}
+                                book={favoriteBooks}
+                                hideIcon={false}
+                            />
+                        </TouchableHighlight>
+                    )}
+                    showsHorizontalScrollIndicator={false}
+                />
             ) : (
                 <View style={styles.favoriteView}>
                     <Image source={images.books.noBookFound} style={styles.imageError} />
                     <Text style={styles.bookmark}>No bookmarks available</Text>
                 </View>
             )}
-        </ScrollView>
+        </View>
     );
 };
 

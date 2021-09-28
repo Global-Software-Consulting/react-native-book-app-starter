@@ -72,7 +72,10 @@ export const useStyles = () => {
             flexDirection: 'column',
             marginBottom: 30,
         },
-
+        mainView: {
+            alignItems: 'center',
+            backgroundColor: theme.colors.background,
+        },
         books: {
             height: hp('2%'),
             width: wp('1%'),
