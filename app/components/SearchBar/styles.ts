@@ -94,8 +94,8 @@ export const useStyles = () => {
             justifyContent: 'center',
         },
         searchView: {
-            marginTop: 20,
-            marginBottom: 20,
+            marginTop: 5,
+            marginBottom: 5,
             flexDirection: 'row',
             borderWidth: 1,
             borderRadius: 20,
@@ -104,7 +104,7 @@ export const useStyles = () => {
             borderColor: 'grey',
             justifyContent: 'space-between',
             alignItems: 'center',
-            padding: 20,
+            padding: 5,
         },
         searchViewInput: {
             margin: 2,
