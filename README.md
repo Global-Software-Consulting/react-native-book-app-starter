@@ -55,7 +55,8 @@
 ## ▶ How to Run App
 
 ```
-cd to the repo
+cd react-native-book-app-starter
+yarn or npm install
 Run Build for either OS
 for iOS
 run npm run ios
