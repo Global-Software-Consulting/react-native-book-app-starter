@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
-
+import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
 export const useStyles = () => {
     const theme = useTheme();
+    const height = getPercentageHeight();
+    const width = getPercentageWidth();
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -11,8 +12,8 @@ export const useStyles = () => {
             alignItems: 'center',
         },
         displayPicture: {
-            height: heightPercentageToDP('15%'),
-            width: widthPercentageToDP('30%'),
+            height: height('15%'),
+            width: width('30%'),
             marginVertical: 20,
             borderRadius: 40,
             backgroundColor: 'transparent',
@@ -32,14 +33,13 @@ export const useStyles = () => {
             fontWeight: 'bold',
             color: theme.colors.text,
         },
-        inputField: {},
+        inputField: { width: width('50%'), height: 40 },
         infoView: {
-            marginBottom: 10,
             borderColor: theme.colors.text,
             borderRadius: 20,
             alignItems: 'center',
             justifyContent: 'center',
-            width: widthPercentageToDP('80%'),
+            width: width('80%'),
             height: 50,
         },
         editView: {
@@ -52,10 +52,25 @@ export const useStyles = () => {
             borderRadius: 20,
             marginBottom: 20,
         },
-        linearGradient: {},
+        linearGradient: {
+            height: height('15%'),
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: width('100%'),
+        },
         cardView: {
             backgroundColor: 'white',
-            width: widthPercentageToDP('90%'),
+            width: width('90%'),
+            zIndex: 5,
+            borderRadius: 20,
+            marginTop: -30,
+            alignSelf: 'center',
+            justifyContent: 'center',
+        },
+        inputView:
+        {
+            backgroundColor: 'white',
+            width: width('90%'),
             zIndex: 5,
             borderRadius: 20,
             marginTop: -30,
@@ -70,9 +85,9 @@ export const useStyles = () => {
             marginTop: 20,
             color: '#3A3B3C',
         },
-        button: { height: 40, width: widthPercentageToDP('60%'), marginTop: 5 },
+        button: { height: 40, width: width('60%'), marginTop: 5 },
         activityIndicator: {
-            marginLeft: widthPercentageToDP('50%'),
+            marginLeft: width('50%'),
             alignSelf: 'center',
             position: 'absolute',
         },
