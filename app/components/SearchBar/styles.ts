@@ -4,11 +4,11 @@ import {
     heightPercentageToDP as hp,
     widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { getWidth, getHeight } from 'utils/dimentionUtil';
+import { getPercentageWidth, getPercentageHeight } from 'utils/dimentionUtil';
 
 export const useStyles = () => {
     const theme = useTheme();
-    const width = getWidth();
+    const width = getPercentageWidth();
 
     const styles = StyleSheet.create({
         container: {

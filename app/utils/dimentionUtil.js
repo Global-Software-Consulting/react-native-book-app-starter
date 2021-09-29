@@ -12,7 +12,7 @@ const widthPercentageToDP = (screenWidth,widthPercent) => {
     const elemHeight = typeof heightPercent === "number" ? heightPercent : parseFloat(heightPercent);
     return PixelRatio.roundToNearestPixel(screenHeight * elemHeight / 100);
   };
-  
+
 export function getPercentageWidth() {
     const [width, setWidth] = useState(Dimensions.get('window').width);
     useEffect(() => {
