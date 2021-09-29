@@ -2,8 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 //importing card component
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
-import { IAppState } from 'models/reducers/appReducers';
-import React from 'react';
+import { Books, IAppState } from 'models/reducers/appReducers';
+import React, { Key, ReactNodeArray } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
     FlatList,
@@ -45,7 +45,26 @@ const ExploreComponent: React.FC<Props> = (props) => {
     );
 
     const navigateToDetails = (params: IParams) => {
-        navigation.navigate('BookDetail', params);
+        navigation.navigate('BookDetail' as never, params as never);
+    };
+
+    const bookList = (item: Books, style: 'General' | 'Custom') => {
+        return (
+            <TouchableHighlight
+                key={item.id}
+                underlayColor="grey"
+                onPress={() => {
+                    navigateToDetails(item.id);
+                }}>
+                <BookCard
+                    url={generateRandomURL()}
+                    styleSelect={style}
+                    bookTitle={item?.title}
+                    book={item}
+                    id={item?.id}
+                />
+            </TouchableHighlight>
+        );
     };
 
     return (
@@ -67,78 +86,33 @@ const ExploreComponent: React.FC<Props> = (props) => {
                             <FlatList
                                 nestedScrollEnabled={true}
                                 horizontal
-                                data={books?.filter((item) => {
-                                    return item?.averageRating > 3;
+                                data={books?.filter((item: Books) => {
+                                    return item['averageRating'] > 3;
                                 })}
                                 contentContainerStyle={styles.flatList}
-                                renderItem={({ item }) => (
-                                    <TouchableHighlight
-                                        key={item}
-                                        underlayColor="grey"
-                                        onPress={() => {
-                                            navigateToDetails(item.id);
-                                        }}>
-                                        <BookCard
-                                            url={generateRandomURL()}
-                                            styleSelect="Custom"
-                                            bookTitle={item?.title}
-                                            book={item}
-                                            id={item?.id}
-                                        />
-                                    </TouchableHighlight>
-                                )}
+                                renderItem={({ item }) => bookList(item, 'Custom')}
                                 showsHorizontalScrollIndicator={false}
                             />
                             <View style={styles.horizontalRuler} />
                             <Text style={styles.listCaption}>{t('New Releases')}</Text>
                             <FlatList
                                 horizontal
-                                data={books?.filter((item: { averageRating: number }) => {
-                                    return item?.averageRating <= 3 && item?.averageRating > 0;
+                                data={books?.filter((item: Books) => {
+                                    return item['averageRating'] <= 3 && item['averageRating'] > 0;
                                 })}
                                 contentContainerStyle={styles.flatList}
-                                renderItem={({ item }) => (
-                                    <TouchableHighlight
-                                        key={item}
-                                        underlayColor="grey"
-                                        onPress={() => {
-                                            navigateToDetails(item.id);
-                                        }}>
-                                        <BookCard
-                                            url={generateRandomURL()}
-                                            styleSelect="General"
-                                            bookTitle={item?.title}
-                                            book={item}
-                                            id={item?.id}
-                                        />
-                                    </TouchableHighlight>
-                                )}
+                                renderItem={({ item }) => bookList(item, 'General')}
                                 showsHorizontalScrollIndicator={false}
                             />
                             <View style={styles.horizontalRuler} />
                             <Text style={styles.listCaption}>{t('Selected for you')}</Text>
                             <FlatList
                                 horizontal
-                                data={books?.filter((item: { averageRating: number }) => {
-                                    return item?.averageRating === 0;
+                                data={books?.filter((item: Books) => {
+                                    return item['averageRating'] === 0;
                                 })}
                                 contentContainerStyle={styles.flatListLast}
-                                renderItem={({ item }) => (
-                                    <TouchableHighlight
-                                        key={item}
-                                        underlayColor="grey"
-                                        onPress={() => {
-                                            navigateToDetails(item.id);
-                                        }}>
-                                        <BookCard
-                                            url={generateRandomURL()}
-                                            styleSelect="General"
-                                            bookTitle={item?.title}
-                                            book={item}
-                                            id={item?.id}
-                                        />
-                                    </TouchableHighlight>
-                                )}
+                                renderItem={({ item }) => bookList(item, 'General')}
                                 showsHorizontalScrollIndicator={false}
                             />
                         </View>

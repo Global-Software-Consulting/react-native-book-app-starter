@@ -49,7 +49,7 @@ const Explore: React.FC = () => {
     };
 
     return (
-        <View style={{ backgroundColor: theme.colors.background }}>
+        <View style={{ backgroundColor: theme.colors.background, flex: 1 }}>
             <SearchBar />
             {isLoading ? (
                 <ExploreShimmer />

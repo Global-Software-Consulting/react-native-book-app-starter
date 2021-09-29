@@ -15,12 +15,11 @@ import images from './../../config/images';
 import * as loginActions from './../../store/actions/loginActions';
 import { useStyles } from './styles';
 import { ILoginData } from './types';
-import { Dimensions } from 'react-native';
-import { heightPercentageToDP } from 'react-native-responsive-screen';
-
-GoogleSignin.configure();
+import { getPercentageWidth, getPercentageHeight } from 'utils/dimentionUtil';
 const Login: React.FC = () => {
     const dispatch = useDispatch();
+    const height = getPercentageHeight();
+    const width = getPercentageWidth();
 
     const navigation = useNavigation();
     const { t, i18n } = useTranslation();
@@ -45,15 +44,9 @@ const Login: React.FC = () => {
         performLoginOperation(data);
     };
 
-    const window = Dimensions.get('window');
-    const screen = Dimensions.get('screen');
-    const [dimensions, setDimensions] = useState({ window, screen });
-    useEffect(() => {
-        const subscription = Dimensions.addEventListener('change', ({ window, screen }) => {
-            setDimensions({ window, screen });
-        });
-        return () => subscription?.remove();
-    });
+    // const window = Dimensions.get('window');
+    // const screen = Dimensions.get('screen');
+    // const [dimensions, setDimensions] = useState({ window, screen });
 
     // const loginWithGoogle = async () => {
     //     console.log('called');
@@ -79,32 +72,18 @@ const Login: React.FC = () => {
     return (
         <KeyboardAwareScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
             <LinearGradient
-                colors={['#00416A', '#E4E5E6']}
+                colors={['#00416A', '#00416A', '#E4E5E6']}
                 start={{ x: 0.0, y: 0.5 }}
                 end={{ x: 0.1, y: 3.0 }}
                 locations={[0, 0.5, 0.6]}
-                style={{
-                    height: heightPercentageToDP('25%'),
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: dimensions.window.width,
-                }}>
+                style={styles.linearGradient}>
                 <Text style={styles.welcomeText}>Welcome</Text>
                 <Text style={styles.subHeading}>
                     Book app aims to provide variety with a quick sharing of resources among friends
                     and family.
                 </Text>
             </LinearGradient>
-            <View
-                style={{
-                    backgroundColor: 'white',
-                    width: dimensions.window.width * 0.9,
-                    zIndex: 5,
-                    borderRadius: 20,
-                    marginTop: -30,
-                    alignSelf: 'center',
-                    justifyContent: 'center',
-                }}>
+            <View style={styles.cardView}>
                 <Image source={images.app.logo} style={styles.logo} />
 
                 <Text style={styles.logInText}>{t('Log In Now')}</Text>
@@ -125,13 +104,7 @@ const Login: React.FC = () => {
                                 textContentType="emailAddress"
                                 keyboardType="email-address"
                                 autoCorrect={false}
-                                style={{
-                                    alignSelf: 'center',
-                                    borderRadius: 20,
-                                    margin: 5,
-                                    backgroundColor: 'white',
-                                    width: dimensions.window.width * 0.6,
-                                }}
+                                style={styles.emailInput}
                                 value={value}
                                 onChangeText={(text) => onChange(text)}
                             />
@@ -145,17 +118,7 @@ const Login: React.FC = () => {
                         </Text>
                     )}
 
-                    <View
-                        style={{
-                            flexDirection: 'row',
-                            borderColor: 'black',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            width: dimensions.window.width * 0.62,
-                            height: 50,
-                            marginTop: 5,
-                            alignSelf: 'center',
-                        }}>
+                    <View style={styles.passwordView}>
                         <Controller
                             control={control}
                             rules={{
@@ -167,13 +130,7 @@ const Login: React.FC = () => {
                                     autoCapitalize="none"
                                     secureTextEntry={secure}
                                     autoCorrect={false}
-                                    style={{
-                                        alignSelf: 'center',
-                                        borderRadius: 20,
-                                        margin: 5,
-                                        backgroundColor: 'white',
-                                        width: dimensions.window.width * 0.6,
-                                    }}
+                                    style={styles.passwordInput}
                                     value={value}
                                     onChangeText={(text) => onChange(text)}
                                 />
@@ -253,4 +210,4 @@ const Login: React.FC = () => {
     );
 };
 
-export default Login;
+export default React.memo(Login);
