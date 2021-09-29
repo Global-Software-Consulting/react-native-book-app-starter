@@ -73,9 +73,9 @@ export const useStyles = () => {
             margin: 10,
         },
         bookLargeShimmer: {
-            height: height('30%'),
-            width: width('40%'),
-            borderRadius: 4,
+            height: orientation.portrait ? height('30%') : height('50%'),
+            width: orientation.portrait ? width('40%') : width('20%'),
+            borderRadius: 15,
             margin: 10,
             backgroundColor: '#E7E5E7',
         },
@@ -89,16 +89,16 @@ export const useStyles = () => {
         },
 
         bookTrendingShimmer: {
-            height: height('25%'),
-            width: width('37%'),
-            borderRadius: 4,
+            height: orientation.portrait ? height('25%') : height('50%'),
+            width: orientation.portrait ? width('37%') : width('15%'),
+            borderRadius: 15,
             backgroundColor: '#E7E5E7',
         },
         bookTrendingExtraLargeShimmer: {
-            height: height('45%'),
-            width: width('60%'),
+            height: height('50%'),
+            width: width('65%'),
             borderRadius: 20,
-            backgroundColor: '#E7E5E7',
+            margin: 5,
             alignSelf: 'center',
         },
 
@@ -117,10 +117,9 @@ export const useStyles = () => {
         },
 
         bookGeneralShimmer: {
-            height: height('20%'),
-            width: width('30%'),
-            borderRadius: 4,
-            backgroundColor: '#E7E5E7',
+            height: orientation.portrait ? height('25%') : height('40%'),
+            width: orientation.portrait ? width('30%') : width('14%'),
+            borderRadius: 15,
         },
 
         bookView: {
@@ -142,7 +141,7 @@ export const useStyles = () => {
         heartIconLarge: {
             position: 'absolute',
             marginVertical: orientation.portrait ? height('26%') : height('42%'),
-            marginHorizontal: DeviceInfo.isTablet() ? width('9%') : width('4%'),
+            marginHorizontal: DeviceInfo.isTablet() ? width('9%') : width('5%'),
         },
         textTitle: {
             maxWidth: orientation.portrait ? width('30%') : width('15%'),
@@ -163,10 +162,11 @@ export const useStyles = () => {
             textAlign: 'center',
         },
         textTitleShimmer: {
-            width: width('30%'),
-            backgroundColor: '#E7E5E7',
-            marginTop: 2,
+            marginTop:5,
+            maxWidth: orientation.portrait ? width('30%') : width('15%'),
+            fontWeight: 'bold',
             alignSelf: 'center',
+            textAlign: 'center',
         },
         heartIconGeneral: {
             position: 'absolute',

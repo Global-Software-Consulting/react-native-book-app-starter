@@ -1,11 +1,14 @@
 import {  StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
+import { useDeviceOrientation } from '@react-native-community/hooks';
 
 export const useStyles = () => {
     const theme = useTheme();
     const width = getPercentageWidth();
     const height = getPercentageHeight();
+    const orientation = useDeviceOrientation();
+
 
     const styles = StyleSheet.create({
         container: {
@@ -16,20 +19,22 @@ export const useStyles = () => {
             marginBottom: height('10%'),
         },
         favoriteView: {
-            flex: 1,
+            
             alignItems: 'center',
             justifyContent: 'center',
         },
         bookmark: {
             margin: 2,
+            fontWeight:'bold'
         },
         imageError: {
-            height: height('50%'),
+            height: orientation.portrait ? height('50%') : height('100%'),
             width: width('50%'),
             tintColor: theme.colors.text,
         },
         mainViewSetting: { height: height('100%') },
         name: {
+            fontSize:orientation.portrait ? width('5%') : width('3%'),
             fontWeight: 'bold',
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
@@ -45,6 +50,7 @@ export const useStyles = () => {
             marginBottom: 2,
         },
         tagLine: {
+            fontSize:orientation.portrait ? width('4%') : width('2%'),
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
             color: theme.colors.text,
@@ -55,6 +61,7 @@ export const useStyles = () => {
             backgroundColor: '#E7E5E7',
         },
         listCaption: {
+            fontSize:orientation.portrait ? width('4%') : width('2%'),
             marginTop: height('2%'),
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
@@ -87,7 +94,7 @@ export const useStyles = () => {
             flexGrow: 1,
             marginTop: 10,
             marginBottom: height('3%'),
-            justifyContent: 'center',
+         
         },
         searchView: {
             marginTop: 20,
