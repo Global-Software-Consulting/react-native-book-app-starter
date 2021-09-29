@@ -1,5 +1,7 @@
+import { Key, ReactNodeArray } from "react";
+
 export interface IAppState {
-    books: Books[] | [];
+    books: Array<Books>, 
     favorite: FavoriteBook | [];
     isLoading: boolean;
     snackbarMessage?: string;
@@ -13,7 +15,9 @@ export type Books = {
     shortSummary: string;
 };
 
-export type FavoriteBook = {
+export type FavoriteBook=Pick<books, 'book' | 'bookId' |'averageRating' | 'title' |'id' | 'length' | 'numberOfPages' | 'shortSummary' >;
+
+type books = {
     id: number;
     bookId: number;
     length: number;
@@ -22,4 +26,5 @@ export type FavoriteBook = {
     numberOfPages: string | number;
     shortSummary: string;
     book: { title: string; id: number };
-};
+
+}

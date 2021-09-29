@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
-
+import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
 export const useStyles = () => {
+    const height = getPercentageHeight();
+    const width = getPercentageWidth();
     const theme = useTheme();
     const styles = StyleSheet.create({
         container: {
@@ -10,14 +11,14 @@ export const useStyles = () => {
             backgroundColor: 'white',
         },
         dropDown: {
-            width: widthPercentageToDP('80%'),
+            width: width('80%'),
             alignSelf: 'center',
             borderRadius: 20,
             marginTop: 10,
         },
         displayPicture: {
-            height: heightPercentageToDP('15%'),
-            width: widthPercentageToDP('30%'),
+            height: height('15%'),
+            width: width('30%'),
             marginVertical: 20,
             borderRadius: 40,
             backgroundColor: 'transparent',
@@ -40,19 +41,44 @@ export const useStyles = () => {
             color: theme.colors.text,
         },
         inputField: {
-            width: widthPercentageToDP('50%'),
+            width: width('50%'),
             color: 'black',
-            height: 40,
         },
+        genderPicker:
+            {
+                width: width('60%'),
+                alignSelf: 'center',
+                borderRadius: 20,
+                marginTop: 10,
+            },
         infoView: {
             marginBottom: 10,
             borderColor: theme.colors.text,
             borderRadius: 20,
             alignItems: 'center',
             justifyContent: 'center',
-            width: widthPercentageToDP('80%'),
+            width: width('80%'),
             height: 50,
         },
+        cardView: {
+                backgroundColor: 'white',
+                width: width('90%'),
+                zIndex: 5,
+                borderRadius: 20,
+                marginTop: -30,
+                alignSelf: 'center',
+                justifyContent: 'center',
+        },
+        inputView: 
+            {
+                marginBottom: 10,
+                borderColor: theme.colors.text,
+                borderRadius: 20,
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: width('80%'),
+            height: height('10%'),
+            },
         editView: {
             backgroundColor: '#00416A',
             alignContent: 'center',
@@ -69,14 +95,14 @@ export const useStyles = () => {
             marginTop: 5,
         },
         linearGradient: {
-            height: heightPercentageToDP('15%'),
+            height: height('15%'),
             alignItems: 'center',
             justifyContent: 'center',
-            width: widthPercentageToDP('100%'),
+            width: width('100%'),
         },
         imgView: {
             backgroundColor: 'white',
-            width: widthPercentageToDP('90%'),
+            width: width('90%'),
             zIndex: 5,
             borderRadius: 20,
             marginTop: -30,
@@ -94,7 +120,7 @@ export const useStyles = () => {
         },
         submit: {
             height: 40,
-            width: widthPercentageToDP('60%'),
+            width: width('60%'),
             marginTop: 5,
         },
         submitView: {
@@ -106,9 +132,9 @@ export const useStyles = () => {
             marginTop: 30,
             borderRadius: 20,
         },
-        button: { height: 40, width: widthPercentageToDP('60%'), marginTop: 5 },
+        button: { height: 40, width: width('60%'), marginTop: 5 },
         activity: {
-            marginLeft: widthPercentageToDP('50%'),
+            marginLeft: width('50%'),
             alignSelf: 'center',
             position: 'absolute',
         },
