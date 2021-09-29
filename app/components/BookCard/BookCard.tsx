@@ -14,7 +14,7 @@ import addBookToFavoite from 'services/addBookToFavoite';
 import removeBookFromFavoite from 'services/removeBookFromFavoite';
 import * as appActions from 'store/actions/appActions';
 //importing style
-import styles from './styles';
+import { useStyles } from './styles';
 interface Props {
     id: number;
     hideIcon?: boolean;
@@ -45,6 +45,7 @@ const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, 
     const isFocused = useIsFocused();
     const [isFavorite, setIsFavorite] = useState(false);
     const dispatch = useDispatch();
+    const styles = useStyles();
     useEffect(() => {
         favoriteBooks?.findIndex((value: IData) => {
             if (value?.bookId === id) {
@@ -125,8 +126,10 @@ const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, 
             )}
             <Text
                 style={
-                    styleSelect === 'General' || styleSelect === 'Custom' || styleSelect === 'Large'
+                    styleSelect === 'General' || styleSelect === 'Custom'
                         ? styles.textTitle
+                        : styleSelect === 'Large'
+                        ? styles.textLargeTitle
                         : styles.textTitleEnlarged
                 }>
                 {bookTitle}
