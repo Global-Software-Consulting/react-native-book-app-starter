@@ -1,7 +1,7 @@
 import images from 'config/images';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, Dimensions, Image, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Image, Text, TextInput, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import LinearGradient from 'react-native-linear-gradient';
 import { Button } from 'react-native-paper';
@@ -21,16 +21,6 @@ const ForgotPassword: React.FC = () => {
 
     //fetching data from store
     const [isLoading, setIsLoading] = useState<boolean>();
-
-    const window = Dimensions.get('window');
-    const screen = Dimensions.get('screen');
-    const [dimensions, setDimensions] = useState({ window, screen });
-    useEffect(() => {
-        const subscription = Dimensions.addEventListener('change', ({ window, screen }) => {
-            setDimensions({ window, screen });
-        });
-        return () => subscription?.remove();
-    });
 
     const sendResetLink = () => {
         if (email === '') {
@@ -59,40 +49,17 @@ const ForgotPassword: React.FC = () => {
                 start={{ x: 0.0, y: 0.5 }}
                 end={{ x: 0.1, y: 3.0 }}
                 locations={[0, 0.5, 0.6]}
-                style={{
-                    height: dimensions.window.height * 0.15,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: dimensions.window.width,
-                }}
+                style={styles.linearGradient}
             />
-            <View
-                style={{
-                    backgroundColor: 'white',
-                    width: dimensions.window.width * 0.9,
-                    zIndex: 5,
-                    borderRadius: 20,
-                    marginTop: -30,
-                    alignSelf: 'center',
-                    justifyContent: 'center',
-                }}>
+            <View style={styles.cardView}>
                 <Image
                     source={images.app.logo}
                     style={{ alignSelf: 'center', position: 'relative' }}
                 />
                 <Text style={styles.headingText}>{t('Forgot Password')}</Text>
-                <View
-                    style={{
-                        marginBottom: 10,
-                        borderColor: theme.colors.text,
-                        borderRadius: 20,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: dimensions.window.width * 0.8,
-                        height: 50,
-                    }}>
+                <View style={styles.infoView}>
                     <TextInput
-                        style={{ width: dimensions.window.width * 0.5, height: 40 }}
+                        style={styles.inputField}
                         textContentType="emailAddress"
                         keyboardType="email-address"
                         placeholder={t('Enter your email')}

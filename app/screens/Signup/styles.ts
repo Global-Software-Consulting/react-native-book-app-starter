@@ -131,6 +131,7 @@ export const useStyles = () => {
             flexDirection: 'row',
             marginTop: 30,
             borderRadius: 20,
+            marginBottom:20
         },
         button: { height: 40, width: width('60%'), marginTop: 5 },
         activity: {
