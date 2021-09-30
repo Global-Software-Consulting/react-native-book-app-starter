@@ -1,6 +1,7 @@
 //to update heart icon on focus
 import { useIsFocused } from '@react-navigation/native';
-import { IAppState } from 'models/reducers/appReducers';
+import { FavoriteBook } from 'models/reducers/appReducers';
+import { ReducerState } from 'models/reducers/index';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 //image with placeholder
@@ -13,10 +14,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import addBookToFavoite from 'services/addBookToFavoite';
 import removeBookFromFavoite from 'services/removeBookFromFavoite';
 import * as appActions from 'store/actions/appActions';
-import { Props, IData } from './types';
-import { ReducerState } from 'models/reducers/index';
 //importing style
 import { useStyles } from './styles';
+import { IData, Props } from './types';
 
 const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, authorName }) => {
     const favoriteBooks = useSelector((state: ReducerState) => state.appReducer.favorite);
@@ -37,7 +37,7 @@ const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, 
         if (isFavorite) {
             //filtering out new data after deletion
 
-            const newData = favoriteBooks.filter((item) => item.bookId !== id);
+            const newData: Array<FavoriteBook> = favoriteBooks.filter((item) => item.bookId !== id);
 
             //removing the red heart icon
             setIsFavorite(false);

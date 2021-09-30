@@ -4,15 +4,19 @@ import React from 'react';
 import { Dimensions } from 'react-native';
 import { FlatList, TouchableHighlight, View } from 'react-native';
 import { useStyles } from './styles';
-
+import { useTheme } from 'react-native-paper';
 const Shimmer: React.FC = () => {
     //theme handling
     const styles = useStyles();
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
+    const theme = useTheme();
     const bookList = (item) => {
         return (
-            <TouchableHighlight key={item} underlayColor="#FAF9F6" onPress={() => {}}>
+            <TouchableHighlight
+                key={item}
+                underlayColor={theme.colors.highlight}
+                onPress={() => {}}>
                 <BookCardShimmer styleSelect="Large" />
             </TouchableHighlight>
         );

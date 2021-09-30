@@ -24,7 +24,7 @@ module.exports = {
         '@typescript-eslint/no-empty-function': 0,
         'no-unused-expressions': 'off',
         '@typescript-eslint/no-unused-expressions': 'error',
-        'eslint-disable-next-line react-hooks/exhaustive-deps':'off',
+        'eslint-disable-next-line react-hooks/exhaustive-deps': 'off',
         '@typescript-eslint/no-unused-vars': [
             'error',
             {

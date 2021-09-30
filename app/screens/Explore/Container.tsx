@@ -17,11 +17,12 @@ import { Text } from 'react-native-paper';
 import { useSelector } from 'react-redux';
 import { useStyles } from 'screens/Explore/styles';
 import { IParams, Props } from './types';
-
+import { useTheme } from 'react-native-paper';
 const ExploreComponent: React.FC<Props> = (props) => {
     //theme handling
     const styles = useStyles();
     const { t } = useTranslation();
+    const theme = useTheme();
     const navigation = useNavigation();
     const { name, onRefresh } = props;
     const dummyImages = [
@@ -52,7 +53,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
         return (
             <TouchableHighlight
                 key={item.id}
-                underlayColor="#FAF9F6"
+                underlayColor={theme.colors.highlight}
                 onPress={() => {
                     navigateToDetails(item.id);
                 }}>
@@ -87,7 +88,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
                                 nestedScrollEnabled={true}
                                 horizontal
                                 data={books?.filter((item: Books) => {
-                                    return item['averageRating'] > 3;
+                                    return item.averageRating > 3;
                                 })}
                                 contentContainerStyle={styles.flatList}
                                 renderItem={({ item }) => bookList(item, 'Custom')}
@@ -98,7 +99,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
                             <FlatList
                                 horizontal
                                 data={books?.filter((item: Books) => {
-                                    return item['averageRating'] <= 3 && item['averageRating'] > 0;
+                                    return item.averageRating <= 3 && item.averageRating > 0;
                                 })}
                                 contentContainerStyle={styles.flatList}
                                 renderItem={({ item }) => bookList(item, 'General')}
@@ -109,7 +110,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
                             <FlatList
                                 horizontal
                                 data={books?.filter((item: Books) => {
-                                    return item['averageRating'] === 0;
+                                    return item.averageRating === 0;
                                 })}
                                 contentContainerStyle={styles.flatListLast}
                                 renderItem={({ item }) => bookList(item, 'General')}

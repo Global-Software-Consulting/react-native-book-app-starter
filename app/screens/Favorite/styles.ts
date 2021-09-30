@@ -16,14 +16,15 @@ export const useStyles = () => {
         favoriteView: {
             marginBottom: 2,
             minWidth: width('100%'),
-            alignItems:'center'        },
+            alignItems: 'center',
+        },
         mainShimmerView: {
             height: height('100%'),
             justifyContent: 'center',
             alignItems: 'center',
         },
         bookmark: {
-            marginBottom:height('25%'),
+            marginBottom: height('25%'),
         },
         imageError: {
             height: windowHeight > windowWidth ? height('50%') : height('100%'),
@@ -74,7 +75,6 @@ export const useStyles = () => {
             alignItems: 'center',
             backgroundColor: theme.colors.background,
             minHeight: height('100%'),
-            
         },
         books: {
             height: height('2%'),

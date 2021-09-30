@@ -4,7 +4,6 @@ import { Dimensions } from 'react-native';
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
 import { ReducerState } from 'models/reducers/index';
-import { theme } from 'native-base';
 import React, { useEffect, useState } from 'react';
 import {
     FlatList,
@@ -15,6 +14,7 @@ import {
     View,
 } from 'react-native';
 import { Text } from 'react-native-paper';
+import { useTheme } from 'react-native-paper';
 import { useSelector } from 'react-redux';
 import { useStyles } from './styles';
 import { IParams, Props } from './types';
@@ -35,6 +35,7 @@ const Container: React.FC<Props> = (props) => {
         return dummyImages[index];
     };
     //theme handling
+    const theme = useTheme();
     const styles = useStyles();
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
@@ -51,7 +52,7 @@ const Container: React.FC<Props> = (props) => {
         return (
             <TouchableHighlight
                 key={item}
-                underlayColor="#FAF9F6"
+                underlayColor={theme.colors.highlight}
                 onPress={() => {
                     navigateToDetails(item.bookId);
                 }}>
