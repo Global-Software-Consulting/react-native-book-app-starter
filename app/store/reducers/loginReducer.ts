@@ -8,7 +8,7 @@ import { ILoginState } from './../../models/reducers/login';
 
 const initialState: ILoginState = {
     isLoggedIn: false,
-    user: { firstName: '', lastName: '', email: '', gender: '', status: '' },
+    user: { firstName: '', lastName: '', email: '', gender: '', status: ''},
 };
 
 export const loginReducer = createReducer(initialState, {

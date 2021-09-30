@@ -34,7 +34,7 @@ const App: React.FC = () => {
             ref={navigationRef}
             theme={isDark ? NavigationDarkTheme : NavigationDefaultTheme}>
             <StatusBar barStyle={'default'} />
-            <Stack.Navigator headerMode="none">
+            <Stack.Navigator>
                 {isLoggedIn ? (
                     <Stack.Screen
                         name="Home"
@@ -49,7 +49,9 @@ const App: React.FC = () => {
                     />
                 )}
             </Stack.Navigator>
-            <Snackbar visible={isVisible}>{message}</Snackbar>
+            <Snackbar visible={isVisible} onDismiss={() => {}}>
+                {message}
+            </Snackbar>
         </NavigationContainer>
     );
 };

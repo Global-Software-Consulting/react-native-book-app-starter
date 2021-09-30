@@ -1,11 +1,5 @@
 export interface Props {
-    books: {
-        id: number;
-        numberOfPages: string | number;
-        createdAt: string;
-        title: string;
-        shortSummary: string;
-    };
+    books: Books;
     base_url: string;
 }
 export interface Books {

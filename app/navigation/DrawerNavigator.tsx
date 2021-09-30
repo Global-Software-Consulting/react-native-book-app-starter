@@ -1,7 +1,7 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import * as React from 'react';
 import { useWindowDimensions } from 'react-native';
-import Favorites from 'screens/Favorites';
+import Favorites from 'screens/Favorite/index';
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
