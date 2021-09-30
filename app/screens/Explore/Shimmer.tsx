@@ -9,7 +9,13 @@ import { useStyles } from './styles';
 const ExploreShimmer: React.FC = () => {
     const styles = useStyles();
     const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient);
-
+    const bookList = (item, style: 'General' | 'Custom') => {
+        return (
+            <TouchableHighlight key={item} underlayColor="transparent">
+                <BookCardShimmer styleSelect={style} />
+            </TouchableHighlight>
+        );
+    };
     return (
         <ScrollView>
             <View style={{ paddingLeft: 20 }}>
@@ -23,11 +29,7 @@ const ExploreShimmer: React.FC = () => {
                     horizontal
                     data={[0, 0, 0]}
                     contentContainerStyle={styles.flatList}
-                    renderItem={({ item }) => (
-                        <TouchableHighlight key={item} underlayColor="grey" onPress={() => {}}>
-                            <BookCardShimmer styleSelect="Custom" />
-                        </TouchableHighlight>
-                    )}
+                    renderItem={({ item }) => bookList(item, 'Custom')}
                     showsHorizontalScrollIndicator={false}
                 />
                 <ShimmerPlaceHolder style={styles.horizontalRuler} />
@@ -37,11 +39,7 @@ const ExploreShimmer: React.FC = () => {
                     horizontal
                     data={[0, 0, 0]}
                     contentContainerStyle={styles.flatList}
-                    renderItem={({ item }) => (
-                        <TouchableHighlight key={item} underlayColor="grey" onPress={() => {}}>
-                            <BookCardShimmer styleSelect="General" />
-                        </TouchableHighlight>
-                    )}
+                    renderItem={({ item }) => bookList(item, 'General')}
                     showsHorizontalScrollIndicator={false}
                 />
 
@@ -52,11 +50,7 @@ const ExploreShimmer: React.FC = () => {
                     horizontal
                     data={[0, 0, 0]}
                     contentContainerStyle={styles.flatListLast}
-                    renderItem={({ item }) => (
-                        <TouchableHighlight key={item} underlayColor="grey" onPress={() => {}}>
-                            <BookCardShimmer styleSelect="General" />
-                        </TouchableHighlight>
-                    )}
+                    renderItem={({ item }) => bookList(item, 'General')}
                     showsHorizontalScrollIndicator={false}
                 />
             </View>
