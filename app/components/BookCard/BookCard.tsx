@@ -1,6 +1,7 @@
 //to update heart icon on focus
 import { useIsFocused } from '@react-navigation/native';
-import { IAppState } from 'models/reducers/appReducers';
+import { FavoriteBook } from 'models/reducers/appReducers';
+import { ReducerState } from 'models/reducers/index';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 //image with placeholder
@@ -14,37 +15,23 @@ import addBookToFavoite from 'services/addBookToFavoite';
 import removeBookFromFavoite from 'services/removeBookFromFavoite';
 import * as appActions from 'store/actions/appActions';
 //importing style
-import styles from './styles';
-interface Props {
-    id: number;
-    hideIcon?: boolean;
-    url?: string;
-    bookTitle?: string;
-    styleSelect: 'General' | 'Custom' | 'Large' | 'ExtraLarge';
-    authorName?: string;
-    isFavorite?: boolean;
-}
-interface IState {
-    appReducer: IAppState;
-}
+import { useStyles } from './styles';
+import { IData, Props } from './types';
 
-interface IData {
-    id?: number;
-    bookId: number;
-    averageRating: number;
-    title: string;
-    numberOfPages: string | number;
-    shortSummary: string;
-    book: {
-        title: string;
-        id: number;
-    };
-}
-const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, authorName }) => {
-    const favoriteBooks = useSelector((state: IState) => state.appReducer.favorite);
+const BookCard: React.FC<Props> = ({
+    id,
+    url,
+    styleSelect,
+    bookTitle,
+    hideIcon,
+    authorName,
+    book,
+}) => {
+    const favoriteBooks = useSelector((state: ReducerState) => state.appReducer.favorite);
     const isFocused = useIsFocused();
-    const [isFavorite, setIsFavorite] = useState(false);
+    const [isFavorite, setIsFavorite] = useState<boolean>(false);
     const dispatch = useDispatch();
+    const styles = useStyles();
     useEffect(() => {
         favoriteBooks?.findIndex((value: IData) => {
             if (value?.bookId === id) {
@@ -58,7 +45,7 @@ const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, 
         if (isFavorite) {
             //filtering out new data after deletion
 
-            const newData = favoriteBooks.filter((item) => item.bookId !== id);
+            const newData: Array<FavoriteBook> = favoriteBooks.filter((item) => item.bookId !== id);
 
             //removing the red heart icon
             setIsFavorite(false);
@@ -125,8 +112,10 @@ const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, 
             )}
             <Text
                 style={
-                    styleSelect === 'General' || styleSelect === 'Custom' || styleSelect === 'Large'
+                    styleSelect === 'General' || styleSelect === 'Custom'
                         ? styles.textTitle
+                        : styleSelect === 'Large'
+                        ? styles.textLargeTitle
                         : styles.textTitleEnlarged
                 }>
                 {bookTitle}

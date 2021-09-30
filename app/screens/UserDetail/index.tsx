@@ -8,18 +8,16 @@ import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-m
 import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/UserDetail/styles';
 import * as loginActions from 'store/actions/loginActions';
-
+import { ReducerState } from 'models/reducers/index';
 const UserDetail: React.FC = () => {
     const dispatch = useDispatch();
-    const userData = useSelector((state: { loginReducer: IAppState }) => state.loginReducer.user);
-    const isLoading = useSelector(
-        (state: { loadingReducer: IAppState }) => state.loadingReducer.isLoading,
-    );
+    const userData = useSelector((state: ReducerState) => state.loginReducer.user);
+    const isLoading = useSelector((state: ReducerState) => state.loadingReducer.isLoading);
     //defining states
     const [isEditing, setIsEditing] = useState(false);
-    const [firstName, setFirstName] = useState(userData?.firstName);
-    const [lastName, setLastName] = useState(userData?.lastName);
-    const [email, setEmail] = useState(userData?.email);
+    const [firstName, setFirstName] = useState<string>(userData?.firstName);
+    const [lastName, setLastName] = useState<string>(userData?.lastName);
+    const [email, setEmail] = useState<string>(userData?.email);
     const { t } = useTranslation();
     const styles = useStyles();
 
@@ -108,7 +106,7 @@ const UserDetail: React.FC = () => {
                             value={email}
                             textContentType="emailAddress"
                             keyboardType="email-address"
-                            autoCapitalize={false}
+                            autoCapitalize="none"
                             spellCheck={false}
                             onChangeText={(text) => setEmail(text)}
                         />
@@ -130,7 +128,7 @@ const UserDetail: React.FC = () => {
 };
 
 export default UserDetail;
-const triggerStyles = {
+const triggerStyles: object = {
     triggerWrapper: {
         backgroundColor: 'transparent',
         alignItems: 'center',

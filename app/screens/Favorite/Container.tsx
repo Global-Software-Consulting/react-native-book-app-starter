@@ -1,24 +1,15 @@
-//to update the favorites list
-import { useDeviceOrientation } from '@react-native-community/hooks';
 import { useNavigation } from '@react-navigation/native';
 //importing card component
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
+import { FavoriteBook } from 'models/reducers/appReducers';
 import { ReducerState } from 'models/reducers/index';
-import { theme } from 'native-base';
-import React, { useEffect, useState } from 'react';
-import {
-    FlatList,
-    Image,
-    RefreshControl,
-    ScrollView,
-    TouchableHighlight,
-    View,
-} from 'react-native';
-import { Text } from 'react-native-paper';
+import React, { useState } from 'react';
+import { Dimensions, FlatList, Image, ScrollView, TouchableHighlight, View } from 'react-native';
+import { Text, useTheme } from 'react-native-paper';
 import { useSelector } from 'react-redux';
 import { useStyles } from './styles';
-import { IParams, Props } from './types';
+import { Props } from './types';
 
 const Container: React.FC<Props> = (props) => {
     const dummyImages = [
@@ -36,67 +27,58 @@ const Container: React.FC<Props> = (props) => {
         return dummyImages[index];
     };
     //theme handling
+    const theme = useTheme();
     const styles = useStyles();
-    const orientation = useDeviceOrientation();
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
     const navigation = useNavigation();
     const isLoading = useSelector((state: ReducerState) => state.loadingReducer.isLoading);
-    const [columns, setColumns] = useState<number>();
     const favoriteBooks = useSelector((state: ReducerState) => state.appReducer.favorite);
     const { onRefresh } = props;
-    const navigateToDetails = async (params: IParams) => {
+    const navigateToDetails = async (params: number) => {
         //to check if the internet connection is working
-        navigation.navigate('BookDetail', params);
+        navigation.navigate('BookDetail' as never, params as never);
     };
-
-    useEffect(() => {
-        if (orientation.portrait) {
-            setColumns(2);
-        } else setColumns(3);
-    }, [orientation]);
-    const FavoriteBooks = () => {
+    const bookList = (item: FavoriteBook) => {
         return (
-            <FlatList
-                nestedScrollEnabled={true}
-                numColumns={columns}
-                key={columns}
-                style={styles.flatList}
-                data={favoriteBooks}
-                renderItem={({ item }) => (
-                    <TouchableHighlight
-                        key={item}
-                        underlayColor="grey"
-                        onPress={() => {
-                            navigateToDetails(item.bookId);
-                        }}>
-                        <BookCard
-                            url={generateRandomURL()}
-                            styleSelect="Large"
-                            id={item?.book.id}
-                            bookTitle={item?.book?.title}
-                            book={favoriteBooks}
-                            hideIcon={false}
-                        />
-                    </TouchableHighlight>
-                )}
-                showsHorizontalScrollIndicator={false}
-            />
+            <TouchableHighlight
+                key={item.id}
+                underlayColor={theme.colors.highlight}
+                onPress={() => {
+                    navigateToDetails(item.bookId);
+                }}>
+                <BookCard
+                    url={generateRandomURL()}
+                    styleSelect="Large"
+                    id={item?.book.id}
+                    bookTitle={item?.book?.title}
+                    book={favoriteBooks}
+                    hideIcon={false}
+                />
+            </TouchableHighlight>
         );
     };
-
     return (
-        <ScrollView
-            nestedScrollEnabled
-            contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
-            refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh} />}>
+        <View style={styles.mainView}>
             {favoriteBooks?.length > 0 ? (
-                <FavoriteBooks />
+                <FlatList
+                    numColumns={windowHeight > windowWidth ? 2 : 4}
+                    key={windowHeight > windowWidth ? 2 : 4}
+                    keyExtractor={(item, index) => 'key' + index}
+                    data={favoriteBooks}
+                    style={styles.flatList}
+                    onRefresh={onRefresh}
+                    refreshing={isLoading}
+                    renderItem={({ item }) => bookList(item)}
+                    showsHorizontalScrollIndicator={false}
+                />
             ) : (
-                <View style={styles.favoriteView}>
+                <ScrollView contentContainerStyle={styles.favoriteView}>
                     <Image source={images.books.noBookFound} style={styles.imageError} />
                     <Text style={styles.bookmark}>No bookmarks available</Text>
-                </View>
+                </ScrollView>
             )}
-        </ScrollView>
+        </View>
     );
 };
 

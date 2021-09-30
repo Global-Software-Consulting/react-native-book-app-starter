@@ -4,11 +4,11 @@ import {
     heightPercentageToDP as hp,
     widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { useOrientation } from 'utils/dimentionUtil';
+import { getPercentageWidth, getPercentageHeight } from 'utils/dimentionUtil';
 
 export const useStyles = () => {
     const theme = useTheme();
-    const { width: widthPercentageToDP } = useOrientation();
+    const width = getPercentageWidth();
 
     const styles = StyleSheet.create({
         container: {
@@ -94,17 +94,17 @@ export const useStyles = () => {
             justifyContent: 'center',
         },
         searchView: {
-            marginTop: 20,
-            marginBottom: 20,
+            marginTop: 5,
+            marginBottom: 5,
             flexDirection: 'row',
             borderWidth: 1,
             borderRadius: 20,
             alignSelf: 'center',
-            width: widthPercentageToDP('90%'),
+            width: width('90%'),
             borderColor: 'grey',
             justifyContent: 'space-between',
             alignItems: 'center',
-            padding: 20,
+            padding: 5,
         },
         searchViewInput: {
             margin: 2,

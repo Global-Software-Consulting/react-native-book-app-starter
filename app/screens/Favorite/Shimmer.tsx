@@ -1,27 +1,35 @@
 //importing card component
-import { useDeviceOrientation } from '@react-native-community/hooks';
 import BookCardShimmer from 'components/BookCard/BookCardShimmer';
 import React from 'react';
+import { Dimensions } from 'react-native';
 import { FlatList, TouchableHighlight, View } from 'react-native';
 import { useStyles } from './styles';
-
+import { useTheme } from 'react-native-paper';
 const Shimmer: React.FC = () => {
     //theme handling
     const styles = useStyles();
-    const orientation = useDeviceOrientation();
-
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
+    const theme = useTheme();
+    const bookList = (item: number) => {
+        return (
+            <TouchableHighlight
+                key={item}
+                underlayColor={theme.colors.highlight}
+                onPress={() => {}}>
+                <BookCardShimmer styleSelect="Large" />
+            </TouchableHighlight>
+        );
+    };
     return (
         <View style={styles.mainShimmerView}>
             <FlatList
-                numColumns={orientation.portrait ? 2 : 4}
-                key={orientation.portrait ? 2 : 4}
+                numColumns={windowHeight > windowWidth ? 2 : 4}
+                keyExtractor={(item, index) => 'key' + index}
+                key={windowHeight > windowWidth ? 2 : 4}
                 data={[0, 0, 0, 0, 0, 0, 0, 0]}
                 contentContainerStyle={styles.flatList}
-                renderItem={({ item }) => (
-                    <TouchableHighlight key={item} underlayColor="grey" onPress={() => {}}>
-                        <BookCardShimmer styleSelect="Large" />
-                    </TouchableHighlight>
-                )}
+                renderItem={({ item }) => bookList(item)}
                 showsHorizontalScrollIndicator={false}
             />
         </View>

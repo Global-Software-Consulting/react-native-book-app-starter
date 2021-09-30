@@ -1,14 +1,15 @@
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import {
-    heightPercentageToDP,
-    heightPercentageToDP as hp,
-    widthPercentageToDP,
-    widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
+import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
+import { Dimensions } from 'react-native';
 
 export const useStyles = () => {
     const theme = useTheme();
+    const height = getPercentageHeight();
+    const width = getPercentageWidth();
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
+
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -37,13 +38,13 @@ export const useStyles = () => {
         dynamicLaunchedText: {
             fontWeight: 'bold',
             fontSize: 15,
-            maxWidth: widthPercentageToDP('25%'),
+            maxWidth: width('25%'),
             textAlign: 'center',
         },
         dynamicSize: {
             fontWeight: 'bold',
             fontSize: 15,
-            maxWidth: widthPercentageToDP('25%'),
+            maxWidth: width('25%'),
             textAlign: 'center',
         },
         synopseView: {
@@ -52,15 +53,15 @@ export const useStyles = () => {
         },
         subShimmerView: {
             margin: 20,
-            height: heightPercentageToDP('20'),
-            width: widthPercentageToDP('80'),
+            height: height('20'),
+            width: width('80'),
             alignSelf: 'center',
             backgroundColor: '#E7E5E7',
         },
         mainShimmerView: {
             margin: 20,
-            height: heightPercentageToDP('20'),
-            width: widthPercentageToDP('80'),
+            height: height('20'),
+            width: width('80'),
             alignSelf: 'center',
             backgroundColor: '#E7E5E7',
         },
@@ -78,8 +79,8 @@ export const useStyles = () => {
         },
 
         bookShimmer: {
-            height: hp('45%'),
-            width: wp('60%'),
+            height: windowHeight > windowWidth ? height('45%') : height('70%'),
+            width: windowHeight > windowWidth ? width('60%') : width('20%'),
             borderRadius: 4,
             backgroundColor: '#E7E5E7',
             alignSelf: 'center',
@@ -97,7 +98,7 @@ export const useStyles = () => {
         dynamicGenreText: {
             fontWeight: 'bold',
             fontSize: 15,
-            maxWidth: widthPercentageToDP('25%'),
+            maxWidth: width('25%'),
             textAlign: 'center',
         },
         mainView: {
@@ -106,19 +107,19 @@ export const useStyles = () => {
             justifyContent: 'space-evenly',
         },
         name: {
-            fontSize: hp('3%'),
+            fontSize: height('3%'),
             fontWeight: 'bold',
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
         },
         tagLine: {
-            fontSize: hp('2%'),
+            fontSize: height('2%'),
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
         },
         listCaption: {
             marginTop: 15,
-            fontSize: hp('2%'),
+            fontSize: height('2%'),
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
             fontWeight: 'bold',
@@ -132,7 +133,7 @@ export const useStyles = () => {
         horizontalRuler: {
             borderBottomColor: '#DCDCDC',
             borderBottomWidth: 1,
-            marginTop: 30,
+            marginTop: 4,
         },
         flatList: {
             flexGrow: 0,
@@ -142,20 +143,20 @@ export const useStyles = () => {
         },
 
         books: {
-            height: hp('2%'),
-            width: wp('1%'),
+            height: height('2%'),
+            width: width('1%'),
             borderRadius: 4,
         },
 
         bookTrending: {
-            height: hp('25%'),
-            width: wp('37%'),
+            height: height('25%'),
+            width: width('37%'),
             borderRadius: 4,
         },
 
         bookGeneral: {
-            height: hp('20%'),
-            width: wp('30%'),
+            height: height('20%'),
+            width: width('30%'),
             borderRadius: 4,
         },
         bookView: {

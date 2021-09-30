@@ -1,7 +1,8 @@
-import { books } from 'models/reducers/appReducers';
+import { Books } from 'models/reducers/appReducers';
+import { ReactNodeArray } from 'react';
 
 export interface Props {
-    books?: books[];
+    books?: Array<Books>;
     name?: string;
     base_url?: string;
     onRefresh: () => void;

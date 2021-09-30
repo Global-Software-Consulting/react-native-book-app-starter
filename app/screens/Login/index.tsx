@@ -1,7 +1,7 @@
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+//import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useNavigation } from '@react-navigation/core';
 import { ReducerState } from 'models/reducers/index';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
@@ -11,22 +11,22 @@ import { Button } from 'react-native-paper';
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-menu';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useDispatch, useSelector } from 'react-redux';
+import { UserData } from 'store/actions/loginActions';
+import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
 import images from './../../config/images';
 import * as loginActions from './../../store/actions/loginActions';
+import Toast from 'react-native-simple-toast';
 import { useStyles } from './styles';
-import { ILoginData } from './types';
-import { Dimensions } from 'react-native';
-import { heightPercentageToDP } from 'react-native-responsive-screen';
-
-GoogleSignin.configure();
 const Login: React.FC = () => {
     const dispatch = useDispatch();
+    const height = getPercentageHeight();
+    const width = getPercentageWidth();
 
     const navigation = useNavigation();
     const { t, i18n } = useTranslation();
     const styles = useStyles();
-    const [secure, setSecure] = useState(true);
-    const [showActivityIndicator, setShowActivityIndicator] = useState(false);
+    const [secure, setSecure] = useState<boolean>(true);
+    const [showActivityIndicator, setShowActivityIndicator] = useState<boolean>(false);
     const isLoading = useSelector((state: ReducerState) => state.loadingReducer.isLoading);
     //form data
 
@@ -36,24 +36,27 @@ const Login: React.FC = () => {
         formState: { errors },
     } = useForm();
 
-    const performLoginOperation = async (data: ILoginData) => {
+    const validate = (text: string) => {
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+        return reg.test(text);
+    };
+
+    const performLoginOperation = async (data: UserData) => {
         setShowActivityIndicator(isLoading);
         dispatch(loginActions.requestLogin(data));
     };
 
-    const onSubmit = (data: ILoginData) => {
-        performLoginOperation(data);
+    const onSubmit = (data: UserData) => {
+        if (validate(data.email)) {
+            performLoginOperation(data);
+        } else {
+            Toast.show('Incorrect email format');
+        }
     };
 
-    const window = Dimensions.get('window');
-    const screen = Dimensions.get('screen');
-    const [dimensions, setDimensions] = useState({ window, screen });
-    useEffect(() => {
-        const subscription = Dimensions.addEventListener('change', ({ window, screen }) => {
-            setDimensions({ window, screen });
-        });
-        return () => subscription?.remove();
-    });
+    // const window = Dimensions.get('window');
+    // const screen = Dimensions.get('screen');
+    // const [dimensions, setDimensions] = useState({ window, screen });
 
     // const loginWithGoogle = async () => {
     //     console.log('called');
@@ -79,32 +82,18 @@ const Login: React.FC = () => {
     return (
         <KeyboardAwareScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
             <LinearGradient
-                colors={['#00416A', '#E4E5E6']}
+                colors={['#00416A', '#00416A', '#E4E5E6']}
                 start={{ x: 0.0, y: 0.5 }}
                 end={{ x: 0.1, y: 3.0 }}
                 locations={[0, 0.5, 0.6]}
-                style={{
-                    height: heightPercentageToDP('25%'),
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: dimensions.window.width,
-                }}>
+                style={styles.linearGradient}>
                 <Text style={styles.welcomeText}>Welcome</Text>
                 <Text style={styles.subHeading}>
                     Book app aims to provide variety with a quick sharing of resources among friends
                     and family.
                 </Text>
             </LinearGradient>
-            <View
-                style={{
-                    backgroundColor: 'white',
-                    width: dimensions.window.width * 0.9,
-                    zIndex: 5,
-                    borderRadius: 20,
-                    marginTop: -30,
-                    alignSelf: 'center',
-                    justifyContent: 'center',
-                }}>
+            <View style={styles.cardView}>
                 <Image source={images.app.logo} style={styles.logo} />
 
                 <Text style={styles.logInText}>{t('Log In Now')}</Text>
@@ -125,13 +114,7 @@ const Login: React.FC = () => {
                                 textContentType="emailAddress"
                                 keyboardType="email-address"
                                 autoCorrect={false}
-                                style={{
-                                    alignSelf: 'center',
-                                    borderRadius: 20,
-                                    margin: 5,
-                                    backgroundColor: 'white',
-                                    width: dimensions.window.width * 0.6,
-                                }}
+                                style={styles.emailInput}
                                 value={value}
                                 onChangeText={(text) => onChange(text)}
                             />
@@ -145,17 +128,7 @@ const Login: React.FC = () => {
                         </Text>
                     )}
 
-                    <View
-                        style={{
-                            flexDirection: 'row',
-                            borderColor: 'black',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            width: dimensions.window.width * 0.62,
-                            height: 50,
-                            marginTop: 5,
-                            alignSelf: 'center',
-                        }}>
+                    <View style={styles.passwordView}>
                         <Controller
                             control={control}
                             rules={{
@@ -167,13 +140,7 @@ const Login: React.FC = () => {
                                     autoCapitalize="none"
                                     secureTextEntry={secure}
                                     autoCorrect={false}
-                                    style={{
-                                        alignSelf: 'center',
-                                        borderRadius: 20,
-                                        margin: 5,
-                                        backgroundColor: 'white',
-                                        width: dimensions.window.width * 0.6,
-                                    }}
+                                    style={styles.passwordInput}
                                     value={value}
                                     onChangeText={(text) => onChange(text)}
                                 />
@@ -195,9 +162,10 @@ const Login: React.FC = () => {
 
                 <TouchableOpacity
                     style={styles.touchableOpacity}
-                    underlayColor="transparent"
-                    onPress={() => navigation.navigate('ForgotPassword')}>
-                    <Text style={styles.link} onPress={() => navigation.navigate('ForgotPassword')}>
+                    onPress={() => navigation.navigate('ForgotPassword' as never)}>
+                    <Text
+                        style={styles.link}
+                        onPress={() => navigation.navigate('ForgotPassword' as never)}>
                         {t('Forgot Password')}
                     </Text>
                 </TouchableOpacity>
@@ -216,7 +184,7 @@ const Login: React.FC = () => {
                     <Text>{t('Do not have an account?')} </Text>
                     <Text
                         style={{ color: '#00416A' }}
-                        onPress={() => navigation.navigate('Signup')}>
+                        onPress={() => navigation.navigate('Signup' as never)}>
                         {t('Sign up')}
                     </Text>
                 </View>
@@ -253,4 +221,4 @@ const Login: React.FC = () => {
     );
 };
 
-export default Login;
+export default React.memo(Login);

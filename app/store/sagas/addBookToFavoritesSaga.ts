@@ -3,7 +3,7 @@ import { call, put } from 'redux-saga/effects';
 import addBookToFavoite from 'services/addBookToFavoite';
 import * as loadingActions from 'store/actions/loginActions';
 import * as snackbarActions from 'store/actions/snackbarActions';
-export default function* addBooktoFavorite(action: { id: number }) {
+export default function* addBookToFavorite(action: { id: number }) {
     try {
         const response: ResponseGenerator = yield call(addBookToFavoite, action.id);
 

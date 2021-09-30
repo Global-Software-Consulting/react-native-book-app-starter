@@ -1,14 +1,14 @@
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import {
-    heightPercentageToDP,
-    heightPercentageToDP as hp,
-    widthPercentageToDP,
-    widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
-
+import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
+import { Dimensions } from 'react-native';
 export const useStyles = () => {
     const theme = useTheme();
+    const height = getPercentageHeight();
+    const width = getPercentageWidth();
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
+
     const styles = StyleSheet.create({
         container: {
             backgroundColor: theme.colors.background,
@@ -16,10 +16,10 @@ export const useStyles = () => {
             flexGrow: 1,
         },
         displayPicture: {
-            height: heightPercentageToDP('15%'),
-            width: widthPercentageToDP('30%'),
+            height: windowHeight > windowWidth ? height('15%') : height('60%'),
+            width: width('30%'),
             marginVertical: 20,
-            borderRadius: 40,
+            borderRadius: windowHeight > windowWidth ? 70 : 120,
             backgroundColor: 'transparent',
         },
         horizontalRuler: {
@@ -38,8 +38,8 @@ export const useStyles = () => {
             color: theme.colors.text,
         },
         inputField: {
-            width: wp('50%'),
-            height: hp('5%'),
+            width: width('50%'),
+            height: height('5%'),
             color: theme.colors.text,
         },
         infoView: {
@@ -51,7 +51,7 @@ export const useStyles = () => {
             alignContent: 'center',
             alignItems: 'center',
             paddingLeft: 5,
-            width: wp('80%'),
+            width: width('80%'),
             height: 50,
         },
         infoInputView: {
@@ -60,7 +60,7 @@ export const useStyles = () => {
             alignContent: 'center',
             alignItems: 'center',
             paddingLeft: 5,
-            width: wp('80%'),
+            width: width('80%'),
             height: 50,
         },
         editView: {

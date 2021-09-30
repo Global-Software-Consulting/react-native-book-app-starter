@@ -1,6 +1,7 @@
 /*
  * Reducer actions related with login
  */
+import { FavoriteBook } from 'models/reducers/appReducers';
 import * as types from './types';
 
 export function getBookRequest(keyword: string) {
@@ -63,7 +64,7 @@ export function removeBookToFavoriteRequest(id: number) {
     };
 }
 
-export function setNewFavorites(payload: []) {
+export function setNewFavorites(payload: Array<FavoriteBook>) {
     return {
         type: types.SET_NEW_FAVORITE_BOOKS,
         payload,

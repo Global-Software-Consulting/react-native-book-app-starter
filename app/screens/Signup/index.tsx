@@ -3,24 +3,23 @@ import { IAppState } from 'models/reducers/appReducers';
 import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, Dimensions, Image, TextInput, View } from 'react-native';
+import { ActivityIndicator, Image, TextInput, View } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import LinearGradient from 'react-native-linear-gradient';
-import { Button, Text, useTheme } from 'react-native-paper';
+import { Button, Text } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/Signup/styles';
 import * as appActions from 'store/actions/appActions';
 import * as loginActions from 'store/actions/loginActions';
 import { ISignupData } from './types';
+import Toast from 'react-native-simple-toast';
 
 const Signup: React.FC = () => {
     const dispatch = useDispatch();
     //defining states
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState<boolean>(false);
     const { t } = useTranslation();
-    const theme = useTheme();
-
     const isLoading = useSelector(
         (state: { loadingReducer: IAppState }) => state.loadingReducer.isLoading,
     );
@@ -34,9 +33,17 @@ const Signup: React.FC = () => {
         formState: { errors },
     } = useForm();
 
+    const validate = (text: string) => {
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+        return reg.test(text);
+    };
+
     const performSignUp = async (data: ISignupData) => {
-        dispatch(loginActions.signupRequest(data));
-        dispatch(appActions.getFavoriteBookRequest());
+        if (validate(data.email)) {
+            dispatch(loginActions.signupRequest(data));
+        } else {
+            Toast.show('Incorrect email format');
+        }
     };
 
     const onSubmit = (data: ISignupData) => {
@@ -44,53 +51,21 @@ const Signup: React.FC = () => {
     };
 
     const styles = useStyles();
-    const window = Dimensions.get('window');
-    const screen = Dimensions.get('screen');
-    const [dimensions, setDimensions] = useState({ window, screen });
-    useEffect(() => {
-        const subscription = Dimensions.addEventListener('change', ({ window, screen }) => {
-            setDimensions({ window, screen });
-        });
-        return () => subscription?.remove();
-    });
 
     return (
         <KeyboardAwareScrollView style={{ flex: 1 }}>
             <LinearGradient
-                colors={['#00416A', '#E4E5E6']}
+                colors={['#00416A', '#00416A', '#E4E5E6']}
                 start={{ x: 0.0, y: 0.5 }}
                 end={{ x: 0.1, y: 3.0 }}
                 locations={[0, 0.5, 0.6]}
-                style={{
-                    height: dimensions.window.height * 0.15,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: dimensions.window.width,
-                }}
+                style={styles.linearGradient}
             />
-            <View
-                style={{
-                    backgroundColor: 'white',
-                    width: dimensions.window.width * 0.9,
-                    zIndex: 5,
-                    borderRadius: 20,
-                    marginTop: -30,
-                    alignSelf: 'center',
-                    justifyContent: 'center',
-                }}>
+            <View style={styles.cardView}>
                 <Image source={images.app.logo} style={styles.img} />
                 <Text style={styles.signUpText}>{t('Sign up')}</Text>
 
-                <View
-                    style={{
-                        marginBottom: 10,
-                        borderColor: theme.colors.text,
-                        borderRadius: 20,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: dimensions.window.width * 0.8,
-                        height: 50,
-                    }}>
+                <View style={styles.inputView}>
                     <Controller
                         control={control}
                         rules={{
@@ -101,7 +76,7 @@ const Signup: React.FC = () => {
                                 placeholder={t('Enter your first name')}
                                 autoCapitalize="none"
                                 autoCorrect={false}
-                                style={{ width: dimensions.window.width * 0.5, height: 40 }}
+                                style={styles.inputField}
                                 value={value}
                                 onChangeText={(text) => onChange(text)}
                             />
@@ -114,16 +89,7 @@ const Signup: React.FC = () => {
                     )}
                 </View>
 
-                <View
-                    style={{
-                        marginBottom: 10,
-                        borderColor: theme.colors.text,
-                        borderRadius: 20,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: dimensions.window.width * 0.8,
-                        height: 50,
-                    }}>
+                <View style={styles.inputView}>
                     <Controller
                         control={control}
                         rules={{
@@ -134,7 +100,7 @@ const Signup: React.FC = () => {
                                 placeholder={t('Enter your last name')}
                                 autoCapitalize="none"
                                 autoCorrect={false}
-                                style={{ width: dimensions.window.width * 0.5, height: 40 }}
+                                style={styles.inputField}
                                 value={value}
                                 onChangeText={(text) => onChange(text)}
                             />
@@ -147,16 +113,7 @@ const Signup: React.FC = () => {
                     )}
                 </View>
 
-                <View
-                    style={{
-                        marginBottom: 10,
-                        borderColor: theme.colors.text,
-                        borderRadius: 20,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: dimensions.window.width * 0.8,
-                        height: 50,
-                    }}>
+                <View style={styles.inputView}>
                     <Controller
                         control={control}
                         rules={{
@@ -169,7 +126,7 @@ const Signup: React.FC = () => {
                                 textContentType="emailAddress"
                                 keyboardType="email-address"
                                 autoCorrect={false}
-                                style={{ width: dimensions.window.width * 0.5, height: 40 }}
+                                style={styles.inputField}
                                 value={value}
                                 onChangeText={(text) => onChange(text)}
                             />
@@ -180,16 +137,7 @@ const Signup: React.FC = () => {
                     {errors.email && <Text style={{ color: 'red' }}>{t('Email is required')}</Text>}
                 </View>
 
-                <View
-                    style={{
-                        marginBottom: 10,
-                        borderColor: theme.colors.text,
-                        borderRadius: 20,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: dimensions.window.width * 0.8,
-                        height: 50,
-                    }}>
+                <View style={styles.inputView}>
                     <Controller
                         control={control}
                         rules={{
@@ -201,7 +149,7 @@ const Signup: React.FC = () => {
                                 secureTextEntry={true}
                                 autoCapitalize="none"
                                 autoCorrect={false}
-                                style={{ width: dimensions.window.width * 0.5, height: 40 }}
+                                style={styles.inputField}
                                 value={value}
                                 onChangeText={(text) => onChange(text)}
                             />
@@ -227,12 +175,7 @@ const Signup: React.FC = () => {
                             items={gender}
                             setOpen={setOpen}
                             setValue={onChange}
-                            style={{
-                                width: dimensions.window.width * 0.8,
-                                alignSelf: 'center',
-                                borderRadius: 20,
-                                marginTop: 10,
-                            }}
+                            style={styles.genderPicker}
                             dropDownContainerStyle={styles.dropDown}
                         />
                     )}

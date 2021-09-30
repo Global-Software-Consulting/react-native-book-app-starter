@@ -4,6 +4,7 @@ import { ReducerState } from 'models/reducers/index';
 import React, { useEffect } from 'react';
 import { Alert, BackHandler, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 import * as appActions from 'store/actions/appActions';
 import ExploreComponent from './Container';
@@ -49,7 +50,7 @@ const Explore: React.FC = () => {
     };
 
     return (
-        <View style={{ backgroundColor: theme.colors.background }}>
+        <View style={{ backgroundColor: theme.colors.background, flex: 1, paddingHorizontal: 10 }}>
             <SearchBar />
             {isLoading ? (
                 <ExploreShimmer />

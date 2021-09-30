@@ -5,6 +5,7 @@ export const defaultTheme = {
         ...PaperDefaultTheme.colors,
         primary: 'black',
         accent: 'white',
+        highlight:'#FAF9F6',
         background: 'white',
     },
 };

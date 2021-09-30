@@ -1,6 +1,8 @@
+import { FavoriteBook } from 'models/reducers/appReducers';
+
 export interface Props {
-    //     books?: {};
-    //     base_url?: string;
+    books?: Array<FavoriteBook>;
+    base_url?: string;
     onRefresh: () => void;
 }
 

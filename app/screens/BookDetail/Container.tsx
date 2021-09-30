@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 import { Text } from 'react-native-paper';
-import getBooks from 'services/getBooks';
 import BookCard from '../../components/BookCard/BookCard';
 import { useStyles } from './styles';
 import { Props } from './types';

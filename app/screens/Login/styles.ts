@@ -1,12 +1,10 @@
 import AppStyles from 'config/styles';
 import { StyleSheet } from 'react-native';
-import {
-    heightPercentageToDP,
-    heightPercentageToDP as hp,
-    widthPercentageToDP,
-} from 'react-native-responsive-screen';
+import { getPercentageWidth, getPercentageHeight } from 'utils/dimentionUtil';
 
 export const useStyles = () => {
+    const height = getPercentageHeight();
+    const width = getPercentageWidth();
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -25,8 +23,8 @@ export const useStyles = () => {
             alignSelf: 'center',
         },
         emailText: {
-            width: widthPercentageToDP('80%'),
-            height: heightPercentageToDP('6%'),
+            width: width('80%'),
+            height: height('6%'),
             padding: 5,
             alignSelf: 'center',
             borderWidth: 1,
@@ -49,8 +47,8 @@ export const useStyles = () => {
             color: '#db7093',
         },
         loginButton: {
-            height: heightPercentageToDP('6 %'),
-            width: widthPercentageToDP('60%'),
+            height: height('6 %'),
+            width: width('60%'),
             marginTop: 5,
         },
         textMessage: {
@@ -77,7 +75,7 @@ export const useStyles = () => {
             justifyContent: 'space-between',
             flexDirection: 'row',
             marginTop: 15,
-            height: heightPercentageToDP('5%'),
+            height: height('5%'),
         },
         heading: {
             fontSize: 30,
@@ -108,14 +106,27 @@ export const useStyles = () => {
         label: {
             fontSize: 12,
         },
-        linearGradient: {},
+        linearGradient: {
+            height: height('25%'),
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: width('100%'),
+        },
         welcomeText: { color: '#FAF9F6', fontSize: 30 },
         subHeading: {
             color: '#FAF9F6',
             fontSize: 15,
-            maxWidth: widthPercentageToDP('85%'),
+            maxWidth: width('85%'),
         },
-        cardView: {},
+        cardView: {
+            backgroundColor: 'white',
+            width: width('90%'),
+            zIndex: 5,
+            borderRadius: 20,
+            marginTop: height('-2%'),
+            alignSelf: 'center',
+            justifyContent: 'center',
+        },
         logo: { alignSelf: 'center', position: 'relative' },
         logInText: {
             fontSize: 30,
@@ -130,7 +141,7 @@ export const useStyles = () => {
             fontWeight: '300',
             color: 'grey',
             alignSelf: 'center',
-            marginBottom: hp('3%'),
+            marginBottom: height('3%'),
         },
         miniView: {
             fontSize: 15,
@@ -138,16 +149,29 @@ export const useStyles = () => {
             color: 'grey',
             alignSelf: 'center',
         },
-        emailInput: {},
+        emailInput: {
+            alignSelf: 'center',
+            borderRadius: 20,
+            margin: 5,
+            backgroundColor: 'white',
+            width: width('60%'),
+        },
         passwordView: {
             flexDirection: 'row',
             borderColor: 'black',
             justifyContent: 'space-between',
             alignItems: 'center',
-            width: widthPercentageToDP('62%'),
+            width: width('62%'),
             height: 50,
             marginTop: 5,
             alignSelf: 'center',
+        },
+        passwordInput: {
+            alignSelf: 'center',
+            borderRadius: 20,
+            margin: 5,
+            backgroundColor: 'white',
+            width: width('60%'),
         },
         icon: { position: 'absolute', marginLeft: '85%' },
         errorMessage: { alignSelf: 'center', color: 'red' },
@@ -178,11 +202,11 @@ export const useStyles = () => {
         },
         submit: {
             height: 40,
-            width: widthPercentageToDP('60%'),
+            width: width('60%'),
             marginTop: 5,
         },
         activity: {
-            marginLeft: widthPercentageToDP('50%'),
+            marginLeft: width('50%'),
             alignSelf: 'center',
             position: 'absolute',
         },

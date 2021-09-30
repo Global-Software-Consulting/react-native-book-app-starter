@@ -1,90 +1,74 @@
-import { useEffect, useState } from 'react';
-import { Dimensions, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import {
-    heightPercentageToDP as hp,
-    widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
+import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
+import { Dimensions } from 'react-native';
 export const useStyles = () => {
     const theme = useTheme();
+    const width = getPercentageWidth();
+    const height = getPercentageHeight();
+    const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
-    const [dimensions, setDimensions] = useState({ window, screen });
-    const window = Dimensions.get('window');
-    const [orientation, setOrientation] = useState();
-    const screen = Dimensions.get('screen');
 
-    useEffect(() => {
-        const subscription = Dimensions.addEventListener('change', ({ window, screen }) => {
-            setDimensions({ window, screen });
-            if (window.height > window.width) {
-                setOrientation('Portrait');
-            } else {
-                setOrientation('Landscape');
-            }
-            console.log(dimensions); //necessary
-        });
-        return () => subscription?.remove();
-    });
     const styles = StyleSheet.create({
         container: {
             flex: 1,
             paddingVertical: 10,
             paddingHorizontal: 30,
             backgroundColor: theme.colors.background,
-            marginBottom: hp('10%'),
+            marginBottom: height('10%'),
         },
         favoriteView: {
-            flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
         },
         bookmark: {
             margin: 2,
+            fontWeight: 'bold',
         },
         imageError: {
-            height: hp('50%'),
-            width: wp('50%'),
+            height: windowHeight > windowWidth ? height('50%') : height('100%'),
+            width: width('50%'),
             tintColor: theme.colors.text,
         },
-        mainViewSetting: { height: windowHeight },
+        mainViewSetting: { height: height('100%') },
         name: {
-            fontSize: hp('3%'),
+            fontSize: windowHeight > windowWidth ? width('5%') : width('3%'),
             fontWeight: 'bold',
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
             color: theme.colors.text,
         },
         middleView: {
-            marginBottom: orientation === 'Landscape' ? windowHeight * 0.25 : windowHeight * 0.2,
+            marginBottom: windowHeight > windowWidth ? height('15%') : height('25%'),
         },
         nameShimmer: {
-            width: wp('25%'),
-            height: hp('6%'),
+            width: width('25%'),
+            height: height('6%'),
             backgroundColor: '#E7E5E7',
             marginBottom: 2,
         },
         tagLine: {
-            fontSize: hp('2%'),
+            fontSize: windowHeight > windowWidth ? width('4%') : width('2%'),
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
             color: theme.colors.text,
         },
         tagLineShimmer: {
-            width: wp('40%'),
-            height: hp('4%'),
+            width: width('40%'),
+            height: height('4%'),
             backgroundColor: '#E7E5E7',
         },
         listCaption: {
-            marginTop: hp('2%'),
-            fontSize: hp('2%'),
+            fontSize: windowHeight > windowWidth ? width('4%') : width('2%'),
+            marginTop: height('2%'),
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
             fontWeight: 'bold',
             color: theme.colors.text,
         },
         listCaptionShimmer: {
-            width: wp('20%'),
-            height: hp('3%'),
+            width: width('20%'),
+            height: height('3%'),
             backgroundColor: '#E7E5E7',
         },
         button: {
@@ -97,7 +81,7 @@ export const useStyles = () => {
         horizontalRuler: {
             borderBottomColor: '#DCDCDC',
             borderBottomWidth: 1,
-            marginTop: hp('0.5%'),
+            marginTop: height('0.5%'),
             color: theme.colors.primary,
         },
         flatList: {
@@ -107,8 +91,7 @@ export const useStyles = () => {
         flatListLast: {
             flexGrow: 1,
             marginTop: 10,
-            marginBottom: hp('3%'),
-            justifyContent: 'center',
+            marginBottom: height('3%'),
         },
         searchView: {
             marginTop: 20,
@@ -126,7 +109,7 @@ export const useStyles = () => {
             borderRadius: 30,
             justifyContent: 'space-between',
             alignItems: 'center',
-            height: hp('5%'),
+            height: height('5%'),
             backgroundColor: '#E7E5E7',
         },
         searchViewChildren: {
@@ -135,20 +118,20 @@ export const useStyles = () => {
             color: theme.colors.text,
         },
         books: {
-            height: hp('2%'),
-            width: wp('1%'),
+            height: height('2%'),
+            width: width('1%'),
             borderRadius: 4,
         },
 
         bookTrending: {
-            height: hp('25%'),
-            width: wp('37%'),
+            height: height('25%'),
+            width: width('37%'),
             borderRadius: 4,
         },
 
         bookGeneral: {
-            height: hp('20%'),
-            width: wp('30%'),
+            height: height('20%'),
+            width: width('30%'),
 
             borderRadius: 4,
         },
