@@ -166,8 +166,7 @@ export const useStyles = () => {
             marginTop: 5,
             alignSelf: 'center',
         },
-        passwordInput:
-        {
+        passwordInput: {
             alignSelf: 'center',
             borderRadius: 20,
             margin: 5,

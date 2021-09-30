@@ -67,8 +67,7 @@ export const useStyles = () => {
             alignSelf: 'center',
             justifyContent: 'center',
         },
-        inputView:
-        {
+        inputView: {
             backgroundColor: 'white',
             width: width('90%'),
             zIndex: 5,

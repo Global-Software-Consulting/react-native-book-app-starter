@@ -8,7 +8,7 @@ export const useStyles = () => {
     const width = getPercentageWidth();
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
-    
+
     const styles = StyleSheet.create({
         container: {
             backgroundColor: theme.colors.background,
@@ -19,7 +19,7 @@ export const useStyles = () => {
             height: windowHeight > windowWidth ? height('15%') : height('60%'),
             width: width('30%'),
             marginVertical: 20,
-            borderRadius:windowHeight > windowWidth ? 70: 120,
+            borderRadius: windowHeight > windowWidth ? 70 : 120,
             backgroundColor: 'transparent',
         },
         horizontalRuler: {

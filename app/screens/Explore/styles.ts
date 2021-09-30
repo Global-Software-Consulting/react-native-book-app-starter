@@ -1,4 +1,4 @@
-import {  StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
 import { Dimensions } from 'react-native';
@@ -18,13 +18,12 @@ export const useStyles = () => {
             marginBottom: height('10%'),
         },
         favoriteView: {
-            
             alignItems: 'center',
             justifyContent: 'center',
         },
         bookmark: {
             margin: 2,
-            fontWeight:'bold'
+            fontWeight: 'bold',
         },
         imageError: {
             height: windowHeight > windowWidth ? height('50%') : height('100%'),
@@ -33,14 +32,14 @@ export const useStyles = () => {
         },
         mainViewSetting: { height: height('100%') },
         name: {
-            fontSize:windowHeight > windowWidth ? width('5%') : width('3%'),
+            fontSize: windowHeight > windowWidth ? width('5%') : width('3%'),
             fontWeight: 'bold',
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
             color: theme.colors.text,
         },
         middleView: {
-            marginBottom:  height('25%') ,
+            marginBottom: windowHeight > windowWidth ? height('15%') : height('25%'),
         },
         nameShimmer: {
             width: width('25%'),
@@ -49,7 +48,7 @@ export const useStyles = () => {
             marginBottom: 2,
         },
         tagLine: {
-            fontSize:windowHeight > windowWidth ? width('4%') : width('2%'),
+            fontSize: windowHeight > windowWidth ? width('4%') : width('2%'),
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
             color: theme.colors.text,
@@ -60,7 +59,7 @@ export const useStyles = () => {
             backgroundColor: '#E7E5E7',
         },
         listCaption: {
-            fontSize:windowHeight > windowWidth ? width('4%') : width('2%'),
+            fontSize: windowHeight > windowWidth ? width('4%') : width('2%'),
             marginTop: height('2%'),
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
@@ -93,7 +92,6 @@ export const useStyles = () => {
             flexGrow: 1,
             marginTop: 10,
             marginBottom: height('3%'),
-         
         },
         searchView: {
             marginTop: 20,

@@ -44,13 +44,12 @@ export const useStyles = () => {
             width: width('50%'),
             color: 'black',
         },
-        genderPicker:
-            {
-                width: width('60%'),
-                alignSelf: 'center',
-                borderRadius: 20,
-                marginTop: 10,
-            },
+        genderPicker: {
+            width: width('60%'),
+            alignSelf: 'center',
+            borderRadius: 20,
+            marginTop: 10,
+        },
         infoView: {
             marginBottom: 10,
             borderColor: theme.colors.text,
@@ -61,24 +60,23 @@ export const useStyles = () => {
             height: 50,
         },
         cardView: {
-                backgroundColor: 'white',
-                width: width('90%'),
-                zIndex: 5,
-                borderRadius: 20,
-                marginTop: -30,
-                alignSelf: 'center',
-                justifyContent: 'center',
+            backgroundColor: 'white',
+            width: width('90%'),
+            zIndex: 5,
+            borderRadius: 20,
+            marginTop: -30,
+            alignSelf: 'center',
+            justifyContent: 'center',
         },
-        inputView: 
-            {
-                marginBottom: 10,
-                borderColor: theme.colors.text,
-                borderRadius: 20,
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: width('80%'),
+        inputView: {
+            marginBottom: 10,
+            borderColor: theme.colors.text,
+            borderRadius: 20,
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: width('80%'),
             height: height('10%'),
-            },
+        },
         editView: {
             backgroundColor: '#00416A',
             alignContent: 'center',
@@ -131,7 +129,7 @@ export const useStyles = () => {
             flexDirection: 'row',
             marginTop: 30,
             borderRadius: 20,
-            marginBottom:20
+            marginBottom: 20,
         },
         button: { height: 40, width: width('60%'), marginTop: 5 },
         activity: {

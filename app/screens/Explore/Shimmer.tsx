@@ -5,13 +5,15 @@ import { FlatList, ScrollView, TouchableHighlight, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
 import { useStyles } from './styles';
-
+import { useTheme } from 'react-native-paper';
+import ThemeController from 'components/ThemeController';
 const ExploreShimmer: React.FC = () => {
     const styles = useStyles();
     const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient);
+    const theme = useTheme();
     const bookList = (item, style: 'General' | 'Custom') => {
         return (
-            <TouchableHighlight key={item} underlayColor="#FAF9F6">
+            <TouchableHighlight key={item} underlayColor={theme.colors.highlight}>
                 <BookCardShimmer styleSelect={style} />
             </TouchableHighlight>
         );

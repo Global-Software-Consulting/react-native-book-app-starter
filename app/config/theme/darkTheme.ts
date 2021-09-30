@@ -6,6 +6,7 @@ const darkTheme = {
         ...PaperDarkTheme.colors,
         primary: 'white',
         accent: 'gray',
+        highlight:'#23191E',
         background: 'black',
     },
 };

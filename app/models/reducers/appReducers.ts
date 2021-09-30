@@ -1,8 +1,8 @@
-import { Key, ReactNodeArray } from "react";
+import { Key, ReactNodeArray } from 'react';
 
 export interface IAppState {
-    books: Array<Books>, 
-    favorite: FavoriteBook | [];
+    books: Array<Books>;
+    favorite: Array<FavoriteBook>;
     isLoading: boolean;
     snackbarMessage?: string;
 }
@@ -15,7 +15,17 @@ export type Books = {
     shortSummary: string;
 };
 
-export type FavoriteBook=Pick<books, 'book' | 'bookId' |'averageRating' | 'title' |'id' | 'length' | 'numberOfPages' | 'shortSummary' >;
+export type FavoriteBook = Pick<
+    books,
+    | 'book'
+    | 'bookId'
+    | 'averageRating'
+    | 'title'
+    | 'id'
+    | 'length'
+    | 'numberOfPages'
+    | 'shortSummary'
+>;
 
 type books = {
     id: number;
@@ -26,5 +36,4 @@ type books = {
     numberOfPages: string | number;
     shortSummary: string;
     book: { title: string; id: number };
-
-}
+};
