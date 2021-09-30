@@ -1,5 +1,8 @@
 // interface IResponse {
 //     data: [];
+
+import { ImageSourcePropType } from "react-native";
+
 // }
 export interface ILoginState {
     isLoggedIn: boolean;
@@ -15,4 +18,5 @@ export type User = {
     email: string;
     gender: string;
     status: string;
+    image?: ImageSourcePropType;
 };
