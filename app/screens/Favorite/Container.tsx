@@ -47,7 +47,25 @@ const Container: React.FC<Props> = (props) => {
         //to check if the internet connection is working
         navigation.navigate('BookDetail', params);
     };
-
+    const bookList = (item) => {
+        return (
+            <TouchableHighlight
+                key={item}
+                underlayColor="#FAF9F6"
+                onPress={() => {
+                    navigateToDetails(item.bookId);
+                }}>
+                <BookCard
+                    url={generateRandomURL()}
+                    styleSelect="Large"
+                    id={item?.book.id}
+                    bookTitle={item?.book?.title}
+                    book={favoriteBooks}
+                    hideIcon={false}
+                />
+            </TouchableHighlight>
+        );
+    };
     return (
         <View style={styles.mainView}>
             {favoriteBooks?.length > 0 ? (
@@ -58,23 +76,7 @@ const Container: React.FC<Props> = (props) => {
                     style={styles.flatList}
                     onRefresh={onRefresh}
                     refreshing={isLoading}
-                    renderItem={({ item }) => (
-                        <TouchableHighlight
-                            key={item}
-                            underlayColor="#FAF9F6"
-                            onPress={() => {
-                                navigateToDetails(item.bookId);
-                            }}>
-                            <BookCard
-                                url={generateRandomURL()}
-                                styleSelect="Large"
-                                id={item?.book.id}
-                                bookTitle={item?.book?.title}
-                                book={favoriteBooks}
-                                hideIcon={false}
-                            />
-                        </TouchableHighlight>
-                    )}
+                    renderItem={({ item }) => bookList(item)}
                     showsHorizontalScrollIndicator={false}
                 />
             ) : (
