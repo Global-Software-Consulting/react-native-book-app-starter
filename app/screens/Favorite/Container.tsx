@@ -1,23 +1,15 @@
 import { useNavigation } from '@react-navigation/native';
-import { Dimensions } from 'react-native';
 //importing card component
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
+import { FavoriteBook } from 'models/reducers/appReducers';
 import { ReducerState } from 'models/reducers/index';
-import React, { useEffect, useState } from 'react';
-import {
-    FlatList,
-    Image,
-    RefreshControl,
-    ScrollView,
-    TouchableHighlight,
-    View,
-} from 'react-native';
-import { Text } from 'react-native-paper';
-import { useTheme } from 'react-native-paper';
+import React, { useState } from 'react';
+import { Dimensions, FlatList, Image, ScrollView, TouchableHighlight, View } from 'react-native';
+import { Text, useTheme } from 'react-native-paper';
 import { useSelector } from 'react-redux';
 import { useStyles } from './styles';
-import { IParams, Props } from './types';
+import { Props } from './types';
 
 const Container: React.FC<Props> = (props) => {
     const dummyImages = [
@@ -41,17 +33,16 @@ const Container: React.FC<Props> = (props) => {
     const windowHeight = Dimensions.get('window').height;
     const navigation = useNavigation();
     const isLoading = useSelector((state: ReducerState) => state.loadingReducer.isLoading);
-    const [columns, setColumns] = useState<number>(2);
     const favoriteBooks = useSelector((state: ReducerState) => state.appReducer.favorite);
     const { onRefresh } = props;
-    const navigateToDetails = async (params: IParams) => {
+    const navigateToDetails = async (params: number) => {
         //to check if the internet connection is working
-        navigation.navigate('BookDetail', params);
+        navigation.navigate('BookDetail' as never, params as never);
     };
-    const bookList = (item) => {
+    const bookList = (item: FavoriteBook) => {
         return (
             <TouchableHighlight
-                key={item}
+                key={item.id}
                 underlayColor={theme.colors.highlight}
                 onPress={() => {
                     navigateToDetails(item.bookId);

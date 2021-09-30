@@ -1,3 +1,5 @@
+import { Books } from 'screens/BookDetail/types';
+
 export interface Props {
     id: number;
     hideIcon?: boolean;
@@ -6,6 +8,7 @@ export interface Props {
     styleSelect: 'General' | 'Custom' | 'Large' | 'ExtraLarge';
     authorName?: string;
     isFavorite?: boolean;
+    book?: Array<Books> | Books;
 }
 
 export interface IData {

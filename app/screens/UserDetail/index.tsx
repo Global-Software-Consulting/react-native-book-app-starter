@@ -17,9 +17,9 @@ const UserDetail: React.FC = () => {
     );
     //defining states
     const [isEditing, setIsEditing] = useState(false);
-    const [firstName, setFirstName] = useState(userData?.firstName);
-    const [lastName, setLastName] = useState(userData?.lastName);
-    const [email, setEmail] = useState(userData?.email);
+    const [firstName, setFirstName] = useState<string>(userData?.firstName);
+    const [lastName, setLastName] = useState<string>(userData?.lastName);
+    const [email, setEmail] = useState<string>(userData?.email);
     const { t } = useTranslation();
     const styles = useStyles();
 

@@ -4,13 +4,19 @@
 import { ILoginResponse } from 'models/api/login';
 import * as types from './types';
 
-export interface UserData {
-    email: string;
-    password: string;
-    gender: string;
-    firstName: string;
-    lastName: string;
+
+export type UserData = Pick<UserDetails,'email' | 'password'>
+
+
+export interface UserDetails {
+    email?: string;
+    password?: string;
+    gender?: string;
+    firstName?: string;
+    lastName?: string;
 }
+
+
 
 export function requestLogin(params: UserData) {
     return {
@@ -118,7 +124,7 @@ export function forgotPasswordResponse(payload: UserData): {
         payload,
     };
 }
-export function updateProfileRequest(data: UserData) {
+export function updateProfileRequest(data: UserDetails) {
     return {
         type: types.UPDATE_PROFILE_REQUEST,
         data,

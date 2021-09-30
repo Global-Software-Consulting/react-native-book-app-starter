@@ -7,7 +7,7 @@ import { ActivityIndicator, Image, TextInput, View } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import LinearGradient from 'react-native-linear-gradient';
-import { Button, Text, useTheme } from 'react-native-paper';
+import { Button, Text } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/Signup/styles';
 import * as appActions from 'store/actions/appActions';
@@ -17,10 +17,8 @@ import { ISignupData } from './types';
 const Signup: React.FC = () => {
     const dispatch = useDispatch();
     //defining states
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState<boolean>(false);
     const { t } = useTranslation();
-    const theme = useTheme();
-
     const isLoading = useSelector(
         (state: { loadingReducer: IAppState }) => state.loadingReducer.isLoading,
     );

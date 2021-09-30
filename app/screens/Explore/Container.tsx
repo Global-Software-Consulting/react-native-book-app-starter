@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
 import { Books, IAppState } from 'models/reducers/appReducers';
-import React, { Key, ReactNodeArray } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import {
     FlatList,
@@ -13,11 +13,10 @@ import {
     TouchableHighlight,
     View,
 } from 'react-native';
-import { Text } from 'react-native-paper';
+import { Text, useTheme } from 'react-native-paper';
 import { useSelector } from 'react-redux';
 import { useStyles } from 'screens/Explore/styles';
-import { IParams, Props } from './types';
-import { useTheme } from 'react-native-paper';
+import { Props } from './types';
 const ExploreComponent: React.FC<Props> = (props) => {
     //theme handling
     const styles = useStyles();
@@ -45,7 +44,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
         (state: { loadingReducer: IAppState }) => state.loadingReducer.isLoading,
     );
 
-    const navigateToDetails = (params: IParams) => {
+    const navigateToDetails = (params: number) => {
         navigation.navigate('BookDetail' as never, params as never);
     };
 

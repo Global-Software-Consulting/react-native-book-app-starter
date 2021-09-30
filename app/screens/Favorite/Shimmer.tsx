@@ -11,7 +11,7 @@ const Shimmer: React.FC = () => {
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
     const theme = useTheme();
-    const bookList = (item) => {
+    const bookList = (item: number) => {
         return (
             <TouchableHighlight
                 key={item}
