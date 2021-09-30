@@ -30,7 +30,7 @@ export default function* loginAsync(action: LoginDetail) {
     try {
         yield put(loginActions.enableLoader());
         //how to call api
-        const loginCall: Response = yield call(loginUser, action.params);
+        const loginCall: Response = yield call(loginUser, action);
 
         if (loginCall.status === 'networkFailed') {
             yield put(loginActions.disableLoader());

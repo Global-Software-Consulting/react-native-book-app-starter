@@ -20,22 +20,32 @@ const ForgotPassword: React.FC = () => {
     //fetching data from store
     const [isLoading, setIsLoading] = useState<boolean>();
 
+    const validate = (text: string) => {
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+        return reg.test(text);
+    };
+
     const sendResetLink = () => {
         if (email === '') {
             Toast.show('Enter email address');
         } else {
-            // dispatch(loginActions.IForgotPasswordRequest(email));
-            try {
-                setIsLoading(true);
-                forgotPassword(email).then((response) => {
-                    dispatch(snackbarActions.enableSnackbar(response.message));
+            if (validate(email)) {
+                // dispatch(loginActions.IForgotPasswordRequest(email));
+                try {
+                    setIsLoading(true);
+                    forgotPassword(email).then((response) => {
+                        dispatch(snackbarActions.enableSnackbar(response.message));
+                        setIsLoading(false);
+                    });
+                    setTimeout(() => {
+                        dispatch(snackbarActions.disableSnackbar());
+                    }, 4000);
+                } catch {
                     setIsLoading(false);
-                });
-                setTimeout(() => {
-                    dispatch(snackbarActions.disableSnackbar());
-                }, 4000);
-            } catch {
-                dispatch(snackbarActions.enableSnackbar('Operation failed, please try again'));
+                    dispatch(snackbarActions.enableSnackbar('Operation failed, please try again'));
+                }
+            } else {
+                Toast.show('Incorrect email format');
             }
         }
     };
@@ -43,7 +53,7 @@ const ForgotPassword: React.FC = () => {
     return (
         <KeyboardAwareScrollView style={{ flex: 1 }}>
             <LinearGradient
-                colors={['#00416A', '#E4E5E6']}
+                colors={['#00416A', '#00416A', '#E4E5E6']}
                 start={{ x: 0.0, y: 0.5 }}
                 end={{ x: 0.1, y: 3.0 }}
                 locations={[0, 0.5, 0.6]}

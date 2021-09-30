@@ -5,15 +5,18 @@ import { ILoginResponse } from 'models/api/login';
 import * as types from './types';
 
 
-export type UserData = Pick<UserDetails,'email' | 'password'>
+export type UserData = Pick<UserDetails, 'email' | 'password' | 'status'
+| 'result'>
 
 
 export interface UserDetails {
-    email?: string;
+    email: string;
     password?: string;
     gender?: string;
     firstName?: string;
     lastName?: string;
+    status?: string,
+    result?:string
 }
 
 
