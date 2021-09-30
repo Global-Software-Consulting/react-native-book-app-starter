@@ -52,15 +52,16 @@ const Container: React.FC<Props> = (props) => {
         <View style={styles.mainView}>
             {favoriteBooks?.length > 0 ? (
                 <FlatList
-                    numColumns={windowHeight > windowWidth ? 2 : 3}
-                    key={windowHeight > windowWidth ? 2 : 3}
+                    numColumns={windowHeight > windowWidth ? 2 : 4}
+                    key={windowHeight > windowWidth ? 2 : 4}
                     data={favoriteBooks}
+                    style={styles.flatList}
                     onRefresh={onRefresh}
                     refreshing={isLoading}
                     renderItem={({ item }) => (
                         <TouchableHighlight
                             key={item}
-                            underlayColor="grey"
+                            underlayColor="#FAF9F6"
                             onPress={() => {
                                 navigateToDetails(item.bookId);
                             }}>
@@ -77,10 +78,10 @@ const Container: React.FC<Props> = (props) => {
                     showsHorizontalScrollIndicator={false}
                 />
             ) : (
-                <View style={styles.favoriteView}>
+                <ScrollView contentContainerStyle={styles.favoriteView}>
                     <Image source={images.books.noBookFound} style={styles.imageError} />
                     <Text style={styles.bookmark}>No bookmarks available</Text>
-                </View>
+                </ScrollView>
             )}
         </View>
     );

@@ -14,19 +14,19 @@ export const useStyles = () => {
             paddingHorizontal: 0,
         },
         favoriteView: {
-            flex: 1,
-            paddingBottom: 2,
-        },
+            marginBottom: 2,
+            minWidth: width('100%'),
+            alignItems:'center'        },
         mainShimmerView: {
             height: height('100%'),
             justifyContent: 'center',
             alignItems: 'center',
         },
         bookmark: {
-            margin: 2,
+            marginBottom:height('25%'),
         },
         imageError: {
-            height: height('50%'),
+            height: windowHeight > windowWidth ? height('50%') : height('100%'),
             width: width('50%'),
             tintColor: theme.colors.text,
         },
@@ -66,15 +66,15 @@ export const useStyles = () => {
             marginTop: 30,
         },
         flatList: {
-            height: windowHeight > windowWidth ? height('100%') : width('100'),
-            marginTop: 10,
+            marginTop: height('5%'),
             flexDirection: 'column',
-            marginBottom: 30,
+            marginBottom: height('20%'),
         },
         mainView: {
             alignItems: 'center',
             backgroundColor: theme.colors.background,
-            minHeight:height('100%')
+            minHeight: height('100%'),
+            
         },
         books: {
             height: height('2%'),
