@@ -1,20 +1,20 @@
 //importing card component
-import { useDeviceOrientation } from '@react-native-community/hooks';
 import BookCardShimmer from 'components/BookCard/BookCardShimmer';
 import React from 'react';
+import { Dimensions } from 'react-native';
 import { FlatList, TouchableHighlight, View } from 'react-native';
 import { useStyles } from './styles';
 
 const Shimmer: React.FC = () => {
     //theme handling
     const styles = useStyles();
-    const orientation = useDeviceOrientation();
-
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
     return (
         <View style={styles.mainShimmerView}>
             <FlatList
-                numColumns={orientation.portrait ? 2 : 4}
-                key={orientation.portrait ? 2 : 4}
+                numColumns={windowHeight > windowWidth ? 2 : 3}
+                key={windowHeight > windowWidth ? 2 : 3}
                 data={[0, 0, 0, 0, 0, 0, 0, 0]}
                 contentContainerStyle={styles.flatList}
                 renderItem={({ item }) => (

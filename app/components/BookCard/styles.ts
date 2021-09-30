@@ -1,12 +1,13 @@
 import { StyleSheet } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
-import { useDeviceOrientation } from '@react-native-community/hooks';
+import { Dimensions } from 'react-native';
 export const useStyles = () => {
     const width = getPercentageWidth();
     const height = getPercentageHeight();
-    const orientation = useDeviceOrientation();
-    console.log('Or>>', orientation);
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
+
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -55,26 +56,26 @@ export const useStyles = () => {
         },
 
         bookTrending: {
-            height: orientation.portrait ? height('25%') : height('50%'),
-            width: orientation.portrait ? width('37%') : width('15%'),
+            height: windowHeight>windowWidth ? height('25%') : height('50%'),
+            width: windowHeight>windowWidth ? width('37%') : width('15%'),
             borderRadius: 15,
         },
 
         bookGeneral: {
-            height: orientation.portrait ? height('25%') : height('40%'),
-            width: orientation.portrait ? width('30%') : width('14%'),
+            height: windowHeight>windowWidth ? height('25%') : height('40%'),
+            width: windowHeight>windowWidth ? width('30%') : width('14%'),
             borderRadius: 15,
         },
 
         bookLarge: {
-            height: orientation.portrait ? height('30%') : height('50%'),
-            width: orientation.portrait ? width('40%') : width('20%'),
+            height: windowHeight>windowWidth ? height('30%') : height('50%'),
+            width: windowHeight>windowWidth ? width('40%') : width('20%'),
             borderRadius: 15,
             margin: 10,
         },
         bookLargeShimmer: {
-            height: orientation.portrait ? height('30%') : height('50%'),
-            width: orientation.portrait ? width('40%') : width('20%'),
+            height: windowHeight>windowWidth ? height('30%') : height('50%'),
+            width: windowHeight>windowWidth ? width('40%') : width('20%'),
             borderRadius: 15,
             margin: 10,
             backgroundColor: '#E7E5E7',
@@ -89,8 +90,8 @@ export const useStyles = () => {
         },
 
         bookTrendingShimmer: {
-            height: orientation.portrait ? height('25%') : height('50%'),
-            width: orientation.portrait ? width('37%') : width('15%'),
+            height: windowHeight>windowWidth ? height('25%') : height('50%'),
+            width: windowHeight>windowWidth ? width('37%') : width('15%'),
             borderRadius: 15,
             backgroundColor: '#E7E5E7',
         },
@@ -117,8 +118,8 @@ export const useStyles = () => {
         },
 
         bookGeneralShimmer: {
-            height: orientation.portrait ? height('25%') : height('40%'),
-            width: orientation.portrait ? width('30%') : width('14%'),
+            height: windowHeight>windowWidth ? height('25%') : height('40%'),
+            width: windowHeight>windowWidth ? width('30%') : width('14%'),
             borderRadius: 15,
         },
 
@@ -131,26 +132,26 @@ export const useStyles = () => {
 
         heartIconTrending: {
             position: 'absolute',
-            marginVertical: orientation.portrait ? height('21%') : height('40%'),
+            marginVertical: windowHeight>windowWidth ? height('21%') : height('40%'),
             marginHorizontal: DeviceInfo.isTablet()
                 ? width('9%')
-                : orientation.portrait
+                : windowHeight>windowWidth
                 ? width('4%')
                 : width('1%'),
         },
         heartIconLarge: {
             position: 'absolute',
-            marginVertical: orientation.portrait ? height('26%') : height('42%'),
+            marginVertical: windowHeight>windowWidth ? height('26%') : height('42%'),
             marginHorizontal: DeviceInfo.isTablet() ? width('9%') : width('5%'),
         },
         textTitle: {
-            maxWidth: orientation.portrait ? width('30%') : width('15%'),
+            maxWidth: windowHeight>windowWidth ? width('30%') : width('15%'),
             fontWeight: 'bold',
             alignSelf: 'center',
             textAlign: 'center',
         },
         textLargeTitle: {
-            maxWidth: orientation.portrait ? width('30%') : width('10%'),
+            maxWidth: windowHeight>windowWidth ? width('30%') : width('10%'),
             fontWeight: 'bold',
             alignSelf: 'center',
             textAlign: 'center',
@@ -163,17 +164,17 @@ export const useStyles = () => {
         },
         textTitleShimmer: {
             marginTop:5,
-            maxWidth: orientation.portrait ? width('30%') : width('15%'),
+            maxWidth: windowHeight>windowWidth ? width('30%') : width('15%'),
             fontWeight: 'bold',
             alignSelf: 'center',
             textAlign: 'center',
         },
         heartIconGeneral: {
             position: 'absolute',
-            marginVertical: orientation.portrait ? height('19%') : height('32%'),
+            marginVertical: windowHeight>windowWidth ? height('19%') : height('32%'),
             marginHorizontal: DeviceInfo.isTablet()
                 ? width('7%')
-                : orientation.portrait
+                : windowHeight>windowWidth
                 ? width('2%')
                 : width('2%'),
         },

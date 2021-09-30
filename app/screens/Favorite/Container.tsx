@@ -1,6 +1,5 @@
-//to update the favorites list
-import { useDeviceOrientation } from '@react-native-community/hooks';
 import { useNavigation } from '@react-navigation/native';
+import { Dimensions } from 'react-native';
 //importing card component
 import BookCard from 'components/BookCard/BookCard';
 import images from 'config/images';
@@ -37,10 +36,11 @@ const Container: React.FC<Props> = (props) => {
     };
     //theme handling
     const styles = useStyles();
-    const orientation = useDeviceOrientation();
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
     const navigation = useNavigation();
     const isLoading = useSelector((state: ReducerState) => state.loadingReducer.isLoading);
-    const [columns, setColumns] = useState<number>();
+    const [columns, setColumns] = useState<number>(2);
     const favoriteBooks = useSelector((state: ReducerState) => state.appReducer.favorite);
     const { onRefresh } = props;
     const navigateToDetails = async (params: IParams) => {
@@ -48,18 +48,12 @@ const Container: React.FC<Props> = (props) => {
         navigation.navigate('BookDetail', params);
     };
 
-    useEffect(() => {
-        if (orientation.portrait) {
-            setColumns(2);
-        } else setColumns(3);
-    }, [orientation]);
-
     return (
         <View style={styles.mainView}>
             {favoriteBooks?.length > 0 ? (
                 <FlatList
-                    numColumns={columns}
-                    key={columns}
+                    numColumns={windowHeight > windowWidth ? 2 : 3}
+                    key={windowHeight > windowWidth ? 2 : 3}
                     data={favoriteBooks}
                     onRefresh={onRefresh}
                     refreshing={isLoading}

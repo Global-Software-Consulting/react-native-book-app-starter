@@ -1,14 +1,13 @@
 import {  StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
-import { useDeviceOrientation } from '@react-native-community/hooks';
-
+import { Dimensions } from 'react-native';
 export const useStyles = () => {
     const theme = useTheme();
     const width = getPercentageWidth();
     const height = getPercentageHeight();
-    const orientation = useDeviceOrientation();
-
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
 
     const styles = StyleSheet.create({
         container: {
@@ -28,13 +27,13 @@ export const useStyles = () => {
             fontWeight:'bold'
         },
         imageError: {
-            height: orientation.portrait ? height('50%') : height('100%'),
+            height: windowHeight > windowWidth ? height('50%') : height('100%'),
             width: width('50%'),
             tintColor: theme.colors.text,
         },
         mainViewSetting: { height: height('100%') },
         name: {
-            fontSize:orientation.portrait ? width('5%') : width('3%'),
+            fontSize:windowHeight > windowWidth ? width('5%') : width('3%'),
             fontWeight: 'bold',
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
@@ -50,7 +49,7 @@ export const useStyles = () => {
             marginBottom: 2,
         },
         tagLine: {
-            fontSize:orientation.portrait ? width('4%') : width('2%'),
+            fontSize:windowHeight > windowWidth ? width('4%') : width('2%'),
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
             color: theme.colors.text,
@@ -61,7 +60,7 @@ export const useStyles = () => {
             backgroundColor: '#E7E5E7',
         },
         listCaption: {
-            fontSize:orientation.portrait ? width('4%') : width('2%'),
+            fontSize:windowHeight > windowWidth ? width('4%') : width('2%'),
             marginTop: height('2%'),
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
