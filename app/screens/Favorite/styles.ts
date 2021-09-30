@@ -74,6 +74,7 @@ export const useStyles = () => {
         mainView: {
             alignItems: 'center',
             backgroundColor: theme.colors.background,
+            minHeight:height('100%')
         },
         books: {
             height: height('2%'),
