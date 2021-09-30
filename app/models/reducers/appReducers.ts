@@ -8,7 +8,7 @@ export interface IAppState {
 }
 
 export type Books = {
-    id: number;
+    id: number ;
     averageRating: number;
     title: string;
     numberOfPages: number;

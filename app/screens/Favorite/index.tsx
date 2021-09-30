@@ -9,7 +9,7 @@ import Container from './Container';
 import Shimmer from './Shimmer';
 //importing card component
 
-const base_url = 'https://ebook-application.herokuapp.com/v1/';
+const base_url: string = 'https://ebook-application.herokuapp.com/v1/';
 
 const Favorite: React.FC = () => {
     //theme handling

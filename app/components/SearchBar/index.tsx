@@ -8,7 +8,7 @@ import * as appActions from 'store/actions/appActions';
 import { useStyles } from './styles';
 
 const SearchBar: React.FC = () => {
-    const [searchText, setSearchText] = useState('');
+    const [searchText, setSearchText] = useState<string>('');
     const theme = useTheme();
     const styles = useStyles();
     const dispatch = useDispatch();

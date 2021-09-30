@@ -10,12 +10,10 @@ import { useDispatch } from 'react-redux';
 import { useStyles } from 'screens/ForgotPassword/styles';
 import forgotPassword from 'services/forgotPassword';
 import * as snackbarActions from 'store/actions/snackbarActions';
-import { useTheme } from 'react-native-paper';
 const ForgotPassword: React.FC = () => {
     //defining states
     const [email, setEmail] = useState('');
     const dispatch = useDispatch();
-    const theme = useTheme();
     const styles = useStyles();
     const { t } = useTranslation();
 

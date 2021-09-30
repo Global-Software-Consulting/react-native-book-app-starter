@@ -18,10 +18,18 @@ import * as appActions from 'store/actions/appActions';
 import { useStyles } from './styles';
 import { IData, Props } from './types';
 
-const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, authorName }) => {
+const BookCard: React.FC<Props> = ({
+    id,
+    url,
+    styleSelect,
+    bookTitle,
+    hideIcon,
+    authorName,
+    book,
+}) => {
     const favoriteBooks = useSelector((state: ReducerState) => state.appReducer.favorite);
     const isFocused = useIsFocused();
-    const [isFavorite, setIsFavorite] = useState(false);
+    const [isFavorite, setIsFavorite] = useState<boolean>(false);
     const dispatch = useDispatch();
     const styles = useStyles();
     useEffect(() => {

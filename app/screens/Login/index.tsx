@@ -1,7 +1,7 @@
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+//import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useNavigation } from '@react-navigation/core';
 import { ReducerState } from 'models/reducers/index';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
@@ -11,11 +11,11 @@ import { Button } from 'react-native-paper';
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-menu';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useDispatch, useSelector } from 'react-redux';
+import { UserData } from 'store/actions/loginActions';
+import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
 import images from './../../config/images';
 import * as loginActions from './../../store/actions/loginActions';
 import { useStyles } from './styles';
-import { ILoginData } from './types';
-import { getPercentageWidth, getPercentageHeight } from 'utils/dimentionUtil';
 const Login: React.FC = () => {
     const dispatch = useDispatch();
     const height = getPercentageHeight();
@@ -24,8 +24,8 @@ const Login: React.FC = () => {
     const navigation = useNavigation();
     const { t, i18n } = useTranslation();
     const styles = useStyles();
-    const [secure, setSecure] = useState(true);
-    const [showActivityIndicator, setShowActivityIndicator] = useState(false);
+    const [secure, setSecure] = useState<boolean>(true);
+    const [showActivityIndicator, setShowActivityIndicator] = useState<boolean>(false);
     const isLoading = useSelector((state: ReducerState) => state.loadingReducer.isLoading);
     //form data
 
@@ -35,12 +35,12 @@ const Login: React.FC = () => {
         formState: { errors },
     } = useForm();
 
-    const performLoginOperation = async (data: ILoginData) => {
+    const performLoginOperation = async (data: UserData) => {
         setShowActivityIndicator(isLoading);
         dispatch(loginActions.requestLogin(data));
     };
 
-    const onSubmit = (data: ILoginData) => {
+    const onSubmit = (data: UserData) => {
         performLoginOperation(data);
     };
 
@@ -152,9 +152,10 @@ const Login: React.FC = () => {
 
                 <TouchableOpacity
                     style={styles.touchableOpacity}
-                    underlayColor="transparent"
-                    onPress={() => navigation.navigate('ForgotPassword')}>
-                    <Text style={styles.link} onPress={() => navigation.navigate('ForgotPassword')}>
+                    onPress={() => navigation.navigate('ForgotPassword' as never)}>
+                    <Text
+                        style={styles.link}
+                        onPress={() => navigation.navigate('ForgotPassword' as never)}>
                         {t('Forgot Password')}
                     </Text>
                 </TouchableOpacity>
@@ -173,7 +174,7 @@ const Login: React.FC = () => {
                     <Text>{t('Do not have an account?')} </Text>
                     <Text
                         style={{ color: '#00416A' }}
-                        onPress={() => navigation.navigate('Signup')}>
+                        onPress={() => navigation.navigate('Signup' as never)}>
                         {t('Sign up')}
                     </Text>
                 </View>
