@@ -25,6 +25,7 @@ const Shimmer: React.FC = () => {
         <View style={styles.mainShimmerView}>
             <FlatList
                 numColumns={windowHeight > windowWidth ? 2 : 4}
+                keyExtractor={(item, index) => 'key' + index}
                 key={windowHeight > windowWidth ? 2 : 4}
                 data={[0, 0, 0, 0, 0, 0, 0, 0]}
                 contentContainerStyle={styles.flatList}

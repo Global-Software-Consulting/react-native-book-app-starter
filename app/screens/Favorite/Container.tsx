@@ -64,6 +64,7 @@ const Container: React.FC<Props> = (props) => {
                 <FlatList
                     numColumns={windowHeight > windowWidth ? 2 : 4}
                     key={windowHeight > windowWidth ? 2 : 4}
+                    keyExtractor={(item, index) => 'key' + index}
                     data={favoriteBooks}
                     style={styles.flatList}
                     onRefresh={onRefresh}
