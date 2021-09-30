@@ -15,6 +15,7 @@ import { UserData } from 'store/actions/loginActions';
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
 import images from './../../config/images';
 import * as loginActions from './../../store/actions/loginActions';
+import Toast from 'react-native-simple-toast';
 import { useStyles } from './styles';
 const Login: React.FC = () => {
     const dispatch = useDispatch();
@@ -35,13 +36,22 @@ const Login: React.FC = () => {
         formState: { errors },
     } = useForm();
 
+    const validate = (text: string) => {
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+        return reg.test(text);
+    };
+
     const performLoginOperation = async (data: UserData) => {
         setShowActivityIndicator(isLoading);
         dispatch(loginActions.requestLogin(data));
     };
 
     const onSubmit = (data: UserData) => {
-        performLoginOperation(data);
+        if (validate(data.email)) {
+            performLoginOperation(data);
+        } else {
+            Toast.show('Incorrect email format');
+        }
     };
 
     // const window = Dimensions.get('window');

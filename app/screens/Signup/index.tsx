@@ -13,6 +13,7 @@ import { useStyles } from 'screens/Signup/styles';
 import * as appActions from 'store/actions/appActions';
 import * as loginActions from 'store/actions/loginActions';
 import { ISignupData } from './types';
+import Toast from 'react-native-simple-toast';
 
 const Signup: React.FC = () => {
     const dispatch = useDispatch();
@@ -32,9 +33,17 @@ const Signup: React.FC = () => {
         formState: { errors },
     } = useForm();
 
+    const validate = (text: string) => {
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+        return reg.test(text);
+    };
+
     const performSignUp = async (data: ISignupData) => {
-        dispatch(loginActions.signupRequest(data));
-        dispatch(appActions.getFavoriteBookRequest());
+        if (validate(data.email)) {
+            dispatch(loginActions.signupRequest(data));
+        } else {
+            Toast.show('Incorrect email format');
+        }
     };
 
     const onSubmit = (data: ISignupData) => {
@@ -46,7 +55,7 @@ const Signup: React.FC = () => {
     return (
         <KeyboardAwareScrollView style={{ flex: 1 }}>
             <LinearGradient
-                colors={['#00416A', '#E4E5E6']}
+                colors={['#00416A', '#00416A', '#E4E5E6']}
                 start={{ x: 0.0, y: 0.5 }}
                 end={{ x: 0.1, y: 3.0 }}
                 locations={[0, 0.5, 0.6]}

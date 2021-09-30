@@ -75,7 +75,7 @@ export const useStyles = () => {
             alignItems: 'center',
             justifyContent: 'center',
             width: width('80%'),
-            height: height('10%'),
+            height: height('5%'),
         },
         editView: {
             backgroundColor: '#00416A',
@@ -119,7 +119,7 @@ export const useStyles = () => {
         submit: {
             height: 40,
             width: width('60%'),
-            marginTop: 5,
+            marginTop: 1,
         },
         submitView: {
             backgroundColor: '#00416A',

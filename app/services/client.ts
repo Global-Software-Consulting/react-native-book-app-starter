@@ -4,7 +4,7 @@ import NetInfo from '@react-native-community/netinfo';
 import { IData } from './types';
 import { UpdateProfile } from './types';
 import { LoginDetail } from './types';
-
+import {  } from 'axios';
 const getAuthToken = async () => {
     try {
         const value = await AsyncStorage.getItem('token');
@@ -23,7 +23,7 @@ interface RequestInit {
 
 export default async function api(
     path: string,
-    body: IData | string | null | UpdateProfile | LoginDetail,
+    body: any,
     method: string,
     authorization = true,
 ) {

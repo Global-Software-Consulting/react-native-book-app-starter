@@ -3,10 +3,12 @@ export interface IData {
 }
 
 export interface UpdateProfile {
-    firstName: string;
-    lastName: string;
-    gender: string;
+    data: {
+        firstName: string;
+        lastName: string;
+        gender: string;
+    }
 }
-export interface LoginDetail {
-    params: string;
+export type LoginDetail = {
+    params?: string;
 }
