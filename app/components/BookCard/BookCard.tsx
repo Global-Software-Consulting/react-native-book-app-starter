@@ -13,35 +13,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import addBookToFavoite from 'services/addBookToFavoite';
 import removeBookFromFavoite from 'services/removeBookFromFavoite';
 import * as appActions from 'store/actions/appActions';
+import { Props, IData } from './types';
+import { ReducerState } from 'models/reducers/index';
 //importing style
 import { useStyles } from './styles';
-interface Props {
-    id: number;
-    hideIcon?: boolean;
-    url?: string;
-    bookTitle?: string;
-    styleSelect: 'General' | 'Custom' | 'Large' | 'ExtraLarge';
-    authorName?: string;
-    isFavorite?: boolean;
-}
-interface IState {
-    appReducer: IAppState;
-}
 
-interface IData {
-    id?: number;
-    bookId: number;
-    averageRating: number;
-    title: string;
-    numberOfPages: string | number;
-    shortSummary: string;
-    book: {
-        title: string;
-        id: number;
-    };
-}
 const BookCard: React.FC<Props> = ({ id, url, styleSelect, bookTitle, hideIcon, authorName }) => {
-    const favoriteBooks = useSelector((state: IState) => state.appReducer.favorite);
+    const favoriteBooks = useSelector((state: ReducerState) => state.appReducer.favorite);
     const isFocused = useIsFocused();
     const [isFavorite, setIsFavorite] = useState(false);
     const dispatch = useDispatch();
