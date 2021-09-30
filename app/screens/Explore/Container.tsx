@@ -14,8 +14,10 @@ import {
     View,
 } from 'react-native';
 import { Text, useTheme } from 'react-native-paper';
+import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 import { useSelector } from 'react-redux';
 import { useStyles } from 'screens/Explore/styles';
+import getBooks from 'services/getBooks';
 import { Props } from './types';
 const ExploreComponent: React.FC<Props> = (props) => {
     //theme handling
@@ -92,6 +94,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
                                 contentContainerStyle={styles.flatList}
                                 renderItem={({ item }) => bookList(item, 'Custom')}
                                 showsHorizontalScrollIndicator={false}
+                                keyExtractor={(item, index) => 'key' + index}
                             />
                             <View style={styles.horizontalRuler} />
                             <Text style={styles.listCaption}>{t('New Releases')}</Text>
@@ -103,6 +106,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
                                 contentContainerStyle={styles.flatList}
                                 renderItem={({ item }) => bookList(item, 'General')}
                                 showsHorizontalScrollIndicator={false}
+                                keyExtractor={(item, index) => 'key' + index}
                             />
                             <View style={styles.horizontalRuler} />
                             <Text style={styles.listCaption}>{t('Selected for you')}</Text>
@@ -114,6 +118,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
                                 contentContainerStyle={styles.flatListLast}
                                 renderItem={({ item }) => bookList(item, 'General')}
                                 showsHorizontalScrollIndicator={false}
+                                keyExtractor={(item, index) => 'key' + index}
                             />
                         </View>
                     ) : (

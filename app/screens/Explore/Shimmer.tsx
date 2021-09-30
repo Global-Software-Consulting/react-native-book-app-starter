@@ -32,6 +32,7 @@ const ExploreShimmer: React.FC = () => {
                     contentContainerStyle={styles.flatList}
                     renderItem={({ item }) => bookList(item, 'Custom')}
                     showsHorizontalScrollIndicator={false}
+                    keyExtractor={(item, index) => 'key' + index}
                 />
                 <ShimmerPlaceHolder style={styles.horizontalRuler} />
 
@@ -42,6 +43,7 @@ const ExploreShimmer: React.FC = () => {
                     contentContainerStyle={styles.flatList}
                     renderItem={({ item }) => bookList(item, 'General')}
                     showsHorizontalScrollIndicator={false}
+                    keyExtractor={(item, index) => 'key' + index}
                 />
 
                 <ShimmerPlaceHolder style={styles.horizontalRuler} />
@@ -53,6 +55,7 @@ const ExploreShimmer: React.FC = () => {
                     contentContainerStyle={styles.flatListLast}
                     renderItem={({ item }) => bookList(item, 'General')}
                     showsHorizontalScrollIndicator={false}
+                    keyExtractor={(item, index) => 'key' + index}
                 />
             </View>
         </ScrollView>
