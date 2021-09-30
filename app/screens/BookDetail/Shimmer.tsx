@@ -11,9 +11,9 @@ const Shimmer: React.FC = () => {
 
     return (
         <View>
-            <ScrollView>
+            <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
                 <ShimmerPlaceHolder style={styles.bookShimmer} />
-
+                <ShimmerPlaceHolder style={styles.horizontalRuler} />
                 <ShimmerPlaceHolder style={styles.horizontalRuler} />
 
                 <ShimmerPlaceHolder style={styles.mainShimmerView} />

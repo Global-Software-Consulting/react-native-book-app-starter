@@ -10,18 +10,21 @@ const Shimmer: React.FC = () => {
     const styles = useStyles();
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
+    const bookList = (item) => {
+        return (
+            <TouchableHighlight key={item} underlayColor="#FAF9F6" onPress={() => {}}>
+                <BookCardShimmer styleSelect="Large" />
+            </TouchableHighlight>
+        );
+    };
     return (
         <View style={styles.mainShimmerView}>
             <FlatList
-                numColumns={windowHeight > windowWidth ? 2 : 3}
-                key={windowHeight > windowWidth ? 2 : 3}
+                numColumns={windowHeight > windowWidth ? 2 : 4}
+                key={windowHeight > windowWidth ? 2 : 4}
                 data={[0, 0, 0, 0, 0, 0, 0, 0]}
                 contentContainerStyle={styles.flatList}
-                renderItem={({ item }) => (
-                    <TouchableHighlight key={item} underlayColor="grey" onPress={() => {}}>
-                        <BookCardShimmer styleSelect="Large" />
-                    </TouchableHighlight>
-                )}
+                renderItem={({ item }) => bookList(item)}
                 showsHorizontalScrollIndicator={false}
             />
         </View>

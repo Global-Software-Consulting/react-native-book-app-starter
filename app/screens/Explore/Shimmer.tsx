@@ -11,7 +11,7 @@ const ExploreShimmer: React.FC = () => {
     const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient);
     const bookList = (item, style: 'General' | 'Custom') => {
         return (
-            <TouchableHighlight key={item} underlayColor="transparent">
+            <TouchableHighlight key={item} underlayColor="#FAF9F6">
                 <BookCardShimmer styleSelect={style} />
             </TouchableHighlight>
         );

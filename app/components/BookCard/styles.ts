@@ -2,12 +2,13 @@ import { StyleSheet } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
 import { Dimensions } from 'react-native';
+import { useTheme } from 'react-native-paper';
 export const useStyles = () => {
     const width = getPercentageWidth();
     const height = getPercentageHeight();
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
-
+    const theme = useTheme();
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -56,33 +57,33 @@ export const useStyles = () => {
         },
 
         bookTrending: {
-            height: windowHeight>windowWidth ? height('25%') : height('50%'),
-            width: windowHeight>windowWidth ? width('37%') : width('15%'),
+            height: windowHeight > windowWidth ? height('25%') : height('50%'),
+            width: windowHeight > windowWidth ? width('37%') : width('15%'),
             borderRadius: 15,
         },
 
         bookGeneral: {
-            height: windowHeight>windowWidth ? height('25%') : height('40%'),
-            width: windowHeight>windowWidth ? width('30%') : width('14%'),
+            height: windowHeight > windowWidth ? height('25%') : height('40%'),
+            width: windowHeight > windowWidth ? width('30%') : width('14%'),
             borderRadius: 15,
         },
 
         bookLarge: {
-            height: windowHeight>windowWidth ? height('30%') : height('50%'),
-            width: windowHeight>windowWidth ? width('40%') : width('20%'),
+            height: windowHeight > windowWidth ? height('30%') : height('50%'),
+            width: windowHeight > windowWidth ? width('40%') : width('20%'),
             borderRadius: 15,
             margin: 10,
         },
         bookLargeShimmer: {
-            height: windowHeight>windowWidth ? height('30%') : height('50%'),
-            width: windowHeight>windowWidth ? width('40%') : width('20%'),
+            height: windowHeight > windowWidth ? height('30%') : height('50%'),
+            width: windowHeight > windowWidth ? width('40%') : width('20%'),
             borderRadius: 15,
             margin: 10,
             backgroundColor: '#E7E5E7',
         },
 
         bookExtraLarge: {
-            height: height('50%'),
+            height: windowHeight > windowWidth ? height('50%') : height('70%'),
             width: width('65%'),
             borderRadius: 20,
             margin: 5,
@@ -90,13 +91,13 @@ export const useStyles = () => {
         },
 
         bookTrendingShimmer: {
-            height: windowHeight>windowWidth ? height('25%') : height('50%'),
-            width: windowHeight>windowWidth ? width('37%') : width('15%'),
+            height: windowHeight > windowWidth ? height('25%') : height('50%'),
+            width: windowHeight > windowWidth ? width('37%') : width('15%'),
             borderRadius: 15,
             backgroundColor: '#E7E5E7',
         },
         bookTrendingExtraLargeShimmer: {
-            height: height('50%'),
+            height: windowHeight > windowWidth ? height('50%') : height('70%'),
             width: width('65%'),
             borderRadius: 20,
             margin: 5,
@@ -118,40 +119,49 @@ export const useStyles = () => {
         },
 
         bookGeneralShimmer: {
-            height: windowHeight>windowWidth ? height('25%') : height('40%'),
-            width: windowHeight>windowWidth ? width('30%') : width('14%'),
+            height: windowHeight > windowWidth ? height('25%') : height('40%'),
+            width: windowHeight > windowWidth ? width('30%') : width('14%'),
             borderRadius: 15,
         },
 
         bookView: {
+            shadowColor: theme.colors.primary,
+            shadowOffset: {
+                width: 0,
+                height: 6,
+            },
+            shadowOpacity: 0.37,
+            shadowRadius: 7.49,
+
+            elevation: 12,
             backgroundColor: 'transparent',
             margin: 2,
             borderRadius: 20,
-           
+            marginRight: 3,
         },
 
         heartIconTrending: {
             position: 'absolute',
-            marginVertical: windowHeight>windowWidth ? height('21%') : height('40%'),
+            marginVertical: windowHeight > windowWidth ? height('21%') : height('40%'),
             marginHorizontal: DeviceInfo.isTablet()
                 ? width('9%')
-                : windowHeight>windowWidth
+                : windowHeight > windowWidth
                 ? width('4%')
                 : width('1%'),
         },
         heartIconLarge: {
             position: 'absolute',
-            marginVertical: windowHeight>windowWidth ? height('26%') : height('42%'),
+            marginVertical: windowHeight > windowWidth ? height('26%') : height('42%'),
             marginHorizontal: DeviceInfo.isTablet() ? width('9%') : width('5%'),
         },
         textTitle: {
-            maxWidth: windowHeight>windowWidth ? width('30%') : width('15%'),
+            maxWidth: windowHeight > windowWidth ? width('30%') : width('15%'),
             fontWeight: 'bold',
             alignSelf: 'center',
             textAlign: 'center',
         },
         textLargeTitle: {
-            maxWidth: windowHeight>windowWidth ? width('30%') : width('10%'),
+            maxWidth: windowHeight > windowWidth ? width('30%') : width('10%'),
             fontWeight: 'bold',
             alignSelf: 'center',
             textAlign: 'center',
@@ -163,18 +173,18 @@ export const useStyles = () => {
             textAlign: 'center',
         },
         textTitleShimmer: {
-            marginTop:5,
-            maxWidth: windowHeight>windowWidth ? width('30%') : width('15%'),
+            marginTop: 5,
+            maxWidth: windowHeight > windowWidth ? width('30%') : width('15%'),
             fontWeight: 'bold',
             alignSelf: 'center',
             textAlign: 'center',
         },
         heartIconGeneral: {
             position: 'absolute',
-            marginVertical: windowHeight>windowWidth ? height('19%') : height('32%'),
+            marginVertical: windowHeight > windowWidth ? height('19%') : height('32%'),
             marginHorizontal: DeviceInfo.isTablet()
                 ? width('7%')
-                : windowHeight>windowWidth
+                : windowHeight > windowWidth
                 ? width('2%')
                 : width('2%'),
         },

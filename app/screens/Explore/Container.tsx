@@ -52,7 +52,7 @@ const ExploreComponent: React.FC<Props> = (props) => {
         return (
             <TouchableHighlight
                 key={item.id}
-                underlayColor="transparent"
+                underlayColor="#FAF9F6"
                 onPress={() => {
                     navigateToDetails(item.id);
                 }}>
