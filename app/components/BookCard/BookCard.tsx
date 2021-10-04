@@ -3,7 +3,7 @@ import { useIsFocused } from '@react-navigation/native';
 import { FavoriteBook } from 'models/reducers/appReducers';
 import { ReducerState } from 'models/reducers/index';
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 //image with placeholder
 import FastImage from 'react-native-fast-image';
 import { Text } from 'react-native-paper';
@@ -81,7 +81,7 @@ const BookCard: React.FC<Props> = ({
     };
 
     return (
-        <View style={styles.bookView}>
+        <View style={Platform.OS === 'android' ? styles.bookViewAndroid : styles.bookViewIOS}>
             <FastImage
                 source={{ uri: url, priority: FastImage.priority.normal }}
                 resizeMode="contain"

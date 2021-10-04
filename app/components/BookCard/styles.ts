@@ -60,6 +60,7 @@ export const useStyles = () => {
             height: windowHeight > windowWidth ? height('25%') : height('50%'),
             width: windowHeight > windowWidth ? width('37%') : width('15%'),
             borderRadius: 15,
+
         },
 
         bookGeneral: {
@@ -73,6 +74,7 @@ export const useStyles = () => {
             width: windowHeight > windowWidth ? width('40%') : width('20%'),
             borderRadius: 15,
             margin: 10,
+
         },
         bookLargeShimmer: {
             height: windowHeight > windowWidth ? height('30%') : height('50%'),
@@ -80,6 +82,7 @@ export const useStyles = () => {
             borderRadius: 15,
             margin: 10,
             backgroundColor: '#E7E5E7',
+
         },
 
         bookExtraLarge: {
@@ -88,13 +91,17 @@ export const useStyles = () => {
             borderRadius: 20,
             margin: 5,
             alignSelf: 'center',
+
         },
 
         bookTrendingShimmer: {
             height: windowHeight > windowWidth ? height('25%') : height('50%'),
             width: windowHeight > windowWidth ? width('37%') : width('15%'),
             borderRadius: 15,
+            margin: 5,
+
             backgroundColor: '#E7E5E7',
+
         },
         bookTrendingExtraLargeShimmer: {
             height: windowHeight > windowWidth ? height('50%') : height('70%'),
@@ -102,6 +109,7 @@ export const useStyles = () => {
             borderRadius: 20,
             margin: 5,
             alignSelf: 'center',
+
         },
 
         textTitleEnlarged: {
@@ -109,7 +117,7 @@ export const useStyles = () => {
             maxWidth: width('60%'),
             fontWeight: '500',
             alignSelf: 'center',
-            textAlign:'center'
+            textAlign: 'center',
         },
         authorTitleEnlarged: {
             maxWidth: width('55%'),
@@ -123,27 +131,27 @@ export const useStyles = () => {
             height: windowHeight > windowWidth ? height('25%') : height('40%'),
             width: windowHeight > windowWidth ? width('30%') : width('14%'),
             borderRadius: 15,
+            margin: 5,
             backgroundColor: '#E7E5E7',
-
         },
 
-        bookView: {
-            ...Platform.select({
-                ios: {
-                    shadowColor: 'grey',
-                    shadowOffset: { width: 0, height: 2 },
-                    shadowOpacity: 0.8,
-                    shadowRadius: 2,    
-                },
-                android: {
-                    elevation: 5,
-                },
-                }),
+        bookViewIOS: {
+            shadowColor: 'grey',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.8,
+            shadowRadius: 2,
             backgroundColor: 'transparent',
             margin: 2,
             borderRadius: 20,
             marginRight: 3,
         },
+        bookViewAndroid: {
+            backgroundColor: 'transparent',
+            margin: 2,
+            borderRadius: 20,
+            marginRight: 3,
+        },
+
 
         heartIconTrending: {
             position: 'absolute',
