@@ -14,8 +14,9 @@ import * as snackbarActions from 'store/actions/snackbarActions';
 import AppNavigation from './AppNavigation';
 import AuthNavigation from './AuthNavigation';
 import { navigationRef } from './NavigationService';
+import { RootStackProps } from './types';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackProps>();
 
 const App: React.FC = () => {
     const isDark = useSelector((state: ReducerState) => state.themeReducer.isDark);

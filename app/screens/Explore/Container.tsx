@@ -14,10 +14,8 @@ import {
     View,
 } from 'react-native';
 import { Text, useTheme } from 'react-native-paper';
-import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 import { useSelector } from 'react-redux';
 import { useStyles } from 'screens/Explore/styles';
-import getBooks from 'services/getBooks';
 import { Props } from './types';
 const ExploreComponent: React.FC<Props> = (props) => {
     //theme handling
