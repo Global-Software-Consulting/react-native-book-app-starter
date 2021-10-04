@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
 import { Dimensions } from 'react-native';
@@ -109,6 +109,7 @@ export const useStyles = () => {
             maxWidth: width('60%'),
             fontWeight: '500',
             alignSelf: 'center',
+            textAlign:'center'
         },
         authorTitleEnlarged: {
             maxWidth: width('55%'),
@@ -127,7 +128,17 @@ export const useStyles = () => {
         },
 
         bookView: {
-           
+            ...Platform.select({
+                ios: {
+                    shadowColor: 'grey',
+                    shadowOffset: { width: 0, height: 2 },
+                    shadowOpacity: 0.8,
+                    shadowRadius: 2,    
+                },
+                android: {
+                    elevation: 5,
+                },
+                }),
             backgroundColor: 'transparent',
             margin: 2,
             borderRadius: 20,
