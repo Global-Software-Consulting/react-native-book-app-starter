@@ -65,6 +65,7 @@ const Container: React.FC<Props> = (props) => {
                     numColumns={windowHeight > windowWidth ? 2 : 4}
                     key={windowHeight > windowWidth ? 2 : 4}
                     keyExtractor={(item, index) => 'key' + index}
+                    showsVerticalScrollIndicator={false}
                     data={favoriteBooks}
                     style={styles.flatList}
                     contentContainerStyle={{ flexGrow: 1 }}
