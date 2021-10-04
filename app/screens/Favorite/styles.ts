@@ -67,16 +67,16 @@ export const useStyles = () => {
             marginTop: 30,
         },
         flatList: {
-            marginTop: height('5%'),
+            marginTop: height('4%'),
             flexDirection: 'column',
             marginBottom: Platform.OS === "ios" ? height('20%') : height('30%'),
-            
+            minHeight: Platform.OS === "ios" ? height('74%') : height('75%')
 
         },
         mainView: {
             alignItems: 'center',
             backgroundColor: theme.colors.background,
-            minHeight: height('100%'),
+            minHeight:  height('100%') ,
         },
         books: {
             height: height('2%'),
