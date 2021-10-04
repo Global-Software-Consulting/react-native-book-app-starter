@@ -20,6 +20,7 @@ export const useStyles = () => {
         favoriteView: {
             alignItems: 'center',
             justifyContent: 'center',
+            marginBottom: height('6%')
         },
         bookmark: {
             margin: 2,
