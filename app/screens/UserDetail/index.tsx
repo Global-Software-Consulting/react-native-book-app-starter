@@ -1,7 +1,7 @@
-import { IAppState } from 'models/reducers/appReducers';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, Button, Image, TextInput, View } from 'react-native';
+import { ActivityIndicator, Image, TextInput, View } from 'react-native';
+import { Button } from 'react-native-paper';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Text } from 'react-native-paper';
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-menu';
@@ -113,15 +113,16 @@ const UserDetail: React.FC = () => {
                     </View>
                 </View>
             )}
-            <View style={styles.editView}>
+            <View style={styles.submitView}>
                 <Button
                     onPress={() => {
                         update();
                     }}
                     disabled={isLoading}
-                    title={!isEditing ? t('Edit') : t('Update')}
-                />
-                {isLoading && <ActivityIndicator />}
+                    style={styles.submit}>
+                    <Text style={{ color: 'white' }}>{!isEditing ? t('Edit') : t('Update')}</Text>
+                </Button>
+                {isLoading && <ActivityIndicator color="white" style={styles.activity} />}
             </View>
         </KeyboardAwareScrollView>
     );
