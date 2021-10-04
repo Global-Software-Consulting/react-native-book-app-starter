@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
 import { Dimensions } from 'react-native';
@@ -69,7 +69,9 @@ export const useStyles = () => {
         flatList: {
             marginTop: height('5%'),
             flexDirection: 'column',
-            marginBottom: height('20%'),
+            marginBottom: Platform.OS === "ios" ? height('20%') : height('30%'),
+            
+
         },
         mainView: {
             alignItems: 'center',
