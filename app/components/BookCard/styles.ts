@@ -122,6 +122,8 @@ export const useStyles = () => {
             height: windowHeight > windowWidth ? height('25%') : height('40%'),
             width: windowHeight > windowWidth ? width('30%') : width('14%'),
             borderRadius: 15,
+            backgroundColor: '#E7E5E7',
+
         },
 
         bookView: {

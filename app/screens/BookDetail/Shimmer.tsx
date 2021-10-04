@@ -7,18 +7,17 @@ import { useStyles } from './styles';
 const Shimmer: React.FC = () => {
     //theme handling
     const styles = useStyles();
-    const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient);
 
     return (
         <View>
             <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
-                <ShimmerPlaceHolder style={styles.bookShimmer} />
-                <ShimmerPlaceHolder style={styles.horizontalRuler} />
-                <ShimmerPlaceHolder style={styles.horizontalRuler} />
+                <View style={styles.bookShimmer} />
+                <View style={styles.horizontalRuler} />
+                <View style={styles.horizontalRuler} />
 
-                <ShimmerPlaceHolder style={styles.mainShimmerView} />
+                <View style={styles.mainShimmerView} />
 
-                <ShimmerPlaceHolder style={styles.subShimmerView} />
+                <View style={styles.subShimmerView} />
             </ScrollView>
         </View>
     );
