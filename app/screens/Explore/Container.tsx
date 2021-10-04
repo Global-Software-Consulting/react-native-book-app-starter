@@ -73,7 +73,13 @@ const ExploreComponent: React.FC<Props> = (props) => {
                 nestedScrollEnabled={true}
                 style={styles.container}
                 showsVerticalScrollIndicator={false}
-                refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh} />}>
+                refreshControl={
+                    <RefreshControl
+                        refreshing={isLoading}
+                        onRefresh={onRefresh}
+                        colors={['green', 'yellow']}
+                    />
+                }>
                 <View style={styles.middleView}>
                     <Text style={styles.name}>
                         {t('Hi')} {name}{' '}
