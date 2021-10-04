@@ -24,7 +24,6 @@ const UserDetail: React.FC = () => {
     const update = async () => {
         setIsEditing(!isEditing);
         editUser();
-        //recallUserData();
     };
 
     const editUser = async () => {

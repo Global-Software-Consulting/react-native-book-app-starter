@@ -6,6 +6,7 @@ import { Alert, BackHandler, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import * as appActions from 'store/actions/appActions';
+import * as loadingActions from 'store/actions/loginActions';
 import ExploreComponent from './Container';
 import ExploreShimmer from './Shimmer';
 
@@ -19,13 +20,12 @@ const Explore: React.FC = () => {
     const theme = useTheme();
 
     useEffect(() => {
-        let abortController = new AbortController();
         if (isFocused) {
             fetchBookDetails();
         }
 
         return () => {
-            abortController.abort();
+            dispatch(loadingActions.disableLoader());
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isFocused, userData]);

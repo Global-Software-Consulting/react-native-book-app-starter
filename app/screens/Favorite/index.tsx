@@ -7,7 +7,7 @@ import * as appActions from 'store/actions/appActions';
 import Container from './Container';
 //importing components
 import Shimmer from './Shimmer';
-//importing card component
+import * as loadingActions from 'store/actions/loginActions';
 
 const base_url: string = 'https://ebook-application.herokuapp.com/v1/';
 
@@ -27,7 +27,9 @@ const Favorite: React.FC = () => {
         if (isFocused) {
             getFavoriteBooks();
         }
-
+        return () => {
+            dispatch(loadingActions.disableLoader());
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isFocused]);
 
