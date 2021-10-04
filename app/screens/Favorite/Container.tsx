@@ -67,6 +67,7 @@ const Container: React.FC<Props> = (props) => {
                     keyExtractor={(item, index) => 'key' + index}
                     data={favoriteBooks}
                     style={styles.flatList}
+                    contentContainerStyle={{ flexGrow: 1 }}
                     onRefresh={onRefresh}
                     refreshing={isLoading}
                     renderItem={({ item }) => bookList(item)}
