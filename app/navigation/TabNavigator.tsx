@@ -12,6 +12,7 @@ import Explore from './../screens/Explore/index';
 import Favorite from './../screens/Favorite/index';
 import UserDetail from './../screens/UserDetail/index';
 import { useStyles } from './header';
+
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {

@@ -125,15 +125,7 @@ export const useStyles = () => {
         },
 
         bookView: {
-            shadowColor: theme.colors.primary,
-            shadowOffset: {
-                width: 0,
-                height: 6,
-            },
-            shadowOpacity: 0.37,
-            shadowRadius: 7.49,
-
-            elevation: 12,
+           
             backgroundColor: 'transparent',
             margin: 2,
             borderRadius: 20,

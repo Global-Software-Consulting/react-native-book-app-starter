@@ -16,7 +16,7 @@ const Favorite: React.FC = () => {
     const isFocused = useIsFocused();
     const favoriteBooks = useSelector((state: ReducerState) => state.appReducer.favorite);
     const isLoading = useSelector((state: ReducerState) => state.loadingReducer.isLoading);
-    const [favoriteBookss, setFavoriteBookss] = useState(favoriteBooks);
+    const [favoriteBookState, setfavoriteBookState] = useState(favoriteBooks);
     const dispatch = useDispatch();
 
     //fetching favorite books
@@ -27,11 +27,17 @@ const Favorite: React.FC = () => {
         if (isFocused) {
             getFavoriteBooks();
         }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isFocused]);
 
     useEffect(() => {
-        setFavoriteBookss(favoriteBooks);
+        let cancel = false;
+        if (cancel) return;
+        setfavoriteBookState(favoriteBooks);
+        return () => {
+            cancel = true;
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [favoriteBooks]);
 
@@ -61,7 +67,7 @@ const Favorite: React.FC = () => {
             ) : (
                 <Container
                     base_url={base_url}
-                    books={favoriteBookss}
+                    books={favoriteBookState}
                     onRefresh={getFavoriteBooks}
                 />
             )}
