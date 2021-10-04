@@ -13,7 +13,7 @@ const BookCardShimmer: React.FC<Props> = ({ styleSelect }) => {
     const styles = useStyles();
     return (
         <View style={styles.bookView}>
-            <ShimmerPlaceHolder
+            <View
                 style={
                     styleSelect === 'General'
                         ? styles.bookGeneralShimmer
@@ -24,14 +24,14 @@ const BookCardShimmer: React.FC<Props> = ({ styleSelect }) => {
                         : styles.bookTrendingExtraLargeShimmer
                 }
             />
-            <ShimmerPlaceHolder
+            <View
                 style={
                     styleSelect === 'General' || styleSelect === 'Custom' || styleSelect === 'Large'
                         ? styles.textTitleShimmer
                         : styles.textTitleShimmer
                 }
             />
-            <ShimmerPlaceHolder
+            <View
                 style={
                     styleSelect === 'General' || styleSelect === 'Custom' || styleSelect === 'Large'
                         ? styles.textTitleShimmer
