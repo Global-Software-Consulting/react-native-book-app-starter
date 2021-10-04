@@ -10,13 +10,13 @@ import Shimmer from './Shimmer';
 import * as loadingActions from 'store/actions/loginActions';
 
 const base_url: string = 'https://ebook-application.herokuapp.com/v1/';
-
 const Favorite: React.FC = () => {
     //theme handling
     const isFocused = useIsFocused();
     const favoriteBooks = useSelector((state: ReducerState) => state.appReducer.favorite);
     const isLoading = useSelector((state: ReducerState) => state.loadingReducer.isLoading);
     const [favoriteBookState, setfavoriteBookState] = useState(favoriteBooks);
+    const [mounted, setMounted] = useState(true);
     const dispatch = useDispatch();
 
     //fetching favorite books
@@ -28,17 +28,19 @@ const Favorite: React.FC = () => {
             getFavoriteBooks();
         }
         return () => {
+            setMounted(false);
             dispatch(loadingActions.disableLoader());
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isFocused]);
 
     useEffect(() => {
-        let cancel = false;
-        if (cancel) return;
-        setfavoriteBookState(favoriteBooks);
+        if (!mounted) return;
+        else {
+            setfavoriteBookState(favoriteBooks);
+        }
         return () => {
-            cancel = true;
+            setMounted(false);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [favoriteBooks]);

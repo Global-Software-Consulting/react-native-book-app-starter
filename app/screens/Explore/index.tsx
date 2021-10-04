@@ -1,7 +1,7 @@
 import { useIsFocused } from '@react-navigation/core';
 import SearchBar from 'components/SearchBar';
 import { ReducerState } from 'models/reducers/index';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, BackHandler, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,14 +17,16 @@ const Explore: React.FC = () => {
     const isFocused = useIsFocused();
     const userData = useSelector((state: ReducerState) => state.loginReducer.user);
     const dispatch = useDispatch();
+    const [mounted, setMounted] = useState(true);
     const theme = useTheme();
 
     useEffect(() => {
+        setMounted(true);
         if (isFocused) {
-            fetchBookDetails();
+            if (mounted) fetchBookDetails();
         }
-
         return () => {
+            setMounted(false);
             dispatch(loadingActions.disableLoader());
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,7 +54,7 @@ const Explore: React.FC = () => {
     });
 
     const fetchBookDetails = async () => {
-        dispatch(appActions.getBookRequest('a'));
+        if (mounted) dispatch(appActions.getBookRequest('a'));
     };
 
     return (
