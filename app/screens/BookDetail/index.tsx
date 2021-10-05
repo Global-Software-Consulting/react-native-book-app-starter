@@ -22,8 +22,12 @@ const BookDetail: React.FC<RouteState> = (props) => {
         setIsLoading(true);
         try {
             getBookDetail(parseInt(bookId, 10)).then((response) => {
-                setBookData(response.result);
-                setIsLoading(false);
+                if (response.status !== 'success' || response.result !== null) {
+                    setBookData(response.result);
+                    setIsLoading(false);
+                } else {
+                    Toast.show('Error loading data', Toast.SHORT);
+                }
             });
         } catch {
             Toast.show('Error occured', Toast.SHORT);

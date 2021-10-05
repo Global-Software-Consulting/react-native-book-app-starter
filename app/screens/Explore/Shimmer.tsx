@@ -15,7 +15,7 @@ const ExploreShimmer: React.FC = () => {
         );
     };
     return (
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{ paddingLeft: 20 }}>
                 <View style={styles.nameShimmer} />
                 <View style={styles.tagLineShimmer} />
@@ -29,6 +29,7 @@ const ExploreShimmer: React.FC = () => {
                     contentContainerStyle={styles.flatList}
                     renderItem={({ item }) => bookList(item, 'Custom')}
                     showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => 'key' + index}
                 />
                 <View style={styles.horizontalRuler} />
@@ -40,6 +41,7 @@ const ExploreShimmer: React.FC = () => {
                     contentContainerStyle={styles.flatList}
                     renderItem={({ item }) => bookList(item, 'General')}
                     showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => 'key' + index}
                 />
 
@@ -51,6 +53,7 @@ const ExploreShimmer: React.FC = () => {
                     data={[0, 0, 0]}
                     contentContainerStyle={styles.flatListLast}
                     renderItem={({ item }) => bookList(item, 'General')}
+                    showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
                     keyExtractor={(item, index) => 'key' + index}
                 />
