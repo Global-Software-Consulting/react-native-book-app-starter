@@ -11,22 +11,27 @@ export default function* fetchBookDetailSaga(action: { id: number }) {
         yield put(loadingActions.enableLoader());
         //calling api
         const response: Response = yield call(getBookDetail, action.id);
-
-        if (response && response?.status === 'success') {
-            yield put(appActions.getBookDetailResponse(response.result));
-            //ends loading
-            yield put(loadingActions.disableLoader());
-        } else if (response?.status === 'networkFailed') {
-            yield put(loadingActions.disableLoader());
-        } else if (response?.result === null) {
+       console.log('here>>');
+       
+        if (response?.result === null) {
             yield put(loadingActions.disableLoader());
             //error message not available in response
             yield put(
                 snackbarActions.enableSnackbar('Error getting book detail, please try again'),
             );
         }
-    } catch (error) {
-        yield put(loadingActions.disableLoader());
-        yield put(snackbarActions.enableSnackbar('Error getting book detail, please try again'));
-    }
+        else {
+            if (response && response?.status === 'success') {
+                yield put(appActions.getBookDetailResponse(response.result));
+                //ends loading
+                yield put(loadingActions.disableLoader());
+            } else if (response?.status === 'networkFailed') {
+                yield put(loadingActions.disableLoader());
+            }
+        }
+        } catch (error) {
+            yield put(loadingActions.disableLoader());
+            yield put(snackbarActions.enableSnackbar('Error getting book detail, please try again'));
+        }
+    
 }

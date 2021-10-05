@@ -1,8 +1,7 @@
-import { Platform, StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
-import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
-import { Dimensions } from 'react-native';
 import { useTheme } from 'react-native-paper';
+import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
 export const useStyles = () => {
     const width = getPercentageWidth();
     const height = getPercentageHeight();
@@ -136,10 +135,11 @@ export const useStyles = () => {
         },
 
         bookViewIOS: {
-            shadowColor: 'grey',
+            shadowColor: theme.colors.highlight,
             shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.8,
+            shadowOpacity: 3,
             shadowRadius: 2,
+            elevation:2,    
             backgroundColor: 'transparent',
             margin: 2,
             borderRadius: 20,
