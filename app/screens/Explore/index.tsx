@@ -9,6 +9,7 @@ import * as appActions from 'store/actions/appActions';
 import * as loadingActions from 'store/actions/loginActions';
 import ExploreComponent from './Container';
 import ExploreShimmer from './Shimmer';
+import Config from 'react-native-config';
 
 const Explore: React.FC = () => {
     //fetching book images from the store
@@ -19,7 +20,7 @@ const Explore: React.FC = () => {
     const dispatch = useDispatch();
     const [mounted, setMounted] = useState(true);
     const theme = useTheme();
-
+    console.log('here it is >', Config);
     useEffect(() => {
         setMounted(true);
         if (isFocused) {
