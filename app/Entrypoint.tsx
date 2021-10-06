@@ -35,7 +35,6 @@ const RootNavigation: React.FC = () => {
 const EntryPoint: React.FC = () => {
     useEffect(() => {
         SplashScreen.hide();
-        console.log('fff');
     }, []);
     return (
         <Provider store={store}>

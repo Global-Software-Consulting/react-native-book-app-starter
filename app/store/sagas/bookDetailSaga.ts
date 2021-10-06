@@ -11,7 +11,6 @@ export default function* fetchBookDetailSaga(action: { id: number }) {
         yield put(loadingActions.enableLoader());
         //calling api
         const response: Response = yield call(getBookDetail, action.id);
-       console.log('here>>');
        
         if (response?.result === null) {
             yield put(loadingActions.disableLoader());

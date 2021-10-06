@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, View } from 'react-native';
+import { NativeEventEmitter, NativeModules, ScrollView, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import BookCard from '../../components/BookCard/BookCard';
@@ -38,6 +38,10 @@ const Container: React.FC<Props> = (props) => {
     const [isSpeaking, setIsSpeaking] = useState(false);
 
     useEffect(() => {
+        const ee = new NativeEventEmitter(NativeModules.TextToSpeech);
+        ee.addListener('tts-start', () => {});
+        ee.addListener('tts-finish', () => {});
+        ee.addListener('tts-cancel', () => {});
         if (isSpeaking === true) {
             Tts.speak(books.shortSummary);
         } else {
