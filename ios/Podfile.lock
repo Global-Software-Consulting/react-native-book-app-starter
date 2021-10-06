@@ -444,6 +444,8 @@ PODS:
     - SDWebImage/Core (~> 5.10)
   - Shimmer (1.0.2)
   - SSZipArchive (2.2.3)
+  - TextToSpeech (4.1.0):
+    - React
   - Toast (4.0.0)
   - Yoga (1.14.0)
 
@@ -501,6 +503,7 @@ DEPENDENCIES:
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
+  - TextToSpeech (from `../node_modules/react-native-tts`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -626,6 +629,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
+  TextToSpeech:
+    :path: "../node_modules/react-native-tts"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -700,6 +705,7 @@ SPEC CHECKSUMS:
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
+  TextToSpeech: b3aa777ff5585705f179c0a2436bfd0926d1716e
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
 

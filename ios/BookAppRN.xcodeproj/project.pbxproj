@@ -34,6 +34,8 @@
 		066F65B7EB2832CD9B62D9EE /* libPods-BookAppRN.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BookAppRN.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC7B741142623D70607EFFE /* Pods-BookAppRN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookAppRN.debug.xcconfig"; path = "Target Support Files/Pods-BookAppRN/Pods-BookAppRN.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* BookAppRN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookAppRN.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		290D039EADDCA2311B6849EE /* Pods-BookAppRN.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookAppRN.staging.xcconfig"; path = "Target Support Files/Pods-BookAppRN/Pods-BookAppRN.staging.xcconfig"; sourceTree = "<group>"; };
+		5630069A19CCA9FD27FAFFC0 /* Pods-BookAppRN-BookAppRNTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookAppRN-BookAppRNTests.staging.xcconfig"; path = "Target Support Files/Pods-BookAppRN-BookAppRNTests/Pods-BookAppRN-BookAppRNTests.staging.xcconfig"; sourceTree = "<group>"; };
 		675BC40D1E0DC5DE54CF6827 /* Pods-BookAppRN-BookAppRNTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookAppRN-BookAppRNTests.debug.xcconfig"; path = "Target Support Files/Pods-BookAppRN-BookAppRNTests/Pods-BookAppRN-BookAppRNTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8590779826D3724D005673F3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = BookAppRN/AppDelegate.h; sourceTree = "<group>"; };
 		8590779926D3724D005673F3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BookAppRN/Info.plist; sourceTree = "<group>"; };
@@ -117,6 +119,8 @@
 				AC7CC17409EB2CFA0B21313B /* Pods-BookAppRN.release.xcconfig */,
 				675BC40D1E0DC5DE54CF6827 /* Pods-BookAppRN-BookAppRNTests.debug.xcconfig */,
 				F24C1E256A957F79ED2B5D42 /* Pods-BookAppRN-BookAppRNTests.release.xcconfig */,
+				290D039EADDCA2311B6849EE /* Pods-BookAppRN.staging.xcconfig */,
+				5630069A19CCA9FD27FAFFC0 /* Pods-BookAppRN-BookAppRNTests.staging.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -737,7 +741,7 @@
 		};
 		FC208C7D270DA73B0091F938 /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC7CC17409EB2CFA0B21313B /* Pods-BookAppRN.release.xcconfig */;
+			baseConfigurationReference = 290D039EADDCA2311B6849EE /* Pods-BookAppRN.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -763,7 +767,7 @@
 		};
 		FC208C7E270DA73B0091F938 /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F24C1E256A957F79ED2B5D42 /* Pods-BookAppRN-BookAppRNTests.release.xcconfig */;
+			baseConfigurationReference = 5630069A19CCA9FD27FAFFC0 /* Pods-BookAppRN-BookAppRNTests.staging.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;

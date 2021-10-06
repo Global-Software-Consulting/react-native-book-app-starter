@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 import { Text } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import BookCard from '../../components/BookCard/BookCard';
+import Tts from 'react-native-tts';
 import { useStyles } from './styles';
 import { Props } from './types';
 
@@ -31,11 +33,21 @@ const Container: React.FC<Props> = (props) => {
     const title = books.title ?? 'Dummy Title';
     const { t } = useTranslation();
     const [textShown, setTextShown] = useState(false); //To show ur remaining Text
+    const [isSpeaking, setIsSpeaking] = useState(false);
+
+    useEffect(() => {
+        if (isSpeaking === true) {
+            Tts.speak(books.shortSummary);
+        } else {
+            Tts.stop();
+        }
+    }, [isSpeaking]);
 
     const toggleNumberOfLines = () => {
         //To toggle the show text or hide it
         setTextShown(!textShown);
     };
+
     return (
         <View style={styles.main}>
             <ScrollView>
@@ -71,7 +83,14 @@ const Container: React.FC<Props> = (props) => {
                 </View>
 
                 <View style={styles.synopseView}>
-                    <Text style={styles.synopseText}>{t('Synopse')}</Text>
+                    <View style={{ flexDirection: 'row' }}>
+                        <Text style={styles.synopseText}>{t('Synopse')}</Text>
+                        <Icon
+                            name="file-sound-o"
+                            size={15}
+                            onPress={() => setIsSpeaking(!isSpeaking)}
+                        />
+                    </View>
                     <Text
                         style={styles.dynamicSynopse}
                         onPress={toggleNumberOfLines}
