@@ -20,7 +20,6 @@ const Explore: React.FC = () => {
     const dispatch = useDispatch();
     const [mounted, setMounted] = useState(true);
     const theme = useTheme();
-    console.log('here it is >', Config);
     useEffect(() => {
         setMounted(true);
         if (isFocused) {
