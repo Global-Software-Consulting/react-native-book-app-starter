@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from 'screens/UserDetail/styles';
 import * as loginActions from 'store/actions/loginActions';
 import { ReducerState } from 'models/reducers/index';
+import PictureViewer from 'components/PictureViewer';
 const UserDetail: React.FC = () => {
     const dispatch = useDispatch();
     const userData = useSelector((state: ReducerState) => state.loginReducer.user);
@@ -18,6 +19,7 @@ const UserDetail: React.FC = () => {
     const [firstName, setFirstName] = useState<string>(userData?.firstName);
     const [lastName, setLastName] = useState<string>(userData?.lastName);
     const [email, setEmail] = useState<string>(userData?.email);
+    const [isEnlarged, setIsEnlarged] = useState(false);
     const { t } = useTranslation();
     const styles = useStyles();
 
@@ -51,7 +53,12 @@ const UserDetail: React.FC = () => {
                     />
                 </MenuTrigger>
                 <MenuOptions>
-                    <MenuOption onSelect={() => {}} text="Change" />
+                    <MenuOption
+                        onSelect={() => {
+                            setIsEnlarged(true);
+                        }}
+                        text="View"
+                    />
                     <MenuOption onSelect={() => {}}>
                         <Text style={{ color: 'red' }}>Delete</Text>
                     </MenuOption>
@@ -123,6 +130,13 @@ const UserDetail: React.FC = () => {
                 </Button>
                 {isLoading && <ActivityIndicator color="white" style={styles.activity} />}
             </View>
+            <PictureViewer
+                isVisible={isEnlarged}
+                imageSource={{
+                    uri: 'https://pbs.twimg.com/profile_images/952545910990495744/b59hSXUd_400x400.jpg',
+                }}
+                onPress={() => setIsEnlarged(false)}
+            />
         </KeyboardAwareScrollView>
     );
 };
