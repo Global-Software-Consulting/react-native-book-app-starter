@@ -76,6 +76,7 @@ export const useStyles = () => {
             fontWeight: '300',
             fontSize: 15,
             marginBottom: 10,
+            marginRight:10
         },
 
         bookShimmer: {
