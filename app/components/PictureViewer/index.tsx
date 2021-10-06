@@ -1,13 +1,9 @@
 import React from 'react';
-import { View, Image, ImageProps, ImageSourcePropType } from 'react-native';
+import { View, Image } from 'react-native';
 import Modal from 'react-native-modal';
 import { Text } from 'react-native-paper';
+import { Props } from './types';
 
-interface Props {
-    isVisible: boolean;
-    imageSource: ImageSourcePropType;
-    onPress: () => void;
-}
 const PictureViewer: React.FC<Props> = (props) => {
     return (
         <Modal isVisible={props.isVisible} animationIn="slideInUp">

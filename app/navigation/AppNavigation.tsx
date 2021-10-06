@@ -6,6 +6,7 @@ import * as React from 'react';
 import { useTheme } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux';
+import BookReader from 'screens/BookReader';
 import BookDetail from './../screens/BookDetail/index';
 import TabNavigator from './TabNavigator';
 const AppDrawer = createDrawerNavigator();
@@ -32,6 +33,26 @@ const AppNavigation = () => {
                 component={BookDetail}
                 options={{
                     drawerLabel: 'Book Detail',
+                    drawerLabelStyle: { alignSelf: 'center' },
+                    headerLeft: () => (
+                        <Icon
+                            name="arrow-back-ios"
+                            onPress={() => navigation.goBack()}
+                            color={theme.colors.text}
+                            size={18}
+                            style={{ marginLeft: 20 }}
+                        />
+                    ),
+                    headerStyle: { backgroundColor: theme.colors.background },
+                    headerTintColor: theme.colors.text,
+                }}
+            />
+
+            <AppDrawer.Screen
+                name="BookReader"
+                component={BookReader}
+                options={{
+                    drawerLabel: 'Book Reader',
                     drawerLabelStyle: { alignSelf: 'center' },
                     headerLeft: () => (
                         <Icon

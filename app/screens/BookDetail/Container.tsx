@@ -7,6 +7,7 @@ import BookCard from '../../components/BookCard/BookCard';
 import Tts from 'react-native-tts';
 import { useStyles } from './styles';
 import { Props } from './types';
+import { useNavigation } from '@react-navigation/core';
 
 const Container: React.FC<Props> = (props) => {
     const dummyImages = [
@@ -25,6 +26,7 @@ const Container: React.FC<Props> = (props) => {
     };
     //theme handling
     const styles = useStyles();
+    const navigation = useNavigation();
     const { books } = props;
     const author = 'Dummy author';
     const genre = 'Dummy Genre';
@@ -88,7 +90,15 @@ const Container: React.FC<Props> = (props) => {
                         <Icon
                             name="file-sound-o"
                             size={15}
+                            color="green"
+                            style={{ marginRight: 10 }}
                             onPress={() => setIsSpeaking(!isSpeaking)}
+                        />
+                        <Icon
+                            name="book"
+                            size={15}
+                            color="green"
+                            onPress={() => navigation.navigate('BookReader' as never)}
                         />
                     </View>
                     <Text
