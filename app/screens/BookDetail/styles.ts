@@ -181,6 +181,21 @@ export const useStyles = () => {
             backgroundColor: 'transparent',
             paddingRight: 20,
         },
+        submitView: {
+            alignContent: 'center',
+            alignSelf: 'center',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            marginTop: 30,
+            borderRadius: 20,
+            marginBottom: 20,
+            marginRight:10
+        },
+        submit: {
+            height: 40,
+            width: width('40%'),
+            marginTop: 5,
+        },
     });
     return styles;
 };
