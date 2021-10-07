@@ -78,10 +78,15 @@ const AppNavigation = () => {
                             <Icon
                                 name="arrow-back-ios"
                                 color={theme.colors.text}
-                                size={width('5%')}
+                                size={windowHeight > windowWidth ? width('5%') : height('5%')}
                                 style={{ marginLeft: 20 }}
                             />
-                            <Text style={{ color: theme.colors.text, fontSize: width('4%') }}>
+                            <Text
+                                style={{
+                                    color: theme.colors.text,
+                                    fontSize:
+                                        windowHeight > windowWidth ? width('4%') : height('4%'),
+                                }}>
                                 Back
                             </Text>
                         </TouchableOpacity>

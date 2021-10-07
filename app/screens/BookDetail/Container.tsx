@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NativeEventEmitter, NativeModules, ScrollView, View } from 'react-native';
-import { Text } from 'react-native-paper';
+import { Button, Text } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import BookCard from '../../components/BookCard/BookCard';
 import Tts from 'react-native-tts';
@@ -66,7 +66,33 @@ const Container: React.FC<Props> = (props) => {
                     hideIcon={true}
                     url={generateRandomURL()}
                 />
-
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}>
+                    <View
+                        style={[
+                            styles.submitView,
+                            { backgroundColor: !isSpeaking ? '#00416A' : 'red' },
+                        ]}>
+                        <Button
+                            onPress={() => {
+                                setIsSpeaking(!isSpeaking);
+                            }}
+                            style={styles.submit}>
+                            <Text style={{ color: 'white' }}>{!isSpeaking ? 'Speak' : 'Stop'}</Text>
+                        </Button>
+                    </View>
+                    <View style={[styles.submitView, { backgroundColor: '#00416A' }]}>
+                        <Button
+                            onPress={() => navigation.navigate('BookReader' as never)}
+                            style={styles.submit}>
+                            <Text style={{ color: 'white' }}>Read Book</Text>
+                        </Button>
+                    </View>
+                </View>
                 <View style={styles.horizontalRuler} />
 
                 <View style={styles.mainView}>
@@ -92,18 +118,6 @@ const Container: React.FC<Props> = (props) => {
                 <View style={styles.synopseView}>
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.synopseText}>{t('Synopse')}</Text>
-                        <TouchableOpacity
-                            style={{ flexDirection: 'row' }}
-                            onPress={() => setIsSpeaking(!isSpeaking)}>
-                            <Icon name="file-sound-o" size={15} color="green" />
-                            <Text style={{ marginRight: 10 }}>Speak</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={{ flexDirection: 'row' }}
-                            onPress={() => navigation.navigate('BookReader' as never)}>
-                            <Icon name="book" size={15} color="green" />
-                            <Text style={{ marginRight: 10 }}>Read Book</Text>
-                        </TouchableOpacity>
                     </View>
                     <Text
                         style={styles.dynamicSynopse}
