@@ -52,15 +52,15 @@ export const useStyles = () => {
             margin: 30,
         },
         subShimmerView: {
-            margin: 20,
+            margin: 5,
             height: height('20'),
             width: width('80'),
             alignSelf: 'center',
             backgroundColor: '#E7E5E7',
         },
         mainShimmerView: {
-            margin: 20,
-            height: height('20'),
+            margin: 10,
+            height: height('10'),
             width: width('80'),
             alignSelf: 'center',
             backgroundColor: '#E7E5E7',
@@ -82,10 +82,11 @@ export const useStyles = () => {
         bookShimmer: {
             height: windowHeight > windowWidth ? height('45%') : height('70%'),
             width: windowHeight > windowWidth ? width('60%') : width('20%'),
-            borderRadius: 4,
+            borderRadius: 20,
+            elevation:5,
             backgroundColor: '#E7E5E7',
             alignSelf: 'center',
-            margin: 20,
+            margin: 10,
         },
 
         sizeText: {
@@ -93,6 +94,21 @@ export const useStyles = () => {
             fontSize: 15,
             textAlign: 'center',
         },
+        tagLineShimmer: {
+            width: width('40%'),
+            height: height('4%'),
+            backgroundColor: '#E7E5E7',
+            marginRight:width('2%')
+        },
+        tagLineShimmerLeft:
+        {
+            width: width('40%'),
+            height: height('4%'),
+            backgroundColor: '#E7E5E7',
+            marginRight: width('2%'),
+            alignSelf: 'flex-start',
+            marginLeft: width('9%')
+            },
         pagesSubView: {
             flexDirection: 'column',
         },

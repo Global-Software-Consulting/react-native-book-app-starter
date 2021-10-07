@@ -12,11 +12,14 @@ const Shimmer: React.FC = () => {
         <View>
             <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
                 <View style={styles.bookShimmer} />
-                <View style={styles.horizontalRuler} />
-                <View style={styles.horizontalRuler} />
+                <View style={{ flexDirection: 'row' }}>
+                    <View style={styles.tagLineShimmer} />
+                    <View style={styles.tagLineShimmer} />
+                </View>
 
                 <View style={styles.mainShimmerView} />
 
+                <View style={styles.tagLineShimmerLeft} />
                 <View style={styles.subShimmerView} />
             </ScrollView>
         </View>

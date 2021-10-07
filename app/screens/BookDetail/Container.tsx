@@ -8,6 +8,7 @@ import Tts from 'react-native-tts';
 import { useStyles } from './styles';
 import { Props } from './types';
 import { useNavigation } from '@react-navigation/core';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Container: React.FC<Props> = (props) => {
     const dummyImages = [
@@ -91,19 +92,18 @@ const Container: React.FC<Props> = (props) => {
                 <View style={styles.synopseView}>
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.synopseText}>{t('Synopse')}</Text>
-                        <Icon
-                            name="file-sound-o"
-                            size={15}
-                            color="green"
-                            style={{ marginRight: 10 }}
-                            onPress={() => setIsSpeaking(!isSpeaking)}
-                        />
-                        <Icon
-                            name="book"
-                            size={15}
-                            color="green"
-                            onPress={() => navigation.navigate('BookReader' as never)}
-                        />
+                        <TouchableOpacity
+                            style={{ flexDirection: 'row' }}
+                            onPress={() => setIsSpeaking(!isSpeaking)}>
+                            <Icon name="file-sound-o" size={15} color="green" />
+                            <Text style={{ marginRight: 10 }}>Speak</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={{ flexDirection: 'row' }}
+                            onPress={() => navigation.navigate('BookReader' as never)}>
+                            <Icon name="book" size={15} color="green" />
+                            <Text style={{ marginRight: 10 }}>Read Book</Text>
+                        </TouchableOpacity>
                     </View>
                     <Text
                         style={styles.dynamicSynopse}
