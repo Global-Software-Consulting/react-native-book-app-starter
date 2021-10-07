@@ -34,6 +34,7 @@ export const useStyles = () => {
         },
         main: {
             backgroundColor: theme.colors.background,
+            minHeight:height('100%')
         },
         dynamicLaunchedText: {
             fontWeight: 'bold',
@@ -80,8 +81,8 @@ export const useStyles = () => {
         },
 
         bookShimmer: {
-            height: windowHeight > windowWidth ? height('45%') : height('70%'),
-            width: windowHeight > windowWidth ? width('60%') : width('20%'),
+            height: windowHeight > windowWidth ? height('30%') : height('70%'),
+            width: windowHeight > windowWidth ? width('50%') : width('20%'),
             borderRadius: 20,
             elevation:5,
             backgroundColor: '#E7E5E7',
