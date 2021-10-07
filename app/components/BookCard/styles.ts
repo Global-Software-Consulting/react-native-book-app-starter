@@ -85,7 +85,7 @@ export const useStyles = () => {
         },
 
         bookExtraLarge: {
-            height: windowHeight > windowWidth ? height('50%') : height('70%'),
+            height: windowHeight > windowWidth ? height('30%') : height('60%'),
             width: width('65%'),
             borderRadius: 20,
             margin: 5,
@@ -103,7 +103,7 @@ export const useStyles = () => {
 
         },
         bookTrendingExtraLargeShimmer: {
-            height: windowHeight > windowWidth ? height('50%') : height('70%'),
+            height: windowHeight > windowWidth ? height('25%') : height('60%'),
             width: width('65%'),
             borderRadius: 20,
             margin: 5,
@@ -112,7 +112,7 @@ export const useStyles = () => {
         },
 
         textTitleEnlarged: {
-            fontSize: 30,
+            fontSize: windowHeight > windowWidth ? width('5%') : height('5%'),
             maxWidth: width('60%'),
             fontWeight: '500',
             alignSelf: 'center',
@@ -123,7 +123,7 @@ export const useStyles = () => {
             color: 'red',
             fontWeight: '300',
             alignSelf: 'center',
-            fontSize: 20,
+            fontSize: windowHeight > windowWidth ? width('4%') : height('4%'),
         },
 
         bookGeneralShimmer: {
