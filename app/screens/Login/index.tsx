@@ -78,7 +78,14 @@ const Login: React.FC = () => {
     //         }
     //     }
     // };
-
+    function IconLanguage() {
+        return (
+            <View style={{ alignItems: 'center' }}>
+                <Image source={images.app.language} />
+                <Text>{i18n.language}</Text>
+            </View>
+        );
+    }
     return (
         <KeyboardAwareScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
             <LinearGradient
@@ -192,7 +199,7 @@ const Login: React.FC = () => {
                 <View style={styles.menu}>
                     <Menu>
                         <MenuTrigger>
-                            <Image source={images.app.language} />
+                            <IconLanguage />
                         </MenuTrigger>
                         <MenuOptions>
                             <MenuOption

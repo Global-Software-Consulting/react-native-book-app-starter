@@ -55,6 +55,14 @@
     "Female": "Vrouwelijk",
     
     "Submit":"Indienen",
-    "Operation failed, please try again":"Bewerking mislukt, probeer het opnieuw"
-    
+    "Operation failed, please try again":"Bewerking mislukt, probeer het opnieuw",
+
+    "Speak":"Spreken",
+    "Stop":"Stop",
+    "Read Book":"Lees boek",
+
+    "View":"Weergave",
+    "Capture":"Vastlegging",
+
+    "Close":"Dichtbij"
 }

@@ -70,3 +70,9 @@ export function setNewFavorites(payload: Array<FavoriteBook>) {
         payload,
     };
 }
+    export function setProfileImagePath(payload: string) {
+        return {
+            type: types.SET_PROFILE_IMAGE_PATH,
+            payload,
+        };
+}

@@ -3,8 +3,9 @@ import { Key, ReactNodeArray } from 'react';
 export interface IAppState {
     books: Array<Books>;
     favorite: Array<FavoriteBook>;
-    isLoading: boolean;
+    isLoading?: boolean;
     snackbarMessage?: string;
+    profilePicture: string;
 }
 
 export type Books = {

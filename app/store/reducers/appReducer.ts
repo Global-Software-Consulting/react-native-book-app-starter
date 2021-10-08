@@ -6,6 +6,7 @@ import { IBookResponse } from '../../models/actions/appActions';
 const initialState: IAppState = {
     books: [],
     favorite: [],
+    profilePicture:''
 };
 
 export const appReducer = createReducer(initialState, {
@@ -36,6 +37,12 @@ export const appReducer = createReducer(initialState, {
         return {
             ...state,
             favorite: action.payload,
+        };
+    },
+    [types.SET_PROFILE_IMAGE_PATH](state: IAppState, action: IBookResponse) {
+        return {
+            ...state,
+            profilePicture: action.payload,
         };
     },
 });
