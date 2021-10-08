@@ -56,8 +56,16 @@
     "Female": "Female",
 
     "Submit":"Submit",
-    "Operation failed, please try again":"Operation failed, please try again"
+    "Operation failed, please try again":"Operation failed, please try again",
 
+    "Speak":"Speak",
+    "Stop":"Stop",
+    "Read Book":"Read Book",
+
+    "View":"View",
+    "Capture":"Capture",
+
+    "Close":"Close"
 
     
 }

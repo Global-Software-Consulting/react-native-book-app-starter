@@ -56,5 +56,15 @@
     "Female": "Mujer",
     
     "Submit":"Enviar",
-    "Operation failed, please try again":"Error en la operación, inténtelo de nuevo"
+    "Operation failed, please try again":"Error en la operación, inténtelo de nuevo",
+
+    "Speak":"Hablar",
+    "Stop":"Parada",
+    "Read Book":"Leer el libro",
+
+    "View":"Vista",
+    "Capture":"Capturar",
+
+    "Close":"Cerrar"
+
 }

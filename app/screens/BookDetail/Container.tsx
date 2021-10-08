@@ -82,7 +82,9 @@ const Container: React.FC<Props> = (props) => {
                                 setIsSpeaking(!isSpeaking);
                             }}
                             style={styles.submit}>
-                            <Text style={{ color: 'white' }}>{!isSpeaking ? 'Speak' : 'Stop'}</Text>
+                            <Text style={{ color: 'white' }}>
+                                {!isSpeaking ? t('Speak') : t('Stop')}
+                            </Text>
                         </Button>
                     </View>
                     <View style={[styles.submitView, { backgroundColor: '#00416A' }]}>
