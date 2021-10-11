@@ -65,102 +65,94 @@ const Signup: React.FC = () => {
                 <Image source={images.app.logo} style={styles.img} />
                 <Text style={styles.signUpText}>{t('Sign up')}</Text>
 
-                <View style={styles.inputView}>
-                    <Controller
-                        control={control}
-                        rules={{
-                            required: true,
-                        }}
-                        render={({ field: { onChange, value } }) => (
-                            <TextInput
-                                placeholder={t('Enter your first name')}
-                                autoCapitalize="none"
-                                autoCorrect={false}
-                                style={styles.inputField}
-                                value={value}
-                                onChangeText={(text) => onChange(text)}
-                            />
-                        )}
-                        name="firstName"
-                        defaultValue=""
-                    />
-                    {errors.firstName && (
-                        <Text style={{ color: 'red' }}>{t('First name is required')}</Text>
+                <Controller
+                    control={control}
+                    rules={{
+                        required: true,
+                    }}
+                    render={({ field: { onChange, value } }) => (
+                        <TextInput
+                            placeholder={t('Enter your first name')}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            style={styles.inputField}
+                            value={value}
+                            onChangeText={(text) => onChange(text)}
+                        />
                     )}
-                </View>
+                    name="firstName"
+                    defaultValue=""
+                />
+                {errors.firstName && (
+                    <Text style={{ color: 'red' }}>{t('First name is required')}</Text>
+                )}
 
-                <View style={styles.inputView}>
-                    <Controller
-                        control={control}
-                        rules={{
-                            required: true,
-                        }}
-                        render={({ field: { onChange, value } }) => (
-                            <TextInput
-                                placeholder={t('Enter your last name')}
-                                autoCapitalize="none"
-                                autoCorrect={false}
-                                style={styles.inputField}
-                                value={value}
-                                onChangeText={(text) => onChange(text)}
-                            />
-                        )}
-                        name="lastName"
-                        defaultValue=""
-                    />
-                    {errors.lastName && (
-                        <Text style={{ color: 'red' }}>{t('Last name is required')}</Text>
+                <Controller
+                    control={control}
+                    rules={{
+                        required: true,
+                    }}
+                    render={({ field: { onChange, value } }) => (
+                        <TextInput
+                            placeholder={t('Enter your last name')}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            style={styles.inputField}
+                            value={value}
+                            onChangeText={(text) => onChange(text)}
+                        />
                     )}
-                </View>
+                    name="lastName"
+                    defaultValue=""
+                />
+                {errors.lastName && (
+                    <Text style={{ color: 'red' }}>{t('Last name is required')}</Text>
+                )}
 
-                <View style={styles.inputView}>
-                    <Controller
-                        control={control}
-                        rules={{
-                            required: true,
-                        }}
-                        render={({ field: { onChange, value } }) => (
-                            <TextInput
-                                placeholder={t('Enter your email')}
-                                autoCapitalize="none"
-                                textContentType="emailAddress"
-                                keyboardType="email-address"
-                                autoCorrect={false}
-                                style={styles.inputField}
-                                value={value}
-                                onChangeText={(text) => onChange(text)}
-                            />
-                        )}
-                        name="email"
-                        defaultValue=""
-                    />
-                    {errors.email && <Text style={{ color: 'red' }}>{t('Email is required')}</Text>}
-                </View>
-
-                <View style={styles.inputView}>
-                    <Controller
-                        control={control}
-                        rules={{
-                            required: true,
-                        }}
-                        render={({ field: { onChange, value } }) => (
-                            <TextInput
-                                placeholder={t('Enter password')}
-                                secureTextEntry={true}
-                                autoCapitalize="none"
-                                autoCorrect={false}
-                                style={styles.inputField}
-                                value={value}
-                                onChangeText={(text) => onChange(text)}
-                            />
-                        )}
-                        name="password"
-                        defaultValue=""
-                    />
-                    {errors.lastName && (
-                        <Text style={{ color: 'red' }}>{t('Password is required')}</Text>
+                <Controller
+                    control={control}
+                    rules={{
+                        required: true,
+                    }}
+                    render={({ field: { onChange, value } }) => (
+                        <TextInput
+                            placeholder={t('Enter your email')}
+                            autoCapitalize="none"
+                            textContentType="emailAddress"
+                            keyboardType="email-address"
+                            autoCorrect={false}
+                            style={styles.inputField}
+                            value={value}
+                            onChangeText={(text) => onChange(text)}
+                        />
                     )}
-                </View>
+                    name="email"
+                    defaultValue=""
+                />
+                {errors.email && <Text style={{ color: 'red' }}>{t('Email is required')}</Text>}
+
+                <Controller
+                    control={control}
+                    rules={{
+                        required: true,
+                    }}
+                    render={({ field: { onChange, value } }) => (
+                        <TextInput
+                            placeholder={t('Enter password')}
+                            secureTextEntry={true}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            style={styles.inputField}
+                            value={value}
+                            onChangeText={(text) => onChange(text)}
+                        />
+                    )}
+                    name="password"
+                    defaultValue=""
+                />
+                {errors.lastName && (
+                    <Text style={{ color: 'red' }}>{t('Password is required')}</Text>
+                )}
 
                 <Controller
                     control={control}

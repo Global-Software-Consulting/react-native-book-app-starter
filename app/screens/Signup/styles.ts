@@ -41,8 +41,11 @@ export const useStyles = () => {
             color: theme.colors.text,
         },
         inputField: {
-            width: width('50%'),
-            color: 'black',
+            alignSelf: 'center',
+            borderRadius: 20,
+            margin: 10,
+            backgroundColor: 'white',
+            width: width('60%'),
         },
         genderPicker: {
             width: width('60%'),
