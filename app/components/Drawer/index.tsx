@@ -134,7 +134,16 @@ const Drawer: React.FC = (props) => {
                         navigation.dispatch(DrawerActions.toggleDrawer());
                     }}
                 />
-
+                <DrawerItem
+                    icon={({ color, size }) => (
+                        <MaterialCommunityIcons name="cart-outline" color={color} size={size} />
+                    )}
+                    label={t('Cart')}
+                    onPress={() => {
+                        navigation.navigate('Cart' as never);
+                        navigation.dispatch(DrawerActions.toggleDrawer());
+                    }}
+                />
                 <View style={styles.preference}>
                     <Text style={styles.text}>{t('Dark Theme')} </Text>
                     <ThemeController />
