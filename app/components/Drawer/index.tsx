@@ -140,8 +140,9 @@ const Drawer: React.FC = (props) => {
                     )}
                     label={t('Cart')}
                     onPress={() => {
-                        navigation.navigate('Cart' as never);
                         navigation.dispatch(DrawerActions.toggleDrawer());
+
+                        navigation.navigate('Cart' as never);
                     }}
                 />
                 <View style={styles.preference}>
