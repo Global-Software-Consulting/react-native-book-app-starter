@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { DataTable } from 'react-native-paper';
+import SwipeButton from 'rn-swipe-button';
 
 import { useStyles } from './styles';
 const Cart: React.FC = () => {
@@ -43,6 +44,11 @@ const Cart: React.FC = () => {
                     </DataTable.Cell>
                 </DataTable.Row>
             </DataTable>
+            <SwipeButton
+                containerStyles={{ borderRadius: 5 }}
+                height={30}
+                onSwipeStart={() => console.log('Swiped')}
+            />
         </ScrollView>
     );
 };
