@@ -11,6 +11,8 @@
 
  * Find and save books in list
  * Add Books to favourites
+ * Implementation of Text to Speech library.
+ * Implementation of Camera to take and crop pictures. 
  * PlaceHolder/Shimmer Animations 
  * Global themeing with light & dark modes
  * Clean code with ES Lint
