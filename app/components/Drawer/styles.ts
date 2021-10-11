@@ -63,6 +63,7 @@ export const useStyles = () => {
         preference: {
             flexDirection: 'row',
             justifyContent: 'space-between',
+            alignItems:'center',
             paddingVertical: 12,
             paddingHorizontal: 16,
         },

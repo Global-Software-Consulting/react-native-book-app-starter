@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
 import { Dimensions } from 'react-native';
@@ -20,6 +20,7 @@ export const useStyles = () => {
         favoriteView: {
             alignItems: 'center',
             justifyContent: 'center',
+            marginBottom: height('6%')
         },
         bookmark: {
             margin: 2,
@@ -39,7 +40,7 @@ export const useStyles = () => {
             color: theme.colors.text,
         },
         middleView: {
-            marginBottom: windowHeight > windowWidth ? height('15%') : height('25%'),
+            marginBottom: windowHeight > windowWidth ? height('15%') : Platform.OS==="ios" ? height('25%') :height('40%') ,
         },
         nameShimmer: {
             width: width('25%'),

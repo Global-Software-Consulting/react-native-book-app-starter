@@ -34,6 +34,7 @@ export const useStyles = () => {
         },
         main: {
             backgroundColor: theme.colors.background,
+            minHeight:height('100%')
         },
         dynamicLaunchedText: {
             fontWeight: 'bold',
@@ -52,15 +53,15 @@ export const useStyles = () => {
             margin: 30,
         },
         subShimmerView: {
-            margin: 20,
+            margin: 5,
             height: height('20'),
             width: width('80'),
             alignSelf: 'center',
             backgroundColor: '#E7E5E7',
         },
         mainShimmerView: {
-            margin: 20,
-            height: height('20'),
+            margin: 10,
+            height: height('10'),
             width: width('80'),
             alignSelf: 'center',
             backgroundColor: '#E7E5E7',
@@ -76,15 +77,17 @@ export const useStyles = () => {
             fontWeight: '300',
             fontSize: 15,
             marginBottom: 10,
+            marginRight:10
         },
 
         bookShimmer: {
-            height: windowHeight > windowWidth ? height('45%') : height('70%'),
-            width: windowHeight > windowWidth ? width('60%') : width('20%'),
-            borderRadius: 4,
+            height: windowHeight > windowWidth ? height('30%') : height('70%'),
+            width: windowHeight > windowWidth ? width('50%') : width('20%'),
+            borderRadius: 20,
+            elevation:5,
             backgroundColor: '#E7E5E7',
             alignSelf: 'center',
-            margin: 20,
+            margin: 10,
         },
 
         sizeText: {
@@ -92,6 +95,21 @@ export const useStyles = () => {
             fontSize: 15,
             textAlign: 'center',
         },
+        tagLineShimmer: {
+            width: width('40%'),
+            height: height('4%'),
+            backgroundColor: '#E7E5E7',
+            marginRight:width('2%')
+        },
+        tagLineShimmerLeft:
+        {
+            width: width('40%'),
+            height: height('4%'),
+            backgroundColor: '#E7E5E7',
+            marginRight: width('2%'),
+            alignSelf: 'flex-start',
+            marginLeft: width('9%')
+            },
         pagesSubView: {
             flexDirection: 'column',
         },
@@ -162,6 +180,21 @@ export const useStyles = () => {
         bookView: {
             backgroundColor: 'transparent',
             paddingRight: 20,
+        },
+        submitView: {
+            alignContent: 'center',
+            alignSelf: 'center',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            marginTop: 30,
+            borderRadius: 20,
+            marginBottom: 20,
+            marginRight:10
+        },
+        submit: {
+            height: 40,
+            width: width('40%'),
+            marginTop: 5,
         },
     });
     return styles;

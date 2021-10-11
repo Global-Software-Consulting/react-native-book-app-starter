@@ -15,6 +15,26 @@ export const useStyles = () => {
             alignItems: 'center',
             flexGrow: 1,
         },
+        submitView: {
+            backgroundColor: '#00416A',
+            alignContent: 'center',
+            alignSelf: 'center',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            marginTop: 30,
+            borderRadius: 20,
+            marginBottom:20
+        },
+        activity: {
+            marginLeft: width('40%'),
+            alignSelf: 'center',
+            position: 'absolute',
+        },
+        submit: {
+            height: 40,
+            width: width('50%'),
+            marginTop: 5,
+        },
         displayPicture: {
             height: windowHeight > windowWidth ? height('15%') : height('60%'),
             width: width('30%'),

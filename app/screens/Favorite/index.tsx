@@ -7,16 +7,16 @@ import * as appActions from 'store/actions/appActions';
 import Container from './Container';
 //importing components
 import Shimmer from './Shimmer';
-//importing card component
+import * as loadingActions from 'store/actions/loginActions';
 
 const base_url: string = 'https://ebook-application.herokuapp.com/v1/';
-
 const Favorite: React.FC = () => {
     //theme handling
     const isFocused = useIsFocused();
     const favoriteBooks = useSelector((state: ReducerState) => state.appReducer.favorite);
     const isLoading = useSelector((state: ReducerState) => state.loadingReducer.isLoading);
-    const [favoriteBookss, setFavoriteBookss] = useState(favoriteBooks);
+    const [favoriteBookState, setfavoriteBookState] = useState(favoriteBooks);
+    const [mounted, setMounted] = useState(true);
     const dispatch = useDispatch();
 
     //fetching favorite books
@@ -27,11 +27,21 @@ const Favorite: React.FC = () => {
         if (isFocused) {
             getFavoriteBooks();
         }
+        return () => {
+            setMounted(false);
+            dispatch(loadingActions.disableLoader());
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isFocused]);
 
     useEffect(() => {
-        setFavoriteBookss(favoriteBooks);
+        if (!mounted) return;
+        else {
+            setfavoriteBookState(favoriteBooks);
+        }
+        return () => {
+            setMounted(false);
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [favoriteBooks]);
 
@@ -61,7 +71,7 @@ const Favorite: React.FC = () => {
             ) : (
                 <Container
                     base_url={base_url}
-                    books={favoriteBookss}
+                    books={favoriteBookState}
                     onRefresh={getFavoriteBooks}
                 />
             )}
