@@ -9,6 +9,7 @@ import { useTheme } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux';
 import BookReader from 'screens/BookReader';
+import Cart from 'screens/Cart';
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil';
 import BookDetail from './../screens/BookDetail/index';
 import TabNavigator from './TabNavigator';
@@ -70,6 +71,37 @@ const AppNavigation = () => {
                 component={BookReader}
                 options={{
                     drawerLabel: 'Book Reader',
+                    drawerLabelStyle: { alignSelf: 'center' },
+                    headerLeft: () => (
+                        <TouchableOpacity
+                            style={{ flexDirection: 'row' }}
+                            onPress={() => navigation.goBack()}>
+                            <Icon
+                                name="arrow-back-ios"
+                                color={theme.colors.text}
+                                size={windowHeight > windowWidth ? width('5%') : height('5%')}
+                                style={{ marginLeft: 20 }}
+                            />
+                            <Text
+                                style={{
+                                    color: theme.colors.text,
+                                    fontSize:
+                                        windowHeight > windowWidth ? width('4%') : height('4%'),
+                                }}>
+                                Back
+                            </Text>
+                        </TouchableOpacity>
+                    ),
+                    headerStyle: { backgroundColor: theme.colors.background },
+                    headerTintColor: theme.colors.text,
+                }}
+            />
+
+            <AppDrawer.Screen
+                name="Cart"
+                component={Cart}
+                options={{
+                    drawerLabel: 'Cart',
                     drawerLabelStyle: { alignSelf: 'center' },
                     headerLeft: () => (
                         <TouchableOpacity
