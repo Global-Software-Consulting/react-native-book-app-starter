@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -110,29 +110,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,34 +145,34 @@ import getBooks from '../../services/getBooks';
 import getFavoriteBooks from '../../services/getFavoriteBooks';
 import * as appActions from '../actions/appActions';
 &nbsp;
-export default function* <span class="fstat-no" title="function not covered" >fetchBookAsync(</span>action: { keyword: string }) {
+export default function* fetchBookAsync(action: { keyword: string }) {
     // if (action.keyword = "abort") {
 &nbsp;
     // }
     // else {
-<span class="cstat-no" title="statement not covered" >        try {</span>
-<span class="cstat-no" title="statement not covered" >            yield put(loadingActions.enableLoader());</span>
+        try {
+            yield put(loadingActions.enableLoader());
             //calling api
 &nbsp;
-            const response: Response = <span class="cstat-no" title="statement not covered" >yield call(getBooks, action.keyword);</span>
-<span class="cstat-no" title="statement not covered" >            if (response.status === 'networkFailed') {</span>
-<span class="cstat-no" title="statement not covered" >                yield put(loadingActions.disableLoader());</span>
+            const response: Response = yield call(getBooks, action.keyword);
+            if (response.status === 'networkFailed') {
+                yield put(loadingActions.disableLoader());
             } else {
-<span class="cstat-no" title="statement not covered" >                if (response &amp;&amp; response?.status === 'success') {</span>
-<span class="cstat-no" title="statement not covered" >                    yield put(appActions.getBookResponse(response.result));</span>
-                    const favoriteBooksResponse: Response = <span class="cstat-no" title="statement not covered" >yield call(getFavoriteBooks);</span>
-<span class="cstat-no" title="statement not covered" >                    yield put(appActions.getFavoriteBookResponse(favoriteBooksResponse.result));</span>
-<span class="cstat-no" title="statement not covered" >                    yield put(loadingActions.disableLoader());</span>
-                } else <span class="cstat-no" title="statement not covered" >if (response?.status !== 'success') {</span>
-<span class="cstat-no" title="statement not covered" >                    yield put(loadingActions.disableLoader());</span>
-<span class="cstat-no" title="statement not covered" >                    yield put(</span>
+                if (response &amp;&amp; response?.status === 'success') {
+                    yield put(appActions.getBookResponse(response.result));
+                    const favoriteBooksResponse: Response = yield call(getFavoriteBooks);
+                    yield put(appActions.getFavoriteBookResponse(favoriteBooksResponse.result));
+                    yield put(loadingActions.disableLoader());
+                } else if (response?.status !== 'success') {
+                    yield put(loadingActions.disableLoader());
+                    yield put(
                         snackbarActions.enableSnackbar('Error loading book list, please try again'),
                     );
                 }
             }
         } catch (error) {
-<span class="cstat-no" title="statement not covered" >            yield put(loadingActions.disableLoader());</span>
-<span class="cstat-no" title="statement not covered" >            yield put(snackbarActions.enableSnackbar('Error loading book list, please try again'));</span>
+            yield put(loadingActions.disableLoader());
+            yield put(snackbarActions.enableSnackbar('Error loading book list, please try again'));
         }
         //start loading
     }
@@ -184,7 +184,7 @@ export default function* <span class="fstat-no" title="function not covered" >fe
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Oct 28 2021 16:14:12 GMT+0500 (Pakistan Standard Time)
+                at Fri Oct 29 2021 14:39:02 GMT+0500 (Pakistan Standard Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

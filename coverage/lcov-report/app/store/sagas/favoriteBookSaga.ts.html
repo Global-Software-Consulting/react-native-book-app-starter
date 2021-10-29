@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -96,27 +96,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Response } from './types';
@@ -126,28 +126,28 @@ import * as snackbarActions from 'store/actions/snackbarActions';
 import getFavoriteBooks from '../../services/getFavoriteBooks';
 import * as appActions from '../actions/appActions';
 &nbsp;
-export default function* <span class="fstat-no" title="function not covered" >fetchFavoriteBookAsync(</span>) {
-<span class="cstat-no" title="statement not covered" >    try {</span>
+export default function* fetchFavoriteBookAsync() {
+    try {
         //start loading
-<span class="cstat-no" title="statement not covered" >        yield put(loadingActions.enableLoader());</span>
+        yield put(loadingActions.enableLoader());
         //calling api
-        const response: Response = <span class="cstat-no" title="statement not covered" >yield call(getFavoriteBooks);</span>
+        const response: Response = yield call(getFavoriteBooks);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if (response &amp;&amp; response?.status === 'Success') {</span>
-<span class="cstat-no" title="statement not covered" >            yield put(appActions.getFavoriteBookResponse(response.result));</span>
+        if (response &amp;&amp; response?.status === 'Success') {
+            yield put(appActions.getFavoriteBookResponse(response.result));
             //ends loading
-<span class="cstat-no" title="statement not covered" >            yield put(loadingActions.disableLoader());</span>
-        } else <span class="cstat-no" title="statement not covered" >if (response?.status === 'networkFailed') {</span>
-<span class="cstat-no" title="statement not covered" >            yield put(loadingActions.disableLoader());</span>
+            yield put(loadingActions.disableLoader());
+        } else if (response?.status === 'networkFailed') {
+            yield put(loadingActions.disableLoader());
         } else {
-<span class="cstat-no" title="statement not covered" >            yield put(loadingActions.disableLoader());</span>
-<span class="cstat-no" title="statement not covered" >            yield put(</span>
+            yield put(loadingActions.disableLoader());
+            yield put(
                 snackbarActions.enableSnackbar('Error getting favorite books, please try again'),
             );
         }
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >        yield put(loadingActions.disableLoader());</span>
-<span class="cstat-no" title="statement not covered" >        yield put(snackbarActions.enableSnackbar('Error getting favorite books, please try again'));</span>
+        yield put(loadingActions.disableLoader());
+        yield put(snackbarActions.enableSnackbar('Error getting favorite books, please try again'));
     }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -157,7 +157,7 @@ export default function* <span class="fstat-no" title="function not covered" >fe
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Oct 28 2021 16:14:12 GMT+0500 (Pakistan Standard Time)
+                at Fri Oct 29 2021 14:39:02 GMT+0500 (Pakistan Standard Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
