@@ -28,14 +28,18 @@ export const loginReducer = createReducer(initialState, {
             isLoggedIn: true,
         };
     },
-    
+    [types.LOG_OUT](state: ILoginState) {
+        return {
+            ...state,
+            isLoggedIn: false,
+        };
+    },
     [types.USER_DETAILS_RESPONSE](state: ILoginState, action: ILoginResponseState) {
         return {
             ...state,
             user: action.payload,
         };
     },
-
     [types.SIGN_UP_RESPONSE](state: ILoginState, action: ILoginResponseState) {
         return {
             ...state,
