@@ -6,14 +6,6 @@ import fetchBookDetailSaga from '../../app/store/sagas/bookDetailSaga';
 import * as loadingAction from './../../app/store/actions/loginActions';
 import * as appActions from './../../app/store/actions/appActions';
 
-jest.mock('react-native-simple-toast', () => {
-    return {
-        Toast: jest.fn(),
-    };
-});
-jest.mock('@react-native-community/netinfo', () => ({
-    netInfo: jest.fn(),
-}));
 const payload = {
     id: 1,
 };

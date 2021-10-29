@@ -14,12 +14,11 @@ import * as snackbarActions from 'store/actions/snackbarActions';
 // Our worker Saga that logins the user
 export default function* forgetPassword(action: { params: string }) {
     try {
-        console.log('here',action);
         
         yield put(loginActions.enableLoader());
 
         const response: UserData = yield call(forgotPassword, action.params,
-        );
+        ); 
         //mock response
         yield put(loginActions.forgotPasswordResponse(response));
         yield put(loginActions.disableLoader());
