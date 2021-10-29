@@ -3,10 +3,11 @@ import { call, put } from 'redux-saga/effects';
 import addBookToFavoite from 'services/addBookToFavoite';
 import * as loadingActions from 'store/actions/loginActions';
 import * as snackbarActions from 'store/actions/snackbarActions';
+import { loginResponse } from '../../../TestData/Reducer/loginData';
 export default function* addBookToFavorite(action: { id: number }) {
     try {
         const response: ResponseGenerator = yield call(addBookToFavoite, action.id);
-
+console.log('res',response)
         if (response && response?.status === 'success') {
             yield put(loadingActions.disableLoader());
         } else if (response?.status === 'networkFailed') {
