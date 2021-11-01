@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -83,32 +83,30 @@
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ResponseGenerator } from 'models/Saga/ResponseGenerator';
@@ -117,25 +115,24 @@ import removeBookFromFavoite from 'services/removeBookFromFavoite';
 import * as loadingActions from 'store/actions/loginActions';
 import * as snackbarActions from 'store/actions/snackbarActions';
 &nbsp;
-export default function* <span class="fstat-no" title="function not covered" >removeBookfromFavorite(</span>action: { id: number }) {
-<span class="cstat-no" title="statement not covered" >    try {</span>
+export default function* removeBookfromFavorite(action: { id: number }) {
+    try {
         //start loading
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        yield put(loadingActions.enableLoader());</span>
+        yield put(loadingActions.enableLoader());
         //calling api
-        const response: ResponseGenerator = <span class="cstat-no" title="statement not covered" >yield call(removeBookFromFavoite, action.id);</span>
+        const response: ResponseGenerator = yield call(removeBookFromFavoite, action.id);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if (response &amp;&amp; response?.status === 'success') {</span>
-<span class="cstat-no" title="statement not covered" >            console.log('Response Printed');</span>
-        } else <span class="cstat-no" title="statement not covered" >if (response?.status === 'networkFailed') {</span>
-<span class="cstat-no" title="statement not covered" >            yield put(loadingActions.disableLoader());</span>
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (response &amp;&amp; response?.status === 'success') {
+        } else if (response?.status === 'networkFailed') {
+            yield put(loadingActions.disableLoader());
         } else {
-<span class="cstat-no" title="statement not covered" >            yield put(loadingActions.disableLoader());</span>
-<span class="cstat-no" title="statement not covered" >            yield put(snackbarActions.enableSnackbar('Error removing book from the favorites'));</span>
+            yield put(loadingActions.disableLoader());
+            yield put(snackbarActions.enableSnackbar('Error removing book from the favorites'));
         }
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >        yield put(loadingActions.disableLoader());</span>
-<span class="cstat-no" title="statement not covered" >        yield put(snackbarActions.enableSnackbar('Error removing book from the favorites'));</span>
+        yield put(loadingActions.disableLoader());
+        yield put(snackbarActions.enableSnackbar('Error removing book from the favorites'));
     }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -145,7 +142,7 @@ export default function* <span class="fstat-no" title="function not covered" >re
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Oct 28 2021 16:14:12 GMT+0500 (Pakistan Standard Time)
+                at Mon Nov 01 2021 10:46:59 GMT+0500 (Pakistan Standard Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

@@ -1,30 +1,5 @@
 import * as actions from '../../app/store/actions/appActions';
 
-jest.mock('@react-native-async-storage/async-storage', () => ({
-    getItem: jest.fn(),
-    setItem: jest.fn(),
-}));
-jest.mock('react-native-simple-toast', () => ({
-    Toast: jest.fn(),
-}));
-jest.mock('@react-native-community/netinfo', () => ({
-    netInfo: jest.fn(),
-}));
-
-// jest.mock('setNewFavorites', () => ({
-//     action: jest.fn(),
-// }));
-// it('doStuffThenChangeColor', (assert) => {
-//     jest.useFakeTimers('legacy');
-//     const gen = cloneableGenerator(fetchBookAsync)();
-//     gen.next();
-// }, 100000);
-// it('doStuffThenChangeColor', (assert) => {
-//     jest.useFakeTimers('legacy');
-//     const gen = cloneableGenerator(fetchBookAsync)();
-//     gen.next();
-// }, 100000);
-
 describe('App Actions', () => {
     it('Creation of actions with correct type', () => {
         const expectedAction = {
