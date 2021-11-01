@@ -14,7 +14,7 @@ import signupUser from 'services/signupUser';
 import * as appActions from 'store/actions/appActions';
 import * as loginActions from 'store/actions/loginActions';
 import * as snackbarActions from 'store/actions/snackbarActions';
-const storeData = async (value: string) => {
+export const storeData = async (value: string) => {
     try {
         await AsyncStorage.setItem('token', value);
     } catch (e) {
@@ -22,8 +22,9 @@ const storeData = async (value: string) => {
     }
 };
 
+
 // Our worker Saga that logins the user
-export default function* signUpsync(action: any) {
+export default function* signUpsync(action: {params:string}) {
     try {
         yield put(loginActions.enableLoader());
         const response: Response = yield call(signupUser, action.params);

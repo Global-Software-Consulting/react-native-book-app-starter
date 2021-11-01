@@ -1,6 +1,6 @@
 import { Response } from './types';
 import { call, put } from 'redux-saga/effects';
-import updateProfile from 'services/updateProfile';
+import updateProfile from './../../services/updateProfile'
 import * as loginActions from 'store/actions/loginActions';
 import * as snackbarActions from 'store/actions/snackbarActions';
 import { UpdateProfile } from 'services/types';
