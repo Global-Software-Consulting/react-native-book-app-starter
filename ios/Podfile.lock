@@ -8,7 +8,7 @@ PODS:
   - boost-for-react-native (1.63.0)
   - BVLinearGradient (2.5.6):
     - React
-  - CodePush (7.0.3):
+  - CodePush (7.0.4):
     - Base64 (~> 1.1)
     - JWT (~> 3.0.0-beta.12)
     - React-Core
@@ -304,13 +304,13 @@ PODS:
     - React-Core
   - react-native-camera/RN (4.2.1):
     - React-Core
-  - react-native-config (1.4.4):
-    - react-native-config/App (= 1.4.4)
-  - react-native-config/App (1.4.4):
+  - react-native-config (1.4.5):
+    - react-native-config/App (= 1.4.5)
+  - react-native-config/App (1.4.5):
     - React-Core
-  - react-native-netinfo (6.0.2):
+  - react-native-netinfo (6.0.4):
     - React-Core
-  - react-native-pdf (6.3.0):
+  - react-native-pdf (6.4.0):
     - React-Core
   - react-native-progress-bar-android (1.0.4):
     - React
@@ -396,16 +396,16 @@ PODS:
     - React-Core
   - RNCAsyncStorage (1.15.9):
     - React-Core
-  - RNDeviceInfo (8.4.0):
+  - RNDeviceInfo (8.4.4):
     - React-Core
   - RNFastImage (8.5.11):
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFBApp (12.9.0):
+  - RNFBApp (12.9.3):
     - Firebase/CoreOnly (= 8.8.0)
     - React-Core
-  - RNFBAuth (12.9.0):
+  - RNFBAuth (12.9.3):
     - Firebase/Auth (= 8.8.0)
     - React-Core
     - RNFBApp
@@ -425,7 +425,7 @@ PODS:
     - TOCropViewController
   - RNLocalize (2.1.5):
     - React-Core
-  - RNReanimated (2.2.2):
+  - RNReanimated (2.2.3):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -454,7 +454,7 @@ PODS:
     - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.8.0):
+  - RNScreens (3.9.0):
     - React-Core
     - React-RCTImage
   - RNVectorIcons (8.1.0):
@@ -679,7 +679,7 @@ SPEC CHECKSUMS:
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
-  CodePush: f509246638a5ebe5209b08351e48a95093d1f307
+  CodePush: b51b7ac64c07d4eacfc8cc5750a1dd28adbf2528
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
   FBReactNativeSpec: 03596282b1503ba71bd0d562bf3d4a351c861b9a
@@ -711,9 +711,9 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 80c46bd381fd06e418e0d4f53672dc1d1945c4c3
   React-jsinspector: cc614ec18a9ca96fd275100c16d74d62ee11f0ae
   react-native-camera: 3eae183c1d111103963f3dd913b65d01aef8110f
-  react-native-config: 72d948053a442779b3178fddd571e37f118ef606
-  react-native-netinfo: 92e6e4476eb8bf6fc2d7c0a6ca0a1406f663d73a
-  react-native-pdf: ef641e79a6d550cfabe5d7ec1916799726514c43
+  react-native-config: 6502b1879f97ed5ac570a029961fc35ea606cd14
+  react-native-netinfo: 1c7676413ab265759c7b3da205efab163f5366ef
+  react-native-pdf: a6a5a3f0bdf340eb2eed6c96034424d2cc3f84b0
   react-native-progress-bar-android: be43138ab7da30d51fc038bafa98e9ed594d0c40
   react-native-progress-view: 9e6b6a5305a9115c2157ae3b8852081aba0aab7c
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
@@ -735,16 +735,16 @@ SPEC CHECKSUMS:
   ReactNativeLocalization: 90a1181b7672309701dd7e5364fbf587319d41c6
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: 26f25150da507524a7815f2ada06ca0967f65633
-  RNDeviceInfo: 8a06046616c6b5c03787b04f265fa3b52b37c80b
+  RNDeviceInfo: 98cc93d4b3b09b33e784b751f04d414065a61fd4
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
-  RNFBApp: d11e8ae04b9b6230f3a28b70761f2edd185deaa8
-  RNFBAuth: 5398407c7991175f0f3a8d0a9581ab6d326d3762
+  RNFBApp: 729c0666395b1953198dc4a1ec6deb8fbe1c302e
+  RNFBAuth: 7718be1152f5d1d0bb970a8d33094d010f1ac21c
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNGoogleSignin: a51c9c7419262c75748ddcee3f735bb42da5def1
   RNImageCropPicker: 73891a709e6fd8a47d32104d942757971f220aee
   RNLocalize: 74b82db20cc3895ccc25af992c644879bcec2815
-  RNReanimated: 241c586663f44f19a53883c63375fdd041253960
-  RNScreens: 6e1ea5787989f92b0671049b808aef64fa1ef98c
+  RNReanimated: 64c38d47ffcc29c97fc1d8cfde9e8a73d7be7cc8
+  RNScreens: 4d79118be80f79fa1f4aa131909a1d6e86280af3
   RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815

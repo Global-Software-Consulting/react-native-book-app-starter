@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component testing Snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "alignSelf": "center",
+      "borderColor": "grey",
+      "borderRadius": 20,
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginBottom": 5,
+      "marginTop": 5,
+      "padding": 5,
+      "width": 675,
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[Function]}
+    onEndEditing={[Function]}
+    placeholderTextColor="#000000"
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "color": "#000000",
+        "margin": 2,
+        "marginLeft": 5,
+        "width": undefined,
+      }
+    }
+    testID="searchInput"
+    underlineColorAndroid="transparent"
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+    testID="searchBookies"
+  >
+    <mockedDefaultExport
+      name="search"
+      size={20}
+      style={
+        Object {
+          "color": "#000000",
+          "margin": 2,
+          "marginLeft": 5,
+        }
+      }
+    />
+  </View>
+</View>
+`;

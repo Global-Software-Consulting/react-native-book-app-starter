@@ -13,7 +13,7 @@ const PictureViewer: React.FC<Props> = (props) => {
             <View style={styles.mainView}>
                 <Image source={props.imageSource} style={styles.image} />
             </View>
-            <TouchableOpacity style={styles.closeButton} onPress={props.onPress}>
+            <TouchableOpacity testID={'close'} style={styles.closeButton} onPress={props.onPress}>
                 <Text style={styles.text}>{t('Close')}</Text>
             </TouchableOpacity>
         </Modal>

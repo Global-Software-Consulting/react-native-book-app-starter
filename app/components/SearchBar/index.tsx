@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TextInput, View } from 'react-native';
+import { TextInput, TouchableOpacity, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useDispatch } from 'react-redux';
@@ -21,6 +21,7 @@ const SearchBar: React.FC = () => {
     return (
         <View style={styles.searchView}>
             <TextInput
+                testID={'searchInput'}
                 underlineColorAndroid="transparent"
                 placeholder={t('Search Here')}
                 placeholderTextColor={theme.colors.text}
@@ -28,12 +29,9 @@ const SearchBar: React.FC = () => {
                 style={styles.searchViewInput}
                 onEndEditing={() => fetchBookDetails()}
             />
-            <Icon
-                name="search"
-                size={20}
-                style={styles.searchViewChildren}
-                onPress={() => fetchBookDetails()}
-            />
+            <TouchableOpacity testID={'searchBookies'} onPress={() => fetchBookDetails()}>
+                <Icon name="search" size={20} style={styles.searchViewChildren} />
+            </TouchableOpacity>
         </View>
     );
 };

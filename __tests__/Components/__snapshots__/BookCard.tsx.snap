@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component testing Snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "transparent",
+      "borderRadius": 20,
+      "elevation": 2,
+      "margin": 2,
+      "marginRight": 3,
+      "shadowColor": "red",
+      "shadowOffset": Object {
+        "height": 2,
+        "width": 0,
+      },
+      "shadowOpacity": 3,
+      "shadowRadius": 2,
+    }
+  }
+>
+  <mockedDefaultExport
+    resizeMode="contain"
+    source={
+      Object {
+        "priority": undefined,
+        "uri": "abc.com",
+      }
+    }
+    style={
+      Object {
+        "alignSelf": "center",
+        "borderRadius": 20,
+        "height": 400,
+        "margin": 5,
+        "width": 487.5,
+      }
+    }
+  />
+</View>
+`;

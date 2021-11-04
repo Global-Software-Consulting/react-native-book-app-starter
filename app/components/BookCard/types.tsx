@@ -1,11 +1,11 @@
 import { Books } from 'screens/BookDetail/types';
 
 export interface Props {
-    id: number;
+    id?: number;
     hideIcon?: boolean;
     url?: string;
     bookTitle?: string;
-    styleSelect: 'General' | 'Custom' | 'Large' | 'ExtraLarge';
+    styleSelect?: 'General' | 'Custom' | 'Large' | 'ExtraLarge';
     authorName?: string;
     isFavorite?: boolean;
     book?: Array<Books> | Books;
