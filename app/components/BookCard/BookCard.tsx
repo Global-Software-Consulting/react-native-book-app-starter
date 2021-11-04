@@ -2,7 +2,8 @@
 import { useIsFocused } from '@react-navigation/native';
 import { FavoriteBook } from 'models/reducers/appReducers';
 import { ReducerState } from 'models/reducers/index';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useEffect } from './../../../workaround/useEffect';
 import { Platform, View } from 'react-native';
 //image with placeholder
 import FastImage from 'react-native-fast-image';
@@ -44,7 +45,6 @@ const BookCard: React.FC<Props> = ({
     const apiAddFavorite = async () => {
         if (isFavorite) {
             //filtering out new data after deletion
-
             const newData: Array<FavoriteBook> = favoriteBooks.filter((item) => item.bookId !== id);
 
             //removing the red heart icon
@@ -64,7 +64,6 @@ const BookCard: React.FC<Props> = ({
             });
         } else {
             setIsFavorite(true);
-
             addBookToFavoite(id)
                 .then((response) => {
                     if (response && response.status === 'success') {
@@ -83,7 +82,7 @@ const BookCard: React.FC<Props> = ({
     return (
         <View style={Platform.OS === 'android' ? styles.bookViewAndroid : styles.bookViewIOS}>
             <FastImage
-                source={{ uri: url, priority: FastImage.priority.normal }}
+                source={{ uri: url, priority: FastImage.priority?.normal }}
                 resizeMode="contain"
                 style={
                     styleSelect === 'General'
@@ -108,9 +107,10 @@ const BookCard: React.FC<Props> = ({
                     }
                     color={isFavorite ? 'red' : 'white'}
                     onPress={apiAddFavorite}
+                    testID="heart"
                 />
             )}
-            <Text
+            {/* <Text
                 style={
                     styleSelect === 'General' || styleSelect === 'Custom'
                         ? styles.textTitle
@@ -127,7 +127,7 @@ const BookCard: React.FC<Props> = ({
                         : styles.authorTitleEnlarged
                 }>
                 {authorName}
-            </Text>
+            </Text> */}
         </View>
     );
 };

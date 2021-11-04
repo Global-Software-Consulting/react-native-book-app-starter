@@ -101,7 +101,7 @@ const Login: React.FC = () => {
                 </Text>
             </LinearGradient>
             <View style={styles.cardView}>
-                <Image source={images.app.logo} style={styles.logo} />
+                <Image source={images.app?.logo} style={styles.logo} />
 
                 <Text style={styles.logInText}>{t('Log In Now')}</Text>
 
@@ -129,11 +129,11 @@ const Login: React.FC = () => {
                         name="email"
                         defaultValue=""
                     />
-                    {errors.email && (
+                    {errors.email ? (
                         <Text style={{ alignSelf: 'center', color: 'red' }}>
                             {t('Email is required')}
                         </Text>
-                    )}
+                    ) : null}
 
                     <View style={styles.passwordView}>
                         <Controller
@@ -162,9 +162,9 @@ const Login: React.FC = () => {
                             onPress={() => setSecure(!secure)}
                         />
                     </View>
-                    {errors.password && (
+                    {errors.password ? (
                         <Text style={styles.errorMessage}>{t('Password is required')}</Text>
-                    )}
+                    ) : null}
                 </View>
 
                 <TouchableOpacity
@@ -184,7 +184,7 @@ const Login: React.FC = () => {
                         style={styles.submit}>
                         <Text style={{ color: 'white' }}>{t('Log in')}</Text>
                     </Button>
-                    {isLoading && <ActivityIndicator color="white" style={styles.activity} />}
+                    {isLoading ? <ActivityIndicator color="white" style={styles.activity} /> : null}
                 </View>
 
                 <View style={styles.basicText}>
