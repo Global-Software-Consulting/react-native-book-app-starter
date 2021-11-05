@@ -1,23 +1,22 @@
 //to update heart icon on focus
-import { useIsFocused } from '@react-navigation/native';
-import { FavoriteBook } from 'models/reducers/appReducers';
-import { ReducerState } from 'models/reducers/index';
-import React, { useState } from 'react';
-import { useEffect } from './../../../workaround/useEffect';
-import { Platform, View } from 'react-native';
+import { useIsFocused } from '@react-navigation/native'
+import { FavoriteBook } from 'models/reducers/appReducers'
+import { ReducerState } from 'models/reducers/index'
+import React, { useState } from 'react'
+import { Platform, View } from 'react-native'
 //image with placeholder
-import FastImage from 'react-native-fast-image';
-import { Text } from 'react-native-paper';
+import FastImage from 'react-native-fast-image'
 //verctor icons
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome'
 //for responsive screen
-import { useDispatch, useSelector } from 'react-redux';
-import addBookToFavoite from 'services/addBookToFavoite';
-import removeBookFromFavoite from 'services/removeBookFromFavoite';
-import * as appActions from 'store/actions/appActions';
+import { useDispatch, useSelector } from 'react-redux'
+import addBookToFavoite from 'services/addBookToFavoite'
+import removeBookFromFavoite from 'services/removeBookFromFavoite'
+import * as appActions from 'store/actions/appActions'
+import { useEffect } from './../../../workaround/useEffect'
 //importing style
-import { useStyles } from './styles';
-import { IData, Props } from './types';
+import { useStyles } from './styles'
+import { IData, Props } from './types'
 
 const BookCard: React.FC<Props> = ({
     id,
@@ -28,56 +27,56 @@ const BookCard: React.FC<Props> = ({
     authorName,
     book,
 }) => {
-    const favoriteBooks = useSelector((state: ReducerState) => state.appReducer.favorite);
-    const isFocused = useIsFocused();
-    const [isFavorite, setIsFavorite] = useState<boolean>(false);
-    const dispatch = useDispatch();
-    const styles = useStyles();
+    const favoriteBooks = useSelector((state: ReducerState) => state.appReducer.favorite)
+    const isFocused = useIsFocused()
+    const [isFavorite, setIsFavorite] = useState<boolean>(false)
+    const dispatch = useDispatch()
+    const styles = useStyles()
     useEffect(() => {
         favoriteBooks?.findIndex((value: IData) => {
             if (value?.bookId === id) {
-                setIsFavorite(true);
+                setIsFavorite(true)
             }
-        });
+        })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isFocused]);
+    }, [isFocused])
 
     const apiAddFavorite = async () => {
         if (isFavorite) {
             //filtering out new data after deletion
-            const newData: Array<FavoriteBook> = favoriteBooks.filter((item) => item.bookId !== id);
+            const newData: Array<FavoriteBook> = favoriteBooks.filter((item) => item.bookId !== id)
 
             //removing the red heart icon
-            setIsFavorite(false);
+            setIsFavorite(false)
 
             //passing on the new data to be set as favorite
-            dispatch(appActions.setNewFavorites(newData));
+            dispatch(appActions.setNewFavorites(newData))
 
             //calling the api for removal of data
             removeBookFromFavoite(id).then((response) => {
                 if (response && response?.status === 'success') {
-                    return response;
+                    return response
                 } else {
-                    setIsFavorite(true);
+                    setIsFavorite(true)
                 }
-                return response;
-            });
+                return response
+            })
         } else {
-            setIsFavorite(true);
+            setIsFavorite(true)
             addBookToFavoite(id)
                 .then((response) => {
                     if (response && response.status === 'success') {
-                        return response;
+                        return response
                     } else {
-                        setIsFavorite(false);
+                        setIsFavorite(false)
                     }
-                    return response;
+                    return response
                 })
                 .catch(() => {
-                    setIsFavorite(false);
-                });
+                    setIsFavorite(false)
+                })
         }
-    };
+    }
 
     return (
         <View style={Platform.OS === 'android' ? styles.bookViewAndroid : styles.bookViewIOS}>
@@ -129,7 +128,7 @@ const BookCard: React.FC<Props> = ({
                 {authorName}
             </Text> */}
         </View>
-    );
-};
+    )
+}
 
-export default BookCard;
+export default BookCard
