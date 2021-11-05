@@ -1,59 +1,59 @@
-import images from 'config/images';
-import { IAppState } from 'models/reducers/appReducers';
-import React, { useEffect, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, Image, TextInput, View } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import LinearGradient from 'react-native-linear-gradient';
-import { Button, Text } from 'react-native-paper';
-import { useDispatch, useSelector } from 'react-redux';
-import { useStyles } from 'screens/Signup/styles';
-import * as appActions from 'store/actions/appActions';
-import * as loginActions from 'store/actions/loginActions';
-import { ISignupData } from './types';
-import Toast from 'react-native-simple-toast';
+import images from 'config/images'
+import { IAppState } from 'models/reducers/appReducers'
+import React, { useEffect, useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
+import { ActivityIndicator, Image, TextInput, View } from 'react-native'
+import DropDownPicker from 'react-native-dropdown-picker'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import LinearGradient from 'react-native-linear-gradient'
+import { Button, Text } from 'react-native-paper'
+import { useDispatch, useSelector } from 'react-redux'
+import { useStyles } from 'screens/Signup/styles'
+import * as appActions from 'store/actions/appActions'
+import * as loginActions from 'store/actions/loginActions'
+import { ISignupData } from './types'
+import Toast from 'react-native-simple-toast'
 
 const Signup: React.FC = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
     //defining states
-    const [open, setOpen] = useState<boolean>(false);
-    const { t } = useTranslation();
+    const [open, setOpen] = useState<boolean>(false)
+    const { t } = useTranslation()
     const isLoading = useSelector(
-        (state: { loadingReducer: IAppState }) => state.loadingReducer.isLoading,
-    );
+        (state: { loadingReducer: IAppState }) => state.loadingReducer.isLoading
+    )
     const gender = [
         { label: 'Male', value: 'male' },
         { label: 'Female', value: 'female' },
-    ];
+    ]
     const {
         control,
         handleSubmit,
         formState: { errors },
-    } = useForm();
+    } = useForm()
 
     const validate = (text: string) => {
-        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-        return reg.test(text);
-    };
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/
+        return reg.test(text)
+    }
 
     const performSignUp = async (data: ISignupData) => {
         if (validate(data.email)) {
-            dispatch(loginActions.signupRequest(data));
+            dispatch(loginActions.signupRequest(data))
         } else {
-            Toast.show('Incorrect email format');
+            Toast.show('Incorrect email format')
         }
-    };
+    }
 
     const onSubmit = (data: ISignupData) => {
-        performSignUp(data);
-    };
+        performSignUp(data)
+    }
 
-    const styles = useStyles();
+    const styles = useStyles()
 
     return (
-        <KeyboardAwareScrollView style={{ flex: 1 }}>
+        <View>
             <LinearGradient
                 colors={['#00416A', '#00416A', '#E4E5E6']}
                 start={{ x: 0.0, y: 0.5 }}
@@ -62,7 +62,6 @@ const Signup: React.FC = () => {
                 style={styles.linearGradient}
             />
             <View style={styles.cardView}>
-                <Image source={images.app.logo} style={styles.img} />
                 <Text style={styles.signUpText}>{t('Sign up')}</Text>
 
                 <Controller
@@ -72,6 +71,7 @@ const Signup: React.FC = () => {
                     }}
                     render={({ field: { onChange, value } }) => (
                         <TextInput
+                            testID={'firstname'}
                             placeholder={t('Enter your first name')}
                             autoCapitalize="none"
                             autoCorrect={false}
@@ -94,6 +94,7 @@ const Signup: React.FC = () => {
                     }}
                     render={({ field: { onChange, value } }) => (
                         <TextInput
+                            testID={'lastname'}
                             placeholder={t('Enter your last name')}
                             autoCapitalize="none"
                             autoCorrect={false}
@@ -116,6 +117,7 @@ const Signup: React.FC = () => {
                     }}
                     render={({ field: { onChange, value } }) => (
                         <TextInput
+                            testID={'email'}
                             placeholder={t('Enter your email')}
                             autoCapitalize="none"
                             textContentType="emailAddress"
@@ -138,6 +140,7 @@ const Signup: React.FC = () => {
                     }}
                     render={({ field: { onChange, value } }) => (
                         <TextInput
+                            testID={'password'}
                             placeholder={t('Enter password')}
                             secureTextEntry={true}
                             autoCapitalize="none"
@@ -178,6 +181,7 @@ const Signup: React.FC = () => {
 
                 <View style={styles.submitView}>
                     <Button
+                        testID={'submit'}
                         onPress={handleSubmit(onSubmit)}
                         disabled={isLoading}
                         style={styles.submit}>
@@ -186,8 +190,8 @@ const Signup: React.FC = () => {
                     {isLoading && <ActivityIndicator color="white" style={styles.activity} />}
                 </View>
             </View>
-        </KeyboardAwareScrollView>
-    );
-};
+        </View>
+    )
+}
 
-export default Signup;
+export default Signup

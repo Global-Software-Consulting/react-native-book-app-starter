@@ -1,0 +1,368 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component testing Snapshot 1`] = `
+Array [
+  <mockedDefaultExport
+    colors={
+      Array [
+        "#00416A",
+        "#00416A",
+        "#E4E5E6",
+      ]
+    }
+    end={
+      Object {
+        "x": 0.1,
+        "y": 3,
+      }
+    }
+    locations={
+      Array [
+        0,
+        0.5,
+        0.6,
+      ]
+    }
+    start={
+      Object {
+        "x": 0,
+        "y": 0.5,
+      }
+    }
+    style={
+      Object {
+        "alignItems": "center",
+        "height": 333.5,
+        "justifyContent": "center",
+        "width": 750,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#FAF9F6",
+          "fontSize": 30,
+        }
+      }
+    >
+      Welcome
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#FAF9F6",
+          "fontSize": 15,
+          "maxWidth": 637.5,
+        }
+      }
+    >
+      Book app aims to provide variety with a quick sharing of resources among friends and family.
+    </Text>
+  </mockedDefaultExport>,
+  <View
+    style={
+      Object {
+        "alignSelf": "center",
+        "backgroundColor": "white",
+        "borderRadius": 20,
+        "justifyContent": "center",
+        "marginTop": -26.5,
+        "width": 675,
+        "zIndex": 5,
+      }
+    }
+  >
+    <Image
+      style={
+        Object {
+          "alignSelf": "center",
+          "position": "relative",
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "alignSelf": "center",
+          "color": "#3A3B3C",
+          "fontSize": 30,
+          "fontWeight": "500",
+          "justifyContent": "center",
+          "marginTop": 20,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "alignSelf": "center",
+          "color": "grey",
+          "fontSize": 15,
+          "fontWeight": "300",
+          "marginBottom": 40,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "alignSelf": "center",
+          "color": "grey",
+          "fontSize": 15,
+          "fontWeight": "300",
+        }
+      }
+    >
+      <TextInput
+        allowFontScaling={true}
+        autoCapitalize="none"
+        autoCorrect={false}
+        keyboardType="email-address"
+        onChangeText={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "alignSelf": "center",
+            "backgroundColor": "white",
+            "borderRadius": 20,
+            "margin": 5,
+            "width": 450,
+          }
+        }
+        testID="email"
+        textContentType="emailAddress"
+        underlineColorAndroid="transparent"
+        value=""
+      />
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "alignSelf": "center",
+            "borderColor": "black",
+            "flexDirection": "row",
+            "height": 50,
+            "justifyContent": "space-between",
+            "marginTop": 5,
+            "width": 465,
+          }
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          autoCapitalize="none"
+          autoCorrect={false}
+          onChangeText={[Function]}
+          rejectResponderTermination={true}
+          secureTextEntry={true}
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "white",
+              "borderRadius": 20,
+              "margin": 5,
+              "width": 450,
+            }
+          }
+          testID="password"
+          underlineColorAndroid="transparent"
+          value=""
+        />
+        <mockedDefaultExport
+          name="eye-slash"
+          onPress={[Function]}
+          size={22}
+          style={
+            Object {
+              "marginLeft": "85%",
+              "position": "absolute",
+            }
+          }
+        />
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignContent": "center",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "opacity": 1,
+        }
+      }
+    >
+      <Text
+        onPress={[Function]}
+        style={
+          Object {
+            "alignSelf": "flex-end",
+            "color": "#00416A",
+            "justifyContent": "center",
+            "marginRight": 20,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "alignContent": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#00416A",
+          "borderRadius": 20,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginTop": 30,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "transparent",
+            "borderColor": "transparent",
+            "borderRadius": 4,
+            "borderStyle": "solid",
+            "borderWidth": 0,
+            "elevation": 0,
+            "height": 40,
+            "marginTop": 5,
+            "minWidth": 64,
+            "width": 450,
+          }
+        }
+      >
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            Object {
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Array [
+              Object {
+                "overflow": "hidden",
+              },
+              Object {
+                "borderRadius": 4,
+              },
+            ]
+          }
+          testID="submit"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                },
+                undefined,
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              selectable={false}
+              style={
+                Array [
+                  Object {
+                    "color": "#000000",
+                    "fontFamily": "System",
+                    "fontWeight": "400",
+                  },
+                  Object {
+                    "textAlign": "left",
+                  },
+                  Array [
+                    Object {
+                      "letterSpacing": 1,
+                      "marginHorizontal": 16,
+                      "marginVertical": 9,
+                      "textAlign": "center",
+                    },
+                    undefined,
+                    Object {
+                      "textTransform": "uppercase",
+                    },
+                    Object {
+                      "color": "#6200ee",
+                      "fontFamily": "System",
+                      "fontWeight": "500",
+                    },
+                    Object {
+                      "fontFamily": "System",
+                      "fontWeight": "500",
+                    },
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "white",
+                  }
+                }
+              />
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "marginTop": 5,
+        }
+      }
+    >
+      <Text>
+         
+      </Text>
+      <Text
+        onPress={[Function]}
+        style={
+          Object {
+            "color": "#00416A",
+          }
+        }
+        testID="signup"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "justifyContent": "flex-end",
+          "margin": 5,
+        }
+      }
+    />
+  </View>,
+]
+`;
