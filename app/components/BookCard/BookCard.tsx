@@ -3,7 +3,7 @@ import { useIsFocused } from '@react-navigation/native'
 import { FavoriteBook } from 'models/reducers/appReducers'
 import { ReducerState } from 'models/reducers/index'
 import React, { useState } from 'react'
-import { Platform, View } from 'react-native'
+import { Platform, Text, View } from 'react-native'
 //image with placeholder
 import FastImage from 'react-native-fast-image'
 //verctor icons
@@ -109,7 +109,7 @@ const BookCard: React.FC<Props> = ({
                     testID="heart"
                 />
             )}
-            {/* <Text
+            <Text
                 style={
                     styleSelect === 'General' || styleSelect === 'Custom'
                         ? styles.textTitle
@@ -126,7 +126,7 @@ const BookCard: React.FC<Props> = ({
                         : styles.authorTitleEnlarged
                 }>
                 {authorName}
-            </Text> */}
+            </Text>
         </View>
     )
 }

@@ -61,4 +61,14 @@ jest.mock('react-native-popup-menu', () => ({
     MenuOption: 'MenuOption',
     MenuTrigger: 'MenuTrigger',
   }));
-  
+  jest.mock('react-native-fast-image', () => {
+    return {
+        __esModule: true,
+        A: true,
+        FastImage: jest.fn(),
+        priority: {
+            normal: 'normal',
+        },
+        default: 'mockedDefaultExport',
+    }
+})

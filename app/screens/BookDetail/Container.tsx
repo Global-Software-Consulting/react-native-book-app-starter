@@ -1,49 +1,49 @@
-import { useNavigation } from '@react-navigation/core';
-import { dummyImages } from 'assets/dummyImages';
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { NativeEventEmitter, NativeModules, ScrollView, View } from 'react-native';
-import { Button, Text } from 'react-native-paper';
-import Tts from 'react-native-tts';
-import BookCard from '../../components/BookCard/BookCard';
-import { useStyles } from './styles';
-import { Props } from './types';
+import { useNavigation } from '@react-navigation/core'
+import { dummyImages } from 'assets/dummyImages'
+import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { NativeEventEmitter, NativeModules, ScrollView, View } from 'react-native'
+import { Button, Text } from 'react-native-paper'
+import Tts from 'react-native-tts'
+import BookCard from '../../components/BookCard/BookCard'
+import { useStyles } from './styles'
+import { Props } from './types'
 
 const Container: React.FC<Props> = (props) => {
     const generateRandomURL = () => {
-        const number = Math.random() * 6;
-        const index = Math.floor(number);
-        return dummyImages[index];
-    };
+        const number = Math.random() * 6
+        const index = Math.floor(number)
+        return dummyImages[index]
+    }
     //theme handling
-    const styles = useStyles();
-    const navigation = useNavigation();
-    const { books } = props;
-    const author = 'Dummy author';
-    const genre = 'Dummy Genre';
-    const pages = books.numberOfPages ?? '111';
-    const launched = books.createdAt ?? '11-11-11';
-    const title = books.title ?? 'Dummy Title';
-    const { t } = useTranslation();
-    const [textShown, setTextShown] = useState(false); //To show ur remaining Text
-    const [isSpeaking, setIsSpeaking] = useState(false);
+    const styles = useStyles()
+    const navigation = useNavigation()
+    const { books } = props
+    const author = 'Dummy author'
+    const genre = 'Dummy Genre'
+    const pages = books?.numberOfPages ?? '111'
+    const launched = books?.createdAt ?? '11-11-11'
+    const title = books?.title ?? 'Dummy Title'
+    const { t } = useTranslation()
+    const [textShown, setTextShown] = useState(false) //To show ur remaining Text
+    const [isSpeaking, setIsSpeaking] = useState(false)
 
     useEffect(() => {
-        const ee = new NativeEventEmitter(NativeModules.TextToSpeech);
-        ee.addListener('tts-start', () => {});
-        ee.addListener('tts-finish', () => {});
-        ee.addListener('tts-cancel', () => {});
+        const ee = new NativeEventEmitter(NativeModules.TextToSpeech)
+        ee.addListener('tts-start', () => {})
+        ee.addListener('tts-finish', () => {})
+        ee.addListener('tts-cancel', () => {})
         if (isSpeaking === true) {
-            Tts.speak(books.shortSummary);
+            Tts.speak(books?.shortSummary)
         } else {
-            Tts.stop();
+            Tts.stop()
         }
-    }, [isSpeaking]);
+    }, [isSpeaking])
 
     const toggleNumberOfLines = () => {
         //To toggle the show text or hide it
-        setTextShown(!textShown);
-    };
+        setTextShown(!textShown)
+    }
 
     return (
         <View style={styles.main}>
@@ -69,7 +69,7 @@ const Container: React.FC<Props> = (props) => {
                         ]}>
                         <Button
                             onPress={() => {
-                                setIsSpeaking(!isSpeaking);
+                                setIsSpeaking(!isSpeaking)
                             }}
                             style={styles.submit}>
                             <Text style={{ color: 'white' }}>
@@ -115,12 +115,12 @@ const Container: React.FC<Props> = (props) => {
                         style={styles.dynamicSynopse}
                         onPress={toggleNumberOfLines}
                         numberOfLines={textShown ? undefined : 2}>
-                        {books.shortSummary}
+                        {books?.shortSummary}
                     </Text>
                 </View>
             </ScrollView>
         </View>
-    );
-};
+    )
+}
 
-export default Container;
+export default Container
