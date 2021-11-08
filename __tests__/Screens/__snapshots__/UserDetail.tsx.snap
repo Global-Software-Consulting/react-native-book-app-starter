@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Component testing menu option 1`] = `null`;
+
+exports[`Component testing menu option 2`] = `null`;
+
+exports[`Component testing menu trigger 1`] = `null`;
+
+exports[`Component testing menu trigger 2`] = `null`;
+
 exports[`Component testing pressing update with information filled in 1`] = `null`;
 
 exports[`Component testing pressing update with information filled in 2`] = `null`;

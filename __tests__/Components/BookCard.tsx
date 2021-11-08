@@ -104,11 +104,19 @@ describe('Component testing', () => {
         // fireEvent.press(getByTestId('search'));
     })
 
-    // test('Fireevent heart', async () => {
-    //     const { getByTestId } = render(<BookCard />)
+    test('Fireevent heart', async () => {
+        const { getByTestId } = render(<BookCard />)
 
-    //     act(() => {
-    //         fireEvent.press(getByTestId('heart'))
-    //     })
-    // })
+        act(() => {
+            fireEvent.press(getByTestId('heart'))
+        })
+    })
+    test('Fireevent heart', async () => {
+        const { getByTestId } = render(<BookCard />)
+
+        act(() => {
+            fireEvent.press(getByTestId('heart'))
+            fireEvent.press(getByTestId('heart'))
+        })
+    })
 })
