@@ -2,10 +2,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation } from '@react-navigation/core'
 import PictureViewer from 'components/PictureViewer'
 import { ReducerState } from 'models/reducers/index'
+import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-menu'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ActivityIndicator, TextInput, View } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { ActivityIndicator, TextInput, View, Image } from 'react-native'
 import ImagePicker from 'react-native-image-crop-picker'
 import { Button, Text } from 'react-native-paper'
 import { useDispatch, useSelector } from 'react-redux'
@@ -32,7 +32,7 @@ const UserDetail: React.FC = () => {
     const [image, setImage] = useState<string>(
         'https://pbs.twimg.com/profile_images/952545910990495744/b59hSXUd_400x400.jpg'
     )
-
+    const [counter, setCounter] = useState<number>(0)
     const getAuthToken = async () => {
         try {
             const value = await AsyncStorage.getItem('token')
@@ -57,26 +57,25 @@ const UserDetail: React.FC = () => {
         }
     }
     //never used
-    // const openCamera = async () => {
-    //     const token = await getAuthToken()
-    //     ImagePicker.openCamera({
-    //         width: 300,
-    //         height: 400,
-    //         cropping: true,
-    //     }).then((image) => {
-    //         storePictureURI(image.path, token).then(() => {
-    //             dispatch(appActions.setProfileImagePath(image.path))
-    //             setImage(image.path)
-    //         })
-    //     })
-    // }
+    const openCamera = async () => {
+        const token = await getAuthToken()
+        ImagePicker.openCamera({
+            width: 300,
+            height: 400,
+            cropping: true,
+        }).then((image) => {
+            storePictureURI(image.path, token).then(() => {
+                dispatch(appActions.setProfileImagePath(image.path))
+                setImage(image.path)
+            })
+        })
+    }
 
-    //not in use
-    // const storePictureURI = async (value: string, token: string) => {
-    //     try {
-    //         await AsyncStorage.setItem(token, value)
-    //     } catch (e) {}
-    // }
+    const storePictureURI = async (value: string, token: string) => {
+        try {
+            await AsyncStorage.setItem(token, value)
+        } catch (e) {}
+    }
     const editUser = async () => {
         if (isEditing) {
             dispatch(loginActions.updateProfileRequest({ firstName, lastName, email }))
@@ -96,17 +95,17 @@ const UserDetail: React.FC = () => {
 
     useEffect(() => {
         loadImage()
-    })
+    }, [counter])
     return (
         <View>
-            {/* <Menu>
-                <MenuTrigger triggerOnLongPress={true} customStyles={triggerStyles}>
+            <Menu>
+                <MenuTrigger testID={'menu'} triggerOnLongPress={true} customStyles={triggerStyles}>
                     <Image
                         source={userData?.image !== undefined ? userData.image : { uri: image }}
                         style={styles.displayPicture}
                     />
                 </MenuTrigger>
-                <MenuOptions>
+                <MenuOptions testID={'menuOption'}>
                     <MenuOption
                         onSelect={() => {
                             setIsEnlarged(true)
@@ -120,7 +119,7 @@ const UserDetail: React.FC = () => {
                         <Text style={{ color: 'red' }}>{t('Capture')}</Text>
                     </MenuOption>
                 </MenuOptions>
-            </Menu> */}
+            </Menu>
             <Text style={styles.mainHeading}>{t('Profile Details')}</Text>
             {!isEditing ? (
                 <View>
@@ -184,6 +183,7 @@ const UserDetail: React.FC = () => {
                     testID={'update'}
                     onPress={() => {
                         update()
+                        setCounter(counter + 1)
                     }}
                     disabled={isLoading}
                     style={styles.submit}>

@@ -98,4 +98,14 @@ describe('Component testing', () => {
 
         fireEvent.press(getByTestId('update'))
     })
+
+    test('menu trigger', () => {
+        const { getByTestId } = render(<UserDetail />)
+        fireEvent.press(getByTestId('menu'))
+    })
+
+    test('menu option', () => {
+        const { getByTestId } = render(<UserDetail />)
+        fireEvent.press(getByTestId('menuOption'))
+    })
 })
