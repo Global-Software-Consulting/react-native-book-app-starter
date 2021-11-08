@@ -179,6 +179,7 @@ Array [
               "position": "absolute",
             }
           }
+          testID="iconEye"
         />
       </View>
     </View>
@@ -200,6 +201,7 @@ Array [
           "opacity": 1,
         }
       }
+      testID="forgotPassword"
     >
       <Text
         onPress={[Function]}
@@ -362,7 +364,36 @@ Array [
           "margin": 5,
         }
       }
-    />
+    >
+      <Menu>
+        <MenuTrigger>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+              }
+            }
+          >
+            <Image />
+            <Text />
+          </View>
+        </MenuTrigger>
+        <MenuOptions>
+          <MenuOption
+            onSelect={[Function]}
+            text="English"
+          />
+          <MenuOption
+            onSelect={[Function]}
+            text="Spanish"
+          />
+          <MenuOption
+            onSelect={[Function]}
+            text="Dutch"
+          />
+        </MenuOptions>
+      </Menu>
+    </View>
   </View>,
 ]
 `;

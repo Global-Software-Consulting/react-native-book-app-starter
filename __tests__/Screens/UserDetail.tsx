@@ -3,7 +3,6 @@ import React from 'react'
 import * as redux from 'react-redux'
 import { act } from 'react-test-renderer'
 import UserDetail from './../../app/screens/UserDetail/index'
-
 jest.mock('react-redux', () => {
     return {
         __esModule: true,
@@ -83,8 +82,20 @@ describe('Component testing', () => {
         })
     })
 
-    test('firstname', () => {
+    test('pressing update without adding any information', () => {
         const { getByTestId } = render(<UserDetail />)
+        fireEvent.press(getByTestId('update'))
+    })
+
+    test('pressing update with information filled in', () => {
+        const { getByTestId } = render(<UserDetail />)
+        fireEvent.press(getByTestId('update'))
+
+        fireEvent.changeText(getByTestId('firstname'), '123frfr')
+        fireEvent.changeText(getByTestId('email'), '123frfr')
+
+        fireEvent.changeText(getByTestId('lastname'), '123frfr')
+
         fireEvent.press(getByTestId('update'))
     })
 })

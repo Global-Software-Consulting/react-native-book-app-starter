@@ -15,6 +15,7 @@ import { UserData } from 'store/actions/loginActions'
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil'
 import images from './../../config/images'
 import * as loginActions from './../../store/actions/loginActions'
+import * as snackbarActions from 'store/actions/snackbarActions'
 import Toast from 'react-native-simple-toast'
 import { useStyles } from './styles'
 
@@ -46,7 +47,7 @@ const Login: React.FC = () => {
         if (validate(data.email)) {
             performLoginOperation(data)
         } else {
-            Toast.show('Incorrect email format')
+            dispatch(snackbarActions.enableSnackbar('Incorrect email format'))
         }
     }
     const performLoginOperation = async (data: UserData) => {
@@ -56,7 +57,7 @@ const Login: React.FC = () => {
     const IconLanguage = () => {
         return (
             <View style={{ alignItems: 'center' }}>
-                <Image source={images.app.language} />
+                <Image source={images?.app?.language} />
                 <Text>{i18n.language}</Text>
             </View>
         )
@@ -76,7 +77,7 @@ const Login: React.FC = () => {
                 </Text>
             </LinearGradient>
             <View style={styles.cardView}>
-                <Image source={images.app?.logo} style={styles.logo} />
+                <Image source={images?.app?.logo} style={styles.logo} />
 
                 <Text style={styles.logInText}>{t('Log In Now')}</Text>
 
@@ -133,6 +134,7 @@ const Login: React.FC = () => {
                             defaultValue=""
                         />
                         <Icon
+                            testID={'iconEye'}
                             name={secure ? 'eye-slash' : 'eye'}
                             size={22}
                             style={styles.icon}
@@ -145,6 +147,7 @@ const Login: React.FC = () => {
                 </View>
 
                 <TouchableOpacity
+                    testID={'forgotPassword'}
                     style={styles.touchableOpacity}
                     onPress={() => navigation.navigate('ForgotPassword' as never)}>
                     <Text
@@ -178,7 +181,7 @@ const Login: React.FC = () => {
                 </View>
 
                 <View style={styles.menu}>
-                    {/* <Menu>
+                    <Menu>
                         <MenuTrigger>
                             <IconLanguage />
                         </MenuTrigger>
@@ -202,7 +205,7 @@ const Login: React.FC = () => {
                                 text="Dutch"
                             />
                         </MenuOptions>
-                    </Menu> */}
+                    </Menu>
                 </View>
             </View>
         </>
