@@ -1,9 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component testing firstname 1`] = `null`;
+exports[`Component testing pressing update with information filled in 1`] = `null`;
 
-exports[`Component testing firstname 2`] = `null`;
+exports[`Component testing pressing update with information filled in 2`] = `null`;
 
-exports[`Component testing firstname 3`] = `null`;
+exports[`Component testing pressing update with information filled in 3`] = `null`;
 
-exports[`Component testing firstname 4`] = `null`;
+exports[`Component testing pressing update with information filled in 4`] = `null`;
+
+exports[`Component testing pressing update with information filled in 5`] = `null`;
+
+exports[`Component testing pressing update with information filled in 6`] = `null`;
+
+exports[`Component testing pressing update with information filled in 7`] = `null`;
+
+exports[`Component testing pressing update with information filled in 8`] = `null`;
+
+exports[`Component testing pressing update with information filled in 9`] = `null`;
+
+exports[`Component testing pressing update with information filled in 10`] = `null`;
+
+exports[`Component testing pressing update with information filled in 11`] = `null`;
+
+exports[`Component testing pressing update with information filled in 12`] = `null`;
+
+exports[`Component testing pressing update without adding any information 1`] = `null`;
+
+exports[`Component testing pressing update without adding any information 2`] = `null`;
+
+exports[`Component testing pressing update without adding any information 3`] = `null`;
+
+exports[`Component testing pressing update without adding any information 4`] = `null`;

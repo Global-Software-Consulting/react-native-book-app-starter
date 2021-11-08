@@ -5,6 +5,7 @@ import { ReducerState } from 'models/reducers/index'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ActivityIndicator, TextInput, View } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import ImagePicker from 'react-native-image-crop-picker'
 import { Button, Text } from 'react-native-paper'
 import { useDispatch, useSelector } from 'react-redux'
@@ -55,25 +56,27 @@ const UserDetail: React.FC = () => {
             return ''
         }
     }
+    //never used
+    // const openCamera = async () => {
+    //     const token = await getAuthToken()
+    //     ImagePicker.openCamera({
+    //         width: 300,
+    //         height: 400,
+    //         cropping: true,
+    //     }).then((image) => {
+    //         storePictureURI(image.path, token).then(() => {
+    //             dispatch(appActions.setProfileImagePath(image.path))
+    //             setImage(image.path)
+    //         })
+    //     })
+    // }
 
-    const openCamera = async () => {
-        const token = await getAuthToken()
-        ImagePicker.openCamera({
-            width: 300,
-            height: 400,
-            cropping: true,
-        }).then((image) => {
-            storePictureURI(image.path, token).then(() => {
-                dispatch(appActions.setProfileImagePath(image.path))
-                setImage(image.path)
-            })
-        })
-    }
-    const storePictureURI = async (value: string, token: string) => {
-        try {
-            await AsyncStorage.setItem(token, value)
-        } catch (e) {}
-    }
+    //not in use
+    // const storePictureURI = async (value: string, token: string) => {
+    //     try {
+    //         await AsyncStorage.setItem(token, value)
+    //     } catch (e) {}
+    // }
     const editUser = async () => {
         if (isEditing) {
             dispatch(loginActions.updateProfileRequest({ firstName, lastName, email }))
@@ -141,7 +144,7 @@ const UserDetail: React.FC = () => {
                     <View style={styles.infoInputView}>
                         <Text style={styles.subHeading}>{t('First Name')}: </Text>
                         <TextInput
-                            testID={'firstnsame'}
+                            testID={'firstname'}
                             style={styles.inputField}
                             placeholder="Enter your first name"
                             value={firstName}
@@ -189,7 +192,6 @@ const UserDetail: React.FC = () => {
                 {isLoading ? <ActivityIndicator color="white" style={styles.activity} /> : null}
             </View>
             <PictureViewer
-                testID={'picture'}
                 isVisible={isEnlarged}
                 imageSource={{
                     uri: 'https://pbs.twimg.com/profile_images/952545910990495744/b59hSXUd_400x400.jpg',

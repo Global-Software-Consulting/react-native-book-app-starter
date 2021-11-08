@@ -3,6 +3,7 @@ import React from 'react'
 import * as redux from 'react-redux'
 import { act } from 'react-test-renderer'
 import Signup from './../../app/screens/Signup/index'
+import { useDispatch } from 'react-redux'
 
 jest.mock('react-redux', () => {
     return {
@@ -113,16 +114,31 @@ describe('Component testing', () => {
             fireEvent.press(getByTestId('submit'))
         })
     })
-    test('submit with all fields filled in', async () => {
+    test('submit with wrong email format', async () => {
+        const dispatch = jest.fn()
+        useDispatch.mockReturnValue(jest.fn())
         const { getByTestId } = render(<Signup />)
         act(() => {
-            fireEvent.press(getByTestId('submit'), {
-                firstname: 'abc',
-                lastname: 'cde',
-                email: 'adc@gmail.com',
-                password: 'check',
-                gender: 'male',
-            })
+            fireEvent.changeText(getByTestId('firstname'), 'dsa')
+            fireEvent.changeText(getByTestId('lastname'), 'fdsa')
+
+            fireEvent.changeText(getByTestId('email'), 'abcd')
+            fireEvent.changeText(getByTestId('password'), '123frfr')
+
+            fireEvent.press(getByTestId('submit'))
+        })
+    })
+
+    test('submit with proper information filled in', async () => {
+        const { getByTestId } = render(<Signup />)
+        act(() => {
+            fireEvent.changeText(getByTestId('firstname'), 'dsa')
+            fireEvent.changeText(getByTestId('lastname'), 'fdsa')
+
+            fireEvent.changeText(getByTestId('email'), 'abc@gmail.com')
+            fireEvent.changeText(getByTestId('password'), '123frfr')
+
+            fireEvent.press(getByTestId('submit'))
         })
     })
 })

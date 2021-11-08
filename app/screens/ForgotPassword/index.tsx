@@ -27,7 +27,7 @@ const ForgotPassword: React.FC = () => {
 
     const sendResetLink = () => {
         if (email === '') {
-            Toast.show('Enter email address')
+            dispatch(snackbarActions.enableSnackbar('Enter email address'))
         } else {
             if (validate(email)) {
                 // dispatch(loginActions.IForgotPasswordRequest(email));
@@ -45,7 +45,7 @@ const ForgotPassword: React.FC = () => {
                     dispatch(snackbarActions.enableSnackbar('Operation failed, please try again'))
                 }
             } else {
-                Toast.show('Incorrect email format')
+                dispatch(snackbarActions.enableSnackbar('Incorrect email format'))
             }
         }
     }
@@ -67,6 +67,7 @@ const ForgotPassword: React.FC = () => {
                 <Text style={styles.headingText}>{t('Forgot Password')}</Text>
                 <View style={styles.infoView}>
                     <TextInput
+                        testID={'emailaddress'}
                         style={styles.inputField}
                         textContentType="emailAddress"
                         keyboardType="email-address"
@@ -75,7 +76,7 @@ const ForgotPassword: React.FC = () => {
                     />
                 </View>
                 <View style={styles.editView}>
-                    <Button onPress={sendResetLink} style={styles.button}>
+                    <Button testID={'reset'} onPress={sendResetLink} style={styles.button}>
                         <Text style={{ color: 'white' }}>{t('Submit')}</Text>
                     </Button>
 

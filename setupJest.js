@@ -1,4 +1,8 @@
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
+import { View } from 'react-native';
+import images from './app/config/images';
+
+
 jest.mock('react-native-simple-toast', () => ({
     Toast: jest.fn()
 
@@ -44,7 +48,17 @@ jest.mock('react-i18next', () => {
         useTranslation: () => {
             return {
                 t: jest.fn(),
+                i18n:{languages:"english"}
             };
         },
     };
 });
+
+jest.mock('react-native-popup-menu', () => ({
+    Menu: 'Menu',
+    MenuProvider: 'MenuProvider',
+    MenuOptions: 'MenuOptions',
+    MenuOption: 'MenuOption',
+    MenuTrigger: 'MenuTrigger',
+  }));
+  

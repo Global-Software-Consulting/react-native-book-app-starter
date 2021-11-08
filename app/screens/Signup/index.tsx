@@ -1,19 +1,17 @@
-import images from 'config/images'
 import { IAppState } from 'models/reducers/appReducers'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { ActivityIndicator, Image, TextInput, View } from 'react-native'
+import { ActivityIndicator, TextInput, View } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import LinearGradient from 'react-native-linear-gradient'
 import { Button, Text } from 'react-native-paper'
+import Toast from 'react-native-simple-toast'
 import { useDispatch, useSelector } from 'react-redux'
+import * as snackbarActions from 'store/actions/snackbarActions'
 import { useStyles } from 'screens/Signup/styles'
-import * as appActions from 'store/actions/appActions'
 import * as loginActions from 'store/actions/loginActions'
 import { ISignupData } from './types'
-import Toast from 'react-native-simple-toast'
 
 const Signup: React.FC = () => {
     const dispatch = useDispatch()
@@ -23,6 +21,7 @@ const Signup: React.FC = () => {
     const isLoading = useSelector(
         (state: { loadingReducer: IAppState }) => state.loadingReducer.isLoading
     )
+    const [testGenderState, setTestGenderState] = useState('')
     const gender = [
         { label: 'Male', value: 'male' },
         { label: 'Female', value: 'female' },
@@ -42,7 +41,7 @@ const Signup: React.FC = () => {
         if (validate(data.email)) {
             dispatch(loginActions.signupRequest(data))
         } else {
-            Toast.show('Incorrect email format')
+            dispatch(snackbarActions('Incorrect email format'))
         }
     }
 
@@ -157,7 +156,7 @@ const Signup: React.FC = () => {
                     <Text style={{ color: 'red' }}>{t('Password is required')}</Text>
                 )}
 
-                <Controller
+                {/* <Controller
                     control={control}
                     rules={{
                         required: true,
@@ -177,8 +176,7 @@ const Signup: React.FC = () => {
                     name="gender"
                     defaultValue=""
                 />
-                {errors.value && <Text style={{ color: 'red' }}>{t('Please provide gender')}</Text>}
-
+                {errors.value && <Text style={{ color: 'red' }}>{t('Please provide gender')}</Text>} */}
                 <View style={styles.submitView}>
                     <Button
                         testID={'submit'}
