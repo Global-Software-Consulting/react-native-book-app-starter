@@ -37,5 +37,27 @@ exports[`Component testing Snapshot 1`] = `
       }
     }
   />
+  <Text
+    style={
+      Object {
+        "alignSelf": "center",
+        "fontSize": 37.5,
+        "fontWeight": "500",
+        "maxWidth": 450,
+        "textAlign": "center",
+      }
+    }
+  />
+  <Text
+    style={
+      Object {
+        "alignSelf": "center",
+        "color": "red",
+        "fontSize": 30,
+        "fontWeight": "300",
+        "maxWidth": 412.5,
+      }
+    }
+  />
 </View>
 `;
