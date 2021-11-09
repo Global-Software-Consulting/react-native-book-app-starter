@@ -15,7 +15,7 @@ export const useStyles = () => {
             flex: 1,
             paddingVertical: 10,
             paddingHorizontal: 30,
-            backgroundColor: theme.colors.background,
+            backgroundColor: theme?.colors?.background,
             marginBottom: hp('10%'),
         },
         favoriteView: {
@@ -29,7 +29,7 @@ export const useStyles = () => {
         imageError: {
             height: hp('50%'),
             width: wp('50%'),
-            tintColor: theme.colors.text,
+            tintColor: theme?.colors?.text,
         },
         mainViewSetting: { height: hp('100%') },
         name: {
@@ -37,7 +37,7 @@ export const useStyles = () => {
             fontWeight: 'bold',
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
-            color: theme.colors.text,
+            color: theme?.colors?.text,
         },
         nameShimmer: {
             width: wp('25%'),
@@ -49,7 +49,7 @@ export const useStyles = () => {
             fontSize: hp('2%'),
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
-            color: theme.colors.text,
+            color: theme?.colors?.text,
         },
         tagLineShimmer: {
             width: wp('40%'),
@@ -62,7 +62,7 @@ export const useStyles = () => {
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
             fontWeight: 'bold',
-            color: theme.colors.text,
+            color: theme?.colors?.text,
         },
         listCaptionShimmer: {
             width: wp('20%'),
@@ -80,7 +80,7 @@ export const useStyles = () => {
             borderBottomColor: '#DCDCDC',
             borderBottomWidth: 1,
             marginTop: 3,
-            color: theme.colors.primary,
+            color: theme?.colors?.primary,
         },
         flatList: {
             flexGrow: 1,
@@ -109,7 +109,7 @@ export const useStyles = () => {
         searchViewInput: {
             margin: 2,
             marginLeft: 5,
-            color: theme.colors.text,
+            color: theme?.colors?.text,
             width: wp('72%'),
         },
         searchViewShimmer: {
@@ -124,7 +124,7 @@ export const useStyles = () => {
         searchViewChildren: {
             margin: 2,
             marginLeft: 5,
-            color: theme.colors.text,
+            color: theme?.colors?.text,
         },
         books: {
             height: hp('2%'),

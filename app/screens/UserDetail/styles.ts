@@ -11,7 +11,7 @@ export const useStyles = () => {
 
     const styles = StyleSheet.create({
         container: {
-            backgroundColor: theme.colors.background,
+            backgroundColor: theme?.colors?.background,
             alignItems: 'center',
             flexGrow: 1,
         },
@@ -50,23 +50,23 @@ export const useStyles = () => {
         },
         mainHeading: {
             fontWeight: 'bold',
-            color: theme.colors.text,
+            color: theme?.colors?.text,
             fontSize: 25,
         },
         subHeading: {
             fontWeight: 'bold',
-            color: theme.colors.text,
+            color: theme?.colors?.text,
         },
         inputField: {
             width: width('50%'),
             height: height('5%'),
-            color: theme.colors.text,
+            color: theme?.colors?.text,
         },
         infoView: {
             marginTop: 5,
             flexDirection: 'row',
             borderWidth: 1,
-            borderColor: theme.colors.text,
+            borderColor: theme?.colors?.text,
             borderRadius: 20,
             alignContent: 'center',
             alignItems: 'center',
@@ -93,7 +93,7 @@ export const useStyles = () => {
             borderRadius: 20,
             alignItems: 'center',
             textAlign: 'center',
-            color: theme.colors.text,
+            color: theme?.colors?.text,
             padding: 10,
             marginBottom: 10,
         },

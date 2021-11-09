@@ -14,7 +14,7 @@ export const useStyles = () => {
             flex: 1,
             paddingVertical: 10,
             paddingHorizontal: 30,
-            backgroundColor: theme.colors.background,
+            backgroundColor: theme?.colors?.background,
             marginBottom: height('10%'),
         },
         favoriteView: {
@@ -29,7 +29,7 @@ export const useStyles = () => {
         imageError: {
             height: windowHeight > windowWidth ? height('50%') : height('100%'),
             width: width('50%'),
-            tintColor: theme.colors.text,
+            tintColor: theme?.colors?.text,
         },
         mainViewSetting: { height: height('100%') },
         name: {
@@ -37,7 +37,7 @@ export const useStyles = () => {
             fontWeight: 'bold',
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
-            color: theme.colors.text,
+            color: theme?.colors?.text,
         },
         middleView: {
             marginBottom: windowHeight > windowWidth ? height('15%') : Platform.OS==="ios" ? height('25%') :height('40%') ,
@@ -52,7 +52,7 @@ export const useStyles = () => {
             fontSize: windowHeight > windowWidth ? width('4%') : width('2%'),
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
-            color: theme.colors.text,
+            color: theme?.colors?.text,
         },
         tagLineShimmer: {
             width: width('40%'),
@@ -65,7 +65,7 @@ export const useStyles = () => {
             fontFamily: 'Avenir-Medium',
             alignItems: 'center',
             fontWeight: 'bold',
-            color: theme.colors.text,
+            color: theme?.colors?.text,
         },
         listCaptionShimmer: {
             width: width('20%'),
@@ -83,7 +83,7 @@ export const useStyles = () => {
             borderBottomColor: '#DCDCDC',
             borderBottomWidth: 1,
             marginTop: height('0.5%'),
-            color: theme.colors.primary,
+            color: theme?.colors?.primary,
         },
         flatList: {
             flexGrow: 1,
@@ -116,7 +116,7 @@ export const useStyles = () => {
         searchViewChildren: {
             margin: 2,
             marginLeft: 5,
-            color: theme.colors.text,
+            color: theme?.colors?.text,
         },
         books: {
             height: height('2%'),

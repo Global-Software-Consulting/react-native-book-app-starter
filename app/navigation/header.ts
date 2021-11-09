@@ -10,12 +10,12 @@ export const useStyles = () => {
 
     const styles = StyleSheet.create({
         Header: {
-            backgroundColor: theme.colors.background,
+            backgroundColor: theme?.colors?.background,
         },
         Icon: {
             fontSize: windowHeight > windowWidth ? width('7%') : width('3%'),
             paddingLeft: 10,
-            color: theme.colors.primary,
+            color: theme?.colors?.primary,
         },
     });
     return styles;

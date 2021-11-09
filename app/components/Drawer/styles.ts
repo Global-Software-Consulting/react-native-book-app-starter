@@ -75,7 +75,7 @@ export const useStyles = () => {
             flexDirection: 'row',
         },
         listbutton: {
-            backgroundColor: theme.colors.background,
+            backgroundColor: theme?.colors?.background,
             padding: 5,
             borderRadius: 10,
             margin: 2,
