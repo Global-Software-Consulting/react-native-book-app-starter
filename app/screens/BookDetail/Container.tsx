@@ -77,6 +77,7 @@ const Container: React.FC<Props> = (props) => {
                     </View>
                     <View style={[styles?.submitView, { backgroundColor: '#00416A' }]}>
                         <Button
+                            testID={'navigate'}
                             title="Read book"
                             onPress={() => navigation.navigate('BookReader' as never)}
                             style={styles?.submit}
@@ -110,6 +111,7 @@ const Container: React.FC<Props> = (props) => {
                         <Text style={styles?.synopseText}>{t('Synopse')}</Text>
                     </View>
                     <Text
+                        testID={'toggle'}
                         style={styles?.dynamicSynopse}
                         onPress={toggleNumberOfLines}
                         numberOfLines={textShown ? undefined : 2}>

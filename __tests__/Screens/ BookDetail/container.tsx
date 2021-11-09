@@ -1,5 +1,5 @@
-import { useIsFocused } from '@react-navigation/native'
-import { render } from '@testing-library/react-native'
+import { useIsFocused, useNavigation } from '@react-navigation/native'
+import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import * as redux from 'react-redux'
 
@@ -8,7 +8,20 @@ import Container from 'screens/BookDetail/Container'
 import * as utils from 'utils/dimentionUtil'
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil'
 const DeviceTypeUtilsMock = jest.requireMock('utils/dimentionUtil')
+import 'react-native-gesture-handler/jestSetup'
 
+jest.mock('react-native-reanimated', () => {
+    const Reanimated = require('react-native-reanimated/mock')
+
+    // The mock for `call` immediately calls the callback which is incorrect
+    // So we override it with a no-op
+    Reanimated.default.call = () => {}
+
+    return Reanimated
+})
+
+// Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 jest.mock('react-native-device-info', () => {
     return {
         DeviceInfo: { isTablet: jest.fn() },
@@ -54,9 +67,14 @@ jest.mock('./../../../app/utils/dimentionUtil', () => {
 // })
 
 jest.mock('@react-navigation/core', () => {
+    const actualNav = jest.requireActual('@react-navigation/core')
     return {
+        ...actualNav,
+        useNavigation: () => ({
+            navigate: jest.fn(),
+            dispatch: jest.fn(),
+        }),
         useIsFocused: jest.fn(),
-        useNavigation: jest.fn(),
     }
 })
 jest.mock('react-native-image-crop-picker', () => {
@@ -106,10 +124,28 @@ describe('Component testing', () => {
     test('Snapshot ', () => {
         const height = jest.fn()
         getPercentageHeight.mockReturnValue(jest.fn())
-
         const width = jest.fn()
         getPercentageWidth.mockReturnValue(jest.fn())
         const tree = render(<Container books={['abc']} base_url="abc.com" />)
         expect(tree).toMatchSnapshot()
+    })
+
+    test('Fire toggle text ', () => {
+        const height = jest.fn()
+        getPercentageHeight.mockReturnValue(jest.fn())
+        const width = jest.fn()
+        getPercentageWidth.mockReturnValue(jest.fn())
+        const { getByTestId } = render(<Container />)
+        fireEvent.press(getByTestId('toggle'))
+    })
+
+    test('Fire toggle text ', () => {
+        const height = jest.fn()
+        getPercentageHeight.mockReturnValue(jest.fn())
+        const width = jest.fn()
+        getPercentageWidth.mockReturnValue(jest.fn())
+
+        const { getByTestId } = render(<Container />)
+        fireEvent.press(getByTestId('navigate'))
     })
 })
