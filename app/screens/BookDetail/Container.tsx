@@ -28,17 +28,17 @@ const Container: React.FC<Props> = (props) => {
     const [textShown, setTextShown] = useState(false) //To show ur remaining Text
     const [isSpeaking, setIsSpeaking] = useState(false)
 
-    useEffect(() => {
-        const ee = new NativeEventEmitter(NativeModules.TextToSpeech)
-        ee.addListener('tts-start', () => {})
-        ee.addListener('tts-finish', () => {})
-        ee.addListener('tts-cancel', () => {})
-        if (isSpeaking === true) {
-            Tts.speak(books?.shortSummary)
-        } else {
-            Tts.stop()
-        }
-    }, [isSpeaking])
+    // useEffect(() => {
+    //     const ee = new NativeEventEmitter(NativeModules.TextToSpeech)
+    //     ee.addListener('tts-start', () => {})
+    //     ee.addListener('tts-finish', () => {})
+    //     ee.addListener('tts-cancel', () => {})
+    //     if (isSpeaking === true) {
+    //         Tts.speak(books?.shortSummary)
+    //     } else {
+    //         Tts.stop()
+    //     }
+    // }, [isSpeaking])
 
     const toggleNumberOfLines = () => {
         //To toggle the show text or hide it
@@ -47,7 +47,7 @@ const Container: React.FC<Props> = (props) => {
 
     return (
         <View style={styles?.main}>
-            {/* <ScrollView>
+            <ScrollView>
                 <BookCard
                     id={books?.id ?? 1}
                     styleSelect="ExtraLarge"
@@ -116,7 +116,7 @@ const Container: React.FC<Props> = (props) => {
                         {books?.shortSummary}
                     </Text>
                 </View>
-            </ScrollView> */}
+            </ScrollView>
         </View>
     )
 }
