@@ -60,7 +60,8 @@ jest.mock('react-native-popup-menu', () => ({
     MenuOptions: 'MenuOptions',
     MenuOption: 'MenuOption',
     MenuTrigger: 'MenuTrigger',
-  }));
+}));
+  
   jest.mock('react-native-fast-image', () => {
     return {
         __esModule: true,
@@ -71,4 +72,6 @@ jest.mock('react-native-popup-menu', () => ({
         },
         default: 'mockedDefaultExport',
     }
-})
+  })
+
+jest.mock('react-native-pdf', () => 'Pdf')

@@ -46,8 +46,8 @@ const Container: React.FC<Props> = (props) => {
     }
 
     return (
-        <View style={styles.main}>
-            <ScrollView>
+        <View style={styles?.main}>
+            {/* <ScrollView>
                 <BookCard
                     id={books?.id ?? 1}
                     styleSelect="ExtraLarge"
@@ -64,61 +64,59 @@ const Container: React.FC<Props> = (props) => {
                     }}>
                     <View
                         style={[
-                            styles.submitView,
+                            styles?.submitView,
                             { backgroundColor: !isSpeaking ? '#00416A' : 'red' },
                         ]}>
                         <Button
                             onPress={() => {
                                 setIsSpeaking(!isSpeaking)
                             }}
-                            style={styles.submit}>
-                            <Text style={{ color: 'white' }}>
-                                {!isSpeaking ? t('Speak') : t('Stop')}
-                            </Text>
+                            style={styles?.submit}>
+                            <Text style={{ color: 'white' }}></Text>
                         </Button>
                     </View>
-                    <View style={[styles.submitView, { backgroundColor: '#00416A' }]}>
+                    <View style={[styles?.submitView, { backgroundColor: '#00416A' }]}>
                         <Button
                             onPress={() => navigation.navigate('BookReader' as never)}
-                            style={styles.submit}>
+                            style={styles?.submit}>
                             <Text style={{ color: 'white' }}>Read Book</Text>
                         </Button>
                     </View>
                 </View>
-                <View style={styles.horizontalRuler} />
+                <View style={styles?.horizontalRuler} />
 
-                <View style={styles.mainView}>
-                    <View style={styles.subView}>
-                        <Text style={styles.genreText}>{t('Genre')}</Text>
-                        <Text style={styles.dynamicGenreText}>{genre}</Text>
+                <View style={styles?.mainView}>
+                    <View style={styles?.subView}>
+                        <Text style={styles?.genreText}>{t('Genre')}</Text>
+                        <Text style={styles?.dynamicGenreText}>{genre}</Text>
                     </View>
 
-                    <View style={styles.launchedSubView}>
-                        <Text style={styles.launchedText}> {t('Launched')}</Text>
-                        <Text style={styles.dynamicLaunchedText}>{launched.substring(0, 9)}</Text>
+                    <View style={styles?.launchedSubView}>
+                        <Text style={styles?.launchedText}> {t('Launched')}</Text>
+                        <Text style={styles?.dynamicLaunchedText}>{launched.substring(0, 9)}</Text>
                     </View>
 
-                    <View style={styles.pagesSubView}>
-                        <Text style={styles.sizeText}>{t('Size')}</Text>
-                        <Text style={styles.dynamicSize}>
+                    <View style={styles?.pagesSubView}>
+                        <Text style={styles?.sizeText}>{t('Size')}</Text>
+                        <Text style={styles?.dynamicSize}>
                             {pages}
                             {t(' pages')}
                         </Text>
                     </View>
                 </View>
 
-                <View style={styles.synopseView}>
+                <View style={styles?.synopseView}>
                     <View style={{ flexDirection: 'row' }}>
-                        <Text style={styles.synopseText}>{t('Synopse')}</Text>
+                        <Text style={styles?.synopseText}>{t('Synopse')}</Text>
                     </View>
                     <Text
-                        style={styles.dynamicSynopse}
+                        style={styles?.dynamicSynopse}
                         onPress={toggleNumberOfLines}
                         numberOfLines={textShown ? undefined : 2}>
                         {books?.shortSummary}
                     </Text>
                 </View>
-            </ScrollView>
+            </ScrollView> */}
         </View>
     )
 }

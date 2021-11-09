@@ -33,7 +33,7 @@ export const useStyles = () => {
             textAlign: 'center',
         },
         main: {
-            backgroundColor: theme.colors.background,
+            backgroundColor: theme?.colors?.background,
             minHeight:height('100%')
         },
         dynamicLaunchedText: {
