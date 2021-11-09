@@ -8,5 +8,351 @@ exports[`Component testing Snapshot  1`] = `
       "minHeight": undefined,
     }
   }
-/>
+>
+  <RCTScrollView>
+    <View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "transparent",
+            "borderRadius": 20,
+            "elevation": 2,
+            "margin": 2,
+            "marginRight": 3,
+            "shadowColor": "red",
+            "shadowOffset": Object {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 3,
+            "shadowRadius": 2,
+          }
+        }
+      >
+        <mockedDefaultExport
+          resizeMode="contain"
+          source={
+            Object {
+              "priority": undefined,
+              "uri": "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/sad-romance-kindle-book-cover-flyer-template-539b5fdf2dd2f6602c25ce81fbb5d877.jpg?ts=1589326539",
+            }
+          }
+          style={
+            Object {
+              "alignSelf": "center",
+              "borderRadius": 20,
+              "height": undefined,
+              "margin": 5,
+              "width": undefined,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "alignSelf": "center",
+              "fontSize": undefined,
+              "fontWeight": "500",
+              "maxWidth": undefined,
+              "textAlign": "center",
+            }
+          }
+        >
+          Dummy Title
+        </Text>
+        <Text
+          style={
+            Object {
+              "alignSelf": "center",
+              "color": "red",
+              "fontSize": undefined,
+              "fontWeight": "300",
+              "maxWidth": undefined,
+            }
+          }
+        >
+          Dummy author
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignContent": "center",
+                "alignSelf": "center",
+                "borderRadius": 20,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": 20,
+                "marginRight": 10,
+                "marginTop": 30,
+              },
+              Object {
+                "backgroundColor": "#00416A",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityRole="button"
+            accessibilityState={Object {}}
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {},
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#007AFF",
+                      "fontSize": 18,
+                      "margin": 8,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Play
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignContent": "center",
+                "alignSelf": "center",
+                "borderRadius": 20,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": 20,
+                "marginRight": 10,
+                "marginTop": 30,
+              },
+              Object {
+                "backgroundColor": "#00416A",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityRole="button"
+            accessibilityState={Object {}}
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {},
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#007AFF",
+                      "fontSize": 18,
+                      "margin": 8,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Read book
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "borderBottomColor": "#DCDCDC",
+            "borderBottomWidth": 1,
+            "marginTop": 4,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "space-evenly",
+            "marginTop": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "column",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "300",
+                "textAlign": "center",
+              }
+            }
+          />
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "bold",
+                "maxWidth": undefined,
+                "textAlign": "center",
+              }
+            }
+          >
+            Dummy Genre
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "column",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "300",
+                "textAlign": "center",
+              }
+            }
+          >
+             
+          </Text>
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "bold",
+                "maxWidth": undefined,
+                "textAlign": "center",
+              }
+            }
+          >
+            11-11-11
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "column",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "300",
+                "textAlign": "center",
+              }
+            }
+          />
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "bold",
+                "maxWidth": undefined,
+                "textAlign": "center",
+              }
+            }
+          >
+            111
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "column",
+            "margin": 30,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "300",
+                "marginBottom": 10,
+                "marginRight": 10,
+              }
+            }
+          />
+        </View>
+        <Text
+          numberOfLines={2}
+          onPress={[Function]}
+          style={
+            Object {
+              "fontSize": 15,
+              "fontWeight": "bold",
+              "marginBottom": 50,
+            }
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
 `;

@@ -26,8 +26,6 @@ jest.mock('react-redux', () => {
 })
 jest.mock('react-native-paper', () => {
     return {
-        Text: jest.fn(),
-        Button: jest.fn(),
         useTheme: jest.fn(),
     }
 })
