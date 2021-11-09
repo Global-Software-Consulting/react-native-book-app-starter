@@ -34,7 +34,7 @@ exports[`Component testing Snapshot  1`] = `
           source={
             Object {
               "priority": undefined,
-              "uri": "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/sad-romance-kindle-book-cover-flyer-template-539b5fdf2dd2f6602c25ce81fbb5d877.jpg?ts=1589326539",
+              "uri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQB-3-cJ6tpQ6cFUjCach0R1dTiXdhXI0AtA&usqp=CAU",
             }
           }
           style={
@@ -180,6 +180,7 @@ exports[`Component testing Snapshot  1`] = `
                 "opacity": 1,
               }
             }
+            testID="navigate"
           >
             <View
               style={
@@ -350,6 +351,7 @@ exports[`Component testing Snapshot  1`] = `
               "marginBottom": 50,
             }
           }
+          testID="toggle"
         />
       </View>
     </View>
