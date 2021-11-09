@@ -6,13 +6,14 @@ import { useDispatch } from 'react-redux'
 import getBookDetail from 'services/getBookDetail'
 //importing components
 import Container from './Container'
+import * as snackbarActions from 'store/actions/snackbarActions'
 import Shimmer from './Shimmer'
 import { Books, RouteState } from './types'
 const base_url: string = 'https://ebook-application.herokuapp.com/v1/'
 
 const BookDetail: React.FC<RouteState> = (props) => {
     const dispatch = useDispatch()
-    const bookId = props.route.params //getting routed params
+    const bookId = props?.route?.params //getting routed params
     const [bookData, setBookData] = useState<Books>()
     const [isLoading, setIsLoading] = useState(true)
     const isFocussed = useIsFocused()
@@ -26,11 +27,11 @@ const BookDetail: React.FC<RouteState> = (props) => {
                     setBookData(response.result)
                     setIsLoading(false)
                 } else {
-                    Toast.show('Error loading data', Toast.SHORT)
+                    dispatch(snackbarActions.enableSnackbar('Error loading data'))
                 }
             })
         } catch {
-            Toast.show('Error occured', Toast.SHORT)
+            dispatch(snackbarActions.enableSnackbar('Error occurred'))
         }
     }, [bookId, dispatch, isFocussed])
 

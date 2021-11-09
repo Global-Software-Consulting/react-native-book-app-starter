@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Screen test Snapshot  1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": undefined,
+        "minHeight": undefined,
+      }
+    }
+  >
+    <RCTScrollView
+      contentContainerStyle={
+        Object {
+          "alignItems": "center",
+          "marginBottom": 2,
+          "minWidth": undefined,
+        }
+      }
+    >
+      <View>
+        <Image
+          style={
+            Object {
+              "height": undefined,
+              "tintColor": undefined,
+              "width": undefined,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "marginBottom": undefined,
+            }
+          }
+        >
+          No bookmarks available
+        </Text>
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;
