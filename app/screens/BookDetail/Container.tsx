@@ -3,7 +3,7 @@ import { dummyImages } from 'assets/dummyImages'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { NativeEventEmitter, NativeModules, ScrollView, View } from 'react-native'
-import { Button, Text } from 'react-native-paper'
+import { Button, Text } from 'react-native'
 import Tts from 'react-native-tts'
 import BookCard from '../../components/BookCard/BookCard'
 import { useStyles } from './styles'
@@ -68,19 +68,19 @@ const Container: React.FC<Props> = (props) => {
                             { backgroundColor: !isSpeaking ? '#00416A' : 'red' },
                         ]}>
                         <Button
+                            title="Play"
                             onPress={() => {
                                 setIsSpeaking(!isSpeaking)
                             }}
-                            style={styles?.submit}>
-                            <Text style={{ color: 'white' }}></Text>
-                        </Button>
+                            style={styles?.submit}
+                        />
                     </View>
                     <View style={[styles?.submitView, { backgroundColor: '#00416A' }]}>
                         <Button
+                            title="Read book"
                             onPress={() => navigation.navigate('BookReader' as never)}
-                            style={styles?.submit}>
-                            <Text style={{ color: 'white' }}>Read Book</Text>
-                        </Button>
+                            style={styles?.submit}
+                        />
                     </View>
                 </View>
                 <View style={styles?.horizontalRuler} />
