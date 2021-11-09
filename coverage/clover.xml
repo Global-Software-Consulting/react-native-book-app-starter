@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636453113053" clover="3.2.0">
-  <project timestamp="1636453113053" name="All files">
-    <metrics statements="660" coveredstatements="565" conditionals="286" coveredconditionals="174" methods="204" coveredmethods="145" elements="1150" coveredelements="884" complexity="0" loc="660" ncloc="660" packages="22" files="67" classes="67"/>
+<coverage generated="1636454506016" clover="3.2.0">
+  <project timestamp="1636454506016" name="All files">
+    <metrics statements="652" coveredstatements="563" conditionals="286" coveredconditionals="174" methods="199" coveredmethods="148" elements="1137" coveredelements="885" complexity="0" loc="652" ncloc="652" packages="22" files="67" classes="67"/>
     <package name="TestData.Reducer">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="appData.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/TestData/Reducer/appData.tsx">
@@ -260,28 +260,28 @@
       </file>
     </package>
     <package name="app.screens.Favorite">
-      <metrics statements="69" coveredstatements="46" conditionals="22" coveredconditionals="7" methods="28" coveredmethods="9"/>
+      <metrics statements="61" coveredstatements="44" conditionals="22" coveredconditionals="7" methods="23" coveredmethods="12"/>
       <file name="Container.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/screens/Favorite/Container.tsx">
-        <metrics statements="21" coveredstatements="13" conditionals="6" coveredconditionals="1" methods="9" coveredmethods="1"/>
+        <metrics statements="21" coveredstatements="13" conditionals="6" coveredconditionals="1" methods="9" coveredmethods="3"/>
         <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
-        <line num="61" count="1" type="stmt"/>
+        <line num="61" count="2" type="stmt"/>
         <line num="67" count="0" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
       </file>
@@ -299,48 +299,40 @@
         <line num="32" count="0" type="stmt"/>
       </file>
       <file name="index.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/screens/Favorite/index.tsx">
-        <metrics statements="30" coveredstatements="24" conditionals="6" coveredconditionals="3" methods="13" coveredmethods="7"/>
+        <metrics statements="22" coveredstatements="22" conditionals="6" coveredconditionals="3" methods="8" coveredmethods="8"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="27" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="38" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
-        <line num="43" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="62" count="1" type="stmt"/>
-        <line num="64" count="1" type="stmt"/>
-        <line num="67" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
       </file>
       <file name="styles.ts" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/screens/Favorite/styles.ts">
         <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="103" count="1" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="103" count="2" type="stmt"/>
       </file>
     </package>
     <package name="app.screens.ForgotPassword">
@@ -626,7 +618,7 @@
         <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
         <line num="8" count="2" type="stmt"/>
         <line num="15" count="7" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
         <line num="31" count="9" type="stmt"/>
         <line num="38" count="1" type="stmt"/>
         <line num="48" count="3" type="stmt"/>
@@ -642,7 +634,7 @@
         <line num="38" count="1" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
         <line num="54" count="41" type="stmt"/>
-        <line num="60" count="70" type="stmt"/>
+        <line num="60" count="71" type="stmt"/>
         <line num="66" count="1" type="stmt"/>
         <line num="72" count="1" type="stmt"/>
         <line num="82" count="1" type="stmt"/>
