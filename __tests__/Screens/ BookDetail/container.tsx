@@ -2,60 +2,17 @@ import { useIsFocused } from '@react-navigation/native'
 import { render } from '@testing-library/react-native'
 import React from 'react'
 import * as redux from 'react-redux'
-import Linking from 'react-native'
+
 import { act } from 'react-test-renderer'
-import DeviceInfo from 'react-native-device-info'
 import Container from 'screens/BookDetail/Container'
-jest.mock('react-native', () => {
-    return {
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        openURL: jest.fn(),
-        canOpenURL: jest.fn(),
-        getInitialURL: jest.fn(),
-    }
-})
+import * as utils from 'utils/dimentionUtil'
+import { getPercentageHeight } from 'utils/dimentionUtil'
+const DeviceTypeUtilsMock = jest.requireMock('utils/dimentionUtil')
 
-jest.mock('react-native', () => ({
-    NetInfo: {
-        addEventListener: jest.fn(),
-        fetch: () => {
-            return {
-                done: jest.fn(),
-            }
-        },
-    },
-    NativeModules: {
-        RNPasscodeStatus: {
-            supported: jest.fn(),
-            status: jest.fn(),
-            get: jest.fn(),
-        },
-    },
-    Dimensions: {
-        get: () => ({
-            width: jest.fn(),
-            height: jest.fn(),
-        }),
-    },
-}))
-
-jest.mock('./../../../app/screens/BookDetail/types', () => {
-    return {
-        props: { route: { params: jest.fn() } },
-    }
-})
 jest.mock('react-native-device-info', () => {
     return {
-        DeviceInfo: jest.fn(),
+        DeviceInfo: { isTablet: jest.fn() },
         isTablet: jest.fn(),
-    }
-})
-jest.mock('react-native-paper', () => {
-    return {
-        Button: jest.fn(),
-        Text: jest.fn(),
-        useTheme: jest.fn(),
     }
 })
 jest.mock('react-redux', () => {
@@ -67,6 +24,37 @@ jest.mock('react-redux', () => {
         default: 'mockedDefaultExport',
     }
 })
+jest.mock('react-native-paper', () => {
+    return {
+        Text: jest.fn(),
+        Button: jest.fn(),
+        useTheme: jest.fn(),
+    }
+})
+jest.mock('./../../../app/utils/dimentionUtil', () => {
+    return {
+        getPercentageHeight: jest.fn(),
+        height: '100',
+        getPercentageWidth: jest.fn(),
+    }
+})
+
+jest.mock('react-native', () => {
+    return {
+        NativeEventEmitter: jest.fn(),
+        NativeModules: jest.fn(),
+        StyleSheet: {
+            create: () => ({}),
+        },
+        Dimensions: {
+            get: () => ({
+                width: jest.fn(),
+                height: jest.fn(),
+            }),
+        },
+    }
+})
+
 jest.mock('@react-navigation/core', () => {
     return {
         useIsFocused: jest.fn(),
@@ -118,6 +106,8 @@ jest.mock('react-native-tts', () => {
 
 describe('Component testing', () => {
     test('Snapshot ', () => {
+        const height = jest.fn()
+        getPercentageHeight.mockReturnValue(jest.fn())
         const tree = render(<Container />)
         expect(tree).toMatchSnapshot()
     })
