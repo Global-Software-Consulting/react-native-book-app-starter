@@ -126,7 +126,42 @@ describe('Screen test', () => {
         getPercentageHeight.mockReturnValue(jest.fn())
         const width = jest.fn()
         getPercentageWidth.mockReturnValue(jest.fn())
+
+        const isFocused = jest.fn()
+        useIsFocused.mockReturnValue(true)
+
+        act(() => {
+            const state = {
+                loadingReducer: { isLoading: true },
+                appReducer: { favorite: 'as' },
+            }
+            jest.spyOn(redux, 'useSelector').mockImplementation((val) => {
+                val(state)
+                expect(tree).toMatchSnapshot()
+            })
+        })
         const tree = render(<Favorite />)
-        expect(tree).toMatchSnapshot()
+    })
+
+    test('set loading as false ', () => {
+        const height = jest.fn()
+        getPercentageHeight.mockReturnValue(jest.fn())
+        const width = jest.fn()
+        getPercentageWidth.mockReturnValue(jest.fn())
+
+        const isFocused = jest.fn()
+        useIsFocused.mockReturnValue(true)
+
+        act(() => {
+            const state = {
+                loadingReducer: { isLoading: false },
+                appReducer: { favorite: 'as' },
+            }
+            jest.spyOn(redux, 'useSelector').mockImplementation((val) => {
+                val(state)
+                expect(tree).toMatchSnapshot()
+            })
+        })
+        const tree = render(<Favorite />)
     })
 })
