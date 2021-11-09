@@ -1,20 +1,21 @@
-import { FavoriteBook } from 'models/reducers/appReducers';
+import { FavoriteBook } from 'models/reducers/appReducers'
 
 export interface Props {
-    books?: Array<FavoriteBook>;
-    base_url?: string;
-    onRefresh: () => void;
+    books?: Array<FavoriteBook>
+    base_url?: string
+    onRefresh: () => void
+    toDos: boolean
 }
 
 export interface IParams {
-    id: number;
-    bookId: number | string;
-    averageRating: number;
-    title: string;
-    numberOfPages: string | number;
-    shortSummary: string;
+    id: number
+    bookId: number | string
+    averageRating: number
+    title: string
+    numberOfPages: string | number
+    shortSummary: string
     book: {
-        title: string;
-        id: number;
-    };
+        title: string
+        id: number
+    }
 }

@@ -4,7 +4,7 @@ import React from 'react'
 import * as redux from 'react-redux'
 
 import { act } from 'react-test-renderer'
-import Favorite from 'screens/Favorite/index'
+import Container from 'screens/Favorite/Container'
 import * as utils from 'utils/dimentionUtil'
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil'
 const DeviceTypeUtilsMock = jest.requireMock('utils/dimentionUtil')
@@ -13,8 +13,6 @@ import 'react-native-gesture-handler/jestSetup'
 jest.mock('react-native-reanimated', () => {
     const Reanimated = require('react-native-reanimated/mock')
 
-    // The mock for `call` immediately calls the callback which is incorrect
-    // So we override it with a no-op
     Reanimated.default.call = () => {}
 
     return Reanimated
@@ -116,28 +114,6 @@ describe('Screen test', () => {
 
         act(() => {
             const state = {
-                loadingReducer: { isLoading: true },
-                appReducer: { favorite: 'as' },
-            }
-            jest.spyOn(redux, 'useSelector').mockImplementation((val) => {
-                val(state)
-                expect(tree).toMatchSnapshot()
-            })
-        })
-        const tree = render(<Favorite />)
-    })
-
-    test('set loading as false ', () => {
-        const height = jest.fn()
-        getPercentageHeight.mockReturnValue(jest.fn())
-        const width = jest.fn()
-        getPercentageWidth.mockReturnValue(jest.fn())
-
-        const isFocused = jest.fn()
-        useIsFocused.mockReturnValue(true)
-
-        act(() => {
-            const state = {
                 loadingReducer: { isLoading: false },
                 appReducer: { favorite: 'as' },
             }
@@ -146,6 +122,26 @@ describe('Screen test', () => {
                 expect(tree).toMatchSnapshot()
             })
         })
-        const tree = render(<Favorite />)
+        const tree = render(<Container />)
+    })
+
+    test('Snapshot ', () => {
+        const height = jest.fn()
+        getPercentageHeight.mockReturnValue(jest.fn())
+        const width = jest.fn()
+        getPercentageWidth.mockReturnValue(jest.fn())
+        act(() => {
+            const state = {
+                loadingReducer: { isLoading: false },
+                appReducer: { favorite: ['as', 'bd', 'ef'] },
+            }
+            jest.spyOn(redux, 'useSelector').mockImplementation((val) => {
+                val(state)
+            })
+        })
+        const isFocused = jest.fn()
+        useIsFocused.mockReturnValue(true)
+
+        const { getByTestId } = render(<Container toDos={true} />)
     })
 })

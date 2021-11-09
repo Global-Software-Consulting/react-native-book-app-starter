@@ -42,6 +42,7 @@ const Container: React.FC<Props> = (props) => {
     const bookList = (item: FavoriteBook) => {
         return (
             <TouchableHighlight
+                testID={'book'}
                 key={item.id}
                 underlayColor={theme.colors.highlight}
                 onPress={() => {
@@ -60,7 +61,7 @@ const Container: React.FC<Props> = (props) => {
     }
     return (
         <View style={styles.mainView}>
-            {favoriteBooks?.length > 0 ? (
+            {favoriteBooks?.length > 0 || props.toDos === true ? (
                 <FlatList
                     numColumns={windowHeight > windowWidth ? 2 : 4}
                     key={windowHeight > windowWidth ? 2 : 4}
