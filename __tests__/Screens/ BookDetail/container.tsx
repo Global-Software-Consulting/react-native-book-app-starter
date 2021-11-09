@@ -6,7 +6,7 @@ import * as redux from 'react-redux'
 import { act } from 'react-test-renderer'
 import Container from 'screens/BookDetail/Container'
 import * as utils from 'utils/dimentionUtil'
-import { getPercentageHeight } from 'utils/dimentionUtil'
+import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil'
 const DeviceTypeUtilsMock = jest.requireMock('utils/dimentionUtil')
 
 jest.mock('react-native-device-info', () => {
@@ -39,21 +39,21 @@ jest.mock('./../../../app/utils/dimentionUtil', () => {
     }
 })
 
-jest.mock('react-native', () => {
-    return {
-        NativeEventEmitter: jest.fn(),
-        NativeModules: jest.fn(),
-        StyleSheet: {
-            create: () => ({}),
-        },
-        Dimensions: {
-            get: () => ({
-                width: jest.fn(),
-                height: jest.fn(),
-            }),
-        },
-    }
-})
+// jest.mock('react-native', () => {
+//     return {
+//         NativeEventEmitter: jest.fn(),
+//         NativeModules: jest.fn(),
+//         StyleSheet: {
+//             create: () => ({}),
+//         },
+//         Dimensions: {
+//             get: () => ({
+//                 width: jest.fn(),
+//                 height: jest.fn(),
+//             }),
+//         },
+//     }
+// })
 
 jest.mock('@react-navigation/core', () => {
     return {
@@ -108,7 +108,10 @@ describe('Component testing', () => {
     test('Snapshot ', () => {
         const height = jest.fn()
         getPercentageHeight.mockReturnValue(jest.fn())
-        const tree = render(<Container />)
+
+        const width = jest.fn()
+        getPercentageWidth.mockReturnValue(jest.fn())
+        const tree = render(<Container books={['abc']} base_url="abc.com" />)
         expect(tree).toMatchSnapshot()
     })
 })

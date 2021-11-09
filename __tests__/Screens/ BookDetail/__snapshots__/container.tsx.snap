@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component testing Snapshot  1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": undefined,
+      "minHeight": undefined,
+    }
+  }
+/>
+`;
