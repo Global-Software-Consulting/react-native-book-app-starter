@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import * as redux from 'react-redux'
 import { act } from 'react-test-renderer'
-import Signup from './../../app/screens/Signup/index'
+import Signup from '../../../app/screens/Signup/index'
 import { useDispatch } from 'react-redux'
 
 jest.mock('react-redux', () => {
@@ -24,7 +24,7 @@ jest.mock('@react-navigation/core', () => {
         default: 'mockedDefaultExport',
     }
 })
-jest.mock('./../../app/config/images', () => {
+jest.mock('./../../../app/config/images', () => {
     return {
         __esModule: true,
         A: true,
@@ -52,7 +52,7 @@ jest.mock('react-native-linear-gradient', () => {
         default: 'mockedDefaultExport',
     }
 })
-jest.mock('./../../app/config/images', () => {
+jest.mock('./../../../app/config/images', () => {
     return {
         __esModule: true,
         A: true,

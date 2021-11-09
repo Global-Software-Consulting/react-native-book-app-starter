@@ -39,7 +39,7 @@ jest.mock('@react-navigation/core', () => {
         default: 'mockedDefaultExport',
     }
 })
-jest.mock('./../../app/config/images', () => {
+jest.mock('./../../../app/config/images', () => {
     return {
         __esModule: true,
         A: true,
@@ -63,8 +63,7 @@ jest.mock('react-native-linear-gradient', () => {
         default: 'mockedDefaultExport',
     }
 })
-
-jest.mock('./../../app/config/images', () => {
+jest.mock('./../../../app/config/images', () => {
     return {
         __esModule: true,
         A: true,

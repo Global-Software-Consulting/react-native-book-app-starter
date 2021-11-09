@@ -68,6 +68,7 @@ const Container: React.FC<Props> = (props) => {
                             { backgroundColor: !isSpeaking ? '#00416A' : 'red' },
                         ]}>
                         <Button
+                            testID={'play'}
                             title="Play"
                             onPress={() => {
                                 setIsSpeaking(!isSpeaking)
