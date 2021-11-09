@@ -11,7 +11,7 @@ export const useStyles = () => {
             flex: 1,
             alignItems: 'center',
             alignContent: 'center',
-            backgroundColor:theme.colors.background
+            backgroundColor:theme?.colors?.background
         },
         pdfView:
         { height:height('100%') , width: width('100%') }

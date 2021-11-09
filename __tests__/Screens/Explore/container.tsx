@@ -1,0 +1,137 @@
+import { useIsFocused, useNavigation } from '@react-navigation/native'
+import { fireEvent, render } from '@testing-library/react-native'
+import React from 'react'
+import * as redux from 'react-redux'
+
+import { act } from 'react-test-renderer'
+import ExploreComponent from 'screens/Explore/Container'
+import * as utils from 'utils/dimentionUtil'
+import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil'
+const DeviceTypeUtilsMock = jest.requireMock('utils/dimentionUtil')
+import 'react-native-gesture-handler/jestSetup'
+
+jest.mock('react-native-reanimated', () => {
+    const Reanimated = require('react-native-reanimated/mock')
+
+    // The mock for `call` immediately calls the callback which is incorrect
+    // So we override it with a no-op
+    Reanimated.default.call = () => {}
+
+    return Reanimated
+})
+
+// Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+jest.mock('react-native-device-info', () => {
+    return {
+        DeviceInfo: { isTablet: jest.fn() },
+        isTablet: jest.fn(),
+    }
+})
+jest.mock('react-redux', () => {
+    return {
+        __esModule: true,
+        A: true,
+        useDispatch: jest.fn(),
+        useSelector: jest.fn(),
+        default: 'mockedDefaultExport',
+    }
+})
+jest.mock('react-native-paper', () => {
+    return {
+        useTheme: jest.fn(),
+    }
+})
+jest.mock('./../../../app/utils/dimentionUtil', () => {
+    return {
+        getPercentageHeight: jest.fn(),
+        height: '100',
+        getPercentageWidth: jest.fn(),
+    }
+})
+
+jest.mock('@react-navigation/core', () => {
+    const actualNav = jest.requireActual('@react-navigation/core')
+    return {
+        ...actualNav,
+        useNavigation: () => ({
+            navigate: jest.fn(),
+            dispatch: jest.fn(),
+        }),
+        useIsFocused: jest.fn(),
+    }
+})
+jest.mock('react-native-image-crop-picker', () => {
+    return {
+        __esModule: true,
+        A: true,
+        useDispatch: jest.fn(),
+        default: 'mockedDefaultExport',
+    }
+})
+
+jest.mock('react-native-keyboard-aware-scroll-view', () => {
+    return {
+        __esModule: true,
+        A: true,
+        KeyboardAwareScrollView: jest.fn(),
+        default: 'mockedDefaultExport',
+    }
+})
+jest.mock('react-native-linear-gradient', () => {
+    return {
+        __esModule: true,
+        A: true,
+        LinearGradient: jest.fn(),
+        default: 'mockedDefaultExport',
+    }
+})
+jest.mock('./../../../app/config/images', () => {
+    return {
+        __esModule: true,
+        A: true,
+        app: { logo: jest.fn() },
+        default: 'mockedDefaultExport',
+    }
+})
+
+jest.mock('react-native-tts', () => {
+    return {
+        __esModule: true,
+        A: true,
+        Tts: jest.fn(),
+        default: 'mockedDefaultExport',
+    }
+})
+
+describe('Screen test', () => {
+    test('Snapshot with loading as true ', () => {
+        const height = jest.fn()
+        getPercentageHeight.mockReturnValue(jest.fn())
+        const width = jest.fn()
+        getPercentageWidth.mockReturnValue(jest.fn())
+        act(() => {
+            const state = {
+                loadingReducer: { isLoading: false },
+                loginReducer: { user: 'as' },
+                appReducer: {
+                    books: [
+                        { averageRating: 2 },
+                        { averageRating: 4 },
+                        { averageRating: 5 },
+                        { averageRating: 1 },
+                        { averageRating: 3 },
+                    ],
+                },
+            }
+            jest.spyOn(redux, 'useSelector').mockImplementation((val) => {
+                val(state)
+                expect(tree).toMatchSnapshot()
+            })
+        })
+        const isFocused = jest.fn()
+        useIsFocused.mockReturnValue(true)
+
+        const tree = render(<ExploreComponent />)
+    })
+})

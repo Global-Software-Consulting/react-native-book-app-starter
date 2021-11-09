@@ -1,19 +1,19 @@
 //importing card component
-import BookCardShimmer from 'components/BookCard/BookCardShimmer';
-import React from 'react';
-import { FlatList, ScrollView, TouchableHighlight, View } from 'react-native';
-import { useTheme } from 'react-native-paper';
-import { useStyles } from './styles';
+import BookCardShimmer from 'components/BookCard/BookCardShimmer'
+import React from 'react'
+import { FlatList, ScrollView, TouchableHighlight, View } from 'react-native'
+import { useTheme } from 'react-native-paper'
+import { useStyles } from './styles'
 const ExploreShimmer: React.FC = () => {
-    const styles = useStyles();
-    const theme = useTheme();
+    const styles = useStyles()
+    const theme = useTheme()
     const bookList = (item: number, style: 'General' | 'Custom') => {
         return (
-            <TouchableHighlight key={item} underlayColor={theme.colors.highlight}>
+            <TouchableHighlight key={item} underlayColor={theme?.colors?.highlight}>
                 <BookCardShimmer styleSelect={style} />
             </TouchableHighlight>
-        );
-    };
+        )
+    }
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{ paddingLeft: 20 }}>
@@ -59,7 +59,7 @@ const ExploreShimmer: React.FC = () => {
                 />
             </View>
         </ScrollView>
-    );
-};
+    )
+}
 
-export default ExploreShimmer;
+export default ExploreShimmer

@@ -1,25 +1,25 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useNavigation } from '@react-navigation/core';
-import { DrawerActions } from '@react-navigation/native';
-import * as React from 'react';
-import { useTranslation } from 'react-i18next';
-import { TouchableHighlight } from 'react-native-gesture-handler';
-import { useTheme } from 'react-native-paper';
-import { heightPercentageToDP } from 'react-native-responsive-screen';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import Explore from './../screens/Explore/index';
-import Favorite from './../screens/Favorite/index';
-import UserDetail from './../screens/UserDetail/index';
-import { useStyles } from './header';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { useNavigation } from '@react-navigation/core'
+import { DrawerActions } from '@react-navigation/native'
+import * as React from 'react'
+import { useTranslation } from 'react-i18next'
+import { TouchableHighlight } from 'react-native-gesture-handler'
+import { useTheme } from 'react-native-paper'
+import { heightPercentageToDP } from 'react-native-responsive-screen'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import Explore from './../screens/Explore/index'
+import Favorite from './../screens/Favorite/index'
+import UserDetail from './../screens/UserDetail/index'
+import { useStyles } from './header'
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator()
 
 const TabNavigator = () => {
-    const { t } = useTranslation();
-    const navigation = useNavigation();
-    const theme = useTheme();
-    const styles = useStyles();
+    const { t } = useTranslation()
+    const navigation = useNavigation()
+    const theme = useTheme()
+    const styles = useStyles()
 
     return (
         <Tab.Navigator>
@@ -28,7 +28,7 @@ const TabNavigator = () => {
                 component={Explore}
                 options={{
                     headerStyle: {
-                        backgroundColor: theme.colors.background,
+                        backgroundColor: theme?.colors?.background,
                     },
                     headerLeft: () => (
                         <TouchableHighlight
@@ -56,7 +56,7 @@ const TabNavigator = () => {
                 component={Favorite}
                 options={{
                     headerStyle: {
-                        backgroundColor: theme.colors.background,
+                        backgroundColor: theme?.colors?.background,
                     },
                     headerLeft: () => (
                         <TouchableHighlight
@@ -80,7 +80,7 @@ const TabNavigator = () => {
                 component={UserDetail}
                 options={{
                     headerStyle: {
-                        backgroundColor: theme.colors.background,
+                        backgroundColor: theme?.colors?.background,
                     },
                     headerLeft: () => (
                         <TouchableHighlight
@@ -100,6 +100,6 @@ const TabNavigator = () => {
                 }}
             />
         </Tab.Navigator>
-    );
-};
-export default TabNavigator;
+    )
+}
+export default TabNavigator
