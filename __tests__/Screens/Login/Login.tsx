@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { act } from 'react-test-renderer'
-import Login from './../../app/screens/Login/index'
+import Login from '../../../app/screens/Login/index'
 jest.useFakeTimers()
 
 jest.mock('react-redux', () => {
@@ -15,14 +15,17 @@ jest.mock('react-redux', () => {
     }
 })
 jest.mock('@react-navigation/core', () => {
+    const actualNav = jest.requireActual('@react-navigation/core')
     return {
-        __esModule: true,
-        A: true,
-        useNavigation: jest.fn(),
-        default: 'mockedDefaultExport',
+        ...actualNav,
+        useNavigation: () => ({
+            navigate: jest.fn(),
+            dispatch: jest.fn(),
+        }),
+        useIsFocused: jest.fn(),
     }
 })
-jest.mock('./../../app/config/images', () => {
+jest.mock('./../../../app/config/images', () => {
     return {
         __esModule: true,
         A: true,
@@ -86,6 +89,20 @@ describe('Component testing', () => {
         const { getByTestId } = render(<Login />)
         act(() => {
             fireEvent.press(getByTestId('iconEye'))
+        })
+    })
+
+    test('icon press event ', async () => {
+        const { getByTestId } = render(<Login />)
+        act(() => {
+            fireEvent.press(getByTestId('forgotPassword'))
+        })
+    })
+
+    test('icon press event ', async () => {
+        const { getByTestId } = render(<Login />)
+        act(() => {
+            fireEvent.press(getByTestId('signup'))
         })
     })
 })

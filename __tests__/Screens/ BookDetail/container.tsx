@@ -148,4 +148,14 @@ describe('Component testing', () => {
         const { getByTestId } = render(<Container />)
         fireEvent.press(getByTestId('navigate'))
     })
+
+    test('Fire toggle text ', () => {
+        const height = jest.fn()
+        getPercentageHeight.mockReturnValue(jest.fn())
+        const width = jest.fn()
+        getPercentageWidth.mockReturnValue(jest.fn())
+
+        const { getByTestId } = render(<Container />)
+        fireEvent.press(getByTestId('play'))
+    })
 })
