@@ -1,4 +1,4 @@
-import { useIsFocused } from '@react-navigation/native'
+import { useIsFocused } from '@react-navigation/core'
 import { render } from '@testing-library/react-native'
 import React from 'react'
 import * as getDetail from 'services/getBookDetail'
@@ -20,11 +20,7 @@ jest.mock('./../../../app/screens/BookDetail/types', () => {
         props: { route: { params: jest.fn() } },
     }
 })
-jest.mock('react-native-device-info', () => {
-    return {
-        DeviceInfo: { isTablet: () => true },
-    }
-})
+
 jest.mock('react-redux', () => {
     return {
         __esModule: true,

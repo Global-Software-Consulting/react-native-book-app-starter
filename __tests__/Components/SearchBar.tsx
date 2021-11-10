@@ -1,32 +1,24 @@
-import React from 'react';
-import { fireEvent, render } from '@testing-library/react-native';
-import SearchBar from './../../app/components/SearchBar/index';
+import React from 'react'
+import { fireEvent, render } from '@testing-library/react-native'
+import SearchBar from './../../app/components/SearchBar/index'
 
-jest.mock('react-redux', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useDispatch: jest.fn(),
-        default: 'mockedDefaultExport',
-    };
-});
 describe('Component testing', () => {
     test('Snapshot', () => {
-        const tree = render(<SearchBar />);
-        expect(tree).toMatchSnapshot();
-    });
+        const tree = render(<SearchBar />)
+        expect(tree).toMatchSnapshot()
+    })
     test('search action', () => {
-        const { getByTestId } = render(<SearchBar />);
+        const { getByTestId } = render(<SearchBar />)
         // fireEvent.press(getByTestId('search'));
-        fireEvent.press(getByTestId('searchBookies'));
-    });
+        fireEvent.press(getByTestId('searchBookies'))
+    })
     test('search input change', () => {
-        const { getByTestId } = render(<SearchBar />);
+        const { getByTestId } = render(<SearchBar />)
         // fireEvent.press(getByTestId('search'));
-        fireEvent.changeText(getByTestId('searchInput'));
-    });
+        fireEvent.changeText(getByTestId('searchInput'))
+    })
     test('search input change', () => {
-        const { getByTestId } = render(<SearchBar />);
+        const { getByTestId } = render(<SearchBar />)
         // fireEvent.press(getByTestId('search'));
-    });
-});
+    })
+})

@@ -1,5 +1,5 @@
 //to update heart icon on focus
-import { useIsFocused } from '@react-navigation/native'
+import { useIsFocused } from '@react-navigation/core'
 import { FavoriteBook } from 'models/reducers/appReducers'
 import { ReducerState } from 'models/reducers/index'
 import React, { useState } from 'react'
