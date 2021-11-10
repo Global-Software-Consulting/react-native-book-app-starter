@@ -27,30 +27,6 @@ jest.mock('./../../../app/config/images', () => {
         default: 'mockedDefaultExport',
     }
 })
-jest.mock('react-native-keyboard-aware-scroll-view', () => {
-    return {
-        __esModule: true,
-        A: true,
-        KeyboardAwareScrollView: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('react-native-linear-gradient', () => {
-    return {
-        __esModule: true,
-        A: true,
-        LinearGradient: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('./../../../app/config/images', () => {
-    return {
-        __esModule: true,
-        A: true,
-        app: { logo: jest.fn() },
-        default: 'mockedDefaultExport',
-    }
-})
 
 describe('Component testing', () => {
     test('Snapshot with loading as true', async () => {

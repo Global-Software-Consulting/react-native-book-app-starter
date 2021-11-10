@@ -11,14 +11,6 @@ jest.mock('react-native-simple-toast', () => ({
     reactNativeSimpleToast: { default: { show: jest.fn() } },
 }))
 
-jest.mock('react-native-image-crop-picker', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useDispatch: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
 jest.mock('@react-navigation/core', () => {
     return {
         __esModule: true,
@@ -34,30 +26,6 @@ jest.mock('./../../../app/config/images', () => {
         __esModule: true,
         A: true,
         images: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('react-native-keyboard-aware-scroll-view', () => {
-    return {
-        __esModule: true,
-        A: true,
-        KeyboardAwareScrollView: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('react-native-linear-gradient', () => {
-    return {
-        __esModule: true,
-        A: true,
-        LinearGradient: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('./../../../app/config/images', () => {
-    return {
-        __esModule: true,
-        A: true,
-        app: { logo: jest.fn() },
         default: 'mockedDefaultExport',
     }
 })
