@@ -1,34 +1,7 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
-import ForgotPassword from 'screens/ForgotPassword/index'
-import * as redux from 'react-redux'
-import Toast from 'react-native-simple-toast'
 import { useDispatch } from 'react-redux'
-
-jest.mock('react-native-simple-toast', () => ({
-    Toast: jest.fn(),
-    default: { show: jest.fn() },
-    reactNativeSimpleToast: { default: { show: jest.fn() } },
-}))
-
-jest.mock('@react-navigation/core', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useNavigation: jest.fn(),
-        navigation: { navigate: jest.fn() },
-
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('./../../../app/config/images', () => {
-    return {
-        __esModule: true,
-        A: true,
-        images: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
+import ForgotPassword from 'screens/ForgotPassword/index'
 
 describe('Component testing', () => {
     test('Snapshot ', async () => {

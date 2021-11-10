@@ -1,14 +1,10 @@
-import { useIsFocused, useNavigation } from '@react-navigation/native'
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
-import * as redux from 'react-redux'
-
-import { act } from 'react-test-renderer'
-import Container from 'screens/BookDetail/Container'
-import * as utils from 'utils/dimentionUtil'
-import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil'
-const DeviceTypeUtilsMock = jest.requireMock('utils/dimentionUtil')
 import 'react-native-gesture-handler/jestSetup'
+import Container from 'screens/BookDetail/Container'
+import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil'
+
+const DeviceTypeUtilsMock = jest.requireMock('utils/dimentionUtil')
 
 // Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
 jest.mock('./../../../app/utils/dimentionUtil', () => {

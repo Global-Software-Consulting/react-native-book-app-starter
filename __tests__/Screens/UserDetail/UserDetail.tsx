@@ -4,29 +4,6 @@ import * as redux from 'react-redux'
 import { act } from 'react-test-renderer'
 import UserDetail from '../../../app/screens/UserDetail/index'
 
-jest.mock('@react-navigation/core', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useNavigation: jest.fn(),
-        navigation: { navigate: jest.fn() },
-
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('./../../../app/config/images', () => {
-    return {
-        __esModule: true,
-        A: true,
-        images: {
-            app: {
-                logo: 'abc',
-            },
-        },
-        default: 'mockedDefaultExport',
-    }
-})
-
 describe('Component testing', () => {
     test('Snapshot ', async () => {
         const tree = render(<UserDetail />)

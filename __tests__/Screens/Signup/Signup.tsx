@@ -5,29 +5,6 @@ import { act } from 'react-test-renderer'
 import Signup from '../../../app/screens/Signup/index'
 import { useDispatch } from 'react-redux'
 
-jest.mock('@react-navigation/core', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useNavigation: jest.fn(),
-        navigation: { navigate: jest.fn() },
-
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('./../../../app/config/images', () => {
-    return {
-        __esModule: true,
-        A: true,
-        images: {
-            app: {
-                logo: 'abc',
-            },
-        },
-        default: 'mockedDefaultExport',
-    }
-})
-
 describe('Component testing', () => {
     test('Snapshot with loading as true', async () => {
         const tree = render(<Signup />)

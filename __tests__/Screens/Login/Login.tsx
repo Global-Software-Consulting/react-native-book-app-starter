@@ -5,19 +5,6 @@ import { act } from 'react-test-renderer'
 import Login from '../../../app/screens/Login/index'
 jest.useFakeTimers()
 
-jest.mock('./../../../app/config/images', () => {
-    return {
-        __esModule: true,
-        A: true,
-        images: {
-            app: {
-                logo: 'abc',
-            },
-        },
-        default: 'mockedDefaultExport',
-    }
-})
-
 describe('Component testing', () => {
     test('Snapshot', async () => {
         const tree = render(<Login />)
