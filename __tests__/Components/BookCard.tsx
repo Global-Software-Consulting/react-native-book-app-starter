@@ -3,16 +3,6 @@ import React from 'react'
 import * as redux from 'react-redux'
 import BookCard from './../../app/components/BookCard/BookCard'
 
-jest.mock('react-native-paper', () => {
-    return {
-        Text: jest.fn(),
-        useTheme: () => {
-            return {
-                theme: { colors: { highlight: jest.fn() } },
-            }
-        },
-    }
-})
 describe('Component testing', () => {
     afterEach(() => {
         jest.clearAllMocks()

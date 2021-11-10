@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.66% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/12</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>1/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.66% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/12</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -106,27 +106,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -149,8 +149,8 @@ const SearchBar: React.FC = () =&gt; {
     const dispatch = useDispatch()
     const { t } = useTranslation()
 &nbsp;
-    const fetchBookDetails = async () =&gt; {
-        dispatch(appActions.getBookRequest(searchText))
+    const fetchBookDetails = <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {
+<span class="cstat-no" title="statement not covered" >        dispatch(appActions.getBookRequest(searchText))</span>
     }
 &nbsp;
     return (
@@ -160,11 +160,11 @@ const SearchBar: React.FC = () =&gt; {
                 underlineColorAndroid="transparent"
                 placeholder={t('Search Here')}
                 placeholderTextColor={theme?.colors?.text}
-                onChangeText={(text) =&gt; setSearchText(text)}
+                onChangeText={<span class="fstat-no" title="function not covered" >(t</span>ext) =&gt; <span class="cstat-no" title="statement not covered" >setSearchText(text)}</span>
                 style={styles.searchViewInput}
                 onEndEditing={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >fetchBookDetails()}</span>
             /&gt;
-            &lt;TouchableOpacity testID={'searchBookies'} onPress={() =&gt; fetchBookDetails()}&gt;
+            &lt;TouchableOpacity testID={'searchBookies'} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >fetchBookDetails()}</span>&gt;
                 &lt;Icon name="search" size={20} style={styles.searchViewChildren} /&gt;
             &lt;/TouchableOpacity&gt;
         &lt;/View&gt;
@@ -178,7 +178,7 @@ export default SearchBar
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Nov 10 2021 14:18:14 GMT+0500 (Pakistan Standard Time)
+                at Wed Nov 10 2021 14:36:08 GMT+0500 (Pakistan Standard Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
