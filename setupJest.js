@@ -12,12 +12,14 @@ jest.mock('@react-native-community/netinfo', () => ({
     netInfo: jest.fn(),
 }));
 jest.mock('@react-navigation/core', () => {
+    const actualNav = jest.requireActual('@react-navigation/core')
     return {
-        __esModule: true,
-        A: true,
-        useNavigation: jest.fn(),
-        useIsFocused:jest.fn(),
-        default: 'mockedDefaultExport',
+        ...actualNav,
+        useNavigation: () => ({
+            navigate: jest.fn(),
+            dispatch: jest.fn(),
+        }),
+        useIsFocused: jest.fn(),
     }
 })
 jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);

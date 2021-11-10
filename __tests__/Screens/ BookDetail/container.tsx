@@ -11,40 +11,14 @@ const DeviceTypeUtilsMock = jest.requireMock('utils/dimentionUtil')
 import 'react-native-gesture-handler/jestSetup'
 
 // Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
-jest.mock('./app/utils/dimentionUtil', () => {
+jest.mock('./../../../app/utils/dimentionUtil', () => {
     return {
         getPercentageHeight: jest.fn(),
         height: 100,
         getPercentageWidth: jest.fn(),
     }
 })
-// jest.mock('react-native', () => {
-//     return {
-//         NativeEventEmitter: jest.fn(),
-//         NativeModules: jest.fn(),
-//         StyleSheet: {
-//             create: () => ({}),
-//         },
-//         Dimensions: {
-//             get: () => ({
-//                 width: jest.fn(),
-//                 height: jest.fn(),
-//             }),
-//         },
-//     }
-// })
 
-jest.mock('@react-navigation/core', () => {
-    const actualNav = jest.requireActual('@react-navigation/core')
-    return {
-        ...actualNav,
-        useNavigation: () => ({
-            navigate: jest.fn(),
-            dispatch: jest.fn(),
-        }),
-        useIsFocused: jest.fn(),
-    }
-})
 jest.mock('react-native-image-crop-picker', () => {
     return {
         __esModule: true,
