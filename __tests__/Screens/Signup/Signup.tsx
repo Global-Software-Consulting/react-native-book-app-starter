@@ -5,15 +5,6 @@ import { act } from 'react-test-renderer'
 import Signup from '../../../app/screens/Signup/index'
 import { useDispatch } from 'react-redux'
 
-jest.mock('react-redux', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useDispatch: jest.fn(),
-        useSelector: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
 jest.mock('@react-navigation/core', () => {
     return {
         __esModule: true,

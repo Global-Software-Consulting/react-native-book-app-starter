@@ -11,16 +11,6 @@ jest.mock('react-native-simple-toast', () => ({
     reactNativeSimpleToast: { default: { show: jest.fn() } },
 }))
 
-jest.mock('react-redux', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useDispatch: jest.fn(() => {}),
-        useSelector: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-
 jest.mock('react-native-image-crop-picker', () => {
     return {
         __esModule: true,
