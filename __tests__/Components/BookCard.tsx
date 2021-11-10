@@ -3,30 +3,6 @@ import React from 'react'
 import * as redux from 'react-redux'
 import BookCard from './../../app/components/BookCard/BookCard'
 
-jest.mock('react-native-modal', () => {
-    return {
-        __esModule: true,
-        A: true,
-        Modal: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('./../../workaround/useEffect', () => {
-    return { useEffect: require('react').useLayoutEffect }
-})
-jest.mock('react-native-paper', () => {
-    return {
-        __esModule: true,
-        A: true,
-        Text: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('react-native-device-info', () => {
-    return {
-        DeviceInfo: { isTablet: () => true },
-    }
-})
 jest.mock('react-native-paper', () => {
     return {
         Text: jest.fn(),
@@ -37,49 +13,6 @@ jest.mock('react-native-paper', () => {
         },
     }
 })
-
-jest.mock('react-native-device-info', () => {
-    return {
-        isTablet: jest.fn(),
-    }
-})
-
-jest.mock('@react-navigation/native', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useIsFocused: jest.fn(() => {
-            isFocused = false
-        }),
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('react-native-fast-image', () => {
-    return {
-        __esModule: true,
-        A: true,
-        FastImage: jest.fn(),
-        priority: {
-            normal: 'normal',
-        },
-        default: 'mockedDefaultExport',
-    }
-})
-
-jest.mock('react-redux', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useDispatch: jest.fn(),
-        useSelector: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('React', () => ({
-    ...jest.requireActual('React'),
-    useEffect: jest.fn(),
-}))
-
 describe('Component testing', () => {
     afterEach(() => {
         jest.clearAllMocks()

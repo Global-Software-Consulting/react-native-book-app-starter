@@ -15,6 +15,7 @@ jest.mock('@react-navigation/core', () => {
         __esModule: true,
         A: true,
         useNavigation: jest.fn(),
+        useIsFocused:jest.fn(),
         default: 'mockedDefaultExport',
     }
 })
@@ -75,3 +76,32 @@ jest.mock('react-native-popup-menu', () => ({
   })
 
 jest.mock('react-native-pdf', () => 'Pdf')
+
+jest.mock('react-native-modal', () => {
+    return {
+        __esModule: true,
+        A: true,
+        Modal: jest.fn(),
+        default: 'mockedDefaultExport',
+    }
+})
+
+jest.mock('./workaround/useEffect', () => {
+    return { useEffect: require('react').useLayoutEffect }
+})
+jest.mock('react-native-device-info', () => {
+    return {
+        DeviceInfo: { isTablet: jest.fn() },
+        isTablet: jest.fn(),
+    }
+})
+
+jest.mock('react-redux', () => {
+    return {
+        __esModule: true,
+        A: true,
+        useDispatch: jest.fn(() => {}),
+        useSelector: jest.fn(),
+        default: 'mockedDefaultExport',
+    }
+})

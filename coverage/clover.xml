@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636459131176" clover="3.2.0">
-  <project timestamp="1636459131176" name="All files">
-    <metrics statements="718" coveredstatements="625" conditionals="312" coveredconditionals="204" methods="231" coveredmethods="172" elements="1261" coveredelements="1001" complexity="0" loc="718" ncloc="718" packages="23" files="71" classes="71"/>
+<coverage generated="1636529661561" clover="3.2.0">
+  <project timestamp="1636529661561" name="All files">
+    <metrics statements="718" coveredstatements="625" conditionals="312" coveredconditionals="204" methods="231" coveredmethods="172" elements="1261" coveredelements="1001" complexity="0" loc="718" ncloc="718" packages="22" files="70" classes="70"/>
     <package name="TestData.Reducer">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="appData.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/TestData/Reducer/appData.tsx">
@@ -980,26 +980,20 @@
         <line num="13" count="365" type="stmt"/>
         <line num="17" count="93" type="stmt"/>
         <line num="18" count="92" type="stmt"/>
-        <line num="19" count="46" type="stmt"/>
+        <line num="19" count="50" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
-        <line num="24" count="46" type="stmt"/>
+        <line num="24" count="50" type="stmt"/>
         <line num="26" count="699" type="stmt"/>
         <line num="28" count="92" type="stmt"/>
         <line num="31" count="88" type="stmt"/>
         <line num="32" count="87" type="stmt"/>
-        <line num="33" count="42" type="stmt"/>
+        <line num="33" count="46" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="37" count="42" type="stmt"/>
+        <line num="37" count="46" type="stmt"/>
         <line num="39" count="365" type="stmt"/>
         <line num="41" count="87" type="stmt"/>
-      </file>
-    </package>
-    <package name="workaround">
-      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="useEffect.js" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/workaround/useEffect.js">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
   </project>

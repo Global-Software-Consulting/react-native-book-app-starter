@@ -22,21 +22,7 @@ jest.mock('react-native-reanimated', () => {
 
 // Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
-jest.mock('react-native-device-info', () => {
-    return {
-        DeviceInfo: { isTablet: jest.fn() },
-        isTablet: jest.fn(),
-    }
-})
-jest.mock('react-redux', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useDispatch: jest.fn(),
-        useSelector: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
+
 jest.mock('react-native-paper', () => {
     return {
         useTheme: jest.fn(),
