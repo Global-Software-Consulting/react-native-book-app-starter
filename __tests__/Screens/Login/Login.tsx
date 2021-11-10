@@ -5,15 +5,7 @@ import { act } from 'react-test-renderer'
 import Login from '../../../app/screens/Login/index'
 jest.useFakeTimers()
 
-jest.mock('react-redux', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useDispatch: jest.fn(),
-        useSelector: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
+
 jest.mock('@react-navigation/core', () => {
     const actualNav = jest.requireActual('@react-navigation/core')
     return {

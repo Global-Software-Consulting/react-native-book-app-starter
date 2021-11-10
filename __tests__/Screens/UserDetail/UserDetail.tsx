@@ -3,15 +3,7 @@ import React from 'react'
 import * as redux from 'react-redux'
 import { act } from 'react-test-renderer'
 import UserDetail from '../../../app/screens/UserDetail/index'
-jest.mock('react-redux', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useDispatch: jest.fn(),
-        useSelector: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
+
 jest.mock('react-native-image-crop-picker', () => {
     return {
         __esModule: true,

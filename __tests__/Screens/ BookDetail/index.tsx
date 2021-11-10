@@ -21,15 +21,6 @@ jest.mock('./../../../app/screens/BookDetail/types', () => {
     }
 })
 
-jest.mock('react-redux', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useDispatch: jest.fn(() => {}),
-        useSelector: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
 jest.mock('@react-navigation/core', () => {
     return {
         useIsFocused: jest.fn(),

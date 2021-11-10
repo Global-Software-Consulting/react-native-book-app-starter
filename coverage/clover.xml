@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636529661561" clover="3.2.0">
-  <project timestamp="1636529661561" name="All files">
-    <metrics statements="718" coveredstatements="625" conditionals="312" coveredconditionals="204" methods="231" coveredmethods="172" elements="1261" coveredelements="1001" complexity="0" loc="718" ncloc="718" packages="22" files="70" classes="70"/>
+<coverage generated="1636530796197" clover="3.2.0">
+  <project timestamp="1636530796198" name="All files">
+    <metrics statements="718" coveredstatements="605" conditionals="312" coveredconditionals="192" methods="231" coveredmethods="167" elements="1261" coveredelements="964" complexity="0" loc="718" ncloc="718" packages="22" files="70" classes="70"/>
     <package name="TestData.Reducer">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="appData.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/TestData/Reducer/appData.tsx">
@@ -22,54 +22,54 @@
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="dummyImages.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/assets/dummyImages.tsx">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="6" type="stmt"/>
+        <line num="1" count="5" type="stmt"/>
       </file>
       <file name="logo.png" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/assets/logo.png">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="31" type="stmt"/>
+        <line num="1" count="30" type="stmt"/>
       </file>
       <file name="noImageFound.png" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/assets/noImageFound.png">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="31" type="stmt"/>
+        <line num="1" count="30" type="stmt"/>
       </file>
       <file name="profilePicture.jpg" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/assets/profilePicture.jpg">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="31" type="stmt"/>
+        <line num="1" count="30" type="stmt"/>
       </file>
     </package>
     <package name="app.assets.app">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="language.png" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/assets/app/language.png">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="31" type="stmt"/>
+        <line num="1" count="30" type="stmt"/>
       </file>
     </package>
     <package name="app.assets.social">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="facebook.png" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/assets/social/facebook.png">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="31" type="stmt"/>
+        <line num="1" count="30" type="stmt"/>
       </file>
       <file name="google.png" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/assets/social/google.png">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="31" type="stmt"/>
+        <line num="1" count="30" type="stmt"/>
       </file>
     </package>
     <package name="app.components.BookCard">
       <metrics statements="39" coveredstatements="25" conditionals="109" coveredconditionals="59" methods="11" coveredmethods="7"/>
       <file name="BookCard.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/components/BookCard/BookCard.tsx">
         <metrics statements="28" coveredstatements="14" conditionals="39" coveredconditionals="19" methods="9" coveredmethods="5"/>
-        <line num="21" count="7" type="stmt"/>
-        <line num="30" count="17" type="stmt"/>
-        <line num="31" count="17" type="stmt"/>
-        <line num="32" count="17" type="stmt"/>
-        <line num="33" count="17" type="stmt"/>
-        <line num="34" count="17" type="stmt"/>
-        <line num="35" count="17" type="stmt"/>
-        <line num="36" count="8" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
+        <line num="30" count="11" type="stmt"/>
+        <line num="31" count="11" type="stmt"/>
+        <line num="32" count="11" type="stmt"/>
+        <line num="33" count="11" type="stmt"/>
+        <line num="34" count="11" type="stmt"/>
+        <line num="35" count="11" type="stmt"/>
+        <line num="36" count="4" type="stmt"/>
         <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="38" count="0" type="stmt"/>
-        <line num="44" count="17" type="stmt"/>
+        <line num="44" count="11" type="stmt"/>
         <line num="45" count="4" type="cond" truecount="1" falsecount="1"/>
         <line num="47" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
@@ -86,7 +86,7 @@
         <line num="71" count="0" type="stmt"/>
         <line num="73" count="0" type="stmt"/>
         <line num="76" count="4" type="stmt"/>
-        <line num="81" count="17" type="stmt"/>
+        <line num="81" count="11" type="stmt"/>
       </file>
       <file name="BookCardShimmer.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/components/BookCard/BookCardShimmer.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="16" coveredconditionals="13" methods="1" coveredmethods="1"/>
@@ -96,14 +96,14 @@
       </file>
       <file name="styles.ts" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/components/BookCard/styles.ts">
         <metrics statements="8" coveredstatements="8" conditionals="54" coveredconditionals="27" methods="1" coveredmethods="1"/>
-        <line num="5" count="9" type="stmt"/>
-        <line num="6" count="30" type="stmt"/>
-        <line num="7" count="30" type="stmt"/>
-        <line num="8" count="30" type="stmt"/>
-        <line num="9" count="30" type="stmt"/>
-        <line num="10" count="30" type="stmt"/>
-        <line num="11" count="30" type="stmt"/>
-        <line num="205" count="30" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="6" count="24" type="stmt"/>
+        <line num="7" count="24" type="stmt"/>
+        <line num="8" count="24" type="stmt"/>
+        <line num="9" count="24" type="stmt"/>
+        <line num="10" count="24" type="stmt"/>
+        <line num="11" count="24" type="stmt"/>
+        <line num="205" count="24" type="stmt"/>
       </file>
     </package>
     <package name="app.components.PictureViewer">
@@ -156,11 +156,11 @@
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="api-config.ts" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/config/api-config.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="3" count="18" type="stmt"/>
+        <line num="3" count="17" type="stmt"/>
       </file>
       <file name="images.ts" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/config/images.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="3" count="31" type="stmt"/>
+        <line num="3" count="30" type="stmt"/>
       </file>
       <file name="styles.ts" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/config/styles.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -178,30 +178,30 @@
       </file>
     </package>
     <package name="app.screens.BookDetail">
-      <metrics statements="49" coveredstatements="45" conditionals="25" coveredconditionals="16" methods="10" coveredmethods="9"/>
+      <metrics statements="49" coveredstatements="25" conditionals="25" coveredconditionals="4" methods="10" coveredmethods="4"/>
       <file name="Container.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/screens/BookDetail/Container.tsx">
-        <metrics statements="21" coveredstatements="21" conditionals="12" coveredconditionals="12" methods="5" coveredmethods="5"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="6" type="stmt"/>
-        <line num="14" count="6" type="stmt"/>
-        <line num="15" count="6" type="stmt"/>
-        <line num="16" count="6" type="stmt"/>
-        <line num="19" count="6" type="stmt"/>
-        <line num="20" count="6" type="stmt"/>
-        <line num="21" count="6" type="stmt"/>
-        <line num="22" count="6" type="stmt"/>
-        <line num="23" count="6" type="stmt"/>
-        <line num="24" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="25" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="26" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="27" count="6" type="stmt"/>
-        <line num="28" count="6" type="stmt"/>
-        <line num="29" count="6" type="stmt"/>
-        <line num="43" count="6" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="48" count="6" type="stmt"/>
-        <line num="74" count="1" type="stmt"/>
-        <line num="83" count="1" type="stmt"/>
+        <metrics statements="21" coveredstatements="1" conditionals="12" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
       </file>
       <file name="Shimmer.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/screens/BookDetail/Shimmer.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -231,14 +231,14 @@
       </file>
       <file name="styles.ts" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/screens/BookDetail/styles.ts">
         <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="8" type="stmt"/>
-        <line num="8" count="8" type="stmt"/>
-        <line num="9" count="8" type="stmt"/>
-        <line num="10" count="8" type="stmt"/>
-        <line num="11" count="8" type="stmt"/>
-        <line num="13" count="8" type="stmt"/>
-        <line num="200" count="8" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="200" count="2" type="stmt"/>
       </file>
     </package>
     <package name="app.screens.BookReader">
@@ -633,7 +633,7 @@
       </file>
       <file name="client.ts" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/services/client.ts">
         <metrics statements="22" coveredstatements="10" conditionals="13" coveredconditionals="7" methods="7" coveredmethods="2"/>
-        <line num="8" count="18" type="stmt"/>
+        <line num="8" count="17" type="stmt"/>
         <line num="9" count="5" type="stmt"/>
         <line num="10" count="5" type="stmt"/>
         <line num="11" count="5" type="cond" truecount="1" falsecount="1"/>
@@ -735,42 +735,42 @@
       </file>
       <file name="types.ts" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/store/actions/types.ts">
         <metrics statements="36" coveredstatements="36" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="27" type="stmt"/>
-        <line num="3" count="27" type="stmt"/>
-        <line num="6" count="27" type="stmt"/>
-        <line num="9" count="27" type="stmt"/>
-        <line num="10" count="27" type="stmt"/>
-        <line num="11" count="27" type="stmt"/>
-        <line num="12" count="27" type="stmt"/>
-        <line num="13" count="27" type="stmt"/>
-        <line num="14" count="27" type="stmt"/>
-        <line num="15" count="27" type="stmt"/>
-        <line num="16" count="27" type="stmt"/>
-        <line num="17" count="27" type="stmt"/>
-        <line num="18" count="27" type="stmt"/>
-        <line num="19" count="27" type="stmt"/>
-        <line num="20" count="27" type="stmt"/>
-        <line num="21" count="27" type="stmt"/>
-        <line num="22" count="27" type="stmt"/>
-        <line num="23" count="27" type="stmt"/>
-        <line num="24" count="27" type="stmt"/>
-        <line num="25" count="27" type="stmt"/>
-        <line num="26" count="27" type="stmt"/>
-        <line num="29" count="27" type="stmt"/>
-        <line num="30" count="27" type="stmt"/>
-        <line num="31" count="27" type="stmt"/>
-        <line num="32" count="27" type="stmt"/>
-        <line num="33" count="27" type="stmt"/>
-        <line num="34" count="27" type="stmt"/>
-        <line num="35" count="27" type="stmt"/>
-        <line num="36" count="27" type="stmt"/>
-        <line num="37" count="27" type="stmt"/>
-        <line num="38" count="27" type="stmt"/>
-        <line num="39" count="27" type="stmt"/>
-        <line num="41" count="27" type="stmt"/>
-        <line num="42" count="27" type="stmt"/>
-        <line num="44" count="27" type="stmt"/>
-        <line num="46" count="27" type="stmt"/>
+        <line num="2" count="26" type="stmt"/>
+        <line num="3" count="26" type="stmt"/>
+        <line num="6" count="26" type="stmt"/>
+        <line num="9" count="26" type="stmt"/>
+        <line num="10" count="26" type="stmt"/>
+        <line num="11" count="26" type="stmt"/>
+        <line num="12" count="26" type="stmt"/>
+        <line num="13" count="26" type="stmt"/>
+        <line num="14" count="26" type="stmt"/>
+        <line num="15" count="26" type="stmt"/>
+        <line num="16" count="26" type="stmt"/>
+        <line num="17" count="26" type="stmt"/>
+        <line num="18" count="26" type="stmt"/>
+        <line num="19" count="26" type="stmt"/>
+        <line num="20" count="26" type="stmt"/>
+        <line num="21" count="26" type="stmt"/>
+        <line num="22" count="26" type="stmt"/>
+        <line num="23" count="26" type="stmt"/>
+        <line num="24" count="26" type="stmt"/>
+        <line num="25" count="26" type="stmt"/>
+        <line num="26" count="26" type="stmt"/>
+        <line num="29" count="26" type="stmt"/>
+        <line num="30" count="26" type="stmt"/>
+        <line num="31" count="26" type="stmt"/>
+        <line num="32" count="26" type="stmt"/>
+        <line num="33" count="26" type="stmt"/>
+        <line num="34" count="26" type="stmt"/>
+        <line num="35" count="26" type="stmt"/>
+        <line num="36" count="26" type="stmt"/>
+        <line num="37" count="26" type="stmt"/>
+        <line num="38" count="26" type="stmt"/>
+        <line num="39" count="26" type="stmt"/>
+        <line num="41" count="26" type="stmt"/>
+        <line num="42" count="26" type="stmt"/>
+        <line num="44" count="26" type="stmt"/>
+        <line num="46" count="26" type="stmt"/>
       </file>
     </package>
     <package name="app.store.reducers">
@@ -972,10 +972,10 @@
       <metrics statements="22" coveredstatements="18" conditionals="4" coveredconditionals="2" methods="12" coveredmethods="8"/>
       <file name="dimentionUtil.js" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/utils/dimentionUtil.js">
         <metrics statements="22" coveredstatements="18" conditionals="4" coveredconditionals="2" methods="12" coveredmethods="8"/>
-        <line num="5" count="9" type="stmt"/>
+        <line num="5" count="30" type="stmt"/>
         <line num="6" count="699" type="cond" truecount="1" falsecount="1"/>
         <line num="7" count="699" type="stmt"/>
-        <line num="10" count="9" type="stmt"/>
+        <line num="10" count="30" type="stmt"/>
         <line num="12" count="365" type="cond" truecount="1" falsecount="1"/>
         <line num="13" count="365" type="stmt"/>
         <line num="17" count="93" type="stmt"/>

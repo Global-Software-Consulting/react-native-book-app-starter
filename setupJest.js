@@ -1,6 +1,7 @@
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
 import { View } from 'react-native';
 import images from './app/config/images';
+import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil'
 
 
 jest.mock('react-native-simple-toast', () => ({
@@ -101,7 +102,20 @@ jest.mock('react-redux', () => {
         __esModule: true,
         A: true,
         useDispatch: jest.fn(() => {}),
-        useSelector: jest.fn(),
+        useSelector: jest.fn(), 
         default: 'mockedDefaultExport',
     }
 })
+jest.mock('react-native-reanimated', () => {
+    const Reanimated = require('react-native-reanimated/mock')
+
+    // The mock for `call` immediately calls the callback which is incorrect
+    // So we override it with a no-op
+    Reanimated.default.call = () => {}
+
+    return Reanimated
+})
+
+
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+
