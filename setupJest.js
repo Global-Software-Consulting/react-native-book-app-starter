@@ -1,7 +1,4 @@
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
-import { View } from 'react-native';
-import images from './app/config/images';
-import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil'
 
 
 jest.mock('react-native-simple-toast', () => ({
@@ -120,4 +117,48 @@ jest.mock('react-native-reanimated', () => {
 
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+
+jest.mock('react-native-image-crop-picker', () => {
+    return {
+        __esModule: true,
+        A: true,
+        useDispatch: jest.fn(),
+        default: 'mockedDefaultExport',
+    }
+})
+
+jest.mock('react-native-keyboard-aware-scroll-view', () => {
+    return {
+        __esModule: true,
+        A: true,
+        KeyboardAwareScrollView: jest.fn(),
+        default: 'mockedDefaultExport',
+    }
+})
+jest.mock('react-native-linear-gradient', () => {
+    return {
+        __esModule: true,
+        A: true,
+        LinearGradient: jest.fn(),
+        default: 'mockedDefaultExport',
+    }
+})
+
+jest.mock('react-native-tts', () => {
+    return {
+        __esModule: true,
+        A: true,
+        Tts: jest.fn(),
+        default: 'mockedDefaultExport',
+    }
+})
+
+jest.mock('./app/config/images', () => {
+    return {
+        __esModule: true,
+        A: true,
+        app: { logo: jest.fn() },
+        default: 'mockedDefaultExport',
+    }
+})
 

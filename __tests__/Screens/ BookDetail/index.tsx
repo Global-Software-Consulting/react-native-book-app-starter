@@ -21,55 +21,6 @@ jest.mock('./../../../app/screens/BookDetail/types', () => {
     }
 })
 
-jest.mock('@react-navigation/core', () => {
-    return {
-        useIsFocused: jest.fn(),
-    }
-})
-
-jest.mock('react-native-image-crop-picker', () => {
-    return {
-        __esModule: true,
-        A: true,
-        useDispatch: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-
-jest.mock('react-native-keyboard-aware-scroll-view', () => {
-    return {
-        __esModule: true,
-        A: true,
-        KeyboardAwareScrollView: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('react-native-linear-gradient', () => {
-    return {
-        __esModule: true,
-        A: true,
-        LinearGradient: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('./../../../app/config/images', () => {
-    return {
-        __esModule: true,
-        A: true,
-        app: { logo: jest.fn() },
-        default: 'mockedDefaultExport',
-    }
-})
-
-jest.mock('react-native-tts', () => {
-    return {
-        __esModule: true,
-        A: true,
-        Tts: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-
 describe('Component testing', () => {
     beforeAll(() => {
         const dispatch = jest.fn()

@@ -5,18 +5,6 @@ import { act } from 'react-test-renderer'
 import Login from '../../../app/screens/Login/index'
 jest.useFakeTimers()
 
-
-jest.mock('@react-navigation/core', () => {
-    const actualNav = jest.requireActual('@react-navigation/core')
-    return {
-        ...actualNav,
-        useNavigation: () => ({
-            navigate: jest.fn(),
-            dispatch: jest.fn(),
-        }),
-        useIsFocused: jest.fn(),
-    }
-})
 jest.mock('./../../../app/config/images', () => {
     return {
         __esModule: true,
@@ -26,22 +14,6 @@ jest.mock('./../../../app/config/images', () => {
                 logo: 'abc',
             },
         },
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('react-native-keyboard-aware-scroll-view', () => {
-    return {
-        __esModule: true,
-        A: true,
-        KeyboardAwareScrollView: jest.fn(),
-        default: 'mockedDefaultExport',
-    }
-})
-jest.mock('react-native-linear-gradient', () => {
-    return {
-        __esModule: true,
-        A: true,
-        LinearGradient: jest.fn(),
         default: 'mockedDefaultExport',
     }
 })
