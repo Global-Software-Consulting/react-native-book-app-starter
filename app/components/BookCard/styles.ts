@@ -135,11 +135,7 @@ export const useStyles = () => {
         },
 
         bookViewIOS: {
-<<<<<<< HEAD
             shadowColor: theme.colors.background === 'white' ? 'grey' : 'white',
-=======
-            shadowColor: 'red',
->>>>>>> 44ebcc3db372a8f9d63d4872f4fe55409e5c797f
             shadowOffset: { width: 0, height: 2 },
             shadowOpacity: 3,
             shadowRadius: 2,

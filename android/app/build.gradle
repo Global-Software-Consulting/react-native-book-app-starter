@@ -221,11 +221,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-splash-screen')
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-<<<<<<< HEAD
   implementation 'com.google.firebase:firebase-analytics:18.0.2'
-=======
-  implementation 'com.google.firebase:firebase-analytics:17.3.0'
->>>>>>> 44ebcc3db372a8f9d63d4872f4fe55409e5c797f
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'

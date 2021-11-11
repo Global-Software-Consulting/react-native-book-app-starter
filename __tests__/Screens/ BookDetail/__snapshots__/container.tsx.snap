@@ -19,11 +19,7 @@ exports[`Component testing Snapshot  1`] = `
             "elevation": 2,
             "margin": 2,
             "marginRight": 3,
-<<<<<<< HEAD
             "shadowColor": "white",
-=======
-            "shadowColor": "red",
->>>>>>> 44ebcc3db372a8f9d63d4872f4fe55409e5c797f
             "shadowOffset": Object {
               "height": 2,
               "width": 0,
@@ -38,11 +34,7 @@ exports[`Component testing Snapshot  1`] = `
           source={
             Object {
               "priority": undefined,
-<<<<<<< HEAD
               "uri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQB-3-cJ6tpQ6cFUjCach0R1dTiXdhXI0AtA&usqp=CAU",
-=======
-              "uri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkIVlYNBoYdfq1FGWs_dx_k8Irvjmdu64p7A&usqp=CAU",
->>>>>>> 44ebcc3db372a8f9d63d4872f4fe55409e5c797f
             }
           }
           style={
@@ -57,7 +49,6 @@ exports[`Component testing Snapshot  1`] = `
         />
         <Text
           style={
-<<<<<<< HEAD
             Array [
               Object {
                 "color": "#000000",
@@ -75,22 +66,12 @@ exports[`Component testing Snapshot  1`] = `
                 "textAlign": "center",
               },
             ]
-=======
-            Object {
-              "alignSelf": "center",
-              "fontSize": undefined,
-              "fontWeight": "500",
-              "maxWidth": undefined,
-              "textAlign": "center",
-            }
->>>>>>> 44ebcc3db372a8f9d63d4872f4fe55409e5c797f
           }
         >
           Dummy Title
         </Text>
         <Text
           style={
-<<<<<<< HEAD
             Array [
               Object {
                 "color": "#000000",
@@ -108,15 +89,6 @@ exports[`Component testing Snapshot  1`] = `
                 "maxWidth": undefined,
               },
             ]
-=======
-            Object {
-              "alignSelf": "center",
-              "color": "red",
-              "fontSize": undefined,
-              "fontWeight": "300",
-              "maxWidth": undefined,
-            }
->>>>>>> 44ebcc3db372a8f9d63d4872f4fe55409e5c797f
           }
         >
           Dummy author

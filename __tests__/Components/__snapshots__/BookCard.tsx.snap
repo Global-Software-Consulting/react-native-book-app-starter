@@ -9,11 +9,7 @@ exports[`Component testing Snapshot 1`] = `
       "elevation": 2,
       "margin": 2,
       "marginRight": 3,
-<<<<<<< HEAD
       "shadowColor": "white",
-=======
-      "shadowColor": "red",
->>>>>>> 44ebcc3db372a8f9d63d4872f4fe55409e5c797f
       "shadowOffset": Object {
         "height": 2,
         "width": 0,
@@ -43,7 +39,6 @@ exports[`Component testing Snapshot 1`] = `
   />
   <Text
     style={
-<<<<<<< HEAD
       Array [
         Object {
           "color": "#000000",
@@ -61,20 +56,10 @@ exports[`Component testing Snapshot 1`] = `
           "textAlign": "center",
         },
       ]
-=======
-      Object {
-        "alignSelf": "center",
-        "fontSize": 37.5,
-        "fontWeight": "500",
-        "maxWidth": 450,
-        "textAlign": "center",
-      }
->>>>>>> 44ebcc3db372a8f9d63d4872f4fe55409e5c797f
     }
   />
   <Text
     style={
-<<<<<<< HEAD
       Array [
         Object {
           "color": "#000000",
@@ -92,15 +77,6 @@ exports[`Component testing Snapshot 1`] = `
           "maxWidth": 412.5,
         },
       ]
-=======
-      Object {
-        "alignSelf": "center",
-        "color": "red",
-        "fontSize": 30,
-        "fontWeight": "300",
-        "maxWidth": 412.5,
-      }
->>>>>>> 44ebcc3db372a8f9d63d4872f4fe55409e5c797f
     }
   />
 </View>
