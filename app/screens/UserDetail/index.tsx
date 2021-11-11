@@ -97,7 +97,7 @@ const UserDetail: React.FC = () => {
         loadImage()
     }, [counter])
     return (
-        <View>
+        <View style={{ alignItems: 'center' }}>
             <Menu>
                 <MenuTrigger testID={'menu'} triggerOnLongPress={true} customStyles={triggerStyles}>
                     <Image

@@ -19,7 +19,7 @@ exports[`Component testing Snapshot  1`] = `
             "elevation": 2,
             "margin": 2,
             "marginRight": 3,
-            "shadowColor": "red",
+            "shadowColor": "white",
             "shadowOffset": Object {
               "height": 2,
               "width": 0,
@@ -34,7 +34,7 @@ exports[`Component testing Snapshot  1`] = `
           source={
             Object {
               "priority": undefined,
-              "uri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkIVlYNBoYdfq1FGWs_dx_k8Irvjmdu64p7A&usqp=CAU",
+              "uri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQB-3-cJ6tpQ6cFUjCach0R1dTiXdhXI0AtA&usqp=CAU",
             }
           }
           style={
@@ -49,26 +49,46 @@ exports[`Component testing Snapshot  1`] = `
         />
         <Text
           style={
-            Object {
-              "alignSelf": "center",
-              "fontSize": undefined,
-              "fontWeight": "500",
-              "maxWidth": undefined,
-              "textAlign": "center",
-            }
+            Array [
+              Object {
+                "color": "#000000",
+                "fontFamily": "System",
+                "fontWeight": "400",
+              },
+              Object {
+                "textAlign": "left",
+              },
+              Object {
+                "alignSelf": "center",
+                "fontSize": undefined,
+                "fontWeight": "500",
+                "maxWidth": undefined,
+                "textAlign": "center",
+              },
+            ]
           }
         >
           Dummy Title
         </Text>
         <Text
           style={
-            Object {
-              "alignSelf": "center",
-              "color": "red",
-              "fontSize": undefined,
-              "fontWeight": "300",
-              "maxWidth": undefined,
-            }
+            Array [
+              Object {
+                "color": "#000000",
+                "fontFamily": "System",
+                "fontWeight": "400",
+              },
+              Object {
+                "textAlign": "left",
+              },
+              Object {
+                "alignSelf": "center",
+                "color": "red",
+                "fontSize": undefined,
+                "fontWeight": "300",
+                "maxWidth": undefined,
+              },
+            ]
           }
         >
           Dummy author

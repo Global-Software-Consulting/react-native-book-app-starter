@@ -9,19 +9,5 @@ exports[`Component testing Snapshot  1`] = `
       "justifyContent": "flex-start",
     }
   }
->
-  <Pdf
-    source={
-      Object {
-        "uri": "https://www.adelaide.edu.au/writingcentre/sites/default/files/docs/learningguide-articlesinenglishgrammar.pdf",
-      }
-    }
-    style={
-      Object {
-        "height": 1334,
-        "width": 750,
-      }
-    }
-  />
-</View>
+/>
 `;

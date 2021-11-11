@@ -9,7 +9,7 @@ exports[`Component testing Snapshot 1`] = `
       "elevation": 2,
       "margin": 2,
       "marginRight": 3,
-      "shadowColor": "red",
+      "shadowColor": "white",
       "shadowOffset": Object {
         "height": 2,
         "width": 0,
@@ -39,24 +39,44 @@ exports[`Component testing Snapshot 1`] = `
   />
   <Text
     style={
-      Object {
-        "alignSelf": "center",
-        "fontSize": 37.5,
-        "fontWeight": "500",
-        "maxWidth": 450,
-        "textAlign": "center",
-      }
+      Array [
+        Object {
+          "color": "#000000",
+          "fontFamily": "System",
+          "fontWeight": "400",
+        },
+        Object {
+          "textAlign": "left",
+        },
+        Object {
+          "alignSelf": "center",
+          "fontSize": 37.5,
+          "fontWeight": "500",
+          "maxWidth": 450,
+          "textAlign": "center",
+        },
+      ]
     }
   />
   <Text
     style={
-      Object {
-        "alignSelf": "center",
-        "color": "red",
-        "fontSize": 30,
-        "fontWeight": "300",
-        "maxWidth": 412.5,
-      }
+      Array [
+        Object {
+          "color": "#000000",
+          "fontFamily": "System",
+          "fontWeight": "400",
+        },
+        Object {
+          "textAlign": "left",
+        },
+        Object {
+          "alignSelf": "center",
+          "color": "red",
+          "fontSize": 30,
+          "fontWeight": "300",
+          "maxWidth": 412.5,
+        },
+      ]
     }
   />
 </View>

@@ -3,7 +3,8 @@ import { useIsFocused } from '@react-navigation/core'
 import { FavoriteBook } from 'models/reducers/appReducers'
 import { ReducerState } from 'models/reducers/index'
 import React, { useState } from 'react'
-import { Platform, Text, View } from 'react-native'
+import { Platform, View } from 'react-native'
+import { Text } from 'react-native-paper'
 //image with placeholder
 import FastImage from 'react-native-fast-image'
 //verctor icons

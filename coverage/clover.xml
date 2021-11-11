@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636542368085" clover="3.2.0">
-  <project timestamp="1636542368085" name="All files">
-    <metrics statements="711" coveredstatements="626" conditionals="312" coveredconditionals="204" methods="231" coveredmethods="180" elements="1254" coveredelements="1010" complexity="0" loc="711" ncloc="711" packages="20" files="63" classes="63"/>
+<coverage generated="1636622526887" clover="3.2.0">
+  <project timestamp="1636622526887" name="All files">
+    <metrics statements="711" coveredstatements="626" conditionals="314" coveredconditionals="205" methods="231" coveredmethods="180" elements="1256" coveredelements="1011" complexity="0" loc="711" ncloc="711" packages="20" files="63" classes="63"/>
     <package name="TestData.Reducer">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="appData.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/TestData/Reducer/appData.tsx">
@@ -26,37 +26,37 @@
       </file>
     </package>
     <package name="app.components.BookCard">
-      <metrics statements="39" coveredstatements="25" conditionals="109" coveredconditionals="59" methods="11" coveredmethods="7"/>
+      <metrics statements="39" coveredstatements="25" conditionals="111" coveredconditionals="60" methods="11" coveredmethods="7"/>
       <file name="BookCard.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/components/BookCard/BookCard.tsx">
         <metrics statements="28" coveredstatements="14" conditionals="39" coveredconditionals="19" methods="9" coveredmethods="5"/>
-        <line num="21" count="7" type="stmt"/>
-        <line num="30" count="17" type="stmt"/>
+        <line num="22" count="7" type="stmt"/>
         <line num="31" count="17" type="stmt"/>
         <line num="32" count="17" type="stmt"/>
         <line num="33" count="17" type="stmt"/>
         <line num="34" count="17" type="stmt"/>
         <line num="35" count="17" type="stmt"/>
-        <line num="36" count="8" type="stmt"/>
-        <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="44" count="17" type="stmt"/>
-        <line num="45" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="57" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="65" count="4" type="stmt"/>
+        <line num="36" count="17" type="stmt"/>
+        <line num="37" count="8" type="stmt"/>
+        <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="45" count="17" type="stmt"/>
+        <line num="46" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="58" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
         <line num="66" count="4" type="stmt"/>
-        <line num="68" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="76" count="4" type="stmt"/>
-        <line num="81" count="17" type="stmt"/>
+        <line num="67" count="4" type="stmt"/>
+        <line num="69" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="77" count="4" type="stmt"/>
+        <line num="82" count="17" type="stmt"/>
       </file>
       <file name="BookCardShimmer.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/components/BookCard/BookCardShimmer.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="16" coveredconditionals="13" methods="1" coveredmethods="1"/>
@@ -65,7 +65,7 @@
         <line num="11" count="13" type="stmt"/>
       </file>
       <file name="styles.ts" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/components/BookCard/styles.ts">
-        <metrics statements="8" coveredstatements="8" conditionals="54" coveredconditionals="27" methods="1" coveredmethods="1"/>
+        <metrics statements="8" coveredstatements="8" conditionals="56" coveredconditionals="28" methods="1" coveredmethods="1"/>
         <line num="5" count="9" type="stmt"/>
         <line num="6" count="30" type="stmt"/>
         <line num="7" count="30" type="stmt"/>
