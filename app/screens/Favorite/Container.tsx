@@ -5,8 +5,21 @@ import images from 'config/images'
 import { FavoriteBook } from 'models/reducers/appReducers'
 import { ReducerState } from 'models/reducers/index'
 import React, { useState } from 'react'
+<<<<<<< HEAD
 import { Dimensions, FlatList, Image, ScrollView, TouchableHighlight, View } from 'react-native'
 import { useTheme, Text } from 'react-native-paper'
+=======
+import {
+    Dimensions,
+    FlatList,
+    Image,
+    ScrollView,
+    TouchableHighlight,
+    View,
+    Text,
+} from 'react-native'
+import { useTheme } from 'react-native-paper'
+>>>>>>> 44ebcc3db372a8f9d63d4872f4fe55409e5c797f
 import { useSelector } from 'react-redux'
 import { useStyles } from './styles'
 import { Props } from './types'
