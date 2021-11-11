@@ -64,4 +64,4 @@ ios/tmp.xcconfig
 #JEST coverage
 coverage
 
-android/java_pid17917.hprof
+*.hprof
