@@ -1,26 +1,26 @@
 //importing card component
-import BookCardShimmer from 'components/BookCard/BookCardShimmer';
-import React from 'react';
-import { Dimensions } from 'react-native';
-import { FlatList, TouchableHighlight, View } from 'react-native';
-import { useStyles } from './styles';
-import { useTheme } from 'react-native-paper';
+import BookCardShimmer from 'components/BookCard/BookCardShimmer'
+import React from 'react'
+import { Dimensions } from 'react-native'
+import { FlatList, TouchableHighlight, View } from 'react-native'
+import { useStyles } from './styles'
+import { useTheme } from 'react-native-paper'
 const Shimmer: React.FC = () => {
     //theme handling
-    const styles = useStyles();
-    const windowWidth = Dimensions.get('window').width;
-    const windowHeight = Dimensions.get('window').height;
-    const theme = useTheme();
+    const styles = useStyles()
+    const windowWidth = Dimensions.get('window').width
+    const windowHeight = Dimensions.get('window').height
+    const theme = useTheme()
     const bookList = (item: number) => {
         return (
             <TouchableHighlight
                 key={item}
-                underlayColor={theme.colors.highlight}
+                underlayColor={theme?.colors?.highlight}
                 onPress={() => {}}>
                 <BookCardShimmer styleSelect="Large" />
             </TouchableHighlight>
-        );
-    };
+        )
+    }
     return (
         <View style={styles.mainShimmerView}>
             <FlatList
@@ -33,7 +33,7 @@ const Shimmer: React.FC = () => {
                 showsHorizontalScrollIndicator={false}
             />
         </View>
-    );
-};
+    )
+}
 
-export default Shimmer;
+export default Shimmer

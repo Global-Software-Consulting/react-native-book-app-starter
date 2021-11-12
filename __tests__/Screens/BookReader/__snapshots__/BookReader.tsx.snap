@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component testing Snapshot  1`] = `
+<View>
+  <PDFView
+    fadeInDuration={250}
+    onError={[Function]}
+    onLoad={[Function]}
+    onPageChanged={[Function]}
+    onScrolled={[Function]}
+    resource="https://www.adelaide.edu.au/writingcentre/sites/default/files/docs/learningguide-articlesinenglishgrammar.pdf"
+    resourceType="url"
+    style={
+      Object {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+    textEncoding="utf-8"
+    urlProps={Object {}}
+  />
+</View>
+`;

@@ -1,11 +1,11 @@
 import { Key, ReactNodeArray } from 'react';
 
 export interface IAppState {
-    books: Array<Books>;
-    favorite: Array<FavoriteBook>;
+    books?: Array<Books>;
+    favorite?: Array<FavoriteBook>;
     isLoading?: boolean;
     snackbarMessage?: string;
-    profilePicture: string;
+    profilePicture?: string;
 }
 
 export type Books = {

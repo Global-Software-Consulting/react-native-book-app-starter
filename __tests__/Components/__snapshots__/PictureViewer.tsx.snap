@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component testing Snapshot 1`] = `
+<mockedDefaultExport
+  animationIn="slideInUp"
+  isVisible={true}
+>
+  <View
+    style={
+      Object {
+        "alignSelf": "center",
+        "backgroundColor": "white",
+      }
+    }
+  >
+    <Image
+      source=""
+      style={
+        Object {
+          "height": 667,
+          "width": 675,
+        }
+      }
+    />
+  </View>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    nativeID="animatedComponent"
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignContent": "center",
+        "alignItems": "center",
+        "opacity": 1,
+      }
+    }
+    testID="close"
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000000",
+            "fontFamily": "System",
+            "fontWeight": "400",
+          },
+          Object {
+            "textAlign": "left",
+          },
+          Object {
+            "color": "red",
+            "fontWeight": "bold",
+            "marginBottom": 20,
+          },
+        ]
+      }
+    />
+  </View>
+</mockedDefaultExport>
+`;

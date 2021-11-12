@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component testing Snapshot  1`] = `
+<View>
+  <View>
+    <RCTScrollView
+      contentContainerStyle={
+        Object {
+          "alignItems": "center",
+        }
+      }
+    >
+      <View>
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#E7E5E7",
+              "borderRadius": 20,
+              "elevation": 5,
+              "height": 400,
+              "margin": 10,
+              "width": 375,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#E7E5E7",
+                "height": 53.5,
+                "marginRight": 15,
+                "width": 300,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "backgroundColor": "#E7E5E7",
+                "height": 53.5,
+                "marginRight": 15,
+                "width": 300,
+              }
+            }
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#E7E5E7",
+              "height": 133.5,
+              "margin": 10,
+              "width": 600,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "alignSelf": "flex-start",
+              "backgroundColor": "#E7E5E7",
+              "height": 53.5,
+              "marginLeft": 67.5,
+              "marginRight": 15,
+              "width": 300,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#E7E5E7",
+              "height": 267,
+              "margin": 5,
+              "width": 600,
+            }
+          }
+        />
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;

@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component testing Snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "transparent",
+      "borderRadius": 20,
+      "elevation": 2,
+      "margin": 2,
+      "marginRight": 3,
+      "shadowColor": "white",
+      "shadowOffset": Object {
+        "height": 2,
+        "width": 0,
+      },
+      "shadowOpacity": 3,
+      "shadowRadius": 2,
+    }
+  }
+>
+  <mockedDefaultExport
+    resizeMode="contain"
+    source={
+      Object {
+        "priority": undefined,
+        "uri": "abc.com",
+      }
+    }
+    style={
+      Object {
+        "alignSelf": "center",
+        "borderRadius": 20,
+        "height": 400,
+        "margin": 5,
+        "width": 487.5,
+      }
+    }
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#000000",
+          "fontFamily": "System",
+          "fontWeight": "400",
+        },
+        Object {
+          "textAlign": "left",
+        },
+        Object {
+          "alignSelf": "center",
+          "fontSize": 37.5,
+          "fontWeight": "500",
+          "maxWidth": 450,
+          "textAlign": "center",
+        },
+      ]
+    }
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#000000",
+          "fontFamily": "System",
+          "fontWeight": "400",
+        },
+        Object {
+          "textAlign": "left",
+        },
+        Object {
+          "alignSelf": "center",
+          "color": "red",
+          "fontSize": 30,
+          "fontWeight": "300",
+          "maxWidth": 412.5,
+        },
+      ]
+    }
+  />
+</View>
+`;

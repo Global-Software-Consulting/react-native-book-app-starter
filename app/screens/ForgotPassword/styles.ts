@@ -8,7 +8,7 @@ export const useStyles = () => {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            backgroundColor: theme.colors.background,
+            backgroundColor: theme?.colors?.background,
             alignItems: 'center',
         },
         displayPicture: {
@@ -26,16 +26,16 @@ export const useStyles = () => {
         },
         mainHeading: {
             fontWeight: 'bold',
-            color: theme.colors.text,
+            color: theme?.colors?.text,
             fontSize: 25,
         },
         subHeading: {
             fontWeight: 'bold',
-            color: theme.colors.text,
+            color: theme?.colors?.text,
         },
         inputField: { width: width('50%'), height: 40 },
         infoView: {
-            borderColor: theme.colors.text,
+            borderColor: theme?.colors?.text,
             borderRadius: 20,
             alignItems: 'center',
             justifyContent: 'center',

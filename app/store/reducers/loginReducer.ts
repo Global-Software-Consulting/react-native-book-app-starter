@@ -22,22 +22,10 @@ export const loginReducer = createReducer(initialState, {
     [types.LOGIN_LOADING_ENDED](state: ILoginState) {
         return { ...state };
     },
-    [types.LOGIN_RESPONSE](state: ILoginState, action: ILoginResponseState) {
+    [types.SET_LOGGED_IN](state: ILoginState) {
         return {
             ...state,
-            loginResponse: action.payload,
-        };
-    },
-    [types.LOGIN_FAILED](state: ILoginState) {
-        return {
-            ...state,
-            isLoggedIn: false,
-        };
-    },
-    [types.SET_TOKEN](state: ILoginState, action: ILoginRequestState) {
-        return {
-            ...state,
-            token: action.payload,
+            isLoggedIn: true,
         };
     },
     [types.LOG_OUT](state: ILoginState) {
@@ -46,24 +34,12 @@ export const loginReducer = createReducer(initialState, {
             isLoggedIn: false,
         };
     },
-    [types.SET_LOGGED_IN](state: ILoginState) {
-        return {
-            ...state,
-            isLoggedIn: true,
-        };
-    },
-    [types.USER_DETAILS_REQUEST](state: ILoginState) {
-        return {
-            ...state,
-        };
-    },
     [types.USER_DETAILS_RESPONSE](state: ILoginState, action: ILoginResponseState) {
         return {
             ...state,
             user: action.payload,
         };
     },
-
     [types.SIGN_UP_RESPONSE](state: ILoginState, action: ILoginResponseState) {
         return {
             ...state,

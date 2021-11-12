@@ -60,3 +60,9 @@ buck-out/
 
 # react-native-config codegen
 ios/tmp.xcconfig
+
+#JEST coverage
+coverage
+
+*.hprof
+coverage

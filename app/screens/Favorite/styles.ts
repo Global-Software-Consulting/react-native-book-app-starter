@@ -29,7 +29,7 @@ export const useStyles = () => {
         imageError: {
             height: windowHeight > windowWidth ? height('50%') : height('100%'),
             width: width('50%'),
-            tintColor: theme.colors.text,
+            tintColor: theme?.colors?.text,
         },
         containerView: {
             flexDirection: 'row',
@@ -75,7 +75,7 @@ export const useStyles = () => {
         },
         mainView: {
             alignItems: 'center',
-            backgroundColor: theme.colors.background,
+            backgroundColor: theme?.colors?.background,
             minHeight:  height('100%') ,
         },
         books: {

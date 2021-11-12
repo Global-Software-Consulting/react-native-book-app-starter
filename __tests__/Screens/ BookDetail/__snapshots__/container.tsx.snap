@@ -1,0 +1,351 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component testing Snapshot  1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#f6f6f6",
+      "minHeight": undefined,
+    }
+  }
+>
+  <RCTScrollView>
+    <View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "transparent",
+            "borderRadius": 20,
+            "elevation": 2,
+            "margin": 2,
+            "marginRight": 3,
+            "shadowColor": "white",
+            "shadowOffset": Object {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 3,
+            "shadowRadius": 2,
+          }
+        }
+      >
+        <mockedDefaultExport
+          resizeMode="contain"
+          source={
+            Object {
+              "priority": undefined,
+              "uri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwor6J4qPx1WWN27GYiZEFP-NAoWSstn-YrQ&usqp=CAU",
+            }
+          }
+          style={
+            Object {
+              "alignSelf": "center",
+              "borderRadius": 20,
+              "height": undefined,
+              "margin": 5,
+              "width": undefined,
+            }
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000000",
+                "fontFamily": "System",
+                "fontWeight": "400",
+              },
+              Object {
+                "textAlign": "left",
+              },
+              Object {
+                "alignSelf": "center",
+                "fontSize": undefined,
+                "fontWeight": "500",
+                "maxWidth": undefined,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Dummy Title
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000000",
+                "fontFamily": "System",
+                "fontWeight": "400",
+              },
+              Object {
+                "textAlign": "left",
+              },
+              Object {
+                "alignSelf": "center",
+                "color": "red",
+                "fontSize": undefined,
+                "fontWeight": "300",
+                "maxWidth": undefined,
+              },
+            ]
+          }
+        >
+          Dummy author
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "alignContent": "center",
+              "alignItems": "center",
+              "backgroundColor": "#00416A",
+              "borderRadius": 20,
+              "flexDirection": "row",
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "marginTop": 30,
+              "width": undefined,
+            }
+          }
+        >
+          <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+            testID="play"
+          >
+            <Text
+              style={
+                Object {
+                  "color": "white",
+                  "fontSize": 16,
+                }
+              }
+            >
+              Play
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "alignContent": "center",
+              "alignItems": "center",
+              "backgroundColor": "#00416A",
+              "borderRadius": 20,
+              "flexDirection": "row",
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "marginTop": 30,
+              "width": undefined,
+            }
+          }
+        >
+          <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+            testID="navigate"
+          >
+            <Text
+              style={
+                Object {
+                  "color": "white",
+                  "fontSize": 16,
+                }
+              }
+            >
+              Read Book
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "borderBottomColor": "#DCDCDC",
+            "borderBottomWidth": 1,
+            "marginTop": 4,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "space-evenly",
+            "marginTop": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "column",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "300",
+                "textAlign": "center",
+              }
+            }
+          />
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "bold",
+                "maxWidth": undefined,
+                "textAlign": "center",
+              }
+            }
+          >
+            Dummy Genre
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "column",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "300",
+                "textAlign": "center",
+              }
+            }
+          >
+             
+          </Text>
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "bold",
+                "maxWidth": undefined,
+                "textAlign": "center",
+              }
+            }
+          >
+            11-11-11
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "column",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "300",
+                "textAlign": "center",
+              }
+            }
+          />
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "bold",
+                "maxWidth": undefined,
+                "textAlign": "center",
+              }
+            }
+          >
+            111
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "column",
+            "margin": 30,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 15,
+                "fontWeight": "300",
+                "marginBottom": 10,
+                "marginRight": 10,
+              }
+            }
+          />
+        </View>
+        <Text
+          numberOfLines={2}
+          onPress={[Function]}
+          style={
+            Object {
+              "fontSize": 15,
+              "fontWeight": "bold",
+              "marginBottom": 50,
+            }
+          }
+          testID="toggle"
+        />
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

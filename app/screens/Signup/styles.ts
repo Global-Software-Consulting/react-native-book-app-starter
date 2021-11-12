@@ -31,18 +31,21 @@ export const useStyles = () => {
         },
         mainHeading: {
             fontWeight: 'bold',
-            color: theme.colors.text,
+            color: theme?.colors?.text,
             fontSize: 25,
             marginTop: 20,
             marginBottom: 20,
         },
         subHeading: {
             fontWeight: 'bold',
-            color: theme.colors.text,
+            color: theme?.colors?.text,
         },
         inputField: {
-            width: width('50%'),
-            color: 'black',
+            alignSelf: 'center',
+            borderRadius: 20,
+            margin: 10,
+            backgroundColor: 'white',
+            width: width('60%'),
         },
         genderPicker: {
             width: width('60%'),
@@ -52,7 +55,7 @@ export const useStyles = () => {
         },
         infoView: {
             marginBottom: 10,
-            borderColor: theme.colors.text,
+            borderColor: theme?.colors?.text,
             borderRadius: 20,
             alignItems: 'center',
             justifyContent: 'center',
@@ -70,7 +73,7 @@ export const useStyles = () => {
         },
         inputView: {
             marginBottom: 10,
-            borderColor: theme.colors.text,
+            borderColor: theme?.colors?.text,
             borderRadius: 20,
             alignItems: 'center',
             justifyContent: 'center',

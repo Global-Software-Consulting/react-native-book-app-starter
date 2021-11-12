@@ -135,7 +135,7 @@ export const useStyles = () => {
         },
 
         bookViewIOS: {
-            shadowColor: theme.colors.highlight,
+            shadowColor: theme.colors.background === 'white' ? 'grey' : 'white',
             shadowOffset: { width: 0, height: 2 },
             shadowOpacity: 3,
             shadowRadius: 2,
@@ -156,7 +156,7 @@ export const useStyles = () => {
         heartIconTrending: {
             position: 'absolute',
             marginVertical: windowHeight > windowWidth ? height('21%') : height('40%'),
-            marginHorizontal: DeviceInfo.isTablet()
+            marginHorizontal: DeviceInfo?.isTablet()
                 ? width('9%')
                 : windowHeight > windowWidth
                 ? width('4%')
@@ -165,7 +165,7 @@ export const useStyles = () => {
         heartIconLarge: {
             position: 'absolute',
             marginVertical: windowHeight > windowWidth ? height('26%') : height('42%'),
-            marginHorizontal: DeviceInfo.isTablet() ? width('9%') : width('5%'),
+            marginHorizontal: DeviceInfo?.isTablet() ? width('9%') : width('5%'),
         },
         textTitle: {
             maxWidth: windowHeight > windowWidth ? width('30%') : width('15%'),
@@ -195,7 +195,7 @@ export const useStyles = () => {
         heartIconGeneral: {
             position: 'absolute',
             marginVertical: windowHeight > windowWidth ? height('19%') : height('32%'),
-            marginHorizontal: DeviceInfo.isTablet()
+            marginHorizontal: DeviceInfo?.isTablet()
                 ? width('7%')
                 : windowHeight > windowWidth
                 ? width('2%')

@@ -5,7 +5,7 @@ import * as snackbarActions from 'store/actions/snackbarActions';
 import getUserDetail from '../../services/getUserDetail';
 import * as authActions from '../actions/loginActions';
 
-export default function* fetchBookAsync() {
+export default function* getUserDetailAsync() {
     try {
         const response: Response = yield call(getUserDetail);
         if (response) {

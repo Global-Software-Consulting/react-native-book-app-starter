@@ -13,7 +13,6 @@ export default function* removeBookfromFavorite(action: { id: number }) {
         const response: ResponseGenerator = yield call(removeBookFromFavoite, action.id);
 
         if (response && response?.status === 'success') {
-            console.log('Response Printed');
         } else if (response?.status === 'networkFailed') {
             yield put(loadingActions.disableLoader());
         } else {
