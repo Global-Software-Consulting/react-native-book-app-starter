@@ -1,5 +1,6 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
+import * as tts from 'react-native-tts'
 import 'react-native-gesture-handler/jestSetup'
 import Container from 'screens/BookDetail/Container'
 import { getPercentageHeight, getPercentageWidth } from 'utils/dimentionUtil'
@@ -45,11 +46,11 @@ describe('Component testing', () => {
     })
 
     test('Fire toggle text ', () => {
+        const stop = jest.fn()
         const height = jest.fn()
         getPercentageHeight.mockReturnValue(jest.fn())
         const width = jest.fn()
         getPercentageWidth.mockReturnValue(jest.fn())
-
         const { getByTestId } = render(<Container />)
         fireEvent.press(getByTestId('play'))
     })

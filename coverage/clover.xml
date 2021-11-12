@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636703584843" clover="3.2.0">
-  <project timestamp="1636703584843" name="All files">
-    <metrics statements="713" coveredstatements="628" conditionals="314" coveredconditionals="204" methods="231" coveredmethods="180" elements="1258" coveredelements="1012" complexity="0" loc="713" ncloc="713" packages="20" files="63" classes="63"/>
+<coverage generated="1636709835438" clover="3.2.0">
+  <project timestamp="1636709835439" name="All files">
+    <metrics statements="716" coveredstatements="630" conditionals="316" coveredconditionals="205" methods="231" coveredmethods="180" elements="1263" coveredelements="1015" complexity="0" loc="716" ncloc="716" packages="20" files="63" classes="63"/>
     <package name="TestData.Reducer">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="appData.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/TestData/Reducer/appData.tsx">
@@ -40,7 +40,7 @@
         <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="39" count="0" type="stmt"/>
         <line num="45" count="17" type="stmt"/>
-        <line num="46" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="46" count="5" type="cond" truecount="1" falsecount="1"/>
         <line num="48" count="0" type="stmt"/>
         <line num="51" count="0" type="stmt"/>
         <line num="54" count="0" type="stmt"/>
@@ -49,13 +49,13 @@
         <line num="59" count="0" type="stmt"/>
         <line num="61" count="0" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
-        <line num="66" count="4" type="stmt"/>
-        <line num="67" count="4" type="stmt"/>
+        <line num="66" count="5" type="stmt"/>
+        <line num="67" count="5" type="stmt"/>
         <line num="69" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="70" count="0" type="stmt"/>
         <line num="72" count="0" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
-        <line num="77" count="4" type="stmt"/>
+        <line num="77" count="5" type="stmt"/>
         <line num="82" count="17" type="stmt"/>
       </file>
       <file name="BookCardShimmer.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/components/BookCard/BookCardShimmer.tsx">
@@ -144,9 +144,9 @@
       </file>
     </package>
     <package name="app.screens.BookDetail">
-      <metrics statements="49" coveredstatements="45" conditionals="23" coveredconditionals="14" methods="10" coveredmethods="9"/>
+      <metrics statements="52" coveredstatements="47" conditionals="25" coveredconditionals="15" methods="10" coveredmethods="9"/>
       <file name="Container.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/screens/BookDetail/Container.tsx">
-        <metrics statements="21" coveredstatements="21" conditionals="10" coveredconditionals="10" methods="5" coveredmethods="5"/>
+        <metrics statements="24" coveredstatements="23" conditionals="12" coveredconditionals="11" methods="5" coveredmethods="5"/>
         <line num="12" count="2" type="stmt"/>
         <line num="13" count="6" type="stmt"/>
         <line num="14" count="6" type="stmt"/>
@@ -163,11 +163,14 @@
         <line num="27" count="6" type="stmt"/>
         <line num="28" count="6" type="stmt"/>
         <line num="29" count="6" type="stmt"/>
-        <line num="43" count="6" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="48" count="6" type="stmt"/>
-        <line num="69" count="1" type="stmt"/>
-        <line num="77" count="1" type="stmt"/>
+        <line num="31" count="6" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="36" count="6" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="58" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
       </file>
       <file name="Shimmer.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/screens/BookDetail/Shimmer.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -597,22 +600,22 @@
       <metrics statements="32" coveredstatements="20" conditionals="13" coveredconditionals="7" methods="17" coveredmethods="12"/>
       <file name="addBookToFavoite.ts" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/services/addBookToFavoite.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="5" count="5" type="stmt"/>
+        <line num="5" count="6" type="stmt"/>
       </file>
       <file name="client.ts" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/services/client.ts">
         <metrics statements="22" coveredstatements="10" conditionals="13" coveredconditionals="7" methods="7" coveredmethods="2"/>
         <line num="8" count="28" type="stmt"/>
-        <line num="9" count="15" type="stmt"/>
-        <line num="10" count="15" type="stmt"/>
-        <line num="11" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="9" count="16" type="stmt"/>
+        <line num="10" count="16" type="stmt"/>
+        <line num="11" count="6" type="cond" truecount="1" falsecount="1"/>
         <line num="12" count="0" type="stmt"/>
-        <line num="14" count="5" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="30" count="15" type="stmt"/>
-        <line num="32" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="16" type="stmt"/>
+        <line num="32" count="6" type="cond" truecount="2" falsecount="0"/>
         <line num="33" count="1" type="stmt"/>
-        <line num="44" count="4" type="stmt"/>
-        <line num="57" count="5" type="stmt"/>
+        <line num="44" count="5" type="stmt"/>
+        <line num="57" count="6" type="stmt"/>
         <line num="59" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="60" count="0" type="stmt"/>
         <line num="62" count="0" type="stmt"/>

@@ -167,5 +167,12 @@ jest.mock('react-native-keyboard-aware-scroll-view', () => {
     return { KeyboardAwareScrollView };
 });
 
+jest.mock('react-native-tts', () => {
+    return {
+        Tts: jest.fn(),
+        stop: jest.fn(),
+        default: { stop: jest.fn() },
 
 
+    }
+})

@@ -44,6 +44,7 @@ describe('Component testing', () => {
         act(() => {
             fireEvent.press(getByTestId('heart'))
             fireEvent.press(getByTestId('heart'))
+            fireEvent.press(getByTestId('heart'))
         })
     })
 })

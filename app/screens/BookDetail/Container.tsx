@@ -28,18 +28,6 @@ const Container: React.FC<Props> = (props) => {
     const [textShown, setTextShown] = useState(false) //To show ur remaining Text
     const [isSpeaking, setIsSpeaking] = useState(false)
 
-    // useEffect(() => {
-    //     const ee = new NativeEventEmitter(NativeModules.TextToSpeech)
-    //     ee.addListener('tts-start', () => {})
-    //     ee.addListener('tts-finish', () => {})
-    //     ee.addListener('tts-cancel', () => {})
-    //     if (isSpeaking === true) {
-    //         Tts.speak(books?.shortSummary)
-    //     } else {
-    //         Tts.stop()
-    //     }
-    // }, [isSpeaking])
-
     const toggleNumberOfLines = () => {
         //To toggle the show text or hide it
         setTextShown(!textShown)
@@ -67,6 +55,11 @@ const Container: React.FC<Props> = (props) => {
                             testID={'play'}
                             onPress={() => {
                                 setIsSpeaking(!isSpeaking)
+                                if (isSpeaking) {
+                                    Tts.speak(books?.shortSummary)
+                                } else {
+                                    Tts.stop()
+                                }
                             }}>
                             <Text style={{ color: 'white', fontSize: 16 }}>Play</Text>
                         </TouchableOpacity>
