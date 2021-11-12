@@ -11,9 +11,9 @@
 		1ED4E960F4736EFBF8ED5919 /* libPods-BookAppRN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 066F65B7EB2832CD9B62D9EE /* libPods-BookAppRN.a */; };
 		8590779F26D3724D005673F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8590779A26D3724D005673F3 /* LaunchScreen.storyboard */; };
 		859077A126D3724D005673F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8590779C26D3724D005673F3 /* Images.xcassets */; };
-		859077D326D3748B005673F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8590779D26D3724D005673F3 /* main.m */; };
 		859077D626D3749C005673F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8590779B26D3724D005673F3 /* AppDelegate.m */; };
 		A2BCD319D224103220A84EF6 /* libPods-BookAppRN-BookAppRNTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F919A624EB7E9D89D40E0E /* libPods-BookAppRN-BookAppRNTests.a */; };
+		FC5D85CF273E1CE1004D447B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8590779D26D3724D005673F3 /* main.m */; };
 		FC805E4626FC5AA700B626E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC805E4526FC5AA700B626E1 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -434,8 +434,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5D85CF273E1CE1004D447B /* main.m in Sources */,
 				859077D626D3749C005673F3 /* AppDelegate.m in Sources */,
-				859077D326D3748B005673F3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,7 +592,7 @@
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -657,7 +657,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -716,7 +716,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

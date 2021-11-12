@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-// import Pdf from 'react-native-pdf';
+import Pdf from 'react-native-pdf'
 import { useStyles } from './styles'
 const BookReader: React.FC = () => {
     const src = {
@@ -8,6 +8,10 @@ const BookReader: React.FC = () => {
     }
     const styles = useStyles()
 
-    return <View style={styles.mainView}>{/* <Pdf source={src} style={styles.pdfView} /> */}</View>
+    return (
+        <View style={styles.mainView}>
+            <Pdf source={src} style={styles.pdfView} />
+        </View>
+    )
 }
 export default BookReader
