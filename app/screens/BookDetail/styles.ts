@@ -182,14 +182,18 @@ export const useStyles = () => {
             paddingRight: 20,
         },
         submitView: {
+            backgroundColor: '#00416A',
             alignContent: 'center',
-            alignSelf: 'center',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
+            alignItems: 'center',
             flexDirection: 'row',
             marginTop: 30,
             borderRadius: 20,
-            marginBottom: 20,
-            marginRight:10
+            width: width('40%'),
+            height: 40,
+            margin:2
+
+
         },
         submit: {
             height: 40,

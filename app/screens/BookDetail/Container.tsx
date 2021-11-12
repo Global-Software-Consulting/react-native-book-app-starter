@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/core'
 import { dummyImages } from 'assets/dummyImages'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { NativeEventEmitter, NativeModules, ScrollView, View } from 'react-native'
+import { NativeEventEmitter, NativeModules, ScrollView, TouchableOpacity, View } from 'react-native'
 import { Button, Text } from 'react-native'
 import Tts from 'react-native-tts'
 import BookCard from '../../components/BookCard/BookCard'
@@ -62,20 +62,22 @@ const Container: React.FC<Props> = (props) => {
                         alignItems: 'center',
                         justifyContent: 'center',
                     }}>
-                    <Button
-                        testID={'play'}
-                        title="Play"
-                        onPress={() => {
-                            setIsSpeaking(!isSpeaking)
-                        }}
-                        style={styles?.submit}
-                    />
-                    <Button
-                        testID={'navigate'}
-                        title="Read book"
-                        onPress={() => navigation.navigate('BookReader' as never)}
-                        style={styles?.submit}
-                    />
+                    <View style={styles.submitView}>
+                        <TouchableOpacity
+                            testID={'play'}
+                            onPress={() => {
+                                setIsSpeaking(!isSpeaking)
+                            }}>
+                            <Text style={{ color: 'white', fontSize: 16 }}>Play</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.submitView}>
+                        <TouchableOpacity
+                            testID={'navigate'}
+                            onPress={() => navigation.navigate('BookReader' as never)}>
+                            <Text style={{ color: 'white', fontSize: 16 }}>Read Book</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 <View style={styles?.horizontalRuler} />
 

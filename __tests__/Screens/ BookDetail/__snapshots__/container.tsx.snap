@@ -34,7 +34,7 @@ exports[`Component testing Snapshot  1`] = `
           source={
             Object {
               "priority": undefined,
-              "uri": "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/sad-romance-kindle-book-cover-flyer-template-539b5fdf2dd2f6602c25ce81fbb5d877.jpg?ts=1589326539",
+              "uri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQB-3-cJ6tpQ6cFUjCach0R1dTiXdhXI0AtA&usqp=CAU",
             }
           }
           style={
@@ -104,42 +104,45 @@ exports[`Component testing Snapshot  1`] = `
         }
       >
         <View
-          accessibilityRole="button"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          nativeID="animatedComponent"
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
             Object {
-              "opacity": 1,
+              "alignContent": "center",
+              "alignItems": "center",
+              "backgroundColor": "#00416A",
+              "borderRadius": 20,
+              "flexDirection": "row",
+              "height": 40,
+              "justifyContent": "center",
+              "marginTop": 30,
+              "width": undefined,
             }
           }
-          testID="play"
         >
           <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {},
-              ]
+              Object {
+                "opacity": 1,
+              }
             }
+            testID="play"
           >
             <Text
               style={
-                Array [
-                  Object {
-                    "color": "#007AFF",
-                    "fontSize": 18,
-                    "margin": 8,
-                    "textAlign": "center",
-                  },
-                ]
+                Object {
+                  "color": "white",
+                  "fontSize": 16,
+                }
               }
             >
               Play
@@ -147,45 +150,48 @@ exports[`Component testing Snapshot  1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="button"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          nativeID="animatedComponent"
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
             Object {
-              "opacity": 1,
+              "alignContent": "center",
+              "alignItems": "center",
+              "backgroundColor": "#00416A",
+              "borderRadius": 20,
+              "flexDirection": "row",
+              "height": 40,
+              "justifyContent": "center",
+              "marginTop": 30,
+              "width": undefined,
             }
           }
-          testID="navigate"
         >
           <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {},
-              ]
+              Object {
+                "opacity": 1,
+              }
             }
+            testID="navigate"
           >
             <Text
               style={
-                Array [
-                  Object {
-                    "color": "#007AFF",
-                    "fontSize": 18,
-                    "margin": 8,
-                    "textAlign": "center",
-                  },
-                ]
+                Object {
+                  "color": "white",
+                  "fontSize": 16,
+                }
               }
             >
-              Read book
+              Read Book
             </Text>
           </View>
         </View>
