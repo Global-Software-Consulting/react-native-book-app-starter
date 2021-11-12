@@ -432,6 +432,8 @@ PODS:
     - TOCropViewController
   - RNLocalize (2.1.5):
     - React-Core
+  - RNPDF (0.12.1):
+    - React
   - RNReanimated (2.2.4):
     - DoubleConversion
     - FBLazyVector
@@ -537,6 +539,7 @@ DEPENDENCIES:
   - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNLocalize (from `../node_modules/react-native-localize`)
+  - RNPDF (from `../node_modules/react-native-view-pdf`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
@@ -675,6 +678,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-image-crop-picker"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
+  RNPDF:
+    :path: "../node_modules/react-native-view-pdf"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -757,6 +762,7 @@ SPEC CHECKSUMS:
   RNGoogleSignin: a51c9c7419262c75748ddcee3f735bb42da5def1
   RNImageCropPicker: 94e8bd51427605303c5cee5a5f1d9a1bd0df16d3
   RNLocalize: 74b82db20cc3895ccc25af992c644879bcec2815
+  RNPDF: 968ef031b76c74f525c6bce482f0942fe9c78861
   RNReanimated: 65583befd5706cc9c86ae9a081786181ced37b93
   RNScreens: 4d79118be80f79fa1f4aa131909a1d6e86280af3
   RNVectorIcons: 4143ba35feebab8fdbe6bc43d1e776b393d47ac8
