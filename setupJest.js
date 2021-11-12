@@ -162,4 +162,8 @@ jest.mock('./app/config/images', () => {
         default: 'mockedDefaultExport',
     }
 })
+jest.mock('react-native-keyboard-aware-scroll-view', () => {
+    const KeyboardAwareScrollView = ({ children }) => children;
+    return { KeyboardAwareScrollView };
+});
 

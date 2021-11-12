@@ -63,7 +63,7 @@ const Login: React.FC = () => {
         )
     }
     return (
-        <>
+        <KeyboardAwareScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
             <LinearGradient
                 colors={['#00416A', '#00416A', '#E4E5E6']}
                 start={{ x: 0.0, y: 0.5 }}
@@ -208,7 +208,7 @@ const Login: React.FC = () => {
                     </Menu>
                 </View>
             </View>
-        </>
+        </KeyboardAwareScrollView>
     )
 }
 

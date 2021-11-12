@@ -15,7 +15,6 @@ describe('Component testing', () => {
         const { getByTestId } = render(<Login />)
         fireEvent.changeText(getByTestId('email'), 'dsa')
         fireEvent.changeText(getByTestId('password'), 'fdsa')
-
         fireEvent.press(getByTestId('submit'))
     })
 

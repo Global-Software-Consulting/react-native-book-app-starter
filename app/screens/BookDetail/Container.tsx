@@ -62,28 +62,20 @@ const Container: React.FC<Props> = (props) => {
                         alignItems: 'center',
                         justifyContent: 'center',
                     }}>
-                    <View
-                        style={[
-                            styles?.submitView,
-                            { backgroundColor: !isSpeaking ? '#00416A' : 'red' },
-                        ]}>
-                        <Button
-                            testID={'play'}
-                            title="Play"
-                            onPress={() => {
-                                setIsSpeaking(!isSpeaking)
-                            }}
-                            style={styles?.submit}
-                        />
-                    </View>
-                    <View style={[styles?.submitView, { backgroundColor: '#00416A' }]}>
-                        <Button
-                            testID={'navigate'}
-                            title="Read book"
-                            onPress={() => navigation.navigate('BookReader' as never)}
-                            style={styles?.submit}
-                        />
-                    </View>
+                    <Button
+                        testID={'play'}
+                        title="Play"
+                        onPress={() => {
+                            setIsSpeaking(!isSpeaking)
+                        }}
+                        style={styles?.submit}
+                    />
+                    <Button
+                        testID={'navigate'}
+                        title="Read book"
+                        onPress={() => navigation.navigate('BookReader' as never)}
+                        style={styles?.submit}
+                    />
                 </View>
                 <View style={styles?.horizontalRuler} />
 

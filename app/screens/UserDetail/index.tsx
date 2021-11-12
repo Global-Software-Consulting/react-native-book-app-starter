@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useStyles } from 'screens/UserDetail/styles'
 import * as appActions from 'store/actions/appActions'
 import * as loginActions from 'store/actions/loginActions'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 const UserDetail: React.FC = () => {
     const dispatch = useDispatch()
     const userData = useSelector((state: ReducerState) => state.loginReducer.user)
@@ -97,7 +98,7 @@ const UserDetail: React.FC = () => {
         loadImage()
     }, [counter])
     return (
-        <View style={{ alignItems: 'center' }}>
+        <KeyboardAwareScrollView contentContainerStyle={styles.container}>
             <Menu>
                 <MenuTrigger testID={'menu'} triggerOnLongPress={true} customStyles={triggerStyles}>
                     <Image
@@ -198,7 +199,7 @@ const UserDetail: React.FC = () => {
                 }}
                 onPress={() => setIsEnlarged(false)}
             />
-        </View>
+        </KeyboardAwareScrollView>
     )
 }
 

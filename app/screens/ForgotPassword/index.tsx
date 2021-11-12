@@ -51,7 +51,7 @@ const ForgotPassword: React.FC = () => {
     }
 
     return (
-        <View>
+        <KeyboardAwareScrollView style={{ flex: 1 }}>
             <LinearGradient
                 colors={['#00416A', '#00416A', '#E4E5E6']}
                 start={{ x: 0.0, y: 0.5 }}
@@ -83,7 +83,7 @@ const ForgotPassword: React.FC = () => {
                     {isLoading && <ActivityIndicator style={styles.activityIndicator} />}
                 </View>
             </View>
-        </View>
+        </KeyboardAwareScrollView>
     )
 }
 

@@ -195,6 +195,7 @@ export const useStyles = () => {
             height: 40,
             width: width('40%'),
             marginTop: 5,
+            color:'white'
         },
     });
     return styles;

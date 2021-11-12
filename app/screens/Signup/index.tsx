@@ -6,6 +6,8 @@ import { ActivityIndicator, TextInput, View } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
 import LinearGradient from 'react-native-linear-gradient'
 import { Button, Text } from 'react-native-paper'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 import Toast from 'react-native-simple-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import * as snackbarActions from 'store/actions/snackbarActions'
@@ -52,7 +54,7 @@ const Signup: React.FC = () => {
     const styles = useStyles()
 
     return (
-        <View>
+        <KeyboardAwareScrollView style={{ flex: 1 }}>
             <LinearGradient
                 colors={['#00416A', '#00416A', '#E4E5E6']}
                 start={{ x: 0.0, y: 0.5 }}
@@ -188,7 +190,7 @@ const Signup: React.FC = () => {
                     {isLoading && <ActivityIndicator color="white" style={styles.activity} />}
                 </View>
             </View>
-        </View>
+        </KeyboardAwareScrollView>
     )
 }
 

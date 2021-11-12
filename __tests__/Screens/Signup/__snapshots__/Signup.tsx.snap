@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component testing Snapshot with loading as true 1`] = `
-<View>
+Array [
   <mockedDefaultExport
     colors={
       Array [
@@ -37,7 +37,7 @@ exports[`Component testing Snapshot with loading as true 1`] = `
         "width": 750,
       }
     }
-  />
+  />,
   <View
     style={
       Object {
@@ -272,12 +272,12 @@ exports[`Component testing Snapshot with loading as true 1`] = `
         </View>
       </View>
     </View>
-  </View>
-</View>
+  </View>,
+]
 `;
 
 exports[`Component testing Snapshot with loading as true 2`] = `
-<View>
+Array [
   <mockedDefaultExport
     colors={
       Array [
@@ -313,7 +313,7 @@ exports[`Component testing Snapshot with loading as true 2`] = `
         "width": 750,
       }
     }
-  />
+  />,
   <View
     style={
       Object {
@@ -548,6 +548,6 @@ exports[`Component testing Snapshot with loading as true 2`] = `
         </View>
       </View>
     </View>
-  </View>
-</View>
+  </View>,
+]
 `;
