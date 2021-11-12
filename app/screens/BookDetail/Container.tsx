@@ -61,7 +61,9 @@ const Container: React.FC<Props> = (props) => {
                                     Tts.stop()
                                 }
                             }}>
-                            <Text style={{ color: 'white', fontSize: 16 }}>Play</Text>
+                            <Text style={{ color: 'white', fontSize: 16 }}>
+                                {isSpeaking ? 'Play' : 'Pause'}
+                            </Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.submitView}>
