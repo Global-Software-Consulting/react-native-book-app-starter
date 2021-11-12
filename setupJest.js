@@ -23,7 +23,6 @@ jest.mock('@react-navigation/core', () => {
 })
 
 jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
-global.fetch = require('jest-fetch-mock')
 // require('jest-fetch-mock').enableMocks()
 jest.mock('react-native-iphone-x-helper', () => ({
     getStatusBarHeight: jest.fn(),
@@ -78,7 +77,6 @@ jest.mock('react-native-popup-menu', () => ({
     }
   })
 
-jest.mock('react-native-pdf', () => 'Pdf')
 
 jest.mock('react-native-modal', () => {
     return {

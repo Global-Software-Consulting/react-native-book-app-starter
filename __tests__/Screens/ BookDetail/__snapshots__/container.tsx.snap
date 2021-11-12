@@ -34,7 +34,7 @@ exports[`Component testing Snapshot  1`] = `
           source={
             Object {
               "priority": undefined,
-              "uri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQB-3-cJ6tpQ6cFUjCach0R1dTiXdhXI0AtA&usqp=CAU",
+              "uri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO4yGwkz128dpVHBztwERbm6Z6kIXwQ03V0A&usqp=CAU",
             }
           }
           style={
@@ -124,9 +124,10 @@ exports[`Component testing Snapshot  1`] = `
         >
           <View
             accessibilityRole="button"
-            accessibilityState={Object {}}
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -186,9 +187,10 @@ exports[`Component testing Snapshot  1`] = `
         >
           <View
             accessibilityRole="button"
-            accessibilityState={Object {}}
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}

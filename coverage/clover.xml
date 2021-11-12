@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636652859849" clover="3.2.0">
-  <project timestamp="1636652859849" name="All files">
-    <metrics statements="711" coveredstatements="626" conditionals="314" coveredconditionals="205" methods="231" coveredmethods="180" elements="1256" coveredelements="1011" complexity="0" loc="711" ncloc="711" packages="20" files="63" classes="63"/>
+<coverage generated="1636694215142" clover="3.2.0">
+  <project timestamp="1636694215142" name="All files">
+    <metrics statements="713" coveredstatements="628" conditionals="316" coveredconditionals="206" methods="231" coveredmethods="180" elements="1260" coveredelements="1014" complexity="0" loc="713" ncloc="713" packages="20" files="63" classes="63"/>
     <package name="TestData.Reducer">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="appData.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/TestData/Reducer/appData.tsx">
@@ -208,13 +208,15 @@
       </file>
     </package>
     <package name="app.screens.BookReader">
-      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
       <file name="index.tsx" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/screens/BookReader/index.tsx">
-        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
       </file>
       <file name="styles.ts" path="/Users/gsoft02/Desktop/Hannad/book-app-training-rn/app/screens/BookReader/styles.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>

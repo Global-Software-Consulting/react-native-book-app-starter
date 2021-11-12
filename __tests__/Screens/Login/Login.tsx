@@ -3,7 +3,6 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { act } from 'react-test-renderer'
 import Login from '../../../app/screens/Login/index'
-jest.useFakeTimers()
 
 describe('Component testing', () => {
     test('Snapshot', async () => {

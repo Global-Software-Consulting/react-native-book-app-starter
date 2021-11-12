@@ -74,11 +74,9 @@ exports[`Component testing Snapshot with loading as true 1`] = `
       }
     />
     <TextInput
-      allowFontScaling={true}
       autoCapitalize="none"
       autoCorrect={false}
       onChangeText={[Function]}
-      rejectResponderTermination={true}
       style={
         Object {
           "alignSelf": "center",
@@ -89,15 +87,12 @@ exports[`Component testing Snapshot with loading as true 1`] = `
         }
       }
       testID="firstname"
-      underlineColorAndroid="transparent"
       value=""
     />
     <TextInput
-      allowFontScaling={true}
       autoCapitalize="none"
       autoCorrect={false}
       onChangeText={[Function]}
-      rejectResponderTermination={true}
       style={
         Object {
           "alignSelf": "center",
@@ -108,16 +103,13 @@ exports[`Component testing Snapshot with loading as true 1`] = `
         }
       }
       testID="lastname"
-      underlineColorAndroid="transparent"
       value=""
     />
     <TextInput
-      allowFontScaling={true}
       autoCapitalize="none"
       autoCorrect={false}
       keyboardType="email-address"
       onChangeText={[Function]}
-      rejectResponderTermination={true}
       style={
         Object {
           "alignSelf": "center",
@@ -129,15 +121,12 @@ exports[`Component testing Snapshot with loading as true 1`] = `
       }
       testID="email"
       textContentType="emailAddress"
-      underlineColorAndroid="transparent"
       value=""
     />
     <TextInput
-      allowFontScaling={true}
       autoCapitalize="none"
       autoCorrect={false}
       onChangeText={[Function]}
-      rejectResponderTermination={true}
       secureTextEntry={true}
       style={
         Object {
@@ -149,7 +138,6 @@ exports[`Component testing Snapshot with loading as true 1`] = `
         }
       }
       testID="password"
-      underlineColorAndroid="transparent"
       value=""
     />
     <View
@@ -167,6 +155,8 @@ exports[`Component testing Snapshot with loading as true 1`] = `
       }
     >
       <View
+        collapsable={false}
+        nativeID="animatedComponent"
         style={
           Object {
             "backgroundColor": "transparent",
@@ -186,7 +176,7 @@ exports[`Component testing Snapshot with loading as true 1`] = `
           accessibilityRole="button"
           accessibilityState={
             Object {
-              "disabled": undefined,
+              "disabled": false,
             }
           }
           accessible={true}
@@ -360,11 +350,9 @@ exports[`Component testing Snapshot with loading as true 2`] = `
       }
     />
     <TextInput
-      allowFontScaling={true}
       autoCapitalize="none"
       autoCorrect={false}
       onChangeText={[Function]}
-      rejectResponderTermination={true}
       style={
         Object {
           "alignSelf": "center",
@@ -375,15 +363,12 @@ exports[`Component testing Snapshot with loading as true 2`] = `
         }
       }
       testID="firstname"
-      underlineColorAndroid="transparent"
       value=""
     />
     <TextInput
-      allowFontScaling={true}
       autoCapitalize="none"
       autoCorrect={false}
       onChangeText={[Function]}
-      rejectResponderTermination={true}
       style={
         Object {
           "alignSelf": "center",
@@ -394,16 +379,13 @@ exports[`Component testing Snapshot with loading as true 2`] = `
         }
       }
       testID="lastname"
-      underlineColorAndroid="transparent"
       value=""
     />
     <TextInput
-      allowFontScaling={true}
       autoCapitalize="none"
       autoCorrect={false}
       keyboardType="email-address"
       onChangeText={[Function]}
-      rejectResponderTermination={true}
       style={
         Object {
           "alignSelf": "center",
@@ -415,15 +397,12 @@ exports[`Component testing Snapshot with loading as true 2`] = `
       }
       testID="email"
       textContentType="emailAddress"
-      underlineColorAndroid="transparent"
       value=""
     />
     <TextInput
-      allowFontScaling={true}
       autoCapitalize="none"
       autoCorrect={false}
       onChangeText={[Function]}
-      rejectResponderTermination={true}
       secureTextEntry={true}
       style={
         Object {
@@ -435,7 +414,6 @@ exports[`Component testing Snapshot with loading as true 2`] = `
         }
       }
       testID="password"
-      underlineColorAndroid="transparent"
       value=""
     />
     <View
@@ -453,6 +431,8 @@ exports[`Component testing Snapshot with loading as true 2`] = `
       }
     >
       <View
+        collapsable={false}
+        nativeID="animatedComponent"
         style={
           Object {
             "backgroundColor": "transparent",
@@ -472,7 +452,7 @@ exports[`Component testing Snapshot with loading as true 2`] = `
           accessibilityRole="button"
           accessibilityState={
             Object {
-              "disabled": undefined,
+              "disabled": false,
             }
           }
           accessible={true}

@@ -19,11 +19,9 @@ exports[`Component testing Snapshot 1`] = `
   }
 >
   <TextInput
-    allowFontScaling={true}
     onChangeText={[Function]}
     onEndEditing={[Function]}
     placeholderTextColor="#000000"
-    rejectResponderTermination={true}
     style={
       Object {
         "color": "#000000",
@@ -37,7 +35,9 @@ exports[`Component testing Snapshot 1`] = `
   />
   <View
     accessible={true}
+    collapsable={false}
     focusable={true}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}

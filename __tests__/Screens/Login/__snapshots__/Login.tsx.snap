@@ -115,12 +115,10 @@ Array [
       }
     >
       <TextInput
-        allowFontScaling={true}
         autoCapitalize="none"
         autoCorrect={false}
         keyboardType="email-address"
         onChangeText={[Function]}
-        rejectResponderTermination={true}
         style={
           Object {
             "alignSelf": "center",
@@ -132,7 +130,6 @@ Array [
         }
         testID="email"
         textContentType="emailAddress"
-        underlineColorAndroid="transparent"
         value=""
       />
       <View
@@ -150,11 +147,9 @@ Array [
         }
       >
         <TextInput
-          allowFontScaling={true}
           autoCapitalize="none"
           autoCorrect={false}
           onChangeText={[Function]}
-          rejectResponderTermination={true}
           secureTextEntry={true}
           style={
             Object {
@@ -166,7 +161,6 @@ Array [
             }
           }
           testID="password"
-          underlineColorAndroid="transparent"
           value=""
         />
         <mockedDefaultExport
@@ -185,7 +179,9 @@ Array [
     </View>
     <View
       accessible={true}
+      collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -229,6 +225,8 @@ Array [
       }
     >
       <View
+        collapsable={false}
+        nativeID="animatedComponent"
         style={
           Object {
             "backgroundColor": "transparent",
