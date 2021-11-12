@@ -34,7 +34,7 @@ exports[`Component testing Snapshot  1`] = `
           source={
             Object {
               "priority": undefined,
-              "uri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQB-3-cJ6tpQ6cFUjCach0R1dTiXdhXI0AtA&usqp=CAU",
+              "uri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwor6J4qPx1WWN27GYiZEFP-NAoWSstn-YrQ&usqp=CAU",
             }
           }
           style={
@@ -113,6 +113,7 @@ exports[`Component testing Snapshot  1`] = `
               "flexDirection": "row",
               "height": 40,
               "justifyContent": "center",
+              "margin": 2,
               "marginTop": 30,
               "width": undefined,
             }
@@ -159,6 +160,7 @@ exports[`Component testing Snapshot  1`] = `
               "flexDirection": "row",
               "height": 40,
               "justifyContent": "center",
+              "margin": 2,
               "marginTop": 30,
               "width": undefined,
             }
