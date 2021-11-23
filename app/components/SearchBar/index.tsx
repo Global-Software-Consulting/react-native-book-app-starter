@@ -29,7 +29,11 @@ const SearchBar: React.FC = () => {
                 style={styles.searchViewInput}
                 onEndEditing={() => fetchBookDetails()}
             />
-            <TouchableOpacity testID={'searchBookies'} onPress={() => fetchBookDetails()}>
+            <TouchableOpacity
+                testID={'searchBookies'}
+                onPress={() => {
+                    fetchBookDetails()
+                }}>
                 <Icon name="search" size={20} style={styles.searchViewChildren} />
             </TouchableOpacity>
         </View>
