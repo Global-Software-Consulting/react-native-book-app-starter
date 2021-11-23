@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.11",
+    "@react-native-community/cli-platform-android": "^6.2.0",
     "@react-native-community/hooks": "^2.8.0",
     "@react-native-community/netinfo": "^6.1.0",
     "@react-native-community/progress-bar-android": "^1.0.4",
