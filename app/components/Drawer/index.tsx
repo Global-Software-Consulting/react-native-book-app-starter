@@ -1,90 +1,90 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useFocusEffect, useNavigation } from '@react-navigation/core';
-import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-import { DrawerActions, TabActions } from '@react-navigation/native';
-import i18n from 'config/Languages/i18n';
-import { ReducerState } from 'models/reducers/index';
-import React, { useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { TouchableOpacity, View } from 'react-native';
-import { Avatar, Button, List, RadioButton, Text, Title } from 'react-native-paper';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useDispatch, useSelector } from 'react-redux';
-import * as loginActions from 'store/actions/loginActions';
-import * as themeActions from 'store/actions/themeActions';
-import ThemeController from '../ThemeController';
-import { useStyles } from './styles';
-import { useIsFocused } from '@react-navigation/core';
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useFocusEffect, useNavigation } from '@react-navigation/core'
+import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer'
+import { DrawerActions, TabActions } from '@react-navigation/native'
+import i18n from 'config/Languages/i18n'
+import { ReducerState } from 'models/reducers/index'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { TouchableOpacity, View } from 'react-native'
+import { Avatar, Button, List, RadioButton, Text, Title } from 'react-native-paper'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { useDispatch, useSelector } from 'react-redux'
+import * as loginActions from 'store/actions/loginActions'
+import * as themeActions from 'store/actions/themeActions'
+import ThemeController from '../ThemeController'
+import { useStyles } from './styles'
+import { useIsFocused } from '@react-navigation/core'
 const Drawer: React.FC = (props) => {
-    const { t } = useTranslation();
-    const [checked, setChecked] = useState('first');
-    const userData = useSelector((state: ReducerState) => state.loginReducer.user);
-    const imagePath = useSelector((state: ReducerState) => state.appReducer.profilePicture);
-    const [name, setName] = useState(userData?.firstName + ' ' + userData?.lastName);
+    const { t } = useTranslation()
+    const [checked, setChecked] = useState('first')
+    const userData = useSelector((state: ReducerState) => state.loginReducer.user)
+    const imagePath = useSelector((state: ReducerState) => state.appReducer.profilePicture)
+    const [name, setName] = useState(userData?.firstName + ' ' + userData?.lastName)
     const [image, setImage] = useState(
-        'https://pbs.twimg.com/profile_images/952545910990495744/b59hSXUd_400x400.jpg',
-    );
-    const dispatch = useDispatch();
-    const navigation = useNavigation();
-    const isFocused = useIsFocused();
-    const Explore = TabActions.jumpTo('Explore');
-    const Favorite = TabActions.jumpTo('Favorite');
-    const Detail = TabActions.jumpTo('UserDetail');
-    const styles = useStyles();
+        'https://pbs.twimg.com/profile_images/952545910990495744/b59hSXUd_400x400.jpg'
+    )
+    const dispatch = useDispatch()
+    const navigation = useNavigation()
+    const isFocused = useIsFocused()
+    const Explore = TabActions.jumpTo('Explore')
+    const Favorite = TabActions.jumpTo('Favorite')
+    const Detail = TabActions.jumpTo('UserDetail')
+    const styles = useStyles()
     const onLogout = () => {
-        AsyncStorage.removeItem('token');
-        dispatch(loginActions.logOut());
-        dispatch(themeActions.setIsDarkTheme(false));
-    };
+        AsyncStorage.removeItem('token')
+        dispatch(loginActions.logOut())
+        dispatch(themeActions.setIsDarkTheme(false))
+    }
 
     useEffect(() => {
-        console.log('here');
-        loadImage();
-    }, [imagePath]);
+        console.log('here')
+        loadImage()
+    }, [imagePath])
 
     useEffect(() => {
-        setName(userData?.firstName + ' ' + userData?.lastName);
-        if (i18n.language === 'en') setChecked('first');
-        else if (i18n.language === 'es') setChecked('second');
-        else if (i18n.language === 'de') setChecked('third');
-    }, [userData]);
+        setName(userData?.firstName + ' ' + userData?.lastName)
+        if (i18n.language === 'en') setChecked('first')
+        else if (i18n.language === 'es') setChecked('second')
+        else if (i18n.language === 'de') setChecked('third')
+    }, [userData])
 
     const checkEnglish = () => {
-        setChecked('first');
-        i18n.changeLanguage('en');
-    };
+        setChecked('first')
+        i18n.changeLanguage('en')
+    }
 
     const getAuthToken = async () => {
         try {
-            const value = await AsyncStorage.getItem('token');
+            const value = await AsyncStorage.getItem('token')
             if (value !== null) {
-                return value;
+                return value
             }
-            return '';
+            return ''
         } catch (e) {
-            return '';
+            return ''
         }
-    };
+    }
 
     const getImagePath = async (token: string) => {
         try {
-            const value = await AsyncStorage.getItem(token);
+            const value = await AsyncStorage.getItem(token)
             if (value !== null) {
-                return value;
+                return value
             }
-            return '';
+            return ''
         } catch (e) {
-            return '';
+            return ''
         }
-    };
+    }
 
     const loadImage = async () => {
-        const token = await getAuthToken();
-        const path = await getImagePath(token);
+        const token = await getAuthToken()
+        const path = await getImagePath(token)
         if (path !== '') {
-            setImage(path);
+            setImage(path)
         }
-    };
+    }
 
     return (
         <DrawerContentScrollView {...props}>
@@ -92,8 +92,8 @@ const Drawer: React.FC = (props) => {
                 <View style={styles.userInfoSection}>
                     <TouchableOpacity
                         onPress={() => {
-                            navigation.dispatch(Detail);
-                            navigation.dispatch(DrawerActions.toggleDrawer());
+                            navigation.dispatch(Detail)
+                            navigation.dispatch(DrawerActions.toggleDrawer())
                         }}>
                         <Avatar.Image
                             source={{
@@ -110,8 +110,8 @@ const Drawer: React.FC = (props) => {
                     )}
                     label={t('Explore')}
                     onPress={() => {
-                        navigation.dispatch(Explore);
-                        navigation.dispatch(DrawerActions.toggleDrawer());
+                        navigation.dispatch(Explore)
+                        navigation.dispatch(DrawerActions.toggleDrawer())
                     }}
                 />
                 <DrawerItem
@@ -120,8 +120,8 @@ const Drawer: React.FC = (props) => {
                     )}
                     label={t('Favorite')}
                     onPress={() => {
-                        navigation.dispatch(Favorite);
-                        navigation.dispatch(DrawerActions.toggleDrawer());
+                        navigation.dispatch(Favorite)
+                        navigation.dispatch(DrawerActions.toggleDrawer())
                     }}
                 />
                 <DrawerItem
@@ -130,19 +130,8 @@ const Drawer: React.FC = (props) => {
                     )}
                     label={t('User Details')}
                     onPress={() => {
-                        navigation.dispatch(Detail);
-                        navigation.dispatch(DrawerActions.toggleDrawer());
-                    }}
-                />
-                <DrawerItem
-                    icon={({ color, size }) => (
-                        <MaterialCommunityIcons name="cart-outline" color={color} size={size} />
-                    )}
-                    label={t('Cart')}
-                    onPress={() => {
-                        navigation.dispatch(DrawerActions.toggleDrawer());
-
-                        navigation.navigate('Cart' as never);
+                        navigation.dispatch(Detail)
+                        navigation.dispatch(DrawerActions.toggleDrawer())
                     }}
                 />
                 <View style={styles.preference}>
@@ -156,8 +145,8 @@ const Drawer: React.FC = (props) => {
                     }>
                     <TouchableOpacity
                         onPress={() => {
-                            setChecked('first');
-                            i18n.changeLanguage('en');
+                            setChecked('first')
+                            i18n.changeLanguage('en')
                         }} //Here I change the language to "en" English
                         style={styles.listbutton}>
                         <RadioButton
@@ -170,16 +159,16 @@ const Drawer: React.FC = (props) => {
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => {
-                            setChecked('second');
-                            i18n.changeLanguage('es');
+                            setChecked('second')
+                            i18n.changeLanguage('es')
                         }} //Here I change the language to "es" Spanish
                         style={styles.listbutton}>
                         <RadioButton
                             value="second"
                             status={checked === 'second' ? 'checked' : 'unchecked'}
                             onPress={() => {
-                                setChecked('second');
-                                i18n.changeLanguage('es');
+                                setChecked('second')
+                                i18n.changeLanguage('es')
                             }}
                             color="red"
                         />
@@ -187,16 +176,16 @@ const Drawer: React.FC = (props) => {
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => {
-                            setChecked('third');
-                            i18n.changeLanguage('de');
+                            setChecked('third')
+                            i18n.changeLanguage('de')
                         }} //Here I change the language to "de" German
                         style={styles.listbutton}>
                         <RadioButton
                             value="third"
                             status={checked === 'third' ? 'checked' : 'unchecked'}
                             onPress={() => {
-                                setChecked('third');
-                                i18n.changeLanguage('de');
+                                setChecked('third')
+                                i18n.changeLanguage('de')
                             }}
                             color="red"
                         />
@@ -211,7 +200,7 @@ const Drawer: React.FC = (props) => {
                 </TouchableOpacity>
             </View>
         </DrawerContentScrollView>
-    );
-};
+    )
+}
 
-export default Drawer;
+export default Drawer
