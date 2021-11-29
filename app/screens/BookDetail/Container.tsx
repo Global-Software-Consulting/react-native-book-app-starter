@@ -35,7 +35,6 @@ const Container: React.FC<Props> = (props) => {
     const { t } = useTranslation()
     const [textShown, setTextShown] = useState(false) //To show ur remaining Text
     const [isSpeaking, setIsSpeaking] = useState(false)
-
     const toggleNumberOfLines = () => {
         //To toggle the show text or hide it
         setTextShown(!textShown)

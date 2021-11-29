@@ -190,4 +190,10 @@ jest.mock('react-native-maps', () => {
       default: MockMapView,
       Marker: MockMarker,
     };
+});
+jest.mock('@react-native-community/geolocation', () => {
+    return {
+      getCurrentPosition: jest.fn(),
+      watchPosition: jest.fn(),
+    }
   });

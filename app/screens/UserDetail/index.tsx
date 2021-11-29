@@ -10,6 +10,7 @@ import ImagePicker from 'react-native-image-crop-picker'
 import { Button, Text } from 'react-native-paper'
 import { useDispatch, useSelector } from 'react-redux'
 import { useStyles } from 'screens/UserDetail/styles'
+import Geolocation from '@react-native-community/geolocation'
 import * as appActions from 'store/actions/appActions'
 import * as loginActions from 'store/actions/loginActions'
 import MapView, { Marker } from 'react-native-maps'
@@ -28,6 +29,7 @@ const UserDetail: React.FC = () => {
     const [lastName, setLastName] = useState<string>(userData?.lastName)
     const [email, setEmail] = useState<string>(userData?.email)
     const [isEnlarged, setIsEnlarged] = useState(false)
+    const [currentLocation, setCurrentLocation] = useState({})
     const { t } = useTranslation()
     const styles = useStyles()
     const navigation = useNavigation()
@@ -101,6 +103,9 @@ const UserDetail: React.FC = () => {
     }
 
     useEffect(() => {
+        Geolocation.getCurrentPosition((position) => {
+            console.log('Here is the position >>', position)
+        })
         loadImage()
     }, [counter])
     return (
