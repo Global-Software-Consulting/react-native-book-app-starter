@@ -42,7 +42,7 @@ describe('Component testing', () => {
         getPercentageWidth.mockReturnValue(jest.fn())
 
         const { getByTestId } = render(<Container />)
-        fireEvent.press(getByTestId('navigate'))
+        fireEvent.press(getByTestId('navigateToRead'))
     })
 
     test('Fire toggle text ', () => {

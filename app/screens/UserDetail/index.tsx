@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useStyles } from 'screens/UserDetail/styles'
 import * as appActions from 'store/actions/appActions'
 import * as loginActions from 'store/actions/loginActions'
-import MapView from 'react-native-maps'
+import MapView, { Marker } from 'react-native-maps'
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { getPercentageWidth, getPercentageHeight } from 'utils/dimentionUtil'
@@ -35,6 +35,7 @@ const UserDetail: React.FC = () => {
         setIsEditing(!isEditing)
         editUser()
     }
+
     const [image, setImage] = useState<string>(
         'https://pbs.twimg.com/profile_images/952545910990495744/b59hSXUd_400x400.jpg'
     )
@@ -208,8 +209,19 @@ const UserDetail: React.FC = () => {
             <MapView
                 provider="google"
                 style={{ height: height('40%'), width: width('100%') }}
-                showsUserLocation
-            />
+                initialRegion={{
+                    latitude: 37.78825,
+                    longitude: -122.4324,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                }}
+                showsUserLocation>
+                <Marker
+                    coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
+                    title={'Sample Marker'}
+                    description={'Just a check'}
+                />
+            </MapView>
         </KeyboardAwareScrollView>
     )
 }

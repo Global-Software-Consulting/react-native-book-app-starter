@@ -1,5 +1,6 @@
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
-
+import { View } from 'react-native';
+import React from 'react'
 jest.mock('react-native-simple-toast', () => ({
     Toast: jest.fn(),
     default: { show: jest.fn() },
@@ -176,3 +177,17 @@ jest.mock('react-native-tts', () => {
 
     }
 })
+jest.mock('react-native-maps', () => {
+    const { View } = require('react-native');
+    const MockMapView = (props) => {
+      return <View>{props.children}</View>;
+    };
+    const MockMarker = (props) => {
+      return <View>{props.children}</View>;
+    };
+    return {
+      __esModule: true,
+      default: MockMapView,
+      Marker: MockMarker,
+    };
+  });

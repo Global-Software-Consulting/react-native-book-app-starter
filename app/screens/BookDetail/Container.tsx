@@ -94,7 +94,7 @@ const Container: React.FC<Props> = (props) => {
                     </View>
                     <View style={styles.submitView}>
                         <TouchableOpacity
-                            testID={'navigate'}
+                            testID={'navigateToRead'}
                             onPress={() => navigation.navigate('BookReader' as never)}>
                             <Text style={{ color: 'white', fontSize: 16 }}>Read Book</Text>
                         </TouchableOpacity>
