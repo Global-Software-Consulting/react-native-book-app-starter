@@ -12,11 +12,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useStyles } from 'screens/UserDetail/styles'
 import * as appActions from 'store/actions/appActions'
 import * as loginActions from 'store/actions/loginActions'
+import MapView from 'react-native-maps'
+
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { getPercentageWidth, getPercentageHeight } from 'utils/dimentionUtil'
 const UserDetail: React.FC = () => {
     const dispatch = useDispatch()
     const userData = useSelector((state: ReducerState) => state.loginReducer.user)
     const isLoading = useSelector((state: ReducerState) => state.loadingReducer.isLoading)
+    const width = getPercentageWidth()
+    const height = getPercentageHeight()
     //defining states
     const [isEditing, setIsEditing] = useState(false)
     const [firstName, setFirstName] = useState<string>(userData?.firstName)
@@ -192,12 +197,18 @@ const UserDetail: React.FC = () => {
                 </Button>
                 {isLoading ? <ActivityIndicator color="white" style={styles.activity} /> : null}
             </View>
+
             <PictureViewer
                 isVisible={isEnlarged}
                 imageSource={{
                     uri: 'https://pbs.twimg.com/profile_images/952545910990495744/b59hSXUd_400x400.jpg',
                 }}
                 onPress={() => setIsEnlarged(false)}
+            />
+            <MapView
+                provider="google"
+                style={{ height: height('40%'), width: width('100%') }}
+                showsUserLocation
             />
         </KeyboardAwareScrollView>
     )
