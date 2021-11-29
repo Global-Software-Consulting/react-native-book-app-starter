@@ -2,7 +2,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { useNavigation } from '@react-navigation/core'
 import { DrawerActions } from '@react-navigation/native'
 import * as React from 'react'
+import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Alert, Linking } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useTheme } from 'react-native-paper'
 import { heightPercentageToDP } from 'react-native-responsive-screen'
@@ -20,6 +22,17 @@ const TabNavigator = () => {
     const navigation = useNavigation()
     const theme = useTheme()
     const styles = useStyles()
+    useEffect(() => {
+        const getUrl = async () => {
+            const init = await Linking.getInitialURL()
+            if (init != null) {
+                if (init?.includes('BookDetail')) {
+                    navigation.navigate('BookDetail')
+                }
+            }
+        }
+        getUrl()
+    })
 
     return (
         <Tab.Navigator>

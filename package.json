@@ -66,6 +66,7 @@
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.9.0",
     "react-native-select-dropdown": "^1.3.0",
+    "react-native-share": "^7.3.0",
     "react-native-shimmer": "^0.6.0",
     "react-native-shimmer-placeholder": "^2.0.8",
     "react-native-simple-toast": "^1.1.3",

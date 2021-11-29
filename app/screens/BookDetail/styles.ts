@@ -189,7 +189,7 @@ export const useStyles = () => {
             flexDirection: 'row',
             marginTop: 30,
             borderRadius: 20,
-            width: width('40%'),
+            width: width('30%'),
             height: 40,
             margin:2
 

@@ -25,9 +25,11 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>https</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.46622880121-o0ccktka8a499qaa44aupcrks61ec625</string>
+				<string>bookapp.gsoftconsulting.com</string>
 			</array>
 		</dict>
 	</array>
@@ -48,8 +50,12 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Book app would like to access your camera</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Book app would like to access your camera</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -84,9 +90,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSCameraUsageDescription</key>
-	<string>Book app would like to access your camera</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Book app would like to access your camera</string>
 </dict>
 </plist>

@@ -2,8 +2,16 @@ import { useNavigation } from '@react-navigation/core'
 import { dummyImages } from 'assets/dummyImages'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { NativeEventEmitter, NativeModules, ScrollView, TouchableOpacity, View } from 'react-native'
+import {
+    NativeEventEmitter,
+    NativeModules,
+    ScrollView,
+    TouchableOpacity,
+    View,
+    Share,
+} from 'react-native'
 import { Button, Text } from 'react-native'
+
 import Tts from 'react-native-tts'
 import BookCard from '../../components/BookCard/BookCard'
 import { useStyles } from './styles'
@@ -31,6 +39,24 @@ const Container: React.FC<Props> = (props) => {
     const toggleNumberOfLines = () => {
         //To toggle the show text or hide it
         setTextShown(!textShown)
+    }
+    const onShare = async () => {
+        try {
+            const result = await Share.share({
+                message: 'https://bookapp.gsoftconsulting.com/' + books?.id,
+                url: 'https://bookapp.gsoftconsulting.com/' + books?.id,
+                title: 'https://bookapp.gsoftconsulting.com/' + books?.id,
+            })
+            if (result.action === Share.sharedAction) {
+                if (result.activityType) {
+                    // shared with activity type of result.activityType
+                } else {
+                    // shared
+                }
+            } else if (result.action === Share.dismissedAction) {
+                // dismissed
+            }
+        } catch (error) {}
     }
 
     return (
@@ -71,6 +97,11 @@ const Container: React.FC<Props> = (props) => {
                             testID={'navigate'}
                             onPress={() => navigation.navigate('BookReader' as never)}>
                             <Text style={{ color: 'white', fontSize: 16 }}>Read Book</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.submitView}>
+                        <TouchableOpacity testID={'navigate'} onPress={onShare}>
+                            <Text style={{ color: 'white', fontSize: 16 }}>Share</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
